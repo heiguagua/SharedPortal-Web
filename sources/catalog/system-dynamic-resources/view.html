@@ -1,0 +1,41 @@
+<main id="resources">
+  <div class="catalog-content">
+    <div class="head-desc">
+      <div class="title">{{head_title}}</div>
+      <div class="other-info"> 共 {{totalResource}} 张表或视图&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;共 {{columnCount}} 项字段</div>
+    </div>
+    <div class="search-box">
+      <div class="total-num">共 <span class="count">{{totalResource}}</span> 条结果</div>
+      <div class="search-input">
+        <el-input placeholder="请输入" v-model="keyword">
+          <el-button slot="append" icon="search" @click="handleSearch">搜索</el-button>
+        </el-input>
+      </div>
+    </div>
+    <el-table :data="tableData" border style="width: 100%" v-loading="loading" element-loading-text="数据加载中" slot="empty" highlight-current-row
+      @current-change="handleCurrentChange">
+      <el-table-column prop="enName" label="表英文名" width="40%">
+        <template scope="scope">
+          <span v-bind:title="scope.row.enName">{{ scope.row.enName }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column prop="cnName" label="表中文名" width="20%">
+        <template scope="scope">
+          <span v-bind:title="scope.row.cnName">{{ scope.row.cnName }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column prop="table_type" label="类型" width="20%">
+        <template scope="scope">
+          <span v-bind:title="scope.row.table_type">{{ scope.row.table_type }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column prop="table_source_type" label="来源" width="20%">
+        <template scope="scope">
+          <span v-bind:title="scope.row.table_source_type">{{ scope.row.table_source_type }}</span>
+        </template>
+      </el-table-column>
+    </el-table>
+    <el-pagination @current-change="handlePageChange" :current-page="currentPage" layout="total, prev, pager, next, jumper" :total="totalResource">
+    </el-pagination>
+  </div>
+</main>

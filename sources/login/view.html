@@ -1,0 +1,31 @@
+<main id="login">
+  <header>
+    <section class="top_conttitle">
+      <img class="logopng" src="../assets/login/logo.png">
+      <p>成都市大数据资源服务网</p>
+      <div class="righttext">
+      </div>
+      <div class="section_bottom">
+        <span class="left_span">登录
+          <img src="../assets/login/long_sanjiao.png" id="leftsan"/>
+        </span>
+      </div>
+    </section>
+  </header>
+  <form class="form-horizontal">
+    <div class="inputdiv reg-box">
+      <span class="spanuser">
+      <img src="../assets/login/Username.png"/>
+      </span><input type="text" v-model="username" class="account" name="username" placeholder="用户名" />
+    </div>
+    <div class="inputdiv reg-box">
+      <span class="spanuser">
+        <img src="../assets/login/Password.png"/>
+       </span><input type="password" v-model="password" class="admin_pwd" name="password" placeholder="密码" />
+    </div>
+    <span v-show="errorShow" class="error">用户名或密码错误，请重新输入!</span>
+    <div class="inputdiv">
+      <button class="login_subtn"  type="button" @click="onSubmit()">登&emsp;录</button>
+    </div>
+  </form>
+</main>

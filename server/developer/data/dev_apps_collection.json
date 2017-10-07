@@ -1,0 +1,29 @@
+[{
+	"visit_count": 0,
+	"create_time": null,
+	"api_url": "http://10.190.232.224:9080/",
+	"api_name": "政务数据采集",
+	"api_category": "2",
+	"devlp_Id": "53c025fcb2c9484da23c881a5efd1656"
+}, {
+	"visit_count": 0,
+	"create_time": null,
+	"api_url": "http://10.190.232.174/ChengDuGBD/main.xhtml?cid=199",
+	"api_name": "互联网数据采集",
+	"api_category": "2",
+	"devlp_Id": "890fa561fbf64b0db5ac63f62554944b"
+}, {
+	"visit_count": 0,
+	"create_time": null,
+	"api_url": "http://10.190.232.174/ChengDuGBD/main.xhtml?cid=199",
+	"api_name": "物联网数据采集",
+	"api_category": "2",
+	"devlp_Id": "61a9f079900045e4beab836a91e26358"
+}, {
+	"visit_count": 0,
+	"create_time": null,
+	"api_url": "http://10.190.232.174/ChengDuGBD/main.xhtml?cid=199",
+	"api_name": "政务数据接入",
+	"api_category": "2",
+	"devlp_Id": "261d523f2fd64839972ffe06c34bb052"
+}]

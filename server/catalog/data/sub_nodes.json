@@ -1,0 +1,21 @@
+[
+		{
+			"classify_name": "扩展信息",
+			"id": "hqF3sWwoEeeirvQRxXcpxA",
+			"hasLeaf": 1,
+			"classify_structure_code": "1_08_001"
+		},
+		{
+			"classify_name": "专题信息",
+			"id": "iePGsXDkEeeFdYgBpjFp9g",
+			"hasLeaf": 1,
+			"classify_structure_code": "1_08_002"
+		},
+		{
+			"classify_name": "基本信息",
+			"id": "ZpLVQWwoEeexAZMbaBEuaQ",
+			"hasLeaf": 1,
+			"classify_structure_code": "1_08_003"
+		}
+	
+    ]

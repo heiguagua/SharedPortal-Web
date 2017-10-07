@@ -1,0 +1,52 @@
+@import "../../common/base.scss";
+
+#details {
+	.item-content {
+		border: 1px solid #DBE0E8;
+		margin-top: 20px;
+		background: #FFF;
+		.item-header {
+			text-align: center;
+			height: 60px;
+			position: relative;
+			line-height: 60px;
+			font-size: 16px;
+		}
+		.el-tabs__content {
+			padding: 30px;
+		}
+
+	}
+	.operate-wrap {
+		color: #333;
+		margin: 0;
+		float: right;
+		list-style: none;
+		padding: 10px;
+
+		.op-item {
+			display: inline-block;
+			margin-left: 30px;
+			cursor: pointer;
+
+			img {
+				vertical-align: middle;
+				margin-bottom: 3px;
+			}
+
+		}
+
+	}
+	textarea{
+		    background: #F9FBFF;
+    border: 1px solid #E5E9F0;
+	}
+	.el-rate{
+		    padding: 30px 0;
+    text-align: center;
+    .el-rate__icon{
+    	    font-size: 28px;
+    margin: 0 16px;
+    }
+	}
+}

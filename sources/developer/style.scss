@@ -1,0 +1,133 @@
+@import "../common/base.scss";
+
+#developer {
+	min-height: 720px;
+
+	* {
+		box-sizing: border-box;
+	}
+
+	.section-content {
+		width: 1270px;
+		margin: 0 auto;
+		overflow: hidden;
+		padding: 20px;
+	}
+
+	.el-tabs__active-bar {
+		display: none;
+	}
+
+	.el-tabs__header {
+		width: 290px;
+		float: left;
+		background: #fff;
+		padding-left: 0;
+		margin: 0;
+	}
+
+	.el-tabs__content {
+		width: 75%;
+		float: left;
+		padding: 10px 20px 20px 20px;
+		background: #fff;
+	}
+
+	.el-tabs__nav {
+		display: block;
+		float: none;
+	}
+
+	.el-tabs__item {
+		position: relative;
+		display: block;
+		border-bottom: 1px solid #DFDFDF;
+		border-right: 1px solid #DFDFDF;
+		border-left: 1px solid #DFDFDF;
+		height: 50px;
+		line-height: 50px;
+		cursor: pointer;
+		font-size: 14px;
+		color: rgb(51, 51, 51);
+		list-style: none;
+		padding-left: 20px;
+
+		&.is-active {
+			color: $white;
+			background: $main-blue;
+		}
+
+		&:before {
+			content: "\f022";
+			font: normal normal normal 14px/1 FontAwesome;
+			font-size: inherit;
+			padding-right: 15px;
+			text-rendering: auto;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+		}
+
+	}
+
+	.sub_apps {
+		li {
+			display: inline-block;
+			min-width: 150px;
+			text-align: center;
+			height: 50px;
+			line-height: 50px;
+			vertical-align: middle;
+			text-decoration: none;
+			cursor: pointer;
+			margin: 8px 4px;
+			border-bottom: 2px solid #4197F4;
+			&.active{
+				background: url(../assets/ico/arrow.png) no-repeat center 38px;
+    			color: #4197F4;
+			}
+			a {
+				display: inline-block;
+				min-width: 150px;
+			}
+
+			.spliter {
+				color: #CCC;
+				position: relative;
+				left: 6px;
+			}
+
+		}
+
+	
+	}
+	.app-link{
+		padding: 10px 0 10px 180px;
+		color: $white;
+			background: $main-blue;
+			a{
+				color: $white;
+				text-decoration: none;
+			}
+	}
+	.tool-details{
+		h3{
+			padding:15px ;
+		}
+	}
+	.info-item{
+		padding:10px 0;
+		label{
+			font-weight:bold;
+		}
+	}
+	.item-link{
+		color: #fff;
+    background-color: #20a0ff;
+    border-color: #20a0ff;
+    cursor: pointer;
+    text-decoration: none;
+	}
+	.tool-ico{
+		text-align:center;
+	}
+}

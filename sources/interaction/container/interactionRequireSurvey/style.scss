@@ -1,0 +1,25 @@
+@import "../../../common/base.scss";
+@import "../../../libraries/linkage/linkage.css";
+#require-survey {
+  .el-form-item .el-form-item {
+    margin-bottom: 22px!important;
+  }
+  .el-button--primary {
+    background-color: #4197F4;
+    color: #fff;
+    width: 120px;
+    height: 32px;
+  }
+  .el-select{
+    width: 100%;
+  }
+  .depBtn .el-button{
+    float: right !important;
+    margin: 15px;
+  }
+  .read>input {
+    cursor: not-allowed;
+    background-color: #eee;
+    opacity: 1;
+  }
+}

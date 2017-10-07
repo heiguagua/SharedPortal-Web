@@ -1,0 +1,37 @@
+<main id="system-details">
+	<div class="catalog-content">
+		<div class="head-desc">{{head_title}}-详情
+			<a href="javascript:;" class="back-link" @click='goback()'><i class="fa fa-angle-left font-bold"></i> 返回</a>
+		</div>
+		<table  border="0" width="100%"><tbody>
+			<tr class="">
+				<td width="20%">表英文名</td>
+				<td>{{detail_pro.enName}}</td>
+			</tr>
+			<tr class="">
+				<td>中文名</td>
+				<td>{{detail_pro.cnName}}</td>
+			</tr>
+			<tr class="">
+				<td>来源</td>
+				<td>{{detail_pro.table_source_type}}</td>
+      </tr>
+      <tr class="">
+				<td>更新时间</td>
+				<td>{{detail_pro.table_updateTime| formatDate}}</td>
+			</tr>
+		</tbody></table>
+		<div class="item-content">
+        <div class="item-header">{{head_title}} </div>
+		  <el-table :data="tableDataItem"	border	style="width: 100%" v-loading="loading" element-loading-text="数据加载中" slot="empty"
+      highlight-current-row  >
+      <el-table-column prop="name" label="
+      字段英文名" width="50"></el-table-column>
+      <el-table-column prop="column_desc" label="中文描述"	width="50%"></el-table-column>
+      </el-table>
+      <el-pagination  @current-change="handlePageChange" :current-page="currentPage"  layout="total, prev, pager, next, jumper" :total="totalResource">
+        </el-pagination>
+		</div>
+	</div>
+
+</main>

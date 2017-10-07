@@ -1,0 +1,35 @@
+<main id="shared-resources">
+	<div class="catalog-content">
+		<div class="head-desc">
+			<div class="title">{{head_title}}</div>
+			<div class="other-info"> {{totalResource}} 个资源&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;共 {{itemCount}} 个处室</div>
+		</div>
+		<div class="search-box">
+			<div class="total-num">共 <span class="count">{{totalResource}}</span> 条结果</div>
+			<div class="search-input">
+				<el-input placeholder="请输入" v-model="keyword">
+				<el-button slot="append" icon="search" @click="handleSearch">搜索</el-button>
+				</el-input>
+			</div>
+		</div>
+		<el-table :data="tableData"	border	style="width: 100%" v-loading="loading" element-loading-text="数据加载中" slot="empty"
+		highlight-current-row   @current-change="handleCurrentChange">
+		<el-table-column label="信息资源名称" width="40%">
+			<template scope="scope">
+			<img class="mark" src="../../assets/catalog/database.png" alt="" width="12" height="12">&nbsp;
+			{{scope.row.dataset_name}}
+		</template>
+		</el-table-column>
+		<el-table-column prop="share_type" label="共享类型"	width="20%"></el-table-column>
+		<el-table-column prop="dept_name" label="来源部门" width="20%">
+		</el-table-column>
+		<el-table-column label="更新时间" width="20%">
+		<template scope="scope">
+		{{ scope.row.update_time }}
+		</template>
+		</el-table-column>
+		</el-table>
+		<el-pagination  @current-change="handlePageChange" :current-page="currentPage"  layout="total, prev, pager, next, jumper" :total="totalResource">
+    	</el-pagination>
+	</div>
+</main>

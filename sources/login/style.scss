@@ -1,0 +1,105 @@
+@import "../common/base.scss";
+#login {
+  header {
+    width: 100%;
+    background: #4197F4 url("../assets/login/background.png") no-repeat center 40px;
+    background-size: 50%;
+    height: 342px;
+    position: relative;
+    overflow: hidden;
+    .top_conttitle {
+      width: 568px;
+      margin: 100px auto;
+      height: 240px;
+      position: relative;
+      text-align: center;
+      .righttext {
+        float: left;
+        color: #fff;
+        font-size: 32px;
+        letter-spacing: 10px;
+        width: 500px;
+        .entitle {
+          font-size: 16px;
+          letter-spacing: 2px;
+        }
+      }
+      img.logopng {
+        margin-right: 2%;
+        width: 56px;
+        vertical-align: middle;
+      }
+      p {
+        color: #fff;
+        font-size: 32px;
+        letter-spacing: 10px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .section_bottom {
+        position: absolute;
+        bottom: 15px;
+        width: 100%;
+        text-align: center;
+        span.active {
+          opacity: 0.7;
+        }
+        span {
+          /* 	width: 8%; */
+          display: inline-block;
+          color: #fff;
+          font-size: 12px;
+          position: relative;
+          cursor: pointer;
+          img {
+            position: absolute;
+            bottom: -30px;
+            left: 0;
+          }
+        }
+      }
+    }
+  }
+  form {
+    text-align: center;
+     width: 568px;
+     margin: 0 auto;
+    input {
+      height: 38px;
+      /*  width: 26%; */
+      width: 365px;
+      outline: none;
+      text-indent: 10px;
+      border: none;
+      border: 1px solid #dfdfdf;
+    }
+    .inputdiv {
+      margin: 30px auto;
+      .spanuser {
+        display: inline-block;
+        background: #4197F4;
+        vertical-align: middle;
+      }
+      .spanuser img {
+        padding: 8px 13px;
+      }
+      .login_subtn {
+        background: #4197F4;
+        /* width: 29.5%; */
+        width: 411px;
+        height: 40px;
+        border: none;
+        color: #fff;
+        font-size: 16px;
+      }
+    }
+    /* 错误提示设置样式 */
+    .error {
+      color: red;
+      font-size: 14px;
+    }
+    #rightsan {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "pages": 1,
+  "total": 9,
+  "size": 20,
+  "recordsTotal": 3,
+  "body": [{
+    "TABLE_NAME": "参保信息",
+    "DB_TYPE": "1",
+    "ORG_NAME": "办公室",
+    "TABLE_CN_NAME": null,
+    "BELONG_STRUCTURE": "办公室-->成都市公民信息管理系统",
+    "TABLE_TYPE": "表",
+    "ID": "18aedfaa630345f7a604f4f4cfc429d7",
+    "UPDATE_TIME": "2017-09-08 17:04:18",
+    "TABLE_SOURCE": null
+  }, {
+    "TABLE_NAME": "城乡居民医疗保险参保信息",
+    "DB_TYPE": "1",
+    "ORG_NAME": "办公室",
+    "TABLE_CN_NAME": null,
+    "BELONG_STRUCTURE": "办公室-->成都市公民信息管理系统",
+    "TABLE_TYPE": "表",
+    "ID": "41398c8f60f54425b9b10df235ea4fd2",
+    "UPDATE_TIME": "2017-09-08 17:04:18",
+    "TABLE_SOURCE": null
+  }, {
+    "TABLE_NAME": "城乡居民养老保险待遇",
+    "DB_TYPE": "1",
+    "ORG_NAME": "办公室",
+    "TABLE_CN_NAME": null,
+    "BELONG_STRUCTURE": "办公室-->成都市公民信息管理系统",
+    "TABLE_TYPE": "表",
+    "ID": "704d210b482b419fba85888d828ac591",
+    "UPDATE_TIME": "2017-09-08 17:04:18",
+    "TABLE_SOURCE": null
+  }, {
+    "TABLE_NAME": "出生医学证明",
+    "DB_TYPE": "1",
+    "ORG_NAME": "办公室",
+    "TABLE_CN_NAME": null,
+    "BELONG_STRUCTURE": "办公室-->成都市公民信息管理系统",
+    "TABLE_TYPE": "表",
+    "ID": "aee2190a5ec64803979e667ee5cf380d",
+    "UPDATE_TIME": "2017-09-08 17:04:18",
+    "TABLE_SOURCE": null
+  }, {
+    "TABLE_NAME": "常住人口注销",
+    "DB_TYPE": "1",
+    "ORG_NAME": "办公室",
+    "TABLE_CN_NAME": null,
+    "BELONG_STRUCTURE": "办公室-->成都市公民信息管理系统",
+    "TABLE_TYPE": "表",
+    "ID": "cd8245510f6b4838bcf9733eef534f1c",
+    "UPDATE_TIME": "2017-09-08 17:04:18",
+    "TABLE_SOURCE": null
+  }, {
+    "TABLE_NAME": "常住人口信息",
+    "DB_TYPE": "1",
+    "ORG_NAME": "办公室",
+    "TABLE_CN_NAME": null,
+    "BELONG_STRUCTURE": "办公室-->成都市公民信息管理系统",
+    "TABLE_TYPE": "表",
+    "ID": "f4b354f261e742469a51b3aad25f8fe5",
+    "UPDATE_TIME": "2017-09-08 17:04:18",
+    "TABLE_SOURCE": null
+  }, {
+    "TABLE_NAME": "广播电视节目制作机构",
+    "DB_TYPE": "1",
+    "ORG_NAME": "市经信委",
+    "TABLE_CN_NAME": null,
+    "BELONG_STRUCTURE": "市经信委-->成都市电子政务地理信息公共服务平台",
+    "TABLE_TYPE": "表",
+    "ID": "9475961df1ef4f5d810067f073a21c4d",
+    "UPDATE_TIME": "2017-08-26 21:23:05",
+    "TABLE_SOURCE": null
+  }, {
+    "TABLE_NAME": "地震预警台网",
+    "DB_TYPE": "1",
+    "ORG_NAME": "市经信委",
+    "TABLE_CN_NAME": null,
+    "BELONG_STRUCTURE": "市经信委-->成都市电子政务地理信息公共服务平台",
+    "TABLE_TYPE": "表",
+    "ID": "c521b0b07de8492a8ba1e8a2a4169560",
+    "UPDATE_TIME": "2017-08-26 21:23:05",
+    "TABLE_SOURCE": null
+  }, {
+    "TABLE_NAME": "避难场所信息",
+    "DB_TYPE": "1",
+    "ORG_NAME": "市经信委",
+    "TABLE_CN_NAME": null,
+    "BELONG_STRUCTURE": "市经信委-->成都市电子政务地理信息公共服务平台",
+    "TABLE_TYPE": "表",
+    "ID": "501a307800b44e8280c4d9d9d65b1bea",
+    "UPDATE_TIME": "2017-08-26 21:23:05",
+    "TABLE_SOURCE": null
+  }]
+
+
+}

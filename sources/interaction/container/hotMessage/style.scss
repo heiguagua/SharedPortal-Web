@@ -1,0 +1,59 @@
+@import "../../../common/base.scss";
+#hot-message {
+  position: relative;
+  .navigator {
+    display: block;
+    width: auto;
+  }
+  .search {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    width: 30%;
+  }
+  .el-table th {
+    background: $tableHd-blue;
+  }
+  .el-table__header-wrapper thead div {
+    background: $tableHd-blue;
+  }
+  .page {
+    text-align: right;
+    padding: 30px 15px;
+  }
+  .latestPolicy {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 14px;
+    li {
+      border-bottom: 1px solid #F6F6F6;
+      padding: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      img {
+        float: left;
+        margin:14px;
+      }
+      h5 {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 14px;
+        font-weight: normal;
+      }
+    }
+    .dem-head {
+      color: #475065;
+      line-height: 20px;
+    }
+    .dem-des {
+      color: #8A93A8;
+      letter-spacing: 0;
+      span {
+        margin-right: 20px;
+        em {
+          font-style: normal;
+        }
+      }
+    }
+  }
+}

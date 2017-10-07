@@ -1,0 +1,27 @@
+@import "../../common/base.scss";
+
+#system-dynamic-details {
+	.item-content {
+		border: 1px solid #DBE0E8;
+		margin-top: 20px;
+		background: #FFF;
+		.item-header {
+			text-align: center;
+			height: 60px;
+			position: relative;
+			line-height: 60px;
+			font-size: 16px;
+		}
+
+		.el-tabs__nav-scroll {
+			border: 1px solid #DBE0E8;
+			background: #F9FBFF;
+			padding: 0 15px;
+		}
+
+		.el-tabs__content {
+			padding: 30px;
+		}
+
+	}
+}

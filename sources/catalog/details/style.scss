@@ -1,0 +1,147 @@
+@import "../../common/base.scss";
+
+#details {
+	.item-content {
+		border: 1px solid #DBE0E8;
+		margin-top: 20px;
+		background: #FFF;
+
+		.item-header {
+			text-align: center;
+			height: 60px;
+			position: relative;
+			line-height: 60px;
+			font-size: 16px;
+		}
+
+		.apply-btn {
+			position: absolute;
+			top: 15px;
+			right: 15px;
+			border-radius: 100px;
+			padding: 0 20px;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			border: none;
+			background: #06ddad;
+			color: #fff;
+			cursor: pointer;
+			font-size: 14px;
+		}
+
+		.el-tabs__nav-scroll {
+			border: 1px solid #DBE0E8;
+			background: #F9FBFF;
+			padding: 0 15px;
+		}
+
+		.el-tabs__content {
+			padding: 30px;
+		}
+
+	}
+
+	.apply-dialog {
+		.el-dialog__body {
+			padding-right: 40px;
+		}
+
+	}
+
+	.operate-wrap {
+		color: #333;
+		margin: 0;
+		float: right;
+		list-style: none;
+		padding: 10px;
+
+		.op-item {
+			display: inline-block;
+			margin-left: 30px;
+			cursor: pointer;
+
+			img {
+				vertical-align: middle;
+				margin-bottom: 3px;
+			}
+
+		}
+
+	}
+
+	textarea {
+		background: #F9FBFF;
+		border: 1px solid #E5E9F0;
+	}
+
+	.el-rate {
+		padding: 30px 0;
+		text-align: center;
+
+		.el-rate__icon {
+			font-size: 28px;
+			margin: 0 16px;
+		}
+
+	}
+
+	.el-table {
+		.apply-link {
+			color: rgb(41, 159, 213);
+
+			&:hover {
+				color: rgb(41, 159, 213);
+				text-decoration: none;
+			}
+
+		}
+		tr > td,tr>th{
+			vertical-align: middle;
+		}
+	}
+
+	tr:hover {
+		cursor: pointer;
+
+		.cell {
+			a {
+				text-decoration: underline;
+				cursor: pointer;
+				color: #06DDAD;
+			}
+
+		}
+
+	}
+
+	.demo-table-expand {
+		font-size: 0;
+
+		.el-form-item__content {
+			clear: left;
+			display: inline-block;
+			width: 80%;
+			vertical-align: top;
+		}
+
+	}
+
+	.demo-table-expand label {
+		width: 90px;
+		color: #99a9bf;
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	.demo-table-expand .el-form-item {
+		margin-right: 0;
+		margin-bottom: 0;
+		border-bottom: 1px solid #F5F5F5;
+	}
+
+	.el-table__expanded-cell {
+		padding: 20px 20px 20px 30px;
+	}
+
+}

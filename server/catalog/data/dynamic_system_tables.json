@@ -1,0 +1,21 @@
+{
+  "infoSystemId": "0R-7MWE4EeeOgbHGC0iMEw21",
+  "pageNum": 1,
+  "total": 2,
+  "columnCount": 64,
+  "body": [{
+    "tableId": "182abd93d7d847aab35768a0d52a6d97",
+    "enName": "ztree_dir",
+    "cnName": null,
+    "table_type": "表",
+    "id": "ae127e33ef9f4487a56b3ec7a9f9c714",
+    "table_source": "自动添加"
+  }, {
+    "tableId": "182abd93d7d847aab35768a0d52a6d97",
+    "enName": "web_access_record",
+    "cnName": null,
+    "table_type": "表",
+    "id": "867bb17815bf4bbfae1af7cbab20ea60",
+    "table_source": "自动添加"
+  }]
+}

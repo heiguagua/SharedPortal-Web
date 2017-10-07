@@ -1,0 +1,36 @@
+@import "../../common/base.scss";
+
+#resources {
+	.data-detail-view {
+		background: #FFF;
+		padding: 15px;
+		border-top: 1px solid #EEE;
+
+		>div {
+			border-bottom: 1px solid #EEE;
+			padding-bottom: 5px;
+		}
+
+		.detail-title {
+			font-size: 15px;
+			color: $dark-blue;
+			padding: 5px 0;
+		}
+
+		.el-col {
+			padding: 2px 0;
+
+			.item-value {
+				color: $main-blue;
+			}
+
+			.el-rate {
+				display: inline-block;
+				vertical-align: top;
+			}
+
+		}
+
+	}
+
+}

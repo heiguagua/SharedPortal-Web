@@ -1,0 +1,10 @@
+<main id="catalog">
+  <div class="section-content">
+    <aside class="menu-list">
+      <el-tree highlight-current :data="regions" accordion :props="props" :load="loadNode" lazy="" @node-click="handleNodeClick"
+        :render-content="renderContent"  node-key="id"  :default-expanded-keys="expandedKeys">
+      </el-tree>
+    </aside>
+    <router-view class="router-catalog" :key="key"></router-view>
+  </div>
+</main>

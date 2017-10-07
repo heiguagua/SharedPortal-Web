@@ -1,0 +1,33 @@
+<main id="details">
+	<div class="catalog-content">
+		<div class="head-desc">{{head_title}} - 详情
+			<a href="javascript:;" class="back-link" @click='goback()'><i class="fa fa-angle-left font-bold"></i> 返回</a>
+		</div>
+		<table  border="0" width="100%"><tbody>
+			<tr class="">
+				<td width="20%">业务事项</td>
+				<td>{{detail_pro.activity_name}}</td>
+			</tr>
+			<tr class="">
+				<td>下设机构</td>
+				<td>{{detail_pro.dept_name}}</td>
+			</tr>
+			<tr class="">
+				<td>服务对象</td>
+				<td>{{detail_pro.service_target}}</td>
+			</tr>
+			<tr class="">
+				<td>业务事项所需材料</td>
+				<td>{{detail_pro.i_doc_name ? detail_pro.i_doc_name : "无"}}</td>
+			</tr>
+			<tr class="">
+				<td>业务事项产生材料</td>
+				<td>{{detail_pro.o_doc_name ? detail_pro.o_doc_name : "无"}}</td>
+			</tr>
+			<tr class="">
+				<td>支持的应用系统名称</td>
+				<td>{{detail_pro.system_name ? detail_pro.system_name : "无"}}</td>
+			</tr>
+		</tbody></table>
+	</div>
+</main>

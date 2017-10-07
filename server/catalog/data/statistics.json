@@ -1,0 +1,34 @@
+{
+	"total": "5",
+	"body": [{
+			"resourceCount": "237",
+			"orgCOunt": "43",
+			"dirName": "人口",
+			"itemCount": "3336",
+			"busiCount": "300"
+		}, {
+			"resourceCount": "451",
+			"orgCOunt": "44",
+			"dirName": "法人",
+			"itemCount": "5172",
+			"busiCount": "585"
+		}, {
+			"resourceCount": "318",
+			"orgCOunt": "7",
+			"dirName": "自然资源和空间地理",
+			"itemCount": "1946",
+			"busiCount": "120"
+		}, {
+			"resourceCount": "145",
+			"orgCOunt": "30",
+			"dirName": "社会信用",
+			"itemCount": "1446",
+			"busiCount": "209"
+		}, {
+			"resourceCount": "806",
+			"orgCOunt": "54",
+			"dirName": "电子证照",
+			"itemCount": "7886",
+			"busiCount": "990"
+		}]
+}

@@ -1,0 +1,41 @@
+<main id="details">
+	<div class="catalog-content">
+		<div class="head-desc">{{head_title}}-详情
+			<a href="javascript:;" class="back-link" @click='goback()'><i class="fa fa-angle-left font-bold"></i> 返回</a>
+		</div>
+		<table  border="0" width="100%"><tbody>
+			<tr class="">
+				<td>需求信息资源名称</td>
+				<td>{{detail_pro.dataset_name}}</td>
+			</tr>
+			<tr class="">
+				<td>下设机构</td>
+				<td>{{detail_pro.org_fname}}->{{detail_pro.request_dept_name}}</td>
+			</tr>
+			<tr class="">
+				<td width="20%">业务事项</td>
+				<td>{{detail_pro.activity_name}}</td>
+			</tr>
+			<tr class="">
+				<td>信息资源来源部门</td>
+				<td>{{detail_pro.source_dept_name}}</td>
+			</tr>
+			<tr class="">
+				<td>是否已获取</td>
+				<td>{{detail_pro.is_get}}</td>
+			</tr>
+			<tr class="">
+				<td>期望获取方式</td>
+				<td>{{detail_pro.expect_get_type}}</td>
+			</tr>
+			<tr class="">
+				<td>数据使用频率</td>
+				<td>{{detail_pro.expect_update_frequence}}</td>
+			</tr>
+			<tr class="">
+				<td>备注</td>
+				<td>{{detail_pro.dataset_desc}}</td>
+			</tr>
+		</tbody></table>
+	</div>
+</main>

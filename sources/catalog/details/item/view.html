@@ -1,0 +1,53 @@
+<main id="itemDetails">
+	<div class="catalog-content">
+		<div class="head-desc">{{head_title}}-详情
+			<a href="javascript:;" class="back-link" @click='goback()'><i class="fa fa-angle-left font-bold"></i> 返回</a>
+		</div>
+		<table  border="0" width="100%"><tbody>
+			<tr class="">
+				<td width="20%">数据项名称</td>
+				<td>{{itemDetail.item_name}}</td>
+			</tr>
+			<tr class="">
+				<td>下设机构</td>
+				<td>{{itemDetail.orgName}}</td>
+			</tr>
+			<tr class="">
+				<td>业务事项</td>
+				<td>{{itemDetail.itemDesc}}</td>
+			</tr>
+			<tr class="">
+				<td>共享类型</td>
+				<td>{{itemDetail.share_type}}</td>
+			</tr>
+			<tr class="">
+				<td>共享条件/不予共享依据</td>
+				<td>{{itemDetail.share_condition}}</td>
+			</tr>
+			<tr class="">
+				<td>共享方式</td>
+				<td>{{itemDetail.share_method}}</td>
+			</tr>
+			<tr class="">
+				<td>是否可开放</td>
+				<td>{{itemDetail.is_open}}</td>
+			</tr>
+			<tr class="">
+				<td>不开放依据</td>
+				<td>{{itemDetail.open_condition}}</td>
+			</tr>
+			<tr class="">
+				<td>更新周期</td>
+				<td>{{itemDetail.update_frequency}}</td>
+			</tr>
+			<tr class="">
+				<td>存储介质</td>
+				<td>{{itemDetail.storage_medium}}</td>
+			</tr>
+			<tr class="">
+				<td>物理存储位置</td>
+				<td>{{itemDetail.storage_location}}</td>
+			</tr>
+		</tbody></table>
+	</div>
+</main>

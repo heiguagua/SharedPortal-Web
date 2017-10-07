@@ -1,0 +1,81 @@
+[{
+	"name": "城乡建设",
+	"id": "mDI70WanEee-E7-aDprBcg",
+	"hasLeaf": 1,
+	"classify_structure_code": "2_01"
+}, {
+	"name": "价格监管",
+	"id": "E5iUoWLsEeedC7CxC2m2KQ",
+	"hasLeaf": 1,
+	"classify_structure_code": "2_02"
+}, {
+	"name": "文化服务",
+	"id": "EdtxwWVREeepZLBImYf7PA",
+	"hasLeaf": 1,
+	"classify_structure_code": "2_03"
+}, {
+	"name": "宏观经济",
+	"id": "ejEtgWd0EeekksiAh17qwQ",
+	"hasLeaf": 1,
+	"classify_structure_code": "2_04"
+}, {
+	"name": "食品药品安全",
+	"id": "fLNlYWUgEeecRK9-gg2BZA",
+	"hasLeaf": 1,
+	"classify_structure_code": "2_05"
+}, {
+	"name": "安全监管",
+	"id": "HfnsEGUbEee6ta2FXXqwxA",
+	"hasLeaf": 1,
+	"classify_structure_code": "2_06"
+}, {
+	"name": "医疗卫生",
+	"id": "KKB94WLsEeeuY-V1iFBlwQ",
+	"hasLeaf": 1,
+	"classify_structure_code": "2_07"
+}, {
+	"name": "社区管理",
+	"id": "2eqE0WL-Eee5k8VqjOY1ZA",
+	"hasLeaf": 1,
+	"classify_structure_code": "2_08"
+}, {
+	"name": "应急指挥",
+	"id": "3MamYWamEeejDrhGE1cmdg",
+	"hasLeaf": 1,
+	"classify_structure_code": "2_09"
+}, {
+	"name": "旅游休闲",
+	"id": "4IbuYWUUEeeyvOOcwb-o4A",
+	"hasLeaf": 1,
+	"classify_structure_code": "2_10"
+}, {
+	"name": "社会保障",
+	"id": "5y7vEWUZEeeQzK7GPTQleg",
+	"hasLeaf": 1,
+	"classify_structure_code": "2_11"
+}, {
+	"name": "学校教育",
+	"id": "8Hz6oWasEeenfvtkVec_cQ",
+	"hasLeaf": 1,
+	"classify_structure_code": "2_12"
+}, {
+	"name": "测试1",
+	"id": "96897a92a056489bb805540f20c06f13",
+	"hasLeaf": 0,
+	"classify_structure_code": "2_13"
+}, {
+	"name": "环境保护",
+	"id": "tzi9EWanEeeqB8PRlhrjdQ",
+	"hasLeaf": 1,
+	"classify_structure_code": "2_14"
+}, {
+	"name": "信息化基础设施",
+	"id": "_7tm4WaoEeeG5qc66-H3Sw",
+	"hasLeaf": 1,
+	"classify_structure_code": "2_15"
+}, {
+	"name": "交通运输",
+	"id": "_e8ZkWL-Eee7h6m0RdW47Q",
+	"hasLeaf": 1,
+	"classify_structure_code": "2_16"
+}]

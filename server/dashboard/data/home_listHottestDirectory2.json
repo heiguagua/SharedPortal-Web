@@ -1,0 +1,25 @@
+{
+  "pages": 1,
+  "total": 3,
+  "size": 20,
+  "recordsTotal": 3,
+  "body": [{
+    "name": "矿产资源占用储量登记信息",
+    "count": 3,
+    "resource_id": "vSOAMWB1EeeN8uMDm1TWtw638",
+    "type": "市国土资源局->矿产资源占用储量登记信息",
+    "org_name": "市国土资源局"
+  }, {
+    "name": "法人基础信息",
+    "count": 3,
+    "resource_id": "qZGfQWhDEee4BJdVC1nlZQ",
+    "type": null,
+    "org_name": null
+  }, {
+    "name": "学生学籍信息",
+    "count": 3,
+    "resource_id": "r57OsWB1EeexddXSmSizJQ484",
+    "type": "市教育局->学生学籍信息",
+    "org_name": "市教育局"
+  }]
+}

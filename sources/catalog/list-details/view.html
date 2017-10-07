@@ -1,0 +1,64 @@
+<main id="details">
+	<div class="catalog-content">
+		<div class="head-desc">{{head_title}}-详情
+			<a href="javascript:;" class="back-link" @click='goback()'><i class="fa fa-angle-left font-bold"></i> 返回</a>
+		</div>
+		<table  border="0" width="100%"><tbody>
+			<tr class="">
+				<td width="20%">信息资源名称</td>
+				<td>{{detail_pro.dataset_name}}</td>
+			</tr>
+			<tr class="">
+				<td>下设机构</td>
+				<td>{{detail_pro.dept_structure_name}}</td>
+			</tr>
+			<tr class="">
+				<td>业务事项</td>
+				<td>{{detail_pro.activity_name}}</td>
+			</tr>
+			<tr class="">
+				<td>共享类型</td>
+				<td>{{detail_pro.share_type}}</td>
+			</tr>
+			<tr class="">
+				<td>共享条件/不予共享依据</td>
+				<td>{{detail_pro.share_condition ? detail_pro.share_condition : "无"}}</td>
+			</tr>
+			<tr class="">
+				<td>共享方式</td>
+				<td>{{detail_pro.share_method ? detail_pro.share_method : "无"}}</td>
+			</tr>
+			<tr class="">
+				<td>开放类型</td>
+				<td>{{detail_pro.is_open}}</td>
+			</tr>
+			<tr class="">
+				<td>不开放依据</td>
+				<td>{{detail_pro.no_share_reason}}</td>
+			</tr>
+			<tr class="">
+				<td>更新周期</td>
+				<td>{{detail_pro.update_time ? detail_pro.update_time : "无"}}</td>
+			</tr>
+			<tr class="">
+				<td>存储介质</td>
+				<td>{{detail_pro.storage_medium ? detail_pro.storage_medium : "无"}}</td>
+			</tr>
+			<tr class="">
+				<td>物理存储位置</td>
+				<td>{{detail_pro.storage_location ? detail_pro.storage_location : "无"}}</td>
+			</tr>
+		</tbody></table>
+		<div class="item-content">
+			<div class="item-header">
+				{{head_title}}
+			</div>
+			<el-table :data="tableData"	style="width: 100%" v-loading="loading" element-loading-text="数据加载中" slot="empty">
+		<el-table-column prop="item_name" label="数据项名称" width="50%"></el-table-column>
+		<el-table-column prop="item_desc" label="数据项说明"	width="50%"></el-table-column>
+		</el-table>
+		<!-- <el-pagination  @current-change="handlePageChange" :current-page="currentPage"  layout="total, prev, pager, next, jumper" :total="totalResource">
+    	</el-pagination> -->
+		</div>
+	</div>
+</main>

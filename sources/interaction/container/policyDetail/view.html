@@ -1,0 +1,15 @@
+<main id="policy-detail">
+  <el-breadcrumb separator="/">
+    <el-breadcrumb-item :to="{ path: '/layout/interaction/hotMessage?id=policy' }">返回上一级</el-breadcrumb-item>
+    <el-breadcrumb-item>当前位置 &nbsp; &gt; &nbsp;<span>最新政策详情</span></el-breadcrumb-item>
+  </el-breadcrumb>
+  <div class="article">
+    <h3 class="title">{{latestPolicyItem.title}}</h3>
+    <div class="item_des">
+      <span>来源：<em  class="source">{{latestPolicyItem.dept_short_name}}</em></span>
+      <span>作者：<em class="author">{{latestPolicyItem.author_name}}</em></span>
+    </div>
+    <div class="policy_content" v-html="latestPolicyItem.content"></div>
+  </div>
+</main>
+ 

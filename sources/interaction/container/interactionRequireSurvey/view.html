@@ -1,0 +1,105 @@
+<main id="require-survey">
+  <div :style="showStyle">
+    <el-form :model="ruleForm" :rules="rules2" ref="ruleForm" label-width="110px" class="demo-ruleForm">
+      <el-row>
+        <el-col :span="16" :offset="1">
+          <el-form-item label="应用需求名称" prop="title" label-suffix="sfdfsd">
+            <el-input v-model="ruleForm.title"></el-input>
+          </el-form-item>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-col :span="16" :offset="1">
+          <el-form-item label="需求详情" label-suffix="sfdfsd">
+            <el-row>
+              <el-col :span="23" :offset="1">
+                <el-form-item label="需求类型" prop="requirementType" label-suffix="sfdfsd">
+                  <el-select v-model="ruleForm.requirementType" placeholder="请选择">
+                    <el-option label="接口" value="interface"></el-option>
+                    <el-option label="资源" value="resource"></el-option>
+                  </el-select>
+                </el-form-item>
+              </el-col>
+            </el-row>
+            <el-row>
+              <el-col :span="23" :offset="1">
+                <el-form-item label="部门" prop="depId" label-suffix="sfdfsd">
+                  <!-- <el-input v-model="ruleForm.depId"></el-input>  -->
+                  <el-dropdown trigger="click" style="width:100%">
+                    <span class="el-dropdown-link">
+                      <div class="el-select">
+                        <div class="el-select__tags " style="max-width: 279.656px;">
+                            <p style="display:block" class="el-tag el-tag--primary" v-for='item in depName'>
+                              <span class="el-select__tags-text">{{item}}</span>
+                    </p>
+  </div>
+  <input id="dep_inp" v-width="depName.length" class="el-input__inner" readonly="readonly" icon="caret-top" type="text" rows="2">
+  </div>
+  </span>
+  <el-dropdown-menu slot="dropdown">
+    <div class="tree" style="min-width:300px;max-height:300px;overflow: auto">
+      <el-tree node-key="id" show-checkbox :data="depData" :props="props" :load="loadNode" lazy accordion highlight-current ref="tree"></el-tree>
+    </div>
+    <div class="depBtn"><el-button  type="primary" @click="getCheckedNodes">确定</el-button></div>
+  </el-dropdown-menu>
+  </el-dropdown>
+  </el-form-item>
+  </el-col>
+  </el-row>
+  <el-row>
+    <el-col :span="23" :offset="1">
+      <el-form-item label="资源名称" label-suffix="sfdfsd">
+        <el-select value-key="id" v-model="ruleForm.resourceId" multiple placeholder="请选择" @visible-change="visibleChange">
+          <el-option v-for="item in options" :key="item.id" :label="item.name" :value="item">
+          </el-option>
+        </el-select>
+      </el-form-item>
+    </el-col>
+  </el-row>
+  <el-row>
+    <el-col :span="23" :offset="1">
+      <el-form-item label="其他" label-suffix="sfdfsd">
+        <el-input type="textarea" v-model="ruleForm.others"></el-input>
+      </el-form-item>
+    </el-col>
+  </el-row>
+  </el-form-item>
+  </el-col>
+  </el-row>
+  <el-row>
+    <el-col :span="16" :offset="1">
+      <el-form-item label="需求描述" prop="content">
+        <el-input type="textarea" v-model="ruleForm.content"></el-input>
+      </el-form-item>
+    </el-col>
+  </el-row>
+  <el-row>
+    <el-col :span="16" :offset="1">
+      <el-form-item label="个人资料" label-suffix="sfdfsd">
+        <!-- <el-input v-model="ruleForm.title"></el-input> -->
+        <el-row>
+          <el-col :span="12">
+            <el-form-item label="姓名" label-suffix="sfdfsd" label-width="70px">
+              <el-input v-bind:title="initForm.name" v-model="initForm.name" type="text" class="form-control read" readonly="readonly"></el-input>
+            </el-form-item>
+          </el-col>
+          <el-col :span="12">
+            <el-form-item label="单位" label-suffix="sfdfsd" label-width="70px">
+              <el-input v-bind:title="initForm.unit" v-model="initForm.unit" type="text" class="form-control read" readonly="readonly"></el-input>
+            </el-form-item>
+          </el-col>
+        </el-row>
+      </el-form-item>
+    </el-col>
+  </el-row>
+  <el-row>
+    <el-col :span="14" :offset="1">
+      <el-form-item>
+        <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+      </el-form-item>
+    </el-col>
+  </el-row>
+  </el-form>
+  </div>
+  <el-login v-if="showDialogComponent"></el-login>
+</main>

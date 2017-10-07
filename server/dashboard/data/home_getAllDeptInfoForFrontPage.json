@@ -1,0 +1,56 @@
+[{
+  "name": "人口",
+  "icon": null,
+  "dept_Id": "0R-7MWE4EeeOgbHGC0iMEw",
+  "children": [{
+    "name": "基本信息"
+  }, {
+    "name": "扩展信息"
+  }, {
+    "name": "专题信息"
+  }]
+}, {
+  "name": "法人",
+  "icon": null,
+  "dept_Id": "bf-aIWE4EeetZoQ1757d5Q",
+  "children": [{
+    "name": "基本信息"
+  }, {
+    "name": "扩展信息"
+  }, {
+    "name": "专题信息"
+  }]
+}, {
+  "name": "自然资源和空间地理",
+  "icon": null,
+  "dept_Id": "BJR9wWE5EeevE_4mfsyYWg",
+  "children": [{
+    "name": "基本信息"
+  }, {
+    "name": "扩展信息"
+  }, {
+    "name": "专题信息"
+  }]
+}, {
+  "name": "社会信用",
+  "icon": null,
+  "dept_Id": "BuMosWE5EeeW5YVMFdSHjw",
+  "children": [{
+    "name": "基本信息"
+  }, {
+    "name": "扩展信息"
+  }, {
+    "name": "专题信息"
+  }]
+}, {
+  "name": "电子证照",
+  "icon": null,
+  "dept_Id": "c15rQWE4Eee7mNVhsCqaxg",
+  "children": [{
+    "name": "基本信息"
+  }, {
+    "name": "扩展信息"
+  }, {
+    "name": "专题信息"
+  }]
+}]

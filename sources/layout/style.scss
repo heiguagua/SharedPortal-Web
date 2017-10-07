@@ -1,0 +1,267 @@
+    @import "../common/base.scss";
+    #layout {
+      @include fill;
+      display: flex;
+      flex-direction: column;
+      header {
+        .banner {
+          background: $main-blue;
+          height: 140px;
+          width: 530px;
+          position: absolute;
+          .img-bg {
+            width: 40px;
+            height: 140px;
+            bottom: 0;
+            right: -40px;
+            position: absolute;
+          }
+          .navbar-logo {
+            padding: 0 20px 0 30px;
+            margin-top: 33px;
+            @include pull-left;
+          }
+          .nav-text {
+            margin-top: 35px;
+            @include pull-left;
+            .text {
+              font-size: 30px;
+              color: #FFFFFF;
+              letter-spacing: 3.33px;
+            }
+            .des-english {
+              color: $white;
+            }
+          }
+        }
+        .login-register {
+          background: #142444;
+          height: 40px;
+          line-height: 40px;
+          padding-right: 30px;
+          text-align: right;
+          .cont {
+            margin: 0;
+            color: #ddd;
+            .admin {
+              margin-right: 15px;
+              .el-dropdown-link {
+                color: #ddd;
+                cursor: pointer;
+                &:hover {
+                  color: $main-blue;
+                }
+                i {
+                  font-size: 0.5rem;
+                }
+              }
+              a {
+                text-decoration: none;
+              }
+            }
+            img {
+              vertical-align: middle;
+              width: 16px;
+              height: 16px;
+            }
+            li {
+              display: inline-block;
+              a {
+                color: #ddd;
+                text-decoration: none;
+              }
+            }
+            .applyAccount {
+              margin-left: 15px;
+            }
+          }
+        }
+        .head-nav {
+          height: 100px;
+          background: #FFFFFF;
+          .menu_ul {
+            margin-top: 10px;
+            margin-bottom: 0;
+            height: 50px;
+            @include pull-right;
+            .router-link-active {
+              transform: skew(-15deg);
+              background: #4197F4;
+              padding: 17px 25px;
+              .bg_ico {
+                transform: skew(15deg);
+                color: #fff!important;
+              }
+            }
+            >li {
+              display: inline-block;
+              a {
+                margin-left: 10px;
+                font-size: 16px;
+                padding: 17px 25px;
+                text-align: center;
+                display: block;
+                color: #333;
+                text-decoration: none;
+                .bg_ico {
+                  &:before {
+                    content: "";
+                    height: 25px;
+                    display: block;
+                    background-size: 25px 24px;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                  }
+                }
+                &:hover {
+                  color: $main-blue;
+                }
+                span {
+                  display: block;
+                }
+              }
+            }
+            .nav_li1>a .bg_ico {
+              &:before {
+                background-image: url(../assets/header/index1.png);
+              }
+            }
+            .nav_li2>a .bg_ico {
+              &:before {
+                background-image: url(../assets/header/dataDirectory1.png);
+              }
+            }
+            .nav_li3>a .bg_ico {
+              &:before {
+                background-image: url(../assets/header/thematicApply1.png);
+              }
+            }
+            .nav_li4>a .bg_ico {
+              &:before {
+                background-image: url(../assets/header/personrz1.png);
+              }
+            }
+            .nav_li5>a .bg_ico {
+              &:before {
+                background-image: url(../assets/header/map1.png);
+              }
+            }
+            .nav_li6>a .bg_ico {
+              &:before {
+                background-image: url(../assets/header/interact1.png);
+              }
+            }
+            .nav_li1 .router-link-active .bg_ico {
+              &:before {
+                content: "";
+                background-image: url(../assets/header/index3.png)!important;
+              }
+            }
+            .nav_li2 .router-link-active .bg_ico {
+              &:before {
+                content: "";
+                background-image: url(../assets/header/dataDirectory3.png)!important;
+              }
+            }
+            .nav_li3 .router-link-active .bg_ico {
+              &:before {
+                content: "";
+                background-image: url(../assets/header/thematicApply3.png)!important;
+              }
+            }
+            .nav_li4 .router-link-active .bg_ico {
+              &:before {
+                content: "";
+                background-image: url(../assets/header/personrz3.png)!important;
+              }
+            }
+            .nav_li5 .router-link-active .bg_ico {
+              &:before {
+                content: "";
+                background-image: url(../assets/header/map3.png)!important;
+              }
+            }
+            .nav_li6 .router-link-active .bg_ico {
+              &:before {
+                content: "";
+                background-image: url(../assets/header/interact3.png)!important;
+              }
+            }
+          }
+        }
+      }
+      footer {
+        background: #142444;
+        padding: 32px 0;
+        color: #fff;
+        text-align: center;
+        a {
+          text-decoration: none;
+        }
+        p {
+          margin: 0 0 10px;
+        }
+        .aboutus {
+          color: #fff;
+          margin-right: 15px
+        }
+        .interaction {
+          color: #fff;
+          margin-left: 15px
+        }
+        .m-30 {
+          margin: 0 30px;
+        }
+      }
+      .float-profile{
+          position: fixed;
+          top: 170px;
+          right: 6px;
+          z-index: 9999;
+          .share-link{
+                display: block;
+                text-decoration: none;
+                img{
+                  width:50px;
+                }
+          }
+          p{
+            text-align:center;
+            color:$main-blue;
+          }
+          .other-link{
+            display:none;
+            li:first-child{
+                  padding: 15px 0;
+            }
+          }
+          &:hover{
+            .other-link{
+              display:block;
+            }
+          }
+      }
+      #login-modal{
+        .inputdiv{
+            margin: 30px auto;
+                text-align: center;
+            .spanuser{
+              display: inline-block;
+              background: #4197F4;
+              vertical-align: middle;
+              img{
+                padding: 8px 13px;
+              }
+            }
+            input{
+              height: 38px;
+              /* width: 26%; */
+              width: 365px;
+              outline: none;
+              text-indent: 10px;
+              border: none;
+              border: 1px solid #dfdfdf;
+            }
+        }
+      }
+    }

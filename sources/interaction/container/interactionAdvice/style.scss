@@ -1,0 +1,12 @@
+@import "../../../common/base.scss";
+#interaction-advice {
+  .help-block {
+    color: #737373;
+  }
+  .el-button--primary {
+    background-color: #4197F4;
+    color: #fff;
+    width: 120px;
+    height: 32px;
+  }
+}

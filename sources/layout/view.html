@@ -1,0 +1,133 @@
+<main id="layout">
+  <header>
+    <div class="banner">
+      <div class="cont">
+        <a class="navlog-brand">
+          <div class="navbar-logo"><img class="logo" src="../assets/header/logo.png" /></div>
+          <div class="nav-text"><span class="text">成都市大数据资源服务网</span></br>
+            <span class="des-english">Chengdu Big Data Resource Service Network</span>
+          </div>
+        </a>
+      </div>
+      <img class="img-bg" src="../assets/header/bg.png" />
+    </div>
+    <div class="login-register">
+      <ul class="cont">
+        <li v-show="!islogin" class="admin" id="loginid">
+          <router-link to="/login">
+            <img src="../assets/header/login_uname.png" />&nbsp;&nbsp;<span>登录</span>
+          </router-link>
+        </li>
+        <li v-show="islogin" class="admin" id="loginname">
+          <el-dropdown trigger="click">
+            <span class="el-dropdown-link"><img src="../assets/header/username.png" />&nbsp;&nbsp;{{username}} <i class="el-icon-caret-bottom el-icon--right"></i></span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item>
+                <router-link to="/layout/admin/applyList">个人中心</router-link>
+              </el-dropdown-item>
+              <el-dropdown-item divided>
+                <router-link to="/layout/admin/applyList">申请列表</router-link>
+              </el-dropdown-item>
+              <el-dropdown-item divided>
+                <a @click="loginOut">退出</a>
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </li> |
+        <li class="applyAccount" id="applyAccount">
+          <router-link to="/register">
+            <img src="../assets/header/regin1.png" width="14" height="14" />&nbsp;&nbsp;注册
+          </router-link>
+        </li>
+      </ul>
+    </div>
+    <nav>
+      <div class="head-nav" id="navbar-collapse">
+        <ul class=" menu_ul">
+          <li class="nav_li1 active">
+            <router-link to="/layout/dashboard">
+              <div class="bg_ico">
+                <span>首页</span>
+              </div>
+            </router-link>
+          </li>
+          <li class="nav_li2">
+            <router-link :to="{path:'/layout/catalog/department',query:{dirName:'部门政务信息资源目录'}}">
+              <div class="bg_ico">
+                <span>数据目录</span>
+              </div>
+            </router-link>
+          </li>
+          <li class="nav_li3">
+            <router-link to="/layout/subject">
+              <div class="bg_ico">
+                <span>专题应用</span>
+              </div>
+            </router-link>
+          </li>
+
+          <li class=" nav_li4">
+            <router-link to="/layout/developer">
+              <div class="bg_ico">
+                <span>开发者中心</span>
+              </div>
+            </router-link>
+          </li>
+          <li class="nav_li5">
+            <a href="http://10.190.239.12:8080/data-view-web-scatter/index.html" target="_blank">
+              <div class="bg_ico">
+                <span>可视化展示</span>
+              </div>
+            </a>
+          </li>
+          <li class="nav_li6">
+            <router-link to="/layout/interaction/aboutUs">
+              <div class="bg_ico">
+                <span>互动交流</span>
+              </div>
+            </router-link>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <router-view class="router-layout" ></router-view>
+  <section class="float-profile">
+    <a href="http://10.190.239.12:8080/data-view-web-scatter/pages/page_2/page.html?singlePage=true" class="share-link" target="_blank"><img src="../assets/ico/share.png" /><p>共享</p></a>
+    <ul class="other-link">
+      <li><a href="http://10.190.239.12:8080/data-view-web-scatter/pages/page_3/page.html?singlePage=true" class="share-link" target="_blank"><img src="../assets/ico/open.png" /></a><p>开放</p></li>
+      <li><a href="http://10.190.239.12:8080/data-view-web-scatter/pages/page_4/page.html?singlePage=true" class="share-link" target="_blank"><img src="../assets/ico/theme.png" /></a><p>主题</p></li>
+    </ul>
+  </section>
+  <footer>
+    <p class="firstfooterp">
+      <a href="/htm/interaction/interact.jsp" class="aboutus">关于我们</a>|<a class="interaction" href="/htm/interaction/interact.jsp">互动交流</a>
+    </p>
+    <p>
+      <span>主办：成都市人民政府</span><span class="m-30">承办：成都市大数据和电子政务管理办公室</span><span>  承建维护：成都市软件产业发展中心</span>
+    </p>
+  </footer>
+
+  <el-dialog
+  title="登录"
+  :visible.sync="dialogLoginVisible"
+  size="tiny">
+  <form class="form-horizontal" id="login-modal">
+    <div class="inputdiv reg-box">
+      <span class="spanuser">
+      <img src="../assets/login/Username.png"/>
+      </span><input type="text" v-model="username" class="account" name="username" placeholder="用户名" />
+    </div>
+    <div class="inputdiv reg-box">
+      <span class="spanuser">
+        <img src="../assets/login/Password.png"/>
+       </span><input type="password" v-model="password" class="admin_pwd" name="password" placeholder="密码" />
+    </div>
+    <span v-show="errorShow" class="error">用户名或密码错误，请重新输入!</span>
+  </form>
+  <span slot="footer" class="dialog-footer">
+    <el-button @click="dialogLoginVisible = false">取 消</el-button>
+    <el-button type="primary" @click="onSubmit()">登 录</el-button>
+  </span>
+</el-dialog>
+</main>

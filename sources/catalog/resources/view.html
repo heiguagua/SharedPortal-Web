@@ -1,0 +1,58 @@
+<main id="resources">
+	<div class="catalog-content">
+		<div class="head-desc">
+			<div class="title">{{head_title}}</div>
+			<div class="view-toggle" style="display:none">
+				<a  class="table-view" @click="toggleView(true)"><i class="fa fa-table">&nbsp;</i></a>
+				<a class="detail-view" @click="toggleView(false)"><i class="fa fa-th-list">&nbsp;</i></a></div>
+			<div class="other-info" > {{itemCount}} 个数据项&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;共 {{totalResource}} 个资源</div>
+		</div>
+		<div class="search-box">
+			<div class="total-num">共 <span class="count">{{totalResource}}</span> 条结果</div>
+			<div class="search-input">
+				<el-input placeholder="请输入" v-model="keyword">
+				<el-button slot="append" icon="search" @click="handleSearch">搜索</el-button>
+				</el-input>
+			</div>
+		</div>
+		<div v-show="showTable"><el-table :data="tableData"	border	style="width: 100%" v-loading="loading" element-loading-text="数据加载中" slot="empty"
+		highlight-current-row   @current-change="handleCurrentChange" >
+		<el-table-column prop="dataset_name" label="信息资源名称" width="36%"></el-table-column>
+		<el-table-column prop="dept_name" label="相关部门"	width="24%"></el-table-column>
+		<el-table-column label="所属目录" width="20%">
+		<template scope="scope">
+		{{ head_title }}
+		</template>
+		</el-table-column>
+		<el-table-column label="更新时间" width="20%">
+		<template scope="scope">
+		{{ scope.row.update_time | formatDate }}
+		</template>
+		</el-table-column>
+		</el-table>
+		</div>
+		<div v-show="!showTable" class="data-detail-view">
+			<div v-for="item in tableData">
+				<h4 class="detail-title">{{item.dataset_name}}</h4>
+				<el-row :gutter="10">
+				  <el-col :span="6"><div class="grid-content">更新时间:<span class="item-value">{{item.update_time| formatDate}}</span></div></el-col>
+				  <el-col :span="4"><div class="grid-content">查看:<span class="item-value"></span>人</div></el-col>
+				  <el-col :span="4"><div class="grid-content">下载/调用:<span class="item-value"></span>次</div></el-col>
+				  <el-col :span="4"><div class="grid-content">接口:<span class="item-value"></span>个</div></el-col>
+				  <!-- <el-col :span="6"><div class="grid-content">评分:<el-rate v-model=""  disabled  show-text  text-color="#ff9900">
+</el-rate></div></el-col> -->
+				</el-row>
+				<el-row :gutter="10">
+				  <el-col :span="6"><div class="grid-content">共享类型:</div></el-col>
+				  <el-col :span="4"><div class="grid-content">开放类型:</div></el-col>
+				  <el-col :span="4"><div class="grid-content">有关部门:</div></el-col>
+				</el-row>
+				<el-row :gutter="10">
+				  <el-col :span="24"><div class="grid-content">信息资源摘要:</div></el-col>
+				</el-row>
+			</div>
+		</div>
+		<el-pagination  @current-change="handlePageChange" :current-page="currentPage"  layout="total, prev, pager, next, jumper" :total="totalResource">
+    	</el-pagination>
+	</div>
+</main>

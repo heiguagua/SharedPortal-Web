@@ -1,0 +1,38 @@
+{
+  "previous": false,
+  "next": true,
+  "pages": 2,
+  "total": 13,
+  "size": 10,
+  "body": [{
+    "name": "OBJECTID",
+    "column_desc": null
+  }, {
+    "name": "Shape",
+    "column_desc": "银行的几何形态"
+  }, {
+    "name": "Name",
+    "column_desc": "银行的名字"
+  }, {
+    "name": "Code",
+    "column_desc": "银行的编码"
+  }, {
+    "name": "Address",
+    "column_desc": "银行的地址"
+  }, {
+    "name": "Type",
+    "column_desc": "银行的类型"
+  }, {
+    "name": "Dempant",
+    "column_desc": null
+  }, {
+    "name": "Time",
+    "column_desc": "银行数据的时间"
+  }, {
+    "name": "Photo",
+    "column_desc": "银行照片"
+  }, {
+    "name": "Note",
+    "column_desc": null
+  }]
+}

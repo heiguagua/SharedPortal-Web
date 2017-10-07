@@ -1,0 +1,43 @@
+[{
+	"visit_count": 0,
+	"create_time": null,
+	"api_url": "http://10.190.232.224:9080/",
+	"api_name": "数据采集",
+	"api_category": "2",
+	"devlp_Id": "cde3eb957d7c11e782df000c29e0ca25"
+}, {
+	"visit_count": 0,
+	"create_time": null,
+	"api_url": "http://",
+	"api_name": "数据处理",
+	"api_category": "2",
+	"devlp_Id": "cde4d3be7d7c11e782df000c29e0ca25"
+}, {
+	"visit_count": 0,
+	"create_time": null,
+	"api_url": "http://",
+	"api_name": "数据分析",
+	"api_category": "2",
+	"devlp_Id": "cde5a67d7d7c11e782df000c29e0ca25"
+}, {
+	"visit_count": 0,
+	"create_time": null,
+	"api_url": "http://",
+	"api_name": "资源梳理",
+	"api_category": "2",
+	"devlp_Id": "7398294e21644085aee30822cb360e34"
+}, {
+	"visit_count": 0,
+	"create_time": null,
+	"api_url": "http://10.190.239.12:8090/",
+	"api_name": "目录管理",
+	"api_category": "2",
+	"devlp_Id": "d206f66976bd45aa8790957d3a38f3c4"
+}, {
+	"visit_count": 0,
+	"create_time": null,
+	"api_url": "http://178.16.32.40:8093/service/config",
+	"api_name": "服务封装",
+	"api_category": "2",
+	"devlp_Id": "69547e2dc7974d3d9e96d1a6beb31250"
+}]
