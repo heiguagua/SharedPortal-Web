@@ -133,7 +133,7 @@
                     <li v-if="item.children.length>3">...</li>
                   </ul>
                   <dl class="base-item0">
-                    <router-link :to="{ path: '/layout/catalog/resources', query: {dirName:item.name,dirCode:item.id}}">
+                    <router-link :to="{ path: '/layout/catalog/resources', query: {dirName:item.name,dirCode:item.code}}">
                       <dt v-if="icon"><img v-bind:src="icon" alt="图片" /></dt>
                       <dt v-if="icon == null"><img src="../assets/dashboard/defaultClassify.png" alt="图片" /></dt>
                       <dd class="des">{{item.name}}</dd>
@@ -159,7 +159,7 @@
                     <li v-if="item.children.length>3">...</li>
                   </ul>
                   <dl class="base-item0">
-                    <router-link :to="{ path: '/layout/catalog/resources', query: {dirName:item.name,dirCode:item.id}}">
+                    <router-link :to="{ path: '/layout/catalog/resources', query: {dirName:item.name,dirCode:item.code}}">
                       <dt v-if="icon"><img v-bind:src="icon" alt="图片" /></dt>
                       <dt v-if="icon == null"><img src="../assets/dashboard/defaultClassify.png" alt="图片" /></dt>
                       <dd class="des">{{item.name}}</dd>

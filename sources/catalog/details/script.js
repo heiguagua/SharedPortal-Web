@@ -402,11 +402,11 @@ export default {
 
       },
       checkboxInit(row, index) {
-        return 1;
-        // if (!row.r_status)
-        //   return 1; //可勾选
-        // else
-        //   return 0; //不可勾选
+        console.log(row.share_dict_code);
+        if (row.r_status == "需申请")
+          return 1; //可勾选
+        else
+          return 0; //不可勾选
       },
       handleApply(applyForm) { // 提交申请数据
         const vm = this;

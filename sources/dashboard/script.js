@@ -21,6 +21,7 @@ export default {
       carouselDetail: {},
       dialogNewVisible: false,
       showMorecatalog: false,
+      icon:false
     }
   },
   mounted() {
@@ -32,7 +33,7 @@ export default {
     vm.LatestDbResourceData(); //最新资源
     vm.HottestResourceData(); //最热资源
     vm.getCarouselPicNews(); //最新新闻
-    vm.getAllDirMenuInfo('AB'); //主题目录
+    vm.getAllDirMenuInfo(2); //主题目录
   },
   methods: {
     getAllDirMenuInfo: function (Pid) {
@@ -56,7 +57,7 @@ export default {
                 depAllDeptInfo.push(result.data[i]);
               }
             }
-            if (Pid == 'AA') {
+            if (Pid == 1) {
               vm.depAllDeptInfoAA = depAllDeptInfo;
             } else {
               vm.depAllDeptInfoAB = depAllDeptInfo;
@@ -110,9 +111,9 @@ export default {
       vm.depAllDeptInfoAB = [];
       vm.depAllDeptInfoData = [];
       if (type == 'base') {
-        vm.getAllDirMenuInfo('AA');
+        vm.getAllDirMenuInfo(1);
       } else if (type == 'topic') {
-        vm.getAllDirMenuInfo('AB');
+        vm.getAllDirMenuInfo(2);
       } else {
         vm.getAllDeptInfo();
       }
