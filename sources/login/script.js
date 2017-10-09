@@ -33,19 +33,11 @@ export default {
           } else {
             vm.errorShow = true;
           }
-
-
-          // if (Http.protocol(data, 200)) {
-          //   alert(data.head.message);
-          //   Encrypt.token.set(data.head.token);
-          //   vm.$router.push("/layout/dashboard");
-          // }
         })
     },
     keydownLogin(ev) {
       const vm = this;
       var event = ev || window.event;
-      alert(1)
       if (event.keyCode == '13') { //keyCode=13是回车键
         vm.onSubmit();
       }
