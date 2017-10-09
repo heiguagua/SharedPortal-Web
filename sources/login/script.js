@@ -23,10 +23,10 @@ export default {
           if (result.status == 200) {
             const data = result.data;
             vm.$message({
-                  showClose: true,
-                  message: '登录成功！',
-                  type: 'success'
-                });
+              showClose: true,
+              message: '登录成功！',
+              type: 'success'
+            });
             Encrypt.token.set("orgName", data.orgName);
             Encrypt.token.set("userName", data.userName);
             vm.$router.push("/layout/dashboard");
@@ -42,8 +42,13 @@ export default {
           // }
         })
     },
-      keydownLogin(){
-        
+    keydownLogin(ev) {
+      const vm = this;
+      var event = ev || window.event;
+      alert(1)
+      if (event.keyCode == '13') { //keyCode=13是回车键
+        vm.onSubmit();
       }
+    }
   }
 };

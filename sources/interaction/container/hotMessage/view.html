@@ -4,7 +4,8 @@
       <el-tab-pane label="最新资源" name="latestResources">
         <div class="list">
           <template>
-            <el-table :data="listLatestDbResource" border style="width: 100%" v-loading="loading1" element-loading-text="数据加载中" slot="empty" @row-click="jumpDetailResource">
+            <el-table :data="listLatestDbResource" border style="width: 100%" v-loading="loading1" element-loading-text="数据加载中" slot="empty"
+              @row-click="jumpDetailResource">
               <el-table-column label="信息资源名称" width="180">
                 <template scope="scope">
                   <div class="over_space">
@@ -26,7 +27,7 @@
                   </div>
                 </template>
               </el-table-column>
-              <el-table-column prop="UPDATE_TIME" label="更新时间"  width='130'>
+              <el-table-column prop="UPDATE_TIME" label="更新时间" width='130'>
                 <!-- <template scope="scope">
                   <div class="over_space">
                   <span v-bind:title="scope.row.UPDATE_TIME" >{{scope.row.UPDATE_TIME}}</span>
@@ -37,14 +38,15 @@
           </template>
         </div>
         <div class="block page">
-          <el-pagination @current-change="latestResourcesChange"   layout="total, prev, pager, next, jumper" :total=pageTotal>
+          <el-pagination @current-change="latestResourcesChange" layout="total, prev, pager, next, jumper" :total=pageTotal>
           </el-pagination>
         </div>
       </el-tab-pane>
-      <el-tab-pane label="最热资源" name="hottestPolicy" >
+      <el-tab-pane label="最热资源" name="hottestPolicy">
         <div class="list">
           <template>
-            <el-table :data="listHottestResource" border style="width: 100%" v-loading="loading2" element-loading-text="数据加载中" slot="empty" @row-click="jumpDetailHotResource">
+            <el-table :data="listHottestResource" border style="width: 100%" v-loading="loading2" element-loading-text="数据加载中" slot="empty"
+              @row-click="jumpDetailHotResource">
               <el-table-column label="信息资源名称" width="180">
                 <template scope="scope">
                   <div class="over_space">
@@ -72,14 +74,15 @@
           </template>
         </div>
         <div class="block page">
-          <el-pagination @current-change="hottestResourcChange"   layout="total, prev, pager, next, jumper" :total=pageTotal>
+          <el-pagination @current-change="hottestResourcChange" layout="total, prev, pager, next, jumper" :total=pageTotal>
           </el-pagination>
         </div>
       </el-tab-pane>
       <el-tab-pane label="最新目录" name="latestCatalog">
         <div class="list">
           <template>
-            <el-table :data="listLatestDirectory" border style="width: 100%" v-loading="loading3" element-loading-text="数据加载中" slot="empty" @row-click="jumpDetailLatestCatalog">
+            <el-table :data="listLatestDirectory" border style="width: 100%" v-loading="loading3" element-loading-text="数据加载中" slot="empty"
+              @row-click="jumpDetailLatestCatalog">
               <el-table-column label="信息资源名称" width="180">
                 <template scope="scope">
                   <div class="over_space">
@@ -101,20 +104,21 @@
                   </div>
                 </template>
               </el-table-column>
-              <el-table-column prop="create_time" label="更新时间"  width='130'>
+              <el-table-column prop="create_time" label="更新时间" width='130'>
               </el-table-column>
             </el-table>
           </template>
         </div>
         <div class="block page">
-          <el-pagination @current-change="latestDirectoryChange"   layout="total, prev, pager, next, jumper"  :total="pageTotal">
+          <el-pagination @current-change="latestDirectoryChange" layout="total, prev, pager, next, jumper" :total="pageTotal">
           </el-pagination>
         </div>
       </el-tab-pane>
       <el-tab-pane label="最热目录" name="hottestCatalog">
         <div class="list">
           <template>
-            <el-table :data="listHottestDirectory" border style="width: 100%" v-loading="loading4" element-loading-text="数据加载中" slot="empty" @row-click="jumpDetailHotestCatalog">
+            <el-table :data="listHottestDirectory" border style="width: 100%" v-loading="loading4" element-loading-text="数据加载中" slot="empty"
+              @row-click="jumpDetailHotestCatalog">
               <el-table-column label="信息资源名称" width="180">
                 <template scope="scope">
                   <div class="over_space">
@@ -142,7 +146,7 @@
           </template>
         </div>
         <div class="block page">
-          <el-pagination @current-change="hottestCatalogChange"   layout="total, prev, pager, next, jumper" :total=pageTotal>
+          <el-pagination @current-change="hottestCatalogChange" layout="total, prev, pager, next, jumper" :total=pageTotal>
           </el-pagination>
         </div>
       </el-tab-pane>
@@ -153,7 +157,10 @@
               <img src="../../../assets/ico/new.png">
               <div class="pull-left" style="width: 89%;">
                 <h5 class="dem-head over_space" style="width: 100%" v-bind:title="item.policy_title">{{item.title}}</h5>
-                <div class="dem-des"><span class="time">{{item.publish_date}}</span><span>作者：<em class="autor">{{item.author_name}}</em></span>{{item.dept_short_name}}</em></span></div>
+                <div class="dem-des">
+                  <span v-if="item.publish_date">{{item.publish_date}}</span>
+                  <span v-if="item.author_name">作者：<em class="autor">{{item.author_name}}</em></span>
+                </div>
               </div>
             </router-link>
           </li>

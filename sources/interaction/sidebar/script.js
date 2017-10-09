@@ -3,6 +3,8 @@ import Encrypt from "../../common/encrypt.js";
 export default {
   mounted() {
     const vm = this;
-    vm.$router.push("/layout/interaction/aboutUs");
+    if (vm.$route.path == '/layout/interaction') {
+      vm.$router.push("/layout/interaction/aboutUs");
+    }
   }
 };
