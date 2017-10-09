@@ -81,7 +81,7 @@
             </a>
           </li>
           <li class="nav_li6">
-            <router-link to="/layout/interaction/aboutUs">
+            <router-link to="/layout/interaction">
               <div class="bg_ico">
                 <span>互动交流</span>
               </div>
@@ -101,7 +101,8 @@
   </section>
   <footer>
     <p class="firstfooterp">
-      <a href="/htm/interaction/interact.jsp" class="aboutus">关于我们</a>|<a class="interaction" href="/htm/interaction/interact.jsp">互动交流</a>
+      <router-link :to="{ path: '/layout/interaction/aboutUs' }" class="aboutus">
+    关于我们</router-link>| <router-link :to="{ path: '/layout/interaction/aboutUs' }" class="interaction">互动交流</router-link>
     </p>
     <p>
       <span>主办：成都市人民政府</span><span class="m-30">承办：成都市大数据和电子政务管理办公室</span><span>  承建维护：成都市软件产业发展中心</span>

@@ -12,7 +12,6 @@ export default {
       data1:[],
       current_item:{},
       istextaDep:true,
-      isadd:false,
       showLinkDom:false,
     }
   },
@@ -21,12 +20,13 @@ export default {
     vm.getRemoteDatas();
   },
   methods: {
-    handleClick(event) {
+    handleClick(item,event) {
       const vm = this;
-      vm.isadd = true;
+      vm.current_item= item;
+      vm.showLinkDom = false;
       Http.fetch({
-        method: "get",
-        url: `${master}/home/subjectsDep`,
+        method: "GET",
+        url: master + "/home/getAppsByDept",
         params: {
           pid:event
         }
@@ -35,7 +35,7 @@ export default {
           if(result.status == 200){
             vm.data1 = result.data.rs.aaData;
           }else {
-            Notification({
+            vm.$message({
               type: "error",
               title: '应用部门',
               message: "内部错误",
@@ -47,8 +47,8 @@ export default {
     getRemoteDatas: function () {
       const vm = this;
       Http.fetch({
-        method: "get",
-        url: master + "/home/subjects"
+        method: "GET",
+        url: master + "/home/getThematicAppData",
       }).then(
         function (result) {
           if(result.status == 200){
@@ -56,23 +56,31 @@ export default {
             vm.devthemes = themeApplicationsdata;
             vm.activeName = themeApplicationsdata[0].name;
           }else {
-            Notification({
+           vm.$message({
               type: "error",
               title: '专题应用',
               message: "内部错误",
             });
           }
         });
-    },
+    }
+    ,
     showLink:function(item,$event){
       const vm = this;
       vm.current_item = item;
       vm.showLinkDom = true;
+
     }
     ,
     changeTab:function(){
       const vm = this;
       vm.showLinkDom = false;
     }
+    ,
+    Boxhide:function(){/*jquery取消隐藏元素*/
+      const vm = this;
+      jquery(".Box").hide();
+    }
+
   },
 };

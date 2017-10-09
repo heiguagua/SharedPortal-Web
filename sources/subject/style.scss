@@ -19,10 +19,11 @@
       border-bottom: 2px solid #4197F4;
       margin-bottom: 0;
       a.textaDep{
-        color: #3D4557;
+
         cursor: pointer;
       }
       a.add{
+        /*color: #4197F4;*/
         &:hover{
          color: #4197F4;
         }
@@ -41,8 +42,11 @@
       margin-left: 140px;
       position: relative;
       top: -20px;
+      span.active{
+        color: #4197F4;
+
+      }
       a.texta{
-        color: #3D4557;
         margin-left: 12px;
         margin-right: 24px;
         font-size: 14px;
@@ -58,7 +62,7 @@
         }
       }
       a.textaDep{
-        color: #3D4557;
+
         margin-left: 12px;
         margin-right: 24px;
         font-size: 14px;
@@ -67,10 +71,13 @@
 
     }
   }
-
   .div_dep{
     border: 1px solid #dfdfdf;
     border-top: none;
+    a.active{
+      background: #4197F4;
+      color: $white;
+    }
     a{
       float: none;
       height: 50px;
@@ -86,6 +93,7 @@
         color: $white;
       }
     }
+
   }
   .el-tabs__active-bar {
     display: none;
@@ -159,7 +167,9 @@
     cursor: pointer;
     text-decoration: none;
   }
-
+  .tool-ico{
+    text-align:center;
+  }
 
 
 

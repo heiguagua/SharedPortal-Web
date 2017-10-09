@@ -134,8 +134,8 @@
                   </ul>
                   <dl class="base-item0">
                     <router-link :to="{ path: '/layout/catalog/resources', query: {dirName:item.name,dirCode:item.code}}">
-                      <dt v-if="icon"><img v-bind:src="icon" alt="图片" /></dt>
-                      <dt v-if="icon == null"><img src="../assets/dashboard/defaultClassify.png" alt="图片" /></dt>
+                      <dt v-if="item.icon"><img v-bind:src="item.icon" alt="图片" /></dt>
+                      <dt v-if="item.icon == null"><img src="../assets/dashboard/defaultClassify.png" alt="图片" /></dt>
                       <dd class="des">{{item.name}}</dd>
                     </router-link>
                   </dl>
@@ -160,8 +160,8 @@
                   </ul>
                   <dl class="base-item0">
                     <router-link :to="{ path: '/layout/catalog/resources', query: {dirName:item.name,dirCode:item.code}}">
-                      <dt v-if="icon"><img v-bind:src="icon" alt="图片" /></dt>
-                      <dt v-if="icon == null"><img src="../assets/dashboard/defaultClassify.png" alt="图片" /></dt>
+                      <dt v-if="item.icon"><img v-bind:src="item.icon" alt="图片" /></dt>
+                      <dt v-if="item.icon == null"><img src="../assets/dashboard/defaultClassify.png" alt="图片" /></dt>
                       <dd class="des">{{item.name}}</dd>
                     </router-link>
                   </dl>

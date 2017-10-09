@@ -241,10 +241,11 @@
             }
           }
       }
-      #login-modal{
-        .inputdiv{
+.inputdiv{
             margin: 30px auto;
-                text-align: center;
+            text-align: center;
+            display: center;
+            justify-content: center;
             .spanuser{
               display: inline-block;
               background: #4197F4;
@@ -255,13 +256,12 @@
             }
             input{
               height: 38px;
-              /* width: 26%; */
-              width: 365px;
+              width: 80%;
+              //width: 365px;
               outline: none;
               text-indent: 10px;
               border: none;
               border: 1px solid #dfdfdf;
             }
         }
-      }
     }

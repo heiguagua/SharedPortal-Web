@@ -35,6 +35,10 @@ export default {
     });
     Http.fetch.interceptors.response.use(function (response) {
       console.log(response);
+      if(response.status >= 500) {
+        Encrypt.token.empty("userName");
+        Encrypt.token.empty("orgName");
+      }
       if(response.status  === 511) {
         window.location.href = "#/login";
       }

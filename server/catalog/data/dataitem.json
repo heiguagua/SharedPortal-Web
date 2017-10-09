@@ -26,7 +26,7 @@
 	"share_type": "1",
 	"storage_medium": "3",
 	"secret_flag": null,
-	"status": "NEED_TO_APPLY"
+	"r_status": "需申请"
 }, {
 	"item_code": "3bc8720a705511e7982400ffffff0000",
 	"storage_location": "2",
