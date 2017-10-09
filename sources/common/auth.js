@@ -34,11 +34,7 @@ export default {
       return Promise.reject(error);
     });
     Http.fetch.interceptors.response.use(function (response) {
-      console.log(response);
-      if(response.status >= 500) {
-        Encrypt.token.empty("userName");
-        Encrypt.token.empty("orgName");
-      }
+      
       if(response.status  === 511) {
         window.location.href = "#/login";
       }
@@ -51,8 +47,8 @@ export default {
       return response;
     }, function (error) {
      
-      Encrypt.token.empty("userName");
-      Encrypt.token.empty("orgName");
+      // Encrypt.token.empty("userName");
+      // Encrypt.token.empty("orgName");
 
       return Promise.reject(error);
     });

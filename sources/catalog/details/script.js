@@ -21,7 +21,10 @@ export default {
             }
             if (value < 1) {
               callback(new Error('请输入大于0的数字值'));
-            } else {
+            } 
+            else if(value>2147483647){
+              callback(new Error('访问次数超过最大限制'));
+            }else {
               callback();
             }
           }

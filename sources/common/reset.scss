@@ -26,6 +26,11 @@ html {
     margin: 0;
     padding: 0;
   }
+  span.error{
+        display: block;
+    text-align: center;
+        color:red;
+      }
   /** header*/
   .el-dropdown-menu__item>a {
     text-decoration: none;
