@@ -33,12 +33,12 @@
                               <span class="el-select__tags-text">{{item}}</span>
                     </p>
   </div>
-  <input id="dep_inp" v-width="depName.length" class="el-input__inner" readonly="readonly" icon="caret-top" type="text" rows="2">
+  <input id="dep_inp"  class="el-input__inner" readonly="readonly" icon="caret-top" type="text" rows="2">
   </div>
   </span>
   <el-dropdown-menu slot="dropdown">
     <div class="tree" style="min-width:300px;max-height:300px;overflow: auto">
-      <el-tree node-key="id" show-checkbox :data="depData" :props="props" :load="loadNode" lazy accordion highlight-current ref="tree"></el-tree>
+      <el-tree node-key="id" check-strictly  show-checkbox :data="depData" :props="props" :load="loadNode" lazy accordion highlight-current ref="tree"></el-tree>
     </div>
     <div class="depBtn"><el-button  type="primary" @click="getCheckedNodes">确定</el-button></div>
   </el-dropdown-menu>

@@ -267,13 +267,4 @@ export default {
     //   })
     // }
   },
-  directives: {
-    width: {
-      function (el, binding) {
-        const vm = this;
-        alert(binding.value)
-        $(el).height(36 * binding.value);
-      }
-    }
-  }
 };
