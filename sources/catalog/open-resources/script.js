@@ -52,7 +52,7 @@ export default {
             pageNum:currentPage,
             size:psize,
             is_open:1,
-            share_type:0,
+            //share_type:0,
             keywords:keyword
           }
         })
