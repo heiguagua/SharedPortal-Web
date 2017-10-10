@@ -253,7 +253,11 @@ export default {
         vm.depName.push(v.name)
         vm.ruleForm.depId.push(v.id);
       })
-      $("#dep_inp").height(33 * vm.depName.length);
+      if (vm.depName.length < 1) {
+        $("#dep_inp").height(33);
+      } else {
+        $("#dep_inp").height(33 * vm.depName.length);
+      }
     },
     // deleNode(node) { //删除
     //   const vm = this;

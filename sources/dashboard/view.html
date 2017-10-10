@@ -30,9 +30,9 @@
         </div>
       </div>
       <div class="input-patch">
-        <input type="text" class="form-control" placeholder="请输入数据/应用/目录/工具名称关键词">
+        <input type="text" v-model="keywords" class="form-control" placeholder="请输入数据/应用/目录/工具名称关键词">
         <span class="input-group-btn">
-          <button ng-click='Retrieval()' class="btn btn-default" type="button">搜索</button>
+          <button @click="searchKeywords()" class="btn btn-default" type="button">搜索</button>
         </span>
       </div>
     </div>

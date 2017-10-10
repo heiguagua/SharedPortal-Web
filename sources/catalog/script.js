@@ -56,7 +56,7 @@ export default {
       },
       count: 1,
       rootNode: {} ,//顶层节点data,
-      expandedKeys:[1],//默认进来展开部门政务信息资源目录
+      expandedKeys:[],//默认进来展开部门政务信息资源目录
     }
   },
   mounted() {
@@ -69,6 +69,9 @@ export default {
         'path': 'system'
       })
     }
+ if(this.$route.path == '/layout/catalog/department'){
+   vm.expandedKeys = [1];
+ }
     //vm.getListStatistics();
   },
   methods: {

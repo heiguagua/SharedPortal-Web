@@ -36,6 +36,10 @@ const router = new VueRouter({
     }, {
       path: "dashboard",
       component: resolve => require(["./dashboard/index.vue"], resolve)
+    },{
+      path: "searchPage",
+      name:"searchPage",
+      component: resolve => require(["./searchPage/index.vue"], resolve)
     }, {
       path: "developer",
       name: 'developer',

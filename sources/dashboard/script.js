@@ -4,6 +4,7 @@ const master = Http.url.master;
 export default {
   data() {
     return {
+      keywords:"",//搜索关键词
       countDataShare: "",
       latestpolicies_G: "",
       latestpolicies_S: "",
@@ -21,7 +22,7 @@ export default {
       carouselDetail: {},
       dialogNewVisible: false,
       showMorecatalog: false,
-      icon:false
+      icon: false
     }
   },
   mounted() {
@@ -94,7 +95,7 @@ export default {
               }
             }
             vm.depAllDeptInfoData = depAllDeptInfo;
-            
+
           } else {
             Notification({
               type: "error",
@@ -302,6 +303,15 @@ export default {
             });
           }
         });
+    },
+    searchKeywords() { //search
+      const vm = this;
+       vm.$router.push({
+        path: '/layout/searchPage',
+        query: {
+          keywords:$.trim(vm.keywords)
+        }
+      })
     },
     /** 最新动态跳转到数据目录详情页面*/
     jumpDetailResource(item) { //最新资源的跳转---系统实时动态数据资源

@@ -1,0 +1,88 @@
+@import "../common/base.scss";
+#search-page {
+  .search_header {
+    overflow: hidden;
+    box-sizing: border-box;
+    background: #fff;
+    padding-left: 30px;
+    padding-right: 30px;
+    .total {
+      line-height: 68px;
+      float: left;
+      span {
+        margin-right: 90px;
+        i {
+          font-style: normal;
+          color: #4197F4;
+          padding: 0 5px;
+        }
+      }
+      img {
+        display: inline-block;
+      }
+      #resource_count {
+        display: inline-block;
+      }
+    }
+    .input-patch {
+      width: 40%;
+      margin-top: 17px;
+      float: right;
+      padding-right: 0;
+      padding-left: 0;
+      position: relative;
+      display: table;
+      input {
+        display: block;
+        width: 100%;
+        padding: 8px 12px;
+        font-size: 14px;
+        color: #555;
+        border: 1px solid #ccc;
+      }
+      .input-group-btn {
+        position: relative;
+        font-size: 0;
+        white-space: nowrap;
+        width: 1%;
+        white-space: nowrap;
+        vertical-align: middle;
+        display: table-cell;
+      }
+      button {
+        background: #4197F4;
+        width: 100px;
+        color: #fff !important;
+        position: relative;
+        display: inline-block;
+        padding: 8px 0;
+        font-size: 14px;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        border: none; // border-radius: 4px;
+      }
+    }
+  }
+  .search_body {
+    width: 1270px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 60px 0 60px 0;
+    .left {
+      .head_title{
+        background: $main-blue;
+        padding: 15px;
+       li{
+       display: inline-block;
+       margin-right: 60px;
+       &:first-child{
+         font-size: 1.2em
+       }
+      }
+      }
+    }
+    .right {}
+  }
+}
