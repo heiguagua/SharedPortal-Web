@@ -9,13 +9,4 @@ export default {
     sidebar,
     container
   },
-  data() {
-    return {
-    }
-  },
-  mounted(){
-alert(this.$route.path)
-  },
-  methods: {
-  }
 };

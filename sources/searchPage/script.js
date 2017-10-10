@@ -5,7 +5,8 @@ export default {
   data() {
     return {
       countDataShare: {},
-      keywords:this.$route.query.keywords
+      keywords:this.$route.query.keywords,
+      activeName:"catalog"
     }
   },
   mounted() {
@@ -34,7 +35,10 @@ export default {
         });
     },
       searchKeywords(){
-        
-      }
+
+      },
+handleClick(){
+  
+}
   }
 };

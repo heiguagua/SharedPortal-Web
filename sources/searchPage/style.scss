@@ -69,17 +69,19 @@
     width: 1270px;
     margin: 0 auto;
     overflow: hidden;
-    padding: 60px 0 60px 0;
+    padding: 30px 0 ;
     .left {
       .head_title{
         background: $main-blue;
         padding: 15px;
-       li{
-       display: inline-block;
-       margin-right: 60px;
-       &:first-child{
-         font-size: 1.2em
-       }
+      .search_result{
+        float: left;
+        font-size: 1.2em;
+      }
+      .tab_result{
+        .el-tabs__item{
+          color: #333;
+        }
       }
       }
     }

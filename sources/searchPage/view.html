@@ -18,17 +18,39 @@
   <div class="search_body">
     <el-row>
       <el-col :span="18">
-        <div class="left">
-          <ul class="head_title">
-            <li>搜索结果</li>
-            <li>数据目录</li>
-            <li>专题应用</li>
-            <li>开发者工具</li>
-          </ul>
-        </div>
+        <!-- <div class="left">
+          <div class="head_title">
+            <div class="search_result">搜索结果</div>
+            <div class="tab_result">
+              <template>
+                <el-tabs v-model="activeName" type="card" @tab-click="handleClick(activeName)">
+                  <el-tab-pane name="catalog">
+                    <a slot="label">数据目录</a>
+                    <ul class="list-group">
+                      数据目录
+                    </ul>
+                  </el-tab-pane>
+                  <el-tab-pane name="subject">
+                    <a slot="label">专题应用</a>
+                    <ul class="list-group">
+                      专题应用
+                    </ul>
+                  </el-tab-pane>
+                  <el-tab-pane name="developer">
+                    <a slot="label">开发者工具</a>
+                    <ul class="list-group">
+                      开发者工具
+                    </ul>
+                  </el-tab-pane>
+                </el-tabs>
+              </template>
+            </div>
+          </div>
+        </div> -->
       </el-col>
       <el-col :span="6">
         <div class="right">
+          
         </div>
       </el-col>
     </el-row>
