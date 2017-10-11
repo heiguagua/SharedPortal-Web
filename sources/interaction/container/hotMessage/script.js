@@ -95,7 +95,7 @@ export default {
       const vm = this;
       Http.fetch({
         method: "get",
-        url: master + "/home/listHottestResource",
+        url: master + "/home/getHottestDirResourceList",
         params: {
           pageSize: 10,
           pageNum: d_curr_page,
@@ -147,7 +147,7 @@ export default {
       const vm = this;
       Http.fetch({
         method: "get",
-        url: master + "/home/listHottestDirectory",
+        url: master + "/home/getHottestDirectoryList",
         params: {
           pageSize: 10,
           pageNum: d_curr_page,
@@ -238,7 +238,7 @@ export default {
       }
     },
     /**跳转到数据目录的相应的详情页面 */
-    jumpDetailResource(row, event, column) { //最新资源的跳转---系统实时动态数据资源
+    jumpDetailResource(row, event, column) { //最新资源的跳转---系统实时动态数据资源详情页面
       const vm = this;
       vm.$router.push({
         path: '/layout/catalog/system-dynamic-details',
@@ -248,13 +248,13 @@ export default {
         }
       })
     },
-    jumpDetailHotResource(row, event, column) { //最热资源的跳转---系统实时动态数据资源
+    jumpDetailHotResource(row, event, column) { //最热资源的跳转---政务基础信息资源目录、  政务主题信息资源目录详情页面
       const vm = this;
       vm.$router.push({
-        path: '/layout/catalog/system-dynamic-details',
+        path: '/layout/catalog/details',
         query: {
-          enName: row.name,
-          tableId: row.obj_id
+          dirName: row.dataset_name,
+          ddcm_id: row.resource_map_id
         }
       })
     },
@@ -264,17 +264,17 @@ export default {
         path: '/layout/catalog/details',
         query: {
           dirName: row.dataset_name,
-          ddcm_id: row.dataset_code
+          ddcm_id: row.resource_map_id
         }
       })
     },
-    jumpDetailHotestCatalog(row, event, column) { //最热目录的跳转---政务基础信息资源目录、  政务主题信息资源目录
+    jumpDetailHotestCatalog(row, event, column) { //最热目录的跳转---政务基础信息资源目录、  政务主题信息资源目录列表页面
       const vm = this;
       vm.$router.push({
-        path: '/layout/catalog/details',
+        path: '/layout/catalog/resources',
         query: {
-          dirName: row.name,
-          ddcm_id: row.obj_id
+          dirName: row.classify_name,
+          dirCode: row.tree_code
         }
       })
     }

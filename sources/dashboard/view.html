@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="input-patch">
-        <input type="text" v-model="keywords" class="form-control" placeholder="请输入数据/应用/目录/工具名称关键词">
+        <input @keyup.enter="keydownLogin($event)" type="text" v-model="keywords" class="form-control" placeholder="请输入数据目录/应用/工具名称关键词">
         <span class="input-group-btn">
           <button @click="searchKeywords()" class="btn btn-default" type="button">搜索</button>
         </span>
@@ -290,7 +290,7 @@
               <dd class="list-group">
                 <ul id="HottestDirectory">
                   <li v-for="item in listHottestDirectory" @click="jumpDetailHotestCatalog(item)">
-                    <p v-bind:title="item.name">{{item.name}}</p>
+                    <p v-bind:title="item.classify_name">{{item.classify_name}}</p>
                   </li>
                 </ul>
               </dd>
@@ -331,7 +331,7 @@
               <dd class="list-group">
                 <ul id="hotResource">
                   <li v-for="item in listHottestResource" @click="jumpDetailHotResource(item)">
-                    <p v-bind:title="item.name">{{item.name}}</p>
+                    <p v-bind:title="item.dataset_name">{{item.dataset_name}}</p>
                   </li>
                 </ul>
               </dd>

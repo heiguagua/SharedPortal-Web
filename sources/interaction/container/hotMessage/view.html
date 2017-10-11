@@ -50,21 +50,21 @@
               <el-table-column label="信息资源名称" width="180">
                 <template scope="scope">
                   <div class="over_space">
-                    <span v-bind:title="scope.row.name">{{scope.row.name}}</span>
+                    <span v-bind:title="scope.row.dataset_name">{{scope.row.dataset_name}}</span>
                   </div>
                 </template>
               </el-table-column>
               <el-table-column label="所属部门" width="180">
                 <template scope="scope">
                   <div class="over_space">
-                    <span v-bind:title="scope.row.org_name">{{scope.row.org_name}}</span>
+                    <span v-bind:title="scope.row.dept_name">{{scope.row.dept_name}}</span>
                   </div>
                 </template>
               </el-table-column>
               <el-table-column label="所属目标">
                 <template scope="scope">
                   <div class="over_space">
-                    <span v-bind:title="scope.row.type">{{scope.row.type}}</span>
+                    <span v-bind:title="scope.row.classify_structure_name">{{scope.row.classify_structure_name}}</span>
                   </div>
                 </template>
               </el-table-column>
@@ -100,11 +100,11 @@
               <el-table-column label="所属目标">
                 <template scope="scope">
                   <div class="over_space">
-                    <span v-bind:title="scope.row.classify_structure_code">{{scope.row.classify_structure_code}}</span>
+                    <span v-bind:title="scope.row.classify_structure_name">{{scope.row.classify_structure_name}}</span>
                   </div>
                 </template>
               </el-table-column>
-              <el-table-column prop="create_time" label="更新时间" width='180'>
+              <el-table-column prop="update_time" label="更新时间" width='180'>
               </el-table-column>
             </el-table>
           </template>
@@ -122,21 +122,21 @@
               <el-table-column label="信息资源名称" width="180">
                 <template scope="scope">
                   <div class="over_space">
-                    <span v-bind:title="scope.row.name">{{scope.row.name}}</span>
+                    <span v-bind:title="scope.row.classify_name">{{scope.row.classify_name}}</span>
                   </div>
                 </template>
               </el-table-column>
-              <el-table-column label="所属部门" width="180">
+              <el-table-column label="所属目录" width="180">
                 <template scope="scope">
                   <div class="over_space">
-                    <span v-bind:title="scope.row.org_name">{{scope.row.org_name}}</span>
+                    <span v-bind:title="scope.row.fname">{{scope.row.fname}}</span>
                   </div>
                 </template>
               </el-table-column>
               <el-table-column label="所属目标">
                 <template scope="scope">
                   <div class="over_space">
-                    <span v-bind:title="scope.row.type">{{scope.row.type}}</span>
+                    <span v-bind:title="scope.row.classify_structure_name">{{scope.row.classify_structure_name}}</span>
                   </div>
                 </template>
               </el-table-column>
