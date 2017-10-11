@@ -7,7 +7,7 @@ export default {
       regions: [{
         'id':1,
         'name': '政务部门信息资源目录',
-        'path': 'department'
+        'path': 'statistic'
       }, {
         'id':2,
         'name': '政务基础信息资源目录',
@@ -69,7 +69,7 @@ export default {
         'path': 'system'
       })
     }
- if(this.$route.path == '/layout/catalog/department'){
+ if(this.$route.path == '/layout/catalog/statistic'){
    vm.expandedKeys = [1];
  }
     //vm.getListStatistics();
@@ -237,18 +237,20 @@ export default {
                 }
 
               });
-            }else if(rootName =="政务部门信息资源目录"){
-              vm.getDepartmentDataSecondLevelChild(node.data.dept_Id).then(function(res) {
-                if (res.status == 200) {
-                  console.log("yiji",res)
-                  data = res.data;
-                  resolve(data);
-                } else {
-                  data = [];
-                  resolve(data);
-                }
-              })
-            } else{
+            }
+            // else if(rootName =="政务部门信息资源目录"){
+            //   vm.getDepartmentDataSecondLevelChild(node.data.dept_Id).then(function(res) {
+            //     if (res.status == 200) {
+            //       console.log("yiji",res)
+            //       data = res.data;
+            //       resolve(data);
+            //     } else {
+            //       data = [];
+            //       resolve(data);
+            //     }
+            //   })
+            // }
+             else{
               vm.getDirNodesByParent(node.data.id).then(function (res) {
                 if (res.status == 200) {
                   data = res.data;
