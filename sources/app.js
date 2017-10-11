@@ -4,6 +4,7 @@ import VueRouter from "vue-router";
 // css
 import "./common/reset.scss";
 import "font-awesome/css/font-awesome.css";
+import "./common/awesome-bootstrap-checkbox.css";
 // ui
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-default/index.css";

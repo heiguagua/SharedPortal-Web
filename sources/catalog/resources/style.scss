@@ -1,6 +1,20 @@
 @import "../../common/base.scss";
 
 #resources {
+	.filters{
+		float:right;
+		margin: 24px;
+		.checkbox{
+			display:inline-block;
+		}
+		.checkbox-primary input[type="checkbox"]:checked + label::before, .checkbox-primary input[type="radio"]:checked + label::before{
+			background-color: $dark-blue;
+    		border-color: $dark-blue;
+		}
+		.checkbox label::after{
+			top:2px;
+		}
+	}
 	.data-detail-view {
 		background: #FFF;
 		padding: 15px;

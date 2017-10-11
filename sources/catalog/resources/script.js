@@ -13,26 +13,31 @@ export default {
         itemCount:0,
         currentPage:1,
         keyword:'',
-        showTable:true //表格视图
+        showTable:true, //表格视图
+        open_status:false,//是否开放
+        share_status:false//是否共享
       }
     },
     mounted() {
       const vm = this;
-      vm.loadData();
+      vm.loadData(false);
     },
 
     methods: {
-      loadData(){
+      loadData(cache_total){
         const vm = this;
         vm.head_title = vm.$route.query.dirName;
         var dirCode = vm.$route.query.dirCode;
-        vm.getResources(dirCode,vm.currentPage,20,vm.keyword).then(function(res){
+        vm.getResources(dirCode,vm.currentPage,20,vm.keyword,vm.open_status,vm.share_status).then(function(res){
           vm.loading = false;
           if(res.status == 200) {
             var r_data = res.data;
             vm.tableData = r_data.body;
-            vm.totalResource = r_data[Pager.totalR];
-            vm.itemCount = res.data.itemCount; // 数据项
+            if(!cache_total) {
+              vm.totalResource = r_data[Pager.totalR];
+              vm.itemCount = res.data.itemCount; // 数据项
+            }
+            
           }
           else{
              vm.$message({
@@ -43,7 +48,7 @@ export default {
           }
         })
       },
-      getResources: function(dirCode,currentPage,psize,keyword) {
+      getResources: function(dirCode,currentPage,psize,keyword,open_status,share_status) {
         const vm = this;
         return Http.fetch({
           method: "post",
@@ -52,7 +57,9 @@ export default {
             tree_code: dirCode,
             pageNum:currentPage,
             size:psize,
-            keywords:keyword
+            keywords:keyword,
+            is_open:open_status,
+            is_share:share_status
           }
         })
       },
@@ -70,12 +77,20 @@ export default {
         console.log(val)
         const vm = this;
         vm.currentPage = val;
-        vm.loadData();
+        vm.loadData(true);
       },
       handleSearch(){
         const vm = this;
         vm.currentPage = 1;
-        vm.loadData();
+        vm.loadData(false);
+      },
+      toggleOpenStatus(){
+        const vm = this;
+        vm.loadData(false);
+      },
+      toggleShareStatus(){
+        const vm = this;
+        vm.loadData(false);
       }
     },
     filters:{

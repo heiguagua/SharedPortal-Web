@@ -6,7 +6,7 @@ export default {
     return {
       regions: [{
         'id':1,
-        'name': '部门政务信息资源目录',
+        'name': '政务部门信息资源目录',
         'path': 'department'
       }, {
         'id':2,
@@ -56,7 +56,7 @@ export default {
       },
       count: 1,
       rootNode: {} ,//顶层节点data,
-      expandedKeys:[],//默认进来展开部门政务信息资源目录
+      expandedKeys:[],//默认进来展开政务部门信息资源目录
     }
   },
   mounted() {
@@ -237,7 +237,7 @@ export default {
                 }
 
               });
-            }else if(rootName =="部门政务信息资源目录"){
+            }else if(rootName =="政务部门信息资源目录"){
               vm.getDepartmentDataSecondLevelChild(node.data.dept_Id).then(function(res) {
                 if (res.status == 200) {
                   console.log("yiji",res)
@@ -348,7 +348,7 @@ export default {
         }
       })
     },
-    // 查询部门政务信息资源目录第二层子节点
+    // 查询政务部门信息资源目录第二层子节点
     getDepartmentDataSecondLevelChild: function (fId) {
       const vm = this;
       return Http.fetch({
