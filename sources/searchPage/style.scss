@@ -1,90 +1,76 @@
 @import "../common/base.scss";
 #search-page {
-  .search_header {
-    overflow: hidden;
-    box-sizing: border-box;
-    background: #fff;
-    padding-left: 30px;
-    padding-right: 30px;
-    .total {
-      line-height: 68px;
-      float: left;
-      span {
-        margin-right: 90px;
-        i {
-          font-style: normal;
-          color: #4197F4;
-          padding: 0 5px;
+  width: 1270px;
+  margin: 15px auto;
+  .left {
+    margin-right: 15px;
+    background: $white;
+    position: relative;
+    .search {
+      position: absolute;
+      top: 3px;
+      right: 15px;
+      width: 30%;
+    }
+    .list-group {
+      padding: 15px;
+      border-bottom: 1px solid $extra-light-gray;
+      ul {
+        li {
+          line-height: 1.8em;
+          color: $extra-light-black;
+          span {
+            margin-right: 60px;
+          }
         }
       }
-      img {
-        display: inline-block;
-      }
-      #resource_count {
-        display: inline-block;
-      }
-    }
-    .input-patch {
-      width: 40%;
-      margin-top: 17px;
-      float: right;
-      padding-right: 0;
-      padding-left: 0;
-      position: relative;
-      display: table;
-      input {
-        display: block;
-        width: 100%;
-        padding: 8px 12px;
-        font-size: 14px;
-        color: #555;
-        border: 1px solid #ccc;
-      }
-      .input-group-btn {
-        position: relative;
-        font-size: 0;
-        white-space: nowrap;
-        width: 1%;
-        white-space: nowrap;
-        vertical-align: middle;
-        display: table-cell;
-      }
-      button {
-        background: #4197F4;
-        width: 100px;
-        color: #fff !important;
-        position: relative;
-        display: inline-block;
-        padding: 8px 0;
-        font-size: 14px;
-        text-align: center;
-        white-space: nowrap;
-        vertical-align: middle;
-        cursor: pointer;
-        border: none; // border-radius: 4px;
+      .title {
+        .rate {
+          float: right;
+          .over_space {
+            display: inline-block;
+          }
+        }
       }
     }
   }
-  .search_body {
-    width: 1270px;
-    margin: 0 auto;
-    overflow: hidden;
-    padding: 30px 0 ;
-    .left {
-      .head_title{
-        background: $main-blue;
-        padding: 15px;
-      .search_result{
-        float: left;
-        font-size: 1.2em;
-      }
-      .tab_result{
-        .el-tabs__item{
-          color: #333;
+  .right {
+    .more-list {
+      background: $white;
+      margin-bottom: 15px;
+      .title {
+        padding: 0 15px;
+        font-size: 16px;
+        border-bottom: 1px solid $extra-light-gray;
+        height: 42px;
+        line-height: 42px;
+        >span{
+          float: right;
+          font-size: 14px;
         }
       }
+      ul {
+        padding: 15px;
+        li {
+          line-height: 1.8em;
+          >span {
+            @include pull-right;
+          }
+          a {
+            width: 70%;
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-decoration: none;
+            color: #333;
+            &:hover {
+              text-decoration: underline;
+              color: $main-blue;
+            }
+          }
+        }
       }
     }
-    .right {}
   }
 }

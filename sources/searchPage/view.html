@@ -1,58 +1,176 @@
 <main id="search-page">
-  <div class="search_header">
-    <div class="pull-left total">
-      <img src="../assets/dashboard/total.png" width="16" height="16" />&nbsp
-      <div id="resource_count">
-        <span>资源总数:<i id="resourceCount">{{countDataShare.directoryCount}}</i></span>
-        <span>本周新增:<i id="thisWeekAddCount">{{countDataShare.thisWeekAddCount}}</i></span>
-        <span>访问总数:<i id="serviceCallCount">{{countDataShare.serviceCallCount}}</i></span>
-      </div>
-    </div>
-    <div class="input-patch">
-      <input type="text" v-model="keywords" class="form-control" placeholder="请输入数据/应用/目录/工具名称关键词">
-      <span class="input-group-btn">
-          <button @click="searchKeywords()" class="btn btn-default" type="button">搜索</button>
-        </span>
-    </div>
-  </div>
-  <div class="search_body">
-    <el-row>
-      <el-col :span="18">
-        <!-- <div class="left">
-          <div class="head_title">
-            <div class="search_result">搜索结果</div>
-            <div class="tab_result">
-              <template>
-                <el-tabs v-model="activeName" type="card" @tab-click="handleClick(activeName)">
-                  <el-tab-pane name="catalog">
-                    <a slot="label">数据目录</a>
-                    <ul class="list-group">
-                      数据目录
-                    </ul>
-                  </el-tab-pane>
-                  <el-tab-pane name="subject">
-                    <a slot="label">专题应用</a>
-                    <ul class="list-group">
-                      专题应用
-                    </ul>
-                  </el-tab-pane>
-                  <el-tab-pane name="developer">
-                    <a slot="label">开发者工具</a>
-                    <ul class="list-group">
-                      开发者工具
-                    </ul>
-                  </el-tab-pane>
-                </el-tabs>
-              </template>
-            </div>
-          </div>
-        </div> -->
-      </el-col>
-      <el-col :span="6">
-        <div class="right">
-          
+  <el-row>
+    <el-col :span="18">
+      <div class="left">
+        <template>
+          <el-tabs v-model="activeName" @tab-click="handleClick(activeName)">
+            <el-tab-pane name="catalog">
+              <a slot="label">数据目录</a>
+              <div class="list-group">
+                <div class="title">
+                  <span>田径裁判员、教练员的人员信息</span>
+                  <div class="rate">
+                    <span>评分：</span>
+                    <div class="over_space">
+                      <el-rate disabled text-color="#ff9900">
+                      </el-rate>
+                    </div>
+                  </div>
+                </div>
+                <ul>
+                  <li>
+                    <span>更新时间：</span>
+                    <span>查看：</span>
+                    <span>下载： 次</span>
+                    <span>接口：个</span>
+                  </li>
+                  <li>
+                    <span>共享类型：</span>
+                    <span>开放类型：</span>
+                    <span>有关部门：</span>
+                  </li>
+                  <li>信息资源摘要：</li>
+                </ul>
+              </div>
+              <div class="list-group">
+                <div class="title">
+                  <span>田径裁判员、教练员的人员信息</span>
+                  <div class="rate">
+                    <span>评分：</span>
+                    <div class="over_space">
+                      <el-rate disabled text-color="#ff9900">
+                      </el-rate>
+                    </div>
+                  </div>
+                </div>
+                <ul>
+                  <li>
+                    <span>更新时间：</span>
+                    <span>查看：</span>
+                    <span>下载： 次</span>
+                    <span>接口：个</span>
+                  </li>
+                  <li>
+                    <span>共享类型：</span>
+                    <span>开放类型：</span>
+                    <span>有关部门：</span>
+                  </li>
+                  <li>信息资源摘要：</li>
+                </ul>
+              </div>
+            </el-tab-pane>
+            <el-tab-pane name="subject">
+              <a slot="label">专题应用</a>
+              <div class="list-group">
+                <div class="title">
+                  <span>田径裁判员、教练员的人员信息</span>
+                </div>
+                <ul>
+                  <li>
+                    <span>创建时间：</span>
+                    <span>应用类型：</span>
+                    <span>访问次数： 次</span>
+                  </li>
+                  
+                </ul>
+              </div>
+              <div class="list-group">
+                <div class="title">
+                  <span>田径裁判员、教练员的人员信息</span>
+                </div>
+                <ul>
+                  <li>
+                    <span>创建时间：</span>
+                    <span>应用类型：</span>
+                    <span>访问次数： 次</span>
+                  </li>
+                  
+                </ul>
+              </div>
+            </el-tab-pane>
+            <el-tab-pane name="developer">
+              <a slot="label">开发者工具</a>
+               <div class="list-group">
+                <div class="title">
+                  <span>田径裁判员、教练员的人员信息</span>
+                </div>
+                <ul>
+                  <li>
+                    <span>创建时间：</span>
+                    <span>工具类型：</span>
+                    <span>访问次数： 次</span>
+                  </li>
+                  
+                </ul>
+              </div>
+               <div class="list-group">
+                <div class="title">
+                  <span>田径裁判员、教练员的人员信息</span>
+                </div>
+                <ul>
+                  <li>
+                    <span>创建时间：</span>
+                    <span>工具类型：</span>
+                    <span>访问次数： 次</span>
+                  </li>
+                  
+                </ul>
+              </div>
+            </el-tab-pane>
+          </el-tabs>
+        </template>
+        <div class="search">
+          <el-input placeholder="请输入数据目录/应用/工具名称关键词" v-model="keywords">
+            <el-button slot="append" icon="search" @click="searchKeywords">搜索</el-button>
+          </el-input>
         </div>
-      </el-col>
-    </el-row>
-  </div>
+      </div>
+    </el-col>
+    <el-col :span="6">
+      <div class="right">
+        <div class="more-list">
+          <div class="title">最新数据目录<span>更多</span></div>
+          <ul>
+            <li>
+              <a><span>成都市经济运行总体情况报告</span></a><span>566515</span>
+            </li>
+            <li>
+              <a><span>成都市经济运行总体情况报告</span></a><span>566515</span>
+            </li>
+            <li>
+              <a><span>成都市经济运行总成都市经济运行总体情况报告成都市经济运行总体情况报告体情况报告</span></a><span>566515</span>
+            </li>
+          </ul>
+        </div>
+        <div class="more-list">
+          <div class="title">热门数据目录<span>更多</span></div>
+          <ul>
+            <li>
+              <a><span>成都市经济运行总体情况报告</span></a><span>566515</span>
+            </li>
+            <li>
+              <a><span>成都市经济运行总体情况报告</span></a><span>566515</span>
+            </li>
+            <li>
+              <a><span>成都市经济运行总成都市经济运行总体情况报告成都市经济运行总体情况报告体情况报告</span></a><span>566515</span>
+            </li>
+          </ul>
+        </div>
+        <div class="more-list">
+          <div class="title">热门应用<span>更多</span></div>
+          <ul>
+            <li>
+              <a><span>成都市经济运行总体情况报告</span></a><span>566515</span>
+            </li>
+            <li>
+              <a><span>成都市经济运行总体情况报告</span></a><span>566515</span>
+            </li>
+            <li>
+              <a><span>成都市经济运行总成都市经济运行总体情况报告成都市经济运行总体情况报告体情况报告</span></a><span>566515</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </el-col>
+  </el-row>
 </main>

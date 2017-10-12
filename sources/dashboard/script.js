@@ -197,7 +197,7 @@ export default {
       const vm = this;
       Http.fetch({
         method: "get",
-        url: master + "/home/listHottestDirectory",
+        url: master + "/home/getHottestDirectoryList",
         params: {
           pageSize: 3
         }
@@ -241,7 +241,7 @@ export default {
       const vm = this;
       Http.fetch({
         method: "get",
-        url: master + "/home/listHottestResource",
+        url: master + "/home/getHottestDirResourceList",
         params: {
           pageSize: 3,
           resourceType: "service"
@@ -313,6 +313,13 @@ export default {
         }
       })
     },
+     keydownLogin(ev) {
+      const vm = this;
+      var event = ev || window.event;
+      if (event.keyCode == '13') { //keyCode=13是回车键
+        vm.searchKeywords();
+      }
+    },
     /** 最新动态跳转到数据目录详情页面*/
     jumpDetailResource(item) { //最新资源的跳转---系统实时动态数据资源
       const vm = this;
@@ -324,13 +331,13 @@ export default {
         }
       })
     },
-    jumpDetailHotResource(item) { //最热资源的跳转---系统实时动态数据资源
+    jumpDetailHotResource(item) { //最热资源的跳转---政务基础信息资源目录、  政务主题信息资源目录详情页面
       const vm = this;
       vm.$router.push({
-        path: '/layout/catalog/system-dynamic-details',
+        path: '/layout/catalog/details',
         query: {
-          enName: item.name,
-          tableId: item.obj_id
+          enName: item.dataset_name,
+          tableId: item.resource_map_id
         }
       })
     },
@@ -340,17 +347,17 @@ export default {
         path: '/layout/catalog/details',
         query: {
           dirName: item.dataset_name,
-          ddcm_id: item.dataset_code
+          ddcm_id: item.resource_map_id
         }
       })
     },
-    jumpDetailHotestCatalog(item) { //最热目录的跳转---政务基础信息资源目录、  政务主题信息资源目录
+    jumpDetailHotestCatalog(item) { //最热目录的跳转---政务基础信息资源目录、  政务主题信息资源目录列表页面
       const vm = this;
       vm.$router.push({
-        path: '/layout/catalog/details',
+        path: '/layout/catalog/resources',
         query: {
-          dirName: item.name,
-          ddcm_id: item.obj_id
+          dirName: item.classify_name,
+          dirCode: item.tree_code
         }
       })
     }
