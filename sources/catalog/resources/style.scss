@@ -3,9 +3,19 @@
 #resources {
 	.filters{
 		float:right;
-		margin: 24px;
-		.checkbox{
+		margin: 15px;
+		.checkbox,.selection{
 			display:inline-block;
+			    margin-right: 10px;
+			    .el-select{
+			    	    width: 120px;
+			    }
+			    .el-radio{
+			    	padding-left:5px;
+			    }
+			    .el-radio+.el-radio{
+			    	margin-left:0;
+			    }
 		}
 		.checkbox-primary input[type="checkbox"]:checked + label::before, .checkbox-primary input[type="radio"]:checked + label::before{
 			background-color: $dark-blue;

@@ -20,7 +20,7 @@ export default {
   mounted() {
     const vm = this;
     vm.loadDataTable();
-    vm.tableColumns();
+    vm.tableColumns(false);
   },
 
   methods: {
@@ -39,7 +39,7 @@ export default {
         }
       })
     },
-    tableColumns() {
+    tableColumns(cache_total) {
       const vm = this;
       //获取系统信息列表
       vm.getSystemTableColumns(vm.$route.query.tableId, vm.currentPage, vm.pageSize).then(function (res) {
@@ -47,7 +47,10 @@ export default {
         if (res.status == 200) {
           var r_data = res.data;
           vm.tableDataItem = r_data.body;
-          vm.totalResource = r_data[Pager.totalR]; //total
+          if(!cache_total) {
+            vm.totalResource = r_data[Pager.totalR]; //total
+          }
+          
         } else {
           Notification({
             type: "error",
@@ -82,7 +85,7 @@ export default {
     handlePageChange(val) { // 分页处理
       const vm = this;
       vm.currentPage = val;
-      vm.tableColumns();
+      vm.tableColumns(true);
     },
     goback() {
       this.$router.go(-1);

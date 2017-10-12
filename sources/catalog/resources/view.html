@@ -16,18 +16,32 @@
 				</el-input>
 			</div>
 		<div class="filters">
-			<div class="checkbox checkbox-primary" >  
-			    <input type="checkbox" id="opened" v-model="open_status" @click="toggleOpenStatus()">  
-			    <label for="opened">  
-			        开放
-			    </label>  
-			  </div> 
-			  <div class="checkbox checkbox-primary" >  
-			    <input type="checkbox" id="shared" v-model="share_status" @click="toggleShareStatus()">  
+			<div class="selection" >  
 			    <label for="shared">  
-			        共享 
+			        共享类型：
 			    </label>  
+			    <el-select v-model="share_type"  @change="toggleShareType()" clearable  placeholder="请选择">
+				    <el-option
+				      v-for="item in share_type_options"
+				      :key="item.dict_code"
+				      :label="item.dict_name"
+				      :value="item.dict_code">
+				    </el-option>
+				  </el-select>
 			  </div> 
+			<div class="selection " >  
+			    是否向社会开放：
+			    <el-select v-model="open_status"  @change="toggleOpenStatus()"  clearable  placeholder="请选择">
+				    <el-option
+				      v-for="item in is_open_options"
+				      :key="item.dict_code"
+				      :label="item.dict_name"
+				      :value="item.dict_code">
+				    </el-option>
+				  </el-select>
+			    
+			  </div> 
+			
 		</div>
 		</div>
 		<div v-show="showTable"><el-table :data="tableData"	border	style="width: 100%" v-loading="loading" element-loading-text="数据加载中" slot="empty"

@@ -14,12 +14,20 @@ export default {
         currentPage:1,
         keyword:'',
         showTable:true, //表格视图
-        open_status:false,//是否开放
-        share_status:false//是否共享
+        share_type_options:null,
+        is_open_options:null,
+        open_status:null,//是否开放
+        share_type:null//共享类型
       }
     },
     mounted() {
       const vm = this;
+      vm.getSysDictByCategories(["dataSetShareType","dataSetIsOpen"]).then(function(res){
+        if(res.status == 200) {
+          vm.share_type_options = res.data.dataSetShareType;
+          vm.is_open_options = res.data.dataSetIsOpen;
+        }
+      });
       vm.loadData(false);
     },
 
@@ -28,7 +36,7 @@ export default {
         const vm = this;
         vm.head_title = vm.$route.query.dirName;
         var dirCode = vm.$route.query.dirCode;
-        vm.getResources(dirCode,vm.currentPage,20,vm.keyword,vm.open_status,vm.share_status).then(function(res){
+        vm.getResources(dirCode,vm.currentPage,20,vm.keyword,vm.open_status,vm.share_type).then(function(res){
           vm.loading = false;
           if(res.status == 200) {
             var r_data = res.data;
@@ -48,7 +56,7 @@ export default {
           }
         })
       },
-      getResources: function(dirCode,currentPage,psize,keyword,open_status,share_status) {
+      getResources: function(dirCode,currentPage,psize,keyword,open_status,share_type) {
         const vm = this;
         return Http.fetch({
           method: "post",
@@ -59,8 +67,16 @@ export default {
             size:psize,
             keywords:keyword,
             is_open:open_status,
-            is_share:share_status
+            share_type:share_type
           }
+        })
+      },
+      getSysDictByCategories:function(dictnames){
+        const vm = this;
+        return Http.fetch({
+          method: "post",
+          url: master + "/sysdict/getSysDictByCategories",
+          data:dictnames
         })
       },
       toggleView(showTable) {
@@ -86,10 +102,12 @@ export default {
       },
       toggleOpenStatus(){
         const vm = this;
+        console.log(vm.open_status);
         vm.loadData(false);
       },
-      toggleShareStatus(){
+      toggleShareType(){
         const vm = this;
+
         vm.loadData(false);
       }
     },

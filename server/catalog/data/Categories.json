@@ -1,0 +1,28 @@
+{
+	"dataSetShareType": [{
+		"dict_name": "有条件共享",
+		"category": "dataSetShareType",
+		"dict_code": "1"
+	}, {
+		"dict_name": "不予共享",
+		"category": "dataSetShareType",
+		"dict_code": "2"
+	}, {
+		"dict_name": "无条件共享",
+		"category": "dataSetShareType",
+		"dict_code": "0"
+	}],
+	"dataSetIsOpen": [{
+		"dict_name": "不开放",
+		"category": "dataSetIsOpen",
+		"dict_code": "3"
+	}, {
+		"dict_name": "依申请开放",
+		"category": "dataSetIsOpen",
+		"dict_code": "2"
+	}, {
+		"dict_name": "普遍开放",
+		"category": "dataSetIsOpen",
+		"dict_code": "1"
+	}]
+}

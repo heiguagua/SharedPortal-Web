@@ -17,11 +17,11 @@ export default {
     },
     mounted() {
       const vm = this;
-      vm.loadData();
+      vm.loadData(false);
     },
 
     methods: {
-      loadData(){
+      loadData(cache_total){
         const vm = this;
         vm.head_title = vm.$route.query.dirName;
         var info_system_id = vm.$route.query.info_system_id;
@@ -31,8 +31,11 @@ export default {
           if(res.status == 200) {
             var r_data = res.data;
             vm.tableData = r_data.body;
-            vm.totalResource = r_data[Pager.totalR];
-            vm.columnCount = r_data.columnCount; // 字段项
+            if(!cache_total) {
+              vm.totalResource = r_data[Pager.totalR];
+              vm.columnCount = r_data.columnCount; // 字段项
+            }
+            
           }
           else{
             Notification({
@@ -53,7 +56,7 @@ export default {
             db_id:(db_id)?db_id:'',
             pageNum:currentPage,
             size:psize,
-            keyword:keyword
+            keywords:keyword
           }
         })
       },
@@ -66,12 +69,12 @@ export default {
       handlePageChange(val){// 分页处理
         const vm = this;
         vm.currentPage = val;
-        vm.loadData();
+        vm.loadData(true);
       },
       handleSearch(){
         const vm = this;
         vm.currentPage = 1;
-        vm.loadData();
+        vm.loadData(false);
       }
     },
     filters:{

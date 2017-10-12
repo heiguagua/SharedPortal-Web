@@ -121,6 +121,11 @@ router.route("/dataCollection/createCollection")
     response.json(util.json("/catalog/data/getTableList.json"));
 
   });
+     router.route("/sysdict/getSysDictByCategories")
+  .post(function(request, response) {
+    response.json(util.json("/catalog/data/Categories.json"));
+
+  });
 
  router.route("/department/getDetail")
   .post(function(request, response) {
