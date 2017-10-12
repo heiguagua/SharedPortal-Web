@@ -12,6 +12,10 @@
       right: 15px;
       width: 30%;
     }
+    .page{
+      text-align: right;
+       padding: 30px 15px;
+    }
     .list-group {
       padding: 15px;
       border-bottom: 1px solid $extra-light-gray;
@@ -25,6 +29,7 @@
         }
       }
       .title {
+        margin-bottom: 5px;
         .rate {
           float: right;
           .over_space {

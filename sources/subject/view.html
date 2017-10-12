@@ -11,7 +11,7 @@
                    <a  class="texta" target="_blank" v-bind:title="ssubitem.name" @click="showLink(ssubitem,$event)" > | {{ssubitem.name}}</a>
                   </span>
                   <span v-else :class="{ active: (current_item === ssubitem) }">
-                   <a  :class="{textaDep:istextaDep}" :pid="ssubitem.id" @click="handleClick(ssubitem,ssubitem.id)"> | {{ssubitem.name}}</a>
+                    <a  :class="{textaDep:istextaDep}" :pid="ssubitem.id" @click="handleClick(ssubitem,ssubitem.id)"> | {{ssubitem.name}}</a> 
                   </span>
                 </span>
               </dd>

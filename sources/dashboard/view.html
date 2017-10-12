@@ -178,26 +178,28 @@
           <el-tab-pane name="dep">
             <a slot="label">部门目录</a>
             <div class="tab-body">
-              <!-- <div class="img-group" v-for="item in depAllDeptInfoData">
+              <div class="img-group" v-for="item in depAllDeptInfoAC">
                 <el-tooltip placement="bottom" effect="light">
                   <ul slot="content">
-                    <li v-for="itemChild in item.children">{{itemChild.name}}</li>
+                    <li v-for="(itemChild,index) in item.children " v-if="index<3">{{itemChild.name}}</li>
+                    <li v-if="item.children.length>3">...</li>
                   </ul>
                   <dl class="base-item0">
-                     <router-link :to="{ path: '/layout/catalog/resources', query: {dirName:item.name,dirCode:item.id}}">
-                      <dt><img v-bind:src="icon" alt="图片" /></dt>
+                    <router-link :to="{ path: '/layout/catalog/resources', query: {dirName:item.name,dirCode:item.code}}">
+                      <dt v-if="item.icon"><img v-bind:src="item.icon" alt="图片" /></dt>
+                      <dt v-if="item.icon == null"><img src="../assets/dashboard/defaultClassify.png" alt="图片" /></dt>
                       <dd class="des">{{item.name}}</dd>
-                     </router-link>
+                    </router-link>
                   </dl>
                 </el-tooltip>
               </div>
               <dl v-show="showMorecatalog" class="img-group dep-item3">
-                <router-link :to="{ path: '/layout/catalog/department', query: {dirName:'部门政务信息资源目录'}}">
+                <router-link :to="{ path: '/layout/catalog/statistic', query: {dirName:'政务主题信息资源目录'}}">
                   <dt><img src="../assets/dashboard/more.png" /></dt>
                   <dd class="des">更多</dd>
                 </router-link>
-              </dl> -->
-              <dl class="img-group dep-item0">
+              </dl>
+              <!-- <dl class="img-group dep-item0">
                 <router-link :to="{ path: '/layout/catalog/department-resources', query: {dirName:'业务目录'}}">
                   <dt><img src="../assets/dashboard/dep1.png" /></dt>
                   <dd class="des">业务目录</dd>
@@ -238,7 +240,7 @@
                   <dt><img src="../assets/dashboard/dep5.png" /></dt>
                   <dd class="des">系统资源目录</dd>
                 </router-link>
-              </dl>
+              </dl> -->
             </div>
           </el-tab-pane>
         </el-tabs>

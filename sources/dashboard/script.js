@@ -18,6 +18,7 @@ export default {
       carouselPicNews: [],
       depAllDeptInfoAA: [],
       depAllDeptInfoAB: [],
+       depAllDeptInfoAC: [],
       depAllDeptInfoData: [],
       carouselDetail: {},
       dialogNewVisible: false,
@@ -34,7 +35,7 @@ export default {
     vm.LatestDbResourceData(); //最新资源
     vm.HottestResourceData(); //最热资源
     vm.getCarouselPicNews(); //最新新闻
-    vm.getAllDirMenuInfo(2); //主题目录
+    vm.getAllDirMenuInfo(3); //主题目录
   },
   methods: {
     getAllDirMenuInfo: function (Pid) {
@@ -58,11 +59,12 @@ export default {
                 depAllDeptInfo.push(result.data[i]);
               }
             }
-            if (Pid == 1) {
+            if (Pid == 2) {
               vm.depAllDeptInfoAA = depAllDeptInfo;
-            } else {
+            } else if (Pid == 3) {
               vm.depAllDeptInfoAB = depAllDeptInfo;
-              console.log(vm.depAllDeptInfoAB)
+            }else if (Pid == 1) {
+              vm.depAllDeptInfoAC = depAllDeptInfo;
             }
           } else {
             Notification({
@@ -73,38 +75,38 @@ export default {
           }
         });
     },
-    getAllDeptInfo: function (Pid) {
-      const vm = this;
-      Http.fetch({
-        method: "get",
-        url: master + "/home/getAllDeptInfoForFrontPage",
-        params: {
-          pid: Pid
-        }
-      }).then(
-        function (result) {
-          if (result.status == 200) {
-            if (result.data.length < 15) {
-              vm.showMorecatalog = false;
-              var depAllDeptInfo = result.data;
-            } else {
-              vm.showMorecatalog = true;
-              var depAllDeptInfo = [];
-              for (let i = 0; i < 13; i++) {
-                depAllDeptInfo.push(result.data[i]);
-              }
-            }
-            vm.depAllDeptInfoData = depAllDeptInfo;
+    // getAllDeptInfo: function (Pid) {
+    //   const vm = this;
+    //   Http.fetch({
+    //     method: "get",
+    //     url: master + "/home/getAllDeptInfoForFrontPage",
+    //     params: {
+    //       pid: Pid
+    //     }
+    //   }).then(
+    //     function (result) {
+    //       if (result.status == 200) {
+    //         if (result.data.length < 15) {
+    //           vm.showMorecatalog = false;
+    //           var depAllDeptInfo = result.data;
+    //         } else {
+    //           vm.showMorecatalog = true;
+    //           var depAllDeptInfo = [];
+    //           for (let i = 0; i < 13; i++) {
+    //             depAllDeptInfo.push(result.data[i]);
+    //           }
+    //         }
+    //         vm.depAllDeptInfoData = depAllDeptInfo;
 
-          } else {
-            Notification({
-              type: "error",
-              title: '部门目录',
-              message: result.message,
-            });
-          }
-        });
-    },
+    //       } else {
+    //         Notification({
+    //           type: "error",
+    //           title: '部门目录',
+    //           message: result.message,
+    //         });
+    //       }
+    //     });
+    // },
     getCatalogList: function (type) {
       const vm = this;
       vm.showMorecatalog = false;
@@ -112,11 +114,11 @@ export default {
       vm.depAllDeptInfoAB = [];
       vm.depAllDeptInfoData = [];
       if (type == 'base') {
-        vm.getAllDirMenuInfo(1);
-      } else if (type == 'topic') {
         vm.getAllDirMenuInfo(2);
+      } else if (type == 'topic') {
+        vm.getAllDirMenuInfo(3);
       } else {
-        vm.getAllDeptInfo();
+         vm.getAllDirMenuInfo(1);
       }
     },
     getCountDataShare: function () {
