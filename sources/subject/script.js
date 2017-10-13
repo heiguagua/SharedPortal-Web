@@ -8,20 +8,22 @@ export default {
   data() {
     return {
       activeName: "",
+      activeChild: '',
       devthemes: {},
       data1: [],
       current_item: {},
       istextaDep: true,
       showLinkDom: false,
+      jumpRoute: true
     }
   },
   mounted() {
     const vm = this;
     vm.getRemoteDatas();
-    console.log(this.$route.query)
-    if (this.$route.query) {
+    if (JSON.stringify(this.$route.query) != "{}") {
       vm.current_item = this.$route.query;
       vm.showLinkDom = true;
+      vm.jumpRoute = false;
     }
 
   },
@@ -29,6 +31,7 @@ export default {
     handleClick(item, event) {
       const vm = this;
       vm.current_item = item;
+      vm.activeChild = item.name;
       vm.showLinkDom = false;
       Http.fetch({
         method: "GET",
@@ -69,16 +72,19 @@ export default {
           }
         });
     },
-    showLink: function (item, $event) {
+    showLink: function (item, val) {
       const vm = this;
+      if (val != 'dep') {
+        vm.activeChild = "";
+      }
       this.$router.push({
         path: `/layout/subject`,
         query: {
-        name:item.name,
-        appCategoryName:item.appCategoryName,
-        visitCount:item.visitCount,
-        creatTime:item.creatTime,
-        url:item.url
+          name: item.name,
+          appCategoryName: item.appCategoryName,
+          visitCount: item.visitCount,
+          creatTime: item.creatTime,
+          url: item.url
         }
       });
       vm.current_item = item;
@@ -88,6 +94,7 @@ export default {
     },
     changeTab: function () {
       const vm = this;
+      vm.jumpRoute = true;
       vm.showLinkDom = false;
     },
     Boxhide: function () { /*jquery取消隐藏元素*/

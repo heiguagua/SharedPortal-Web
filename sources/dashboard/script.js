@@ -35,7 +35,7 @@ export default {
     vm.LatestDbResourceData(); //最新资源
     vm.HottestResourceData(); //最热资源
     vm.getCarouselPicNews(); //最新新闻
-    vm.getAllDirMenuInfo(3); //主题目录
+    vm.getAllDirMenuInfo(2); //主题目录
   },
   methods: {
     getAllDirMenuInfo: function (Pid) {
@@ -59,11 +59,11 @@ export default {
                 depAllDeptInfo.push(result.data[i]);
               }
             }
-            if (Pid == 2) {
+            if (Pid == 1) {
               vm.depAllDeptInfoAA = depAllDeptInfo;
-            } else if (Pid == 3) {
+            } else if (Pid == 2) {
               vm.depAllDeptInfoAB = depAllDeptInfo;
-            }else if (Pid == 1) {
+            }else if (Pid == 3) {
               vm.depAllDeptInfoAC = depAllDeptInfo;
             }
           } else {
@@ -114,11 +114,11 @@ export default {
       vm.depAllDeptInfoAB = [];
       vm.depAllDeptInfoData = [];
       if (type == 'base') {
-        vm.getAllDirMenuInfo(2);
+        vm.getAllDirMenuInfo(1);
       } else if (type == 'topic') {
-        vm.getAllDirMenuInfo(3);
+        vm.getAllDirMenuInfo(2);
       } else {
-         vm.getAllDirMenuInfo(1);
+         vm.getAllDirMenuInfo(3);
       }
     },
     getCountDataShare: function () {

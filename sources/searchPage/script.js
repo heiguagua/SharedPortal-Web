@@ -110,10 +110,10 @@ export default {
             vm.developerData = data.body;
             vm.totalR = data[Pager.totalR];
           } else {
-            Notification({
+            vm.$message({
               type: "error",
-              title: '开发者工具',
-              message: result.message,
+              title: '数据目录',
+              message: "内部错误",
             });
           }
         });
@@ -160,10 +160,10 @@ export default {
             let data = result.data;
             vm.latestDirectory = data.body;
           } else {
-            Notification({
+           vm.$message({
               type: "error",
-              title: '最新动态-最新目录',
-              message: result.message,
+              title: '最新数据目录',
+              message: "内部错误",
             });
           }
         });
@@ -182,10 +182,10 @@ export default {
             let data = result.data;
             vm.listHottestDirectory = data.body;
           } else {
-            Notification({
+            vm.$message({
               type: "error",
-              title: '最新动态-最热目录',
-              message: result.message,
+              title: '热门数据目录',
+              message: "内部错误",
             });
           }
         });

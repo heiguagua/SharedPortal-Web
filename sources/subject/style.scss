@@ -15,9 +15,11 @@
   }
 
   .el-tab-pane{
-    .lstDl:last-child{
+    .lstDl{
+      padding-bottom: 15px;
+      overflow: hidden;
+      &:last-child{
       border-bottom: 2px solid #4197F4;
-      margin-bottom: 0;
       a.textaDep{
 
         cursor: pointer;
@@ -29,19 +31,18 @@
         }
       }
     }
+    }
     dt.ui-link{
       padding-left: 14px;
-      width: 100%;
+      width: 140px;
       font-size: 16px;
-      position: relative;
+      float: left;
       font-weight: normal;
       color: #3D4557;
       left: 0;
     }
     dd{
-      margin-left: 140px;
-      position: relative;
-      top: -20px;
+      float: left;
       span.active{
         color: #4197F4;
 

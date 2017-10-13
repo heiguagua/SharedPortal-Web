@@ -2,15 +2,15 @@
   <div class="section-content">
     <el-tabs type="border-card" v-model="activeName"  @tab-click="changeTab">
         <el-tab-pane :key="item.name" v-for="(item, index) in devthemes" :label="item.name" :name="item.name">
-          <dl>
+          <dl v-show="jumpRoute">
             <dl v-for='subitem in item.children' class="lstDl">
               <dt class="ui-link" >&nbsp;&nbsp;{{subitem.name}} >&nbsp;&nbsp;&nbsp;</dt>
               <dd>
                  <span v-for='ssubitem in subitem.children'>
                   <span v-if='ssubitem.url'  :class="{ active: (current_item === ssubitem) }"   @click="Boxhide">
-                   <a  class="texta" target="_blank" v-bind:title="ssubitem.name" @click="showLink(ssubitem,$event)" > | {{ssubitem.name}}</a>
+                   <a  class="texta" target="_blank" v-bind:title="ssubitem.name" @click="showLink(ssubitem,'')" > | {{ssubitem.name}}</a>
                   </span>
-                  <span v-else :class="{ active: (current_item === ssubitem) }">
+                  <span v-else :class="{ active: (activeChild  === ssubitem.name) }">
                     <a  :class="{textaDep:istextaDep}" :pid="ssubitem.id" @click="handleClick(ssubitem,ssubitem.id)"> | {{ssubitem.name}}</a> 
                   </span>
                 </span>
@@ -19,7 +19,7 @@
           </dl>
           <div v-for='item in data1'>
             <div v-show="activeName =='常规应用'"  class="div_dep Box">
-              <a  :class="{ active: (current_item === item) }"  @click="showLink(item,$event)" target="_blank">|&nbsp;&nbsp;{{ item.name }}</a>
+              <a  :class="{ active: (current_item.name=== item.name) }"  @click="showLink(item,'dep')" target="_blank">|&nbsp;&nbsp;{{ item.name }}</a>
             </div>
           </div>
           <!--工具简介-->
