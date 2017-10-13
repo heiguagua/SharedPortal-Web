@@ -58,7 +58,7 @@
                 <el-carousel :interval="5000" arrow="always">
                   <el-carousel-item v-for="picNew in carouselPicNews" :key="picNew.id">
                     <a class="img-list" href="javascript:void(0)" @click="getCarouselDetail(picNew)">
-                      <img v-bind:src="picNew.picUrl" alt="新闻图" height="460" width="100%">
+                      <img v-bind:src="picNew.picUrl" alt="新闻图" height="385" width="100%">
                        <span class="img-info">{{picNew.title}}</span>
                     </a>
                   </el-carousel-item>

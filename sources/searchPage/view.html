@@ -32,10 +32,10 @@
                   <li>信息资源摘要：{{item.dataset_desc}}</li>
                 </ul>
               </div>
-               <div class="page">
-        <el-pagination @current-change="handlePageChangeCatalog"   layout="total, prev, pager, next, jumper" :total="totalR">
-        </el-pagination>
-        </div>
+              <div class="page">
+                <el-pagination @current-change="handlePageChangeCatalog" layout="total, prev, pager, next, jumper" :total="totalR">
+                </el-pagination>
+              </div>
             </el-tab-pane>
             <el-tab-pane name="subject">
               <a slot="label">专题应用</a>
@@ -52,10 +52,10 @@
 
                 </ul>
               </div>
-               <div class="page">
-        <el-pagination @current-change="handlePageChangeSubject"   layout="total, prev, pager, next, jumper" :total="totalR">
-        </el-pagination>
-        </div>
+              <div class="page">
+                <el-pagination @current-change="handlePageChangeSubject" layout="total, prev, pager, next, jumper" :total="totalR">
+                </el-pagination>
+              </div>
             </el-tab-pane>
             <el-tab-pane name="developer">
               <a slot="label">开发者工具</a>
@@ -72,13 +72,13 @@
                 </ul>
               </div>
               <div class="page">
-                <el-pagination @current-change="handlePageChangeDeveloper"   layout="total, prev, pager, next, jumper" :total="totalR">
+                <el-pagination @current-change="handlePageChangeDeveloper" layout="total, prev, pager, next, jumper" :total="totalR">
                 </el-pagination>
               </div>
             </el-tab-pane>
           </el-tabs>
         </template>
-        <div class="search">
+        <div class="search" @keyup.enter="keydownLogin($event)">
           <el-input placeholder="请输入数据目录/应用/工具名称关键词" v-model="keywords">
             <el-button slot="append" icon="search" @click="searchKeywords">搜索</el-button>
           </el-input>
@@ -88,7 +88,9 @@
     <el-col :span="6">
       <div class="right">
         <div class="more-list">
-          <div class="title">最新数据目录<span>更多</span></div>
+          <div class="title">最新数据目录
+            <router-link :to="{ path: '/layout/interaction/hotMessage?id=latestCatalog' }"><span>更多</span></router-link>
+          </div>
           <ul>
             <li v-for="item in latestDirectory">
               <a @click="jumpDetailLatestCatalog(item)"><span v-bind:title="item.dataset_name">{{item.dataset_name}}</span></a><span>{{item.create_time | formatDate}}</span>
@@ -96,18 +98,22 @@
           </ul>
         </div>
         <div class="more-list">
-          <div class="title">热门数据目录<span>更多</span></div>
+          <div class="title">热门数据目录
+            <router-link :to="{ path: '/layout/interaction/hotMessage?id=hottestCatalog' }"><span>更多</span></router-link>
+          </div>
           <ul>
             <li v-for="item in listHottestDirectory">
-              <a  @click="jumpDetailHotestCatalog(item)"><span v-bind:title="item.classify_name">{{item.classify_name}}</span></a><span>{{item.count}}</span>
+              <a @click="jumpDetailHotestCatalog(item)"><span v-bind:title="item.classify_name">{{item.classify_name}}</span></a><span>{{item.count}}</span>
             </li>
           </ul>
         </div>
         <div class="more-list">
-          <div class="title">热门应用<span>更多</span></div>
+          <div class="title">热门应用
+            <router-link :to="{ path: '/layout/subject' }"><span> 更多</span></router-link>
+          </div>
           <ul>
             <li v-for="(item,index) in hotAppsByDept" v-if="index<5">
-              <a><span v-bind:title="item.name">{{item.name}}</span></a><span>{{item.visitCount}}</span>
+              <a @click="jumpDetailSubject(item)"><span v-bind:title="item.name">{{item.name}}</span></a><span>{{item.visitCount}}</span>
             </li>
           </ul>
         </div>

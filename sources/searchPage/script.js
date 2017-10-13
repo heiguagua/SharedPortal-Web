@@ -11,13 +11,13 @@ export default {
       countDataShare: {},
       keywords: this.$route.query.keywords,
       activeName: "catalog",
-      totalR:0,
+      totalR: 0,
       catalogData: [],
       latestDirectory: [],
       listHottestDirectory: [],
       hotAppsByDept: [],
       developerData: [],
-      subjectData:[],
+      subjectData: [],
     }
   },
   mounted() {
@@ -46,7 +46,7 @@ export default {
       if (activeName == 'catalog') {
         vm.getCatalogData(1, vm.keywords);
       } else if (activeName == 'subject') {
-         vm.getAppsByDeptData(1, vm.keywords);
+        vm.getAppsByDeptData(1, vm.keywords);
       } else if (activeName == 'developer') {
         vm.getDeveloperData(1, vm.keywords);
       }
@@ -57,8 +57,8 @@ export default {
       vm.getCatalogData(val, vm.keywords);
     },
     handlePageChangeSubject(val) {
-       const vm = this;
- vm.getAppsByDeptData(val, vm.keywords);
+      const vm = this;
+      vm.getAppsByDeptData(val, vm.keywords);
     },
     handlePageChangeDeveloper(val) {
       const vm = this;
@@ -118,7 +118,7 @@ export default {
         });
     },
 
-        getAppsByDeptData: function (curr_page,search_inp) {
+    getAppsByDeptData: function (curr_page, search_inp) {
       const vm = this;
       Http.fetch({
         method: "GET",
@@ -133,7 +133,7 @@ export default {
           if (result.status == 200) {
             let data = result.data;
             vm.subjectData = data.body;
-             vm.totalR = data[Pager.totalR];
+            vm.totalR = data[Pager.totalR];
           } else {
             vm.$message({
               type: "error",
@@ -196,7 +196,7 @@ export default {
         url: master + "/home/getAppInfoList",
         params: {
           orderBy: "visitCount",
-           pageSize: 5,
+          pageSize: 5,
         }
       }).then(
         function (result) {
@@ -216,7 +216,7 @@ export default {
       var keywords = this.keywords;
       return title.replace(keywords, '<span style="color: #4197F4;">' + keywords + '</span>');
     },
-     jumpDetailLatestCatalog(item) { //最新目录的跳转---政务基础信息资源目录、  政务主题信息资源目录
+    jumpDetailLatestCatalog(item) { //最新目录的跳转---政务基础信息资源目录、  政务主题信息资源目录
       const vm = this;
       vm.$router.push({
         path: '/layout/catalog/details',
@@ -225,6 +225,13 @@ export default {
           ddcm_id: item.resource_map_id
         }
       })
+    },
+    keydownLogin(ev) {
+      const vm = this;
+      var event = ev || window.event;
+      if (event.keyCode == '13') { //keyCode=13是回车键
+        vm.searchKeywords();
+      }
     },
     jumpDetailHotestCatalog(item) { //最热目录的跳转---政务基础信息资源目录、  政务主题信息资源目录列表页面
       const vm = this;
@@ -236,15 +243,19 @@ export default {
         }
       })
     },
-    //  jumpDetailSubject(item) { //专题应用
-    //   const vm = this;
-    //   vm.$router.push({
-    //     path: '/layout/subject',
-    //     query: {
-    //       id: item.id
-    //     }
-    //   })
-    // },
+    jumpDetailSubject(item) { //专题应用
+      const vm = this;
+      vm.$router.push({
+        path: '/layout/subject',
+        query: {
+          name: item.name,
+          appCategoryName: item.appCategoryName,
+          visitCount: item.visitCount,
+          creatTime: item.creatTime,
+          url:item.url
+        }
+      })
+    },
   },
   filters: {
     formatDate(time) {
