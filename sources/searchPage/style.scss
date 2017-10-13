@@ -6,15 +6,29 @@
     margin-right: 15px;
     background: $white;
     position: relative;
+    .list-group {
+      cursor: pointer;
+      &:hover .title>span {
+        color: $main-blue;
+        text-decoration: underline;
+      }
+    }
     .search {
       position: absolute;
       top: 3px;
       right: 15px;
       width: 30%;
+      .el-input-group__append,
+      .el-input-group__prepend {
+        background-color: $main-blue;
+      }
+      .el-button {
+        color: $white;
+      }
     }
-    .page{
+    .page {
       text-align: right;
-       padding: 30px 15px;
+      padding: 30px 15px;
     }
     .list-group {
       padding: 15px;
@@ -54,15 +68,22 @@
         border-bottom: 1px solid $extra-light-gray;
         height: 42px;
         line-height: 42px;
-        >span{
+  
+        span {
           float: right;
           font-size: 14px;
+          color: #333;
+          &:hover{
+            color:$main-blue;
+            text-decoration: underline;
+          }
         }
       }
       ul {
         padding: 15px;
         li {
           line-height: 1.8em;
+          cursor: pointer;
           >span {
             @include pull-right;
           }

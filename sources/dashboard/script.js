@@ -146,7 +146,7 @@ export default {
         url: master + "/home/listLatestpolicies",
         params: {
           policyType: policyType,
-          pageSize: 6
+          pageSize: 5
         }
       }).then(
         function (result) {
