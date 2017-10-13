@@ -11,6 +11,7 @@ export default {
       detail_pro: {}, //详情
       tableDataItem: [], //信息
       activeTab: 'itemlist',
+      tableInterfaces: [],
       // totalResource:0,
       currentPage: 1,
       pageSize: 5,
@@ -88,16 +89,16 @@ export default {
       // console.log(tab, event);
       if (tab.name == "interfaceinfo") {
         vm.getInterfaces(vm.$route.query.tableId).then(function (res) {
-
+          vm.tableInterfaces = res.data;
         })
       }
     },
     getInterfaces: function (table_Id) { // 获取接口信息
       return Http.fetch({
         method: "post",
-        url: master + "/dbtable/getInterfaces",
+        url: master + "/serviceinfo/getServiceInfoByObjId",
         data: {
-          table_Id: table_Id
+          obj_Id: table_Id
         }
       })
     },
