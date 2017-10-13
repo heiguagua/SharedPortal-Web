@@ -59,7 +59,8 @@
             </el-tab-pane>
             <el-tab-pane name="developer">
               <a slot="label">开发者工具</a>
-              <div class="list-group" v-for="item in developerData">
+              <div class="list-group" v-for="item in developerData" >
+                <router-link :to="{path:'/layout/developer',query:{current_item:item}}">
                 <div class="title">
                   <span v-html="titlehtml(item.api_name)"></span>
                 </div>
@@ -70,6 +71,7 @@
                     <span>访问次数：{{item.visit_count}} 次</span>
                   </li>
                 </ul>
+                </router-link>
               </div>
               <div class="page">
                 <el-pagination @current-change="handlePageChangeDeveloper"   layout="total, prev, pager, next, jumper" :total="totalR">

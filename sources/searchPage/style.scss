@@ -19,6 +19,11 @@
     .list-group {
       padding: 15px;
       border-bottom: 1px solid $extra-light-gray;
+      >a{
+        display: block;
+        text-decoration: none;
+        color: inherit;
+      }
       ul {
         li {
           line-height: 1.8em;

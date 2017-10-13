@@ -87,25 +87,20 @@
 				      <template scope="props">
 				        <el-form label-position="left"  class="demo-table-expand">
 				          <el-form-item label="使用说明">
-				            <span>{{ props.row.desc }}</span>
+				            <span>{{ props.row.operation_desc }}</span>
 				          </el-form-item>
 				          <el-form-item label="字段说明">
-				            <span>{{ props.row.attr_desc }}</span>
+				            <span>{{ props.row.request_info }}</span>
 				          </el-form-item>
 				        </el-form>
 				      </template>
 				    </el-table-column>
-				    <!-- <el-table-column
-				      type="index"
-      				width="50">
-				    </el-table-column>
 				    <el-table-column
-				      label="商品名称"
-				      prop="name">
-				    </el-table-column> -->
-				    <el-table-column
-				      label="接口说明"
-				      prop="url">
+				      label="接口列表"
+				      prop="service_url">
+				      <template scope="props">
+				      	{{ props.row.service_url }}
+				      </template>
 				    </el-table-column>
 				  </el-table></div>
 			</el-tab-pane>

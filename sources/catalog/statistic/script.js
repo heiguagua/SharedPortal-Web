@@ -12,7 +12,7 @@ export default {
   mounted() {
       const vm = this;
       vm.head_title = vm.$route.query.dirName;
-      vm.getListStatistics(vm.head_title).then(function(res){
+      vm.getListStatistics(vm.$route.query.id).then(function(res){
         vm.loading = false;
         if(res.status == 200) {
           vm.tableData = res.data;
@@ -28,13 +28,13 @@ export default {
     },
 
   methods: {
-  	getListStatistics:function(dirName){
+  	getListStatistics:function(id){
         const vm = this;
         return Http.fetch({
         method: "post",
-        url: master + "/classify/getStatisticsByName",
+        url: master + "/classify/getStatisticsById",
         data: {
-          classify_name: dirName
+          id: id
         }
       })
     },

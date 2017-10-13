@@ -4,52 +4,7 @@ const master = Http.url.master;
 export default {
   data() {
     return {
-      regions: [{
-        'id':1,
-        'name': '政务部门信息资源目录',
-        'path': 'statistic'
-      }, {
-        'id':2,
-        'name': '政务基础信息资源目录',
-        'path': 'statistic'
-      }, {
-         'id':3,
-        'name': '政务主题信息资源目录',
-        'path': 'statistic'
-      }, {
-        'id':4,
-        'name': '系统静态数据资源目录',
-        'path': 'system'
-      }],
-      regions1: [{
-        'name': '业务目录',
-        "hasLeaf": "1",
-        path: 'department-resources'
-      }, {
-        'name': '资源目录',
-        "hasLeaf": "1",
-        path: 'list-resources'
-      }, {
-        'name': '共享目录',
-        "hasLeaf": "1",
-        path: 'shared-resources'
-      }, {
-        'name': '开放目录',
-        "hasLeaf": "1",
-        path: 'open-resources'
-      }, {
-        'name': '需求目录',
-        "hasLeaf": "1",
-        path: 'demand-resources'
-      }, {
-        'name': '系统目录',
-        "hasLeaf": "1",
-        path: 'economy-resources'
-      }, {
-        'name': '系统资源目录',
-        "hasLeaf": "1",
-        path: 'system-list-resourses'
-      }],
+      regions: [],
       props: {
         label: 'name',
         children: 'children'
@@ -62,17 +17,36 @@ export default {
   mounted() {
     const vm = this;
     var username = Encrypt.token.get("userName");
-    // console.log(username);
-    if (username) {
+    
+    vm.getDirNodesByParent().then(function(res){
+      console.log(res);
+      vm.regions = res.data;
+      _.forEach(vm.regions,function(item){
+        item.path = "statistic";
+      });
       vm.regions.push({
-        'name': '系统实时动态数据资源',
+        'id':4,
+        'name': '系统静态数据资源目录',
         'path': 'system'
-      })
-    }
- if(this.$route.path == '/layout/catalog/statistic'){
-   vm.expandedKeys = [1];
- }
-    //vm.getListStatistics();
+      });
+      if (username) {
+        vm.regions.push({
+          'name': '系统实时动态数据资源',
+          'path': 'system'
+        })
+      }
+       if(vm.$route.path == '/layout/catalog'){
+         vm.expandedKeys = [vm.regions[0].id];
+         vm.$router.push({
+            path: '/layout/catalog/statistic',
+            query: {
+              dirName: vm.regions[0].name,
+              id: vm.regions[0].id
+            }
+          })
+       }
+    })
+
   },
   methods: {
     handleNodeClick(data, node) {
@@ -85,7 +59,8 @@ export default {
         this.$router.push({
           path: `/layout/catalog/${data.path}`,
           query: {
-            dirName: data.name
+            dirName: data.name,
+            id:data.id
           }
         });
       } else {
@@ -106,15 +81,8 @@ export default {
                 dirCode: data.dept_Id
               }
             })
-          } /*else if (data.path) {
-            this.$router.push({
-              path: `/layout/catalog/${data.path}`,
-              query: {
-                dirName: data.name,
-                dirCode: data.code
-              }
-            })
-          }*/ else {
+          } 
+          else {
             let loadPath = vm.findNode(node);
             this.$router.push({
               path: `/layout/catalog/${loadPath}`,
@@ -152,13 +120,6 @@ export default {
       if (node.level === 0) {
         return resolve(vm.regions);
       }
-      // if (node.parent.data.path === vm.regions[0].path) {
-      //   return resolve(vm.regions1);
-      // }
-      if(node.level === 1 && node.data.path == "department") {
-          return resolve(vm.regions1);
-      }
-      
       var hasChild;
       console.log(node.data);
       if (node.level === 1 || node.data.hasLeaf === 1 ||node.data.hasLeaf === "1") {
@@ -199,7 +160,7 @@ export default {
 
               });
             }else{
-              vm.getFirstClassifyChildrenByName(node.data.name).then(function (res) {
+              vm.getDirNodesByParent(node.data.id).then(function (res) {
                 if (res.status == 200) {
                   data = res.data;
                   resolve(data);
@@ -238,18 +199,6 @@ export default {
 
               });
             }
-            // else if(rootName =="政务部门信息资源目录"){
-            //   vm.getDepartmentDataSecondLevelChild(node.data.dept_Id).then(function(res) {
-            //     if (res.status == 200) {
-            //       console.log("yiji",res)
-            //       data = res.data;
-            //       resolve(data);
-            //     } else {
-            //       data = [];
-            //       resolve(data);
-            //     }
-            //   })
-            // }
              else{
               vm.getDirNodesByParent(node.data.id).then(function (res) {
                 if (res.status == 200) {

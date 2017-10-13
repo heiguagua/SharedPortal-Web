@@ -22,6 +22,7 @@ export default {
   },
   mounted() {
     const vm = this;
+    
     vm.latestDirectoryData();
     vm.HottestDirectoryData();
     vm.getAppsByDeptList();
