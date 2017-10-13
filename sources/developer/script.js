@@ -65,6 +65,11 @@ export default {
         function(result) {
           if (result.status == 200) {
             vm.subAppList = result.data;
+              var param_item = vm.$route.query.current_item;
+            if(!param_item) {
+            vm.current_item=result.data[0];
+             vm.showLinkDom = true;
+            }
           } else {
             vm.$message({
               type: "error",
@@ -74,7 +79,7 @@ export default {
           }
         });
     },
-    showLink:function(item,$event){
+    showLink:function(item){
       const vm = this;
       vm.current_item = item;
       vm.showLinkDom = true;
