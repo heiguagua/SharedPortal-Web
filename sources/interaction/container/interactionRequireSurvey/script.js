@@ -178,7 +178,7 @@ export default {
                   // vm.depName = [];//部门多选时用
                   vm.depName = ""; //部门单选时用
                   vm.ruleForm.resourceId = []
-                  vm.$refs.tree.setCheckedKeys([]);
+                  // vm.$refs.tree.setCheckedKeys([]);//部门多选时用
                   $("#dep_inp").height(33);
                 } else {
                   vm.$message({
