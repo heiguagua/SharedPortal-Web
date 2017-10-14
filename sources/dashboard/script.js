@@ -66,6 +66,15 @@ export default {
                 depAllDeptInfo.push(result.data[i]);
               }
             }
+              
+            if(item.type == "2-3"){
+              $.each(depAllDeptInfo,function(i,v){
+                if(v.type == '3'){
+                  vm.getAllDirMenuInfo(v);
+                }
+              })
+              
+            }
             vm.depAllDeptInfoAA = depAllDeptInfo;
             vm.parentName = item.name;
             vm.parentId = item.id;
@@ -277,15 +286,12 @@ export default {
           }
         });
     },
-    getDirNodesByParent: function (id) {
+    getDirNodesByParent: function () {
       const vm = this;
       vm.depAllDeptInfoAA=[];
       return Http.fetch({
-        method: "post",
-        url: master + "/classify/getClassifyChildrenById",
-        data: {
-          id: id
-        }
+        method: "get",
+        url: master + "/home/getClassifyChildrenWithSubchildrenById",
       }).then(
         function (result) {
           if (result.status == 200) {
