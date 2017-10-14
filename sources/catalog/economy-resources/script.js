@@ -17,11 +17,11 @@ export default {
     },
     mounted() {
       const vm = this;
-      vm.loadData();
+      vm.loadData(true);
     },
 
     methods: {
-      loadData(){
+      loadData(cache_total){
         const vm = this;
         vm.head_title = vm.$route.query.dirName;
         var dirCode = vm.$route.query.dirCode;
@@ -31,8 +31,10 @@ export default {
             console.log(res)
             var r_data = res.data;
             vm.tableData = r_data.body;
+             if(!cache_total){
             vm.totalResource = r_data[Pager.totalR];
             vm.itemCount = res.data.itemCount; // 数据项
+             }
           }
           else{
             Notification({
@@ -67,12 +69,12 @@ export default {
       handlePageChange(val){// 分页处理
         const vm = this;
         vm.currentPage = val;
-        vm.loadData();
+        vm.loadData(true);
       },
       handleSearch(){
         const vm = this;
         vm.currentPage = 1;
-        vm.loadData();
+        vm.loadData(false);
       }
     },
     filters:{

@@ -32,10 +32,10 @@
                 <el-form-item label="部门" prop="orgCode">
                   <!-- <el-input type="text" v-model="ruleForm.orgCode"></el-input> -->
                   <el-dropdown trigger="click" style="width:100%">
-                    <span class="el-dropdown-link">
+                    <span class="el-dropdown-link" v-bind:title="depName">
                 <input type="text" v-model="depName" class="el-input__inner" >
                  </span>
-                    <el-dropdown-menu slot="dropdown" style="width:400px;max-height:300px;overflow: auto">
+                    <el-dropdown-menu slot="dropdown" style="min-width:400px;max-height:300px;overflow: auto">
                       <el-tree :data="depData" :props="props"  :load="loadNode" lazy accordion @node-click="handleNodeClick" highlight-current></el-tree>
                     </el-dropdown-menu>
                   </el-dropdown>

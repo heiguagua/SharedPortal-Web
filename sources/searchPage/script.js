@@ -81,7 +81,10 @@ export default {
           if (result.status == 200) {
             let data = result.data;
             vm.catalogData = data.body;
+             if(!data.previous){
             vm.totalR = data[Pager.totalR];
+            }
+          
           } else {
             Notification({
               type: "error",
@@ -108,7 +111,9 @@ export default {
           if (result.status == 200) {
             let data = result.data;
             vm.developerData = data.body;
+             if(!data.previous){
             vm.totalR = data[Pager.totalR];
+            }
           } else {
             vm.$message({
               type: "error",
@@ -134,7 +139,9 @@ export default {
           if (result.status == 200) {
             let data = result.data;
             vm.subjectData = data.body;
+            if(!data.previous){
             vm.totalR = data[Pager.totalR];
+            }
           } else {
             vm.$message({
               type: "error",

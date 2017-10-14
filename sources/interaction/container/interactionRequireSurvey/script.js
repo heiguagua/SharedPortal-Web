@@ -13,7 +13,8 @@ export default {
         content: '',
         requirementType: 'interface',
         others: '',
-        depId: [],
+        // depId: [],//部门多选时用
+        depId: "", //部门单选时用
         resourceId: []
       },
       initForm: {
@@ -26,8 +27,13 @@ export default {
           message: '标题不能为空',
           trigger: 'blur'
         }],
-        depId: [{
-          type: 'array',
+        // depId: [{//部门多选时用
+        //   type: 'array',
+        //   required: true,
+        //   message: '部门不能为空',
+        //   trigger: 'blur'
+        // }],
+        depId: [{ //部门单选时用
           required: true,
           message: '部门不能为空',
           trigger: 'blur'
@@ -46,7 +52,8 @@ export default {
       },
       depData: [],
       options: [],
-      depName: [],
+      // depName: [],//部门多选时用的
+      depName: "", //部门单选时用的
       props: {
         label: 'name',
         children: 'children',
@@ -167,8 +174,9 @@ export default {
                   });
                   vm.$refs[formName].resetFields(); //清空表单
                   vm.ruleForm = {};
-                  vm.ruleForm.requirementType = 'interface';
-                  vm.depName = [];
+                  // vm.ruleForm.requirementType = 'interface';
+                  // vm.depName = [];//部门多选时用
+                  vm.depName = ""; //部门单选时用
                   vm.ruleForm.resourceId = []
                   vm.$refs.tree.setCheckedKeys([]);
                   $("#dep_inp").height(33);
@@ -259,6 +267,16 @@ export default {
         $("#dep_inp").height(33 * vm.depName.length);
       }
     },
+
+    /**部门单选 */
+    handleNodeClick(data) {
+      const vm = this;
+      if (data.has_leaf == 0) {
+        vm.depName = data.name;
+        vm.ruleForm.depId = data.id;
+      }
+    },
+
     // deleNode(node) { //删除
     //   const vm = this;
     //   vm.depName = [];

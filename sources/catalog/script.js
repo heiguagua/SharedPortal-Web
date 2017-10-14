@@ -269,7 +269,6 @@ export default {
 
               });
                  }else if(rootName =="部门政务信息梳理目录"){
-                   alert(node.data.dept_Id)
               vm.getDepartmentDataSecondLevelChild(node.data.dept_Id).then(function(res) {
                 if (res.status == 200) {
                   console.log("yiji",res)

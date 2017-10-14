@@ -10,6 +10,7 @@
       </el-row>
       <el-row>
         <el-col :span="16" :offset="1">
+          <!-- 部门单选 -->
           <el-form-item label="需求详情" label-suffix="sfdfsd">
             <el-row>
               <el-col :span="23" :offset="1">
@@ -24,7 +25,19 @@
             <el-row>
               <el-col :span="23" :offset="1">
                 <el-form-item label="部门" prop="depId" label-suffix="sfdfsd">
-                  <!-- <el-input v-model="ruleForm.depId"></el-input>  -->
+                  <el-dropdown trigger="click" style="width:100%">
+                    <span class="el-dropdown-link"  v-bind：title="depName">
+                <input type="text" v-model="depName" class="el-input__inner" >
+                 </span>
+                    <el-dropdown-menu slot="dropdown" style="min-width:300px;max-height:300px;overflow: auto">
+                      <el-tree :data="depData" :props="props"  :load="loadNode" lazy accordion @node-click="handleNodeClick" highlight-current></el-tree>
+                    </el-dropdown-menu>
+                  </el-dropdown>
+                </el-form-item>
+                <!-- 部门单选 -->
+
+<!-- 部门可多选 -->
+                <!-- <el-form-item label="部门" prop="depId" label-suffix="sfdfsd">
                   <el-dropdown trigger="click" style="width:100%">
                     <span class="el-dropdown-link">
                       <div class="el-select">
@@ -43,7 +56,8 @@
     <div class="depBtn"><el-button  type="primary" @click="getCheckedNodes">确定</el-button></div>
   </el-dropdown-menu>
   </el-dropdown>
-  </el-form-item>
+  </el-form-item> -->
+<!-- 部门可多选 -->
   </el-col>
   </el-row>
   <el-row>
