@@ -7,13 +7,15 @@ export default {
       islogin: false,
       username: "",
       password: "",
-      dialogLoginVisible:false,
-      errorShow:false
+      sysObj:{},
+      dialogLoginVisible: false,
+      errorShow: false
     }
   },
   mounted() {
     const vm = this;
     vm.isloginStatus();
+    vm.getSysName();
   },
 
   methods: {
@@ -49,6 +51,24 @@ export default {
           }
         });
     },
+    getSysName: function () {//系统名称
+      const vm = this;
+      Http.fetch({
+        method: "get",
+        url: Http.url.master + "/home/getPorjectPotalNames"
+      }).then(
+        function (result) {
+          if (result.status == 200) {
+           vm.sysObj=result.data;
+          } else {
+            Notification({
+              type: "error",
+              title: '系统错误',
+              message: result.message,
+            });
+          }
+        });
+    },
     onSubmit() {
       const vm = this;
       Http.fetch({
@@ -63,10 +83,10 @@ export default {
           if (result.status == 200) {
             const data = result.data;
             vm.$message({
-                  showClose: true,
-                  message: '登录成功！',
-                  type: 'success'
-                });
+              showClose: true,
+              message: '登录成功！',
+              type: 'success'
+            });
             vm.dialogLoginVisible = false;
             vm.islogin = true;
             Encrypt.token.set("orgName", data.orgName);
@@ -76,8 +96,8 @@ export default {
           }
         })
     },
-    openLoginDialog : function ( ) { 
-            this.dialogLoginVisible = true;
-        } 
+    openLoginDialog: function () {
+      this.dialogLoginVisible = true;
+    }
   }
 };

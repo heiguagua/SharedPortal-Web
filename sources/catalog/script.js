@@ -58,13 +58,13 @@ export default {
         item.path = "statistic";
       });
       vm.regions.push({
-        'id':4,
-        'name': '系统静态数据资源目录',
-        'path': 'system'
-      },{
          'id':1,
         'name': '部门政务信息梳理目录',
        'path': 'department'
+      },{
+        'id':4,
+        'name': '系统静态数据资源目录',
+        'path': 'system'
       });
       if (username) {
         vm.regions.push({
@@ -129,8 +129,8 @@ export default {
               }
             })
           }
-        } else if (rootPath == vm.regions[3].path) {
-          if(vm.regions.length>4 &&rootName ==vm.regions[4].name){
+        } else if (rootPath == vm.regions[4].path) {
+          if(vm.regions.length>5 &&rootName ==vm.regions[5].name){
             this.$router.push({
               path: '/layout/catalog/system-dynamic-resources',
               query: {
@@ -149,7 +149,7 @@ export default {
               }
             })
           }
-        }else if(rootPath == vm.regions[4].path){
+        }else if(rootPath == vm.regions[3].path){
      if (node.level === 2) {
             this.$router.push({
               path: `/layout/catalog/${data.path}`,
@@ -269,6 +269,7 @@ export default {
 
               });
                  }else if(rootName =="部门政务信息梳理目录"){
+                   alert(node.data.dept_Id)
               vm.getDepartmentDataSecondLevelChild(node.data.dept_Id).then(function(res) {
                 if (res.status == 200) {
                   console.log("yiji",res)

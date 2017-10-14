@@ -218,6 +218,11 @@
   .main-2 {
     background: $white;
     box-sizing: border-box;
+    .active{
+      background: #4197F4;
+      color: #fff;
+      border: none;
+    }
     .tab-body {
       text-align: center;
       .img-group {

@@ -81,7 +81,10 @@ export default {
           if (result.status == 200) {
             let data = result.data;
             vm.listLatestDbResource = data.body;
+             if(!data.previous){
             vm.pageTotal = data[Pager.totalR];
+            }
+            
           } else {
             Notification({
               type: "error",
@@ -107,7 +110,9 @@ export default {
           if (result.status == 200) {
             let data = result.data;
             vm.listHottestResource = data.body;
+            if(!data.previous){
             vm.pageTotal = data[Pager.totalR];
+            }
           } else {
             Notification({
               type: "error",
@@ -133,7 +138,9 @@ export default {
           if (result.status == 200) {
             let data = result.data;
             vm.listLatestDirectory = data.body;
+           if(!data.previous){
             vm.pageTotal = data[Pager.totalR];
+            }
           } else {
             Notification({
               type: "error",
@@ -159,7 +166,9 @@ export default {
           if (result.status == 200) {
             let data = result.data;
             vm.listHottestDirectory = data.body;
+         if(!data.previous){
             vm.pageTotal = data[Pager.totalR];
+            }
           } else {
             Notification({
               type: "error",
@@ -189,7 +198,9 @@ export default {
               vm.dataEmpty = false;
             }
             vm.listLatestpolicies = data.body;
+           if(!data.previous){
             vm.pageTotal = data[Pager.totalR];
+            }
 
           } else {
             Notification({

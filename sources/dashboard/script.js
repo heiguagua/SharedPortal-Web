@@ -4,7 +4,7 @@ const master = Http.url.master;
 export default {
   data() {
     return {
-      keywords:"",//搜索关键词
+      keywords: "", //搜索关键词
       countDataShare: "",
       latestpolicies_G: "",
       latestpolicies_S: "",
@@ -15,11 +15,15 @@ export default {
       listHottestDirectory: "",
       listLatestDbResource: "",
       listHottestResource: "",
+      current_active: '',
+      parentName: '',
+      parentId:"",
       carouselPicNews: [],
       depAllDeptInfoAA: [],
-      depAllDeptInfoAB: [],
-       depAllDeptInfoAC: [],
+      // depAllDeptInfoAB: [],
+      // depAllDeptInfoAC: [],
       depAllDeptInfoData: [],
+      dirFirstName: [],
       carouselDetail: {},
       dialogNewVisible: false,
       showMorecatalog: false,
@@ -28,6 +32,7 @@ export default {
   },
   mounted() {
     const vm = this;
+     vm.getDirNodesByParent();
     vm.getCountDataShare(); //资源统计
     vm.Latestpolicies("G"); //最新政策
     vm.latestDirectoryData(); //最新目录
@@ -35,16 +40,18 @@ export default {
     vm.LatestDbResourceData(); //最新资源
     vm.HottestResourceData(); //最热资源
     vm.getCarouselPicNews(); //最新新闻
-    vm.getAllDirMenuInfo(2); //主题目录
+   
+   
   },
   methods: {
-    getAllDirMenuInfo: function (Pid) {
+    getAllDirMenuInfo: function (item) {
       const vm = this;
+      var pid = item.id;
       Http.fetch({
         method: "get",
-        url: master + "/home/getDirMenuInfoForFrontPage",
+        url: master + "/home/getClassifyChildrenWithSubchildrenById",
         params: {
-          pid: Pid
+          id:pid
         }
       }).then(
         function (result) {
@@ -59,13 +66,9 @@ export default {
                 depAllDeptInfo.push(result.data[i]);
               }
             }
-            if (Pid == 1) {
-              vm.depAllDeptInfoAA = depAllDeptInfo;
-            } else if (Pid == 2) {
-              vm.depAllDeptInfoAB = depAllDeptInfo;
-            }else if (Pid == 3) {
-              vm.depAllDeptInfoAC = depAllDeptInfo;
-            }
+            vm.depAllDeptInfoAA = depAllDeptInfo;
+            vm.parentName = item.name;
+            vm.parentId = item.id;
           } else {
             Notification({
               type: "error",
@@ -75,52 +78,20 @@ export default {
           }
         });
     },
-    // getAllDeptInfo: function (Pid) {
+    // getCatalogList: function (type) {
     //   const vm = this;
-    //   Http.fetch({
-    //     method: "get",
-    //     url: master + "/home/getAllDeptInfoForFrontPage",
-    //     params: {
-    //       pid: Pid
-    //     }
-    //   }).then(
-    //     function (result) {
-    //       if (result.status == 200) {
-    //         if (result.data.length < 15) {
-    //           vm.showMorecatalog = false;
-    //           var depAllDeptInfo = result.data;
-    //         } else {
-    //           vm.showMorecatalog = true;
-    //           var depAllDeptInfo = [];
-    //           for (let i = 0; i < 13; i++) {
-    //             depAllDeptInfo.push(result.data[i]);
-    //           }
-    //         }
-    //         vm.depAllDeptInfoData = depAllDeptInfo;
-
-    //       } else {
-    //         Notification({
-    //           type: "error",
-    //           title: '部门目录',
-    //           message: result.message,
-    //         });
-    //       }
-    //     });
+    //   vm.showMorecatalog = false;
+    //   vm.depAllDeptInfoAA = [];
+    //   vm.depAllDeptInfoAB = [];
+    //   vm.depAllDeptInfoData = [];
+    //   if (type == 'base') {
+    //     vm.getAllDirMenuInfo(1);
+    //   } else if (type == 'topic') {
+    //     vm.getAllDirMenuInfo(2);
+    //   } else {
+    //     vm.getAllDirMenuInfo(3);
+    //   }
     // },
-    getCatalogList: function (type) {
-      const vm = this;
-      vm.showMorecatalog = false;
-      vm.depAllDeptInfoAA = [];
-      vm.depAllDeptInfoAB = [];
-      vm.depAllDeptInfoData = [];
-      if (type == 'base') {
-        vm.getAllDirMenuInfo(1);
-      } else if (type == 'topic') {
-        vm.getAllDirMenuInfo(2);
-      } else {
-         vm.getAllDirMenuInfo(3);
-      }
-    },
     getCountDataShare: function () {
       const vm = this;
       Http.fetch({
@@ -306,16 +277,45 @@ export default {
           }
         });
     },
+    getDirNodesByParent: function (id) {
+      const vm = this;
+      vm.depAllDeptInfoAA=[];
+      return Http.fetch({
+        method: "post",
+        url: master + "/classify/getClassifyChildrenById",
+        data: {
+          id: id
+        }
+      }).then(
+        function (result) {
+          if (result.status == 200) {
+            vm.dirFirstName = result.data;
+            vm.getAllDirMenuInfo(vm.dirFirstName[1]); //主题目录
+            vm.current_active=vm.dirFirstName[1].name
+          } else {
+            Notification({
+              type: "error",
+              title: '系统错误',
+              message: result.message,
+            });
+          }
+        });
+    },
+    clickMenu: function (item) {
+      const vm = this;
+      vm.current_active = item.name;
+      vm.getAllDirMenuInfo(item);
+    },
     searchKeywords() { //search
       const vm = this;
-       vm.$router.push({
+      vm.$router.push({
         path: '/layout/searchPage',
         query: {
-          keywords:$.trim(vm.keywords)
+          keywords: $.trim(vm.keywords)
         }
       })
     },
-     keydownLogin(ev) {
+    keydownLogin(ev) {
       const vm = this;
       var event = ev || window.event;
       if (event.keyCode == '13') { //keyCode=13是回车键

@@ -5,10 +5,33 @@ export default {
     return {
       username: "",
       password: "",
+      sysObj:"",
       errorShow: false
     }
   },
+   mounted() {
+    const vm = this;
+    vm.getSysName();
+  },
   methods: {
+        getSysName: function () {//系统名称
+      const vm = this;
+      Http.fetch({
+        method: "get",
+        url: Http.url.master + "/home/getPorjectPotalNames"
+      }).then(
+        function (result) {
+          if (result.status == 200) {
+           vm.sysObj=result.data;
+          } else {
+            Notification({
+              type: "error",
+              title: '系统错误',
+              message: result.message,
+            });
+          }
+        });
+    },
     onSubmit() {
       const vm = this;
       Http.fetch({

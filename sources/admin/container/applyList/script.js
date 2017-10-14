@@ -57,7 +57,9 @@ export default {
           if (result.status == 200) {
             let data = result.data;
             vm.getApplyList = data.body;
-            vm.applyCount.totalR = data[Pager.totalR];
+             if(!data.previous){
+             vm.applyCount.totalR = data[Pager.totalR];
+            }
             vm.applyCount.pendingNum = data.examiningCount;
             vm.applyCount.reviewedNum = data.examinedCount;
           } else {
@@ -86,7 +88,9 @@ export default {
           if (result.status == 200) {
             let data = result.data;
             vm.getApplyItemList = data.body;
-            vm.applyCount.totalR = data[Pager.totalR];
+             if(!data.previous){
+             vm.applyCount.totalR = data[Pager.totalR];
+            }
           } else {
             Notification({
               type: "error",

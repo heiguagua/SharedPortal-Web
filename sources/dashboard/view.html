@@ -121,130 +121,36 @@
   <!-- 目录  start -->
   <section class="main-2">
     <div class="section-content">
-      <template>
-        <el-tabs v-model="activeCatalog" type="card" @tab-click="getCatalogList(activeCatalog)">
-          <el-tab-pane name="base">
-            <a slot="label">基础目录</a>
-            <div class="tab-body">
-              <div class="img-group" v-for="item in depAllDeptInfoAA">
-                <el-tooltip placement="bottom" effect="light">
-                  <ul slot="content">
-                    <li v-for="(itemChild,index) in item.children " v-if="index<3">{{itemChild.name}}</li>
-                    <li v-if="item.children.length>3">...</li>
-                  </ul>
-                  <dl class="base-item0">
-                    <router-link :to="{ path: '/layout/catalog/resources', query: {dirName:item.name,dirCode:item.code}}">
-                      <dt v-if="item.icon"><img v-bind:src="item.icon" alt="图片" /></dt>
-                      <dt v-if="item.icon == null"><img src="../assets/dashboard/defaultClassify.png" alt="图片" /></dt>
-                      <dd class="des">{{item.name}}</dd>
-                    </router-link>
-                  </dl>
-                </el-tooltip>
-              </div>
-              <dl v-show="showMorecatalog" class="img-group dep-item3">
-                <router-link :to="{ path: '/layout/catalog/statistic', query: {dirName:'政务基础信息资源目录'}}">
-                  <dt><img src="../assets/dashboard/more.png" /></dt>
-                  <dd class="des">更多</dd>
-                </router-link>
-              </dl>
-            </div>
-          </el-tab-pane>
-          <el-tab-pane name="topic">
-            <a slot="label">主题目录</a>
-            <div class="tab-body">
-              <div class="img-group" v-for="item in depAllDeptInfoAB">
-                <el-tooltip placement="bottom" effect="light">
-                  <ul slot="content">
-                    <li v-for="(itemChild,index) in item.children " v-if="index<3">{{itemChild.name}}</li>
-                    <li v-if="item.children.length>3">...</li>
-                  </ul>
-                  <dl class="base-item0">
-                    <router-link :to="{ path: '/layout/catalog/resources', query: {dirName:item.name,dirCode:item.code}}">
-                      <dt v-if="item.icon"><img v-bind:src="item.icon" alt="图片" /></dt>
-                      <dt v-if="item.icon == null"><img src="../assets/dashboard/defaultClassify.png" alt="图片" /></dt>
-                      <dd class="des">{{item.name}}</dd>
-                    </router-link>
-                  </dl>
-                </el-tooltip>
-              </div>
-              <dl v-show="showMorecatalog" class="img-group dep-item3">
-                <router-link :to="{ path: '/layout/catalog/statistic', query: {dirName:'政务主题信息资源目录'}}">
-                  <dt><img src="../assets/dashboard/more.png" /></dt>
-                  <dd class="des">更多</dd>
-                </router-link>
-              </dl>
-            </div>
-          </el-tab-pane>
-          <el-tab-pane name="dep">
-            <a slot="label">部门目录</a>
-            <div class="tab-body">
-              <div class="img-group" v-for="item in depAllDeptInfoAC">
-                <el-tooltip placement="bottom" effect="light">
-                  <ul slot="content">
-                    <li v-for="(itemChild,index) in item.children " v-if="index<3">{{itemChild.name}}</li>
-                    <li v-if="item.children.length>3">...</li>
-                  </ul>
-                  <dl class="base-item0">
-                    <router-link :to="{ path: '/layout/catalog/resources', query: {dirName:item.name,dirCode:item.code}}">
-                      <dt v-if="item.icon"><img v-bind:src="item.icon" alt="图片" /></dt>
-                      <dt v-if="item.icon == null"><img src="../assets/dashboard/defaultClassify.png" alt="图片" /></dt>
-                      <dd class="des">{{item.name}}</dd>
-                    </router-link>
-                  </dl>
-                </el-tooltip>
-              </div>
-              <dl v-show="showMorecatalog" class="img-group dep-item3">
-                <router-link :to="{ path: '/layout/catalog/statistic', query: {dirName:'政务主题信息资源目录'}}">
-                  <dt><img src="../assets/dashboard/more.png" /></dt>
-                  <dd class="des">更多</dd>
-                </router-link>
-              </dl>
-              <!-- <dl class="img-group dep-item0">
-                <router-link :to="{ path: '/layout/catalog/department-resources', query: {dirName:'业务目录'}}">
-                  <dt><img src="../assets/dashboard/dep1.png" /></dt>
-                  <dd class="des">业务目录</dd>
-                </router-link>
-              </dl>
-              <dl class="img-group dep-item1">
-                <router-link :to="{ path: '/layout/catalog/list-resources', query: {dirName:'资源目录'}}">
-                  <dt><img src="../assets/dashboard/dep2.png" /></dt>
-                  <dd class="des">资源目录</dd>
-                </router-link>
-              </dl>
-              <dl class="img-group dep-item2">
-                <router-link :to="{ path: '/layout/catalog/shared-resources', query: {dirName:'共享目录'}}">
-                  <dt><img src="../assets/dashboard/dep3.png" /></dt>
-                  <dd class="des">共享目录</dd>
-                </router-link>
-              </dl>
-              <dl class="img-group dep-item3">
-                <router-link :to="{ path: '/layout/catalog/open-resources', query: {dirName:'开放目录'}}">
-                  <dt><img src="../assets/dashboard/dep4.png" /></dt>
-                  <dd class="des">开放目录</dd>
-                </router-link>
-              </dl>
-              <dl class="img-group dep-item4">
-                <router-link :to="{ path: '/layout/catalog/demand-resources', query: {dirName:'需求目录'}}">
-                  <dt><img src="../assets/dashboard/dep5.png" /></dt>
-                  <dd class="des">需求目录</dd>
-                </router-link>
-              </dl>
-              <dl class="img-group dep-item4">
-                <router-link :to="{ path: '/layout/catalog/economy-resources', query: {dirName:'系统目录'}}">
-                  <dt><img src="../assets/dashboard/dep1.png" /></dt>
-                  <dd class="des">系统目录</dd>
-                </router-link>
-              </dl>
-              <dl class="img-group dep-item4">
-                <router-link :to="{ path: '/layout/catalog/system-list-resourses', query: {dirName:'系统资源目录'}}">
-                  <dt><img src="../assets/dashboard/dep5.png" /></dt>
-                  <dd class="des">系统资源目录</dd>
-                </router-link>
-              </dl> -->
-            </div>
-          </el-tab-pane>
-        </el-tabs>
-      </template>
+      <div class="el-tabs__nav-wrap">
+        <ul class="el-tabs__nav" style="width:100%">
+          <li class="el-tabs__item" :class="{ active: (current_active === dirItem.name) }" v-for="dirItem in dirFirstName" @click="clickMenu(dirItem)">
+            <a>{{dirItem.name}}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="tab-body">
+        <div class="img-group" v-for="item in depAllDeptInfoAA">
+          <el-tooltip placement="bottom" effect="light">
+            <ul slot="content">
+              <li v-for="(itemChild,index) in item.children " v-if="index<3">{{itemChild.name}}</li>
+              <li v-if="item.children.length>3">...</li>
+            </ul>
+            <dl class="base-item0">
+              <router-link :to="{ path: '/layout/catalog/resources', query: {dirName:item.name,dirCode:item.code}}">
+                <dt v-if="item.icon"><img v-bind:src="item.icon" alt="图片" /></dt>
+                <dt v-if="item.icon == null"><img src="../assets/dashboard/defaultClassify.png" alt="图片" /></dt>
+                <dd class="des">{{item.name}}</dd>
+              </router-link>
+            </dl>
+          </el-tooltip>
+        </div>
+        <dl v-show="showMorecatalog" class="img-group dep-item3">
+          <router-link :to="{ path: '/layout/catalog/statistic', query: {dirName:parentName,id:parentId}}">
+            <dt><img src="../assets/dashboard/more.png" /></dt>
+            <dd class="des">更多</dd>
+          </router-link>
+        </dl>
+      </div>
     </div>
   </section>
   <!-- 目录    end -->

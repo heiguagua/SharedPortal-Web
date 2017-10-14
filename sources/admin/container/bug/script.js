@@ -33,7 +33,9 @@ export default {
           if (result.status == 200) {
             let data = result.data;
             vm.tableData = data.body;
+            if(!data.previous){
             vm.objCount.totalR = data[Pager.totalR];
+            }
           } else {
             Notification({
               type: "error",
