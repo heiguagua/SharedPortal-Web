@@ -131,9 +131,10 @@
       <div class="tab-body">
         <div class="img-group" v-for="item in depAllDeptInfoAA">
           <el-tooltip placement="bottom" effect="light">
-            <ul slot="content">
+            <ul slot="content" >
               <li v-for="(itemChild,index) in item.children " v-if="index<3">{{itemChild.name}}</li>
               <li v-if="item.children.length>3">...</li>
+               <li v-if="item.children.length == 0">无子集</li>
             </ul>
             <dl class="base-item0">
               <router-link :to="{ path: '/layout/catalog/resources', query: {dirName:item.name,dirCode:item.code}}">
