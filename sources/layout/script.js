@@ -60,6 +60,7 @@ export default {
         function (result) {
           if (result.status == 200) {
            vm.sysObj=result.data;
+           document.title =result.data.projectPortalName;
           } else {
             Notification({
               type: "error",
