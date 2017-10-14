@@ -250,20 +250,7 @@ export default {
           dirCode: item.tree_code
         }
       })
-    },
-    jumpDetailSubject(item) { //专题应用
-      const vm = this;
-      vm.$router.push({
-        path: '/layout/subject',
-        query: {
-          name: item.name,
-          appCategoryName: item.appCategoryName,
-          visitCount: item.visitCount,
-          creatTime: item.creatTime,
-          url:item.url
-        }
-      })
-    },
+    }
   },
   filters: {
     formatDate(time) {

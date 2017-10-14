@@ -9,6 +9,7 @@ export default {
     return {
       activeName: "",
       activeChild: '',
+      showBox:false,
       devthemes: {},
       data1: [],
       current_item: {},
@@ -20,12 +21,6 @@ export default {
   mounted() {
     const vm = this;
     vm.getRemoteDatas();
-    if (JSON.stringify(this.$route.query) != "{}") {
-      vm.current_item = this.$route.query;
-      vm.showLinkDom = true;
-      vm.jumpRoute = false;
-    }
-
   },
   methods: {
     handleClick(item, event) {
@@ -33,6 +28,7 @@ export default {
       vm.current_item = item;
       vm.activeChild = item.name;
       vm.showLinkDom = false;
+      vm.showBox = true;
       Http.fetch({
         method: "GET",
         url: master + "/home/getAppsByDept",
@@ -63,6 +59,13 @@ export default {
             let themeApplicationsdata = result.data.rs.aaData;
             vm.devthemes = themeApplicationsdata;
             vm.activeName = themeApplicationsdata[0].name;
+            var param_item = vm.$route.query.current_item;
+            if (param_item) {
+              vm.current_item = param_item;
+              vm.showLinkDom = true;
+              vm.jumpRoute = false;
+              console.log(vm.current_item)
+            }
           } else {
             vm.$message({
               type: "error",
@@ -76,17 +79,8 @@ export default {
       const vm = this;
       if (val != 'dep') {
         vm.activeChild = "";
+         vm.showBox = false;
       }
-      this.$router.push({
-        path: `/layout/subject`,
-        query: {
-          name: item.name,
-          appCategoryName: item.appCategoryName,
-          visitCount: item.visitCount,
-          creatTime: item.creatTime,
-          url: item.url
-        }
-      });
       vm.current_item = item;
       console.log(vm.current_item)
       vm.showLinkDom = true;
@@ -94,6 +88,9 @@ export default {
     },
     changeTab: function () {
       const vm = this;
+      vm.activeChild='';
+      vm.showBox= false;
+      vm.current_item=[];
       vm.jumpRoute = true;
       vm.showLinkDom = false;
     },

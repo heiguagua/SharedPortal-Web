@@ -18,7 +18,7 @@
             </dl>
           </dl>
           <div v-for='item in data1'>
-            <div v-show="activeName =='常规应用'"  class="div_dep Box">
+            <div v-show="showBox"  class="div_dep Box">
               <a  :class="{ active: (current_item.name=== item.name) }"  @click="showLink(item,'dep')" target="_blank">|&nbsp;&nbsp;{{ item.name }}</a>
             </div>
           </div>

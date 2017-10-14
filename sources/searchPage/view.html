@@ -39,7 +39,8 @@
             </el-tab-pane>
             <el-tab-pane name="subject">
               <a slot="label">专题应用</a>
-              <div class="list-group" v-for="item in subjectData" @click="jumpDetailSubject(item)">
+              <div class="list-group" v-for="item in subjectData">
+                 <router-link :to="{path:'/layout/subject',query:{current_item:item}}">
                 <div class="title">
                   <span v-html="titlehtml(item.name)"></span>
                 </div>
@@ -51,6 +52,7 @@
                   </li>
 
                 </ul>
+                 </router-link>
               </div>
               <div class="page">
                 <el-pagination @current-change="handlePageChangeSubject" layout="total, prev, pager, next, jumper" :total="totalR">
@@ -115,7 +117,7 @@
           </div>
           <ul>
             <li v-for="(item,index) in hotAppsByDept" v-if="index<5">
-              <a @click="jumpDetailSubject(item)"><span v-bind:title="item.name">{{item.name}}</span></a><span>{{item.visitCount}}</span>
+               <router-link :to="{path:'/layout/subject',query:{current_item:item}}"><span v-bind:title="item.name">{{item.name}}</span></router-link><span>{{item.visitCount}}</span>
             </li>
           </ul>
         </div>
