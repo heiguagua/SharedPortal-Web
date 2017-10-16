@@ -151,7 +151,7 @@
         </div>
       </el-tab-pane>
       <el-tab-pane label="最新政策" name="latestPolicy">
-        <ul class="latestPolicy">
+        <ul class="latestPolicy" v-loading="loading5" element-loading-text="数据加载中">
           <li v-for="item in listLatestpolicies">
             <router-link :to="'policyDetail/'+item.id">
               <img src="../../../assets/ico/new.png">

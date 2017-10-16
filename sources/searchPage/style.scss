@@ -2,6 +2,9 @@
 #search-page {
   width: 1270px;
   margin: 15px auto;
+  .empty{
+    text-align: center;
+  }
   .left {
     margin-right: 15px;
     background: $white;

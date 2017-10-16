@@ -17,11 +17,9 @@ export default {
       listHottestResource: "",
       current_active: '',
       parentName: '',
-      parentId:"",
+      parentId: "",
       carouselPicNews: [],
       depAllDeptInfoAA: [],
-      // depAllDeptInfoAB: [],
-      // depAllDeptInfoAC: [],
       depAllDeptInfoData: [],
       dirFirstName: [],
       carouselDetail: {},
@@ -32,7 +30,7 @@ export default {
   },
   mounted() {
     const vm = this;
-     vm.getDirNodesByParent();
+    vm.getDirNodesByParent();
     vm.getCountDataShare(); //资源统计
     vm.Latestpolicies("G"); //最新政策
     vm.latestDirectoryData(); //最新目录
@@ -40,8 +38,8 @@ export default {
     vm.LatestDbResourceData(); //最新资源
     vm.HottestResourceData(); //最热资源
     vm.getCarouselPicNews(); //最新新闻
-   
-   
+
+
   },
   methods: {
     getAllDirMenuInfo: function (item) {
@@ -51,7 +49,7 @@ export default {
         method: "get",
         url: master + "/home/getClassifyChildrenWithSubchildrenById",
         params: {
-          id:pid
+          id: pid
         }
       }).then(
         function (result) {
@@ -66,18 +64,22 @@ export default {
                 depAllDeptInfo.push(result.data[i]);
               }
             }
-              
-            if(item.type == "2-3"){
-              $.each(depAllDeptInfo,function(i,v){
-                if(v.type == '3'){
+
+            if (item.type == "2-3") {
+              vm.parentName = item.name;
+              vm.parentId = item.id;
+              $.each(depAllDeptInfo, function (i, v) {
+                if (v.type == '3') {
                   vm.getAllDirMenuInfo(v);
                 }
               })
-              
+
             }
             vm.depAllDeptInfoAA = depAllDeptInfo;
-            vm.parentName = item.name;
-            vm.parentId = item.id;
+            if (item.type != '3') {
+              vm.parentName = item.name;
+              vm.parentId = item.id;
+            }
           } else {
             Notification({
               type: "error",
@@ -87,20 +89,6 @@ export default {
           }
         });
     },
-    // getCatalogList: function (type) {
-    //   const vm = this;
-    //   vm.showMorecatalog = false;
-    //   vm.depAllDeptInfoAA = [];
-    //   vm.depAllDeptInfoAB = [];
-    //   vm.depAllDeptInfoData = [];
-    //   if (type == 'base') {
-    //     vm.getAllDirMenuInfo(1);
-    //   } else if (type == 'topic') {
-    //     vm.getAllDirMenuInfo(2);
-    //   } else {
-    //     vm.getAllDirMenuInfo(3);
-    //   }
-    // },
     getCountDataShare: function () {
       const vm = this;
       Http.fetch({
@@ -288,7 +276,7 @@ export default {
     },
     getDirNodesByParent: function () {
       const vm = this;
-      vm.depAllDeptInfoAA=[];
+      vm.depAllDeptInfoAA = [];
       return Http.fetch({
         method: "get",
         url: master + "/home/getClassifyChildrenWithSubchildrenById",
@@ -297,7 +285,7 @@ export default {
           if (result.status == 200) {
             vm.dirFirstName = result.data;
             vm.getAllDirMenuInfo(vm.dirFirstName[1]); //主题目录
-            vm.current_active=vm.dirFirstName[1].name
+            vm.current_active = vm.dirFirstName[1].name
           } else {
             Notification({
               type: "error",

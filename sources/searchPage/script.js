@@ -18,11 +18,14 @@ export default {
       hotAppsByDept: [],
       developerData: [],
       subjectData: [],
+      loading1: true,
+      loading2: true,
+      loading3: true
     }
   },
   mounted() {
     const vm = this;
-    
+
     vm.latestDirectoryData();
     vm.HottestDirectoryData();
     vm.getAppsByDeptList();
@@ -77,14 +80,14 @@ export default {
         }
       }).then(
         function (result) {
-          vm.loading = false;
+          vm.loading1=false;
           if (result.status == 200) {
             let data = result.data;
             vm.catalogData = data.body;
-             if(!data.previous){
-            vm.totalR = data[Pager.totalR];
+            if (!data.previous) {
+              vm.totalR = data[Pager.totalR];
             }
-          
+
           } else {
             Notification({
               type: "error",
@@ -107,17 +110,17 @@ export default {
         }
       }).then(
         function (result) {
-          vm.loading = false;
+           vm.loading3=false;
           if (result.status == 200) {
             let data = result.data;
             vm.developerData = data.body;
-             if(!data.previous){
-            vm.totalR = data[Pager.totalR];
+            if (!data.previous) {
+              vm.totalR = data[Pager.totalR];
             }
           } else {
             vm.$message({
               type: "error",
-              title: '数据目录',
+              title: '开发者工具',
               message: "内部错误",
             });
           }
@@ -136,11 +139,12 @@ export default {
         }
       }).then(
         function (result) {
+           vm.loading2=false;
           if (result.status == 200) {
             let data = result.data;
             vm.subjectData = data.body;
-            if(!data.previous){
-            vm.totalR = data[Pager.totalR];
+            if (!data.previous) {
+              vm.totalR = data[Pager.totalR];
             }
           } else {
             vm.$message({
@@ -167,7 +171,7 @@ export default {
             let data = result.data;
             vm.latestDirectory = data.body;
           } else {
-           vm.$message({
+            vm.$message({
               type: "error",
               title: '最新数据目录',
               message: "内部错误",

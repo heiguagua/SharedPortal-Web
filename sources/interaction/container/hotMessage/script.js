@@ -17,6 +17,7 @@ export default {
       loading2: true,
       loading3: true,
       loading4: true,
+      loading5: true,
       dataEmpty: false
     }
   },
@@ -190,6 +191,7 @@ export default {
         }
       }).then(
         function (result) {
+          vm.loading5=false;
           if (result.status == 200) {
             var data = result.data;
             if (data.body.length == 0) {

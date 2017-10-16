@@ -6,6 +6,7 @@
           <el-tabs v-model="activeName" @tab-click="handleClick(activeName)">
             <el-tab-pane name="catalog">
               <a slot="label">数据目录</a>
+              <div v-loading="loading1" element-loading-text="数据加载中">
               <div class="list-group" v-for="item in catalogData" @click="jumpDetailLatestCatalog(item)">
                 <div class="title">
                   <span v-html="titlehtml(item.dataset_name)"></span>
@@ -32,13 +33,16 @@
                   <li>信息资源摘要：{{item.dataset_desc}}</li>
                 </ul>
               </div>
+              <div v-if="catalogData.length == 0" class="empty">暂无数据</div>
               <div class="page">
                 <el-pagination @current-change="handlePageChangeCatalog" layout="total, prev, pager, next, jumper" :total="totalR">
                 </el-pagination>
               </div>
+              </div>
             </el-tab-pane>
             <el-tab-pane name="subject">
               <a slot="label">专题应用</a>
+               <div v-loading="loading2" element-loading-text="数据加载中">
               <div class="list-group" v-for="item in subjectData">
                  <router-link :to="{path:'/layout/subject',query:{current_item:item}}">
                 <div class="title">
@@ -54,13 +58,16 @@
                 </ul>
                  </router-link>
               </div>
+                 <div v-if="subjectData.length == 0" class="empty">暂无数据</div>
               <div class="page">
                 <el-pagination @current-change="handlePageChangeSubject" layout="total, prev, pager, next, jumper" :total="totalR">
                 </el-pagination>
               </div>
+               </div>
             </el-tab-pane>
             <el-tab-pane name="developer">
               <a slot="label">开发者工具</a>
+               <div v-loading="loading3" element-loading-text="数据加载中">
               <div class="list-group" v-for="item in developerData" >
                 <router-link :to="{path:'/layout/developer',query:{current_item:item}}">
                 <div class="title">
@@ -75,10 +82,12 @@
                 </ul>
                 </router-link>
               </div>
+               <div v-if="developerData.length == 0" class="empty">暂无数据</div>
               <div class="page">
                 <el-pagination @current-change="handlePageChangeDeveloper" layout="total, prev, pager, next, jumper" :total="totalR">
                 </el-pagination>
               </div>
+               </div>
             </el-tab-pane>
           </el-tabs>
         </template>
