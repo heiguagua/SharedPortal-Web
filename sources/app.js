@@ -37,9 +37,9 @@ const router = new VueRouter({
     }, {
       path: "dashboard",
       component: resolve => require(["./dashboard/index.vue"], resolve)
-    },{
+    }, {
       path: "searchPage",
-      name:"searchPage",
+      name: "searchPage",
       component: resolve => require(["./searchPage/index.vue"], resolve)
     }, {
       path: "developer",
@@ -81,36 +81,36 @@ const router = new VueRouter({
         path: 'business-details',
         name: 'business-details',
         component: resolve => require(["./catalog/business-details/index.vue"], resolve),
-      },{
-        path:'list-details',
+      }, {
+        path: 'list-details',
         name: 'list-details',
         component: resolve => require(["./catalog/list-details/index.vue"], resolve),
-      },{
-        path:'demand-details',
+      }, {
+        path: 'demand-details',
         name: 'demand-details',
         component: resolve => require(["./catalog/demand-details/index.vue"], resolve),
-      },{
-        path:'shared-resources',
+      }, {
+        path: 'shared-resources',
         name: 'shared-resources',
         component: resolve => require(["./catalog/shared-resources/index.vue"], resolve),
-      },{
-        path:'open-resources',
+      }, {
+        path: 'open-resources',
         name: 'open-resources',
         component: resolve => require(["./catalog/open-resources/index.vue"], resolve),
-      },{
-        path:'demand-resources',
+      }, {
+        path: 'demand-resources',
         name: 'demand-resources',
         component: resolve => require(["./catalog/demand-resources/index.vue"], resolve),
-      },{
-        path:'economy-resources',
+      }, {
+        path: 'economy-resources',
         name: 'economy-resources',
         component: resolve => require(["./catalog/economy-resources/index.vue"], resolve),
-      },{
-        path:'system-list-resourses',
+      }, {
+        path: 'system-list-resourses',
         name: 'system-list-resourses',
         component: resolve => require(["./catalog/system-list-resourses/index.vue"], resolve),
-      },{
-        path:'system',
+      }, {
+        path: 'system',
         name: 'system',
         component: resolve => require(["./catalog/system/index.vue"], resolve),
       }, {
@@ -121,18 +121,35 @@ const router = new VueRouter({
         path: 'system-details',
         name: 'system-details',
         component: resolve => require(["./catalog/system-details/index.vue"], resolve),
-      },{
-        path:'system-dynamic-resources',
+      }, {
+        path: 'system-dynamic-resources',
         name: 'system-dynamic-resources',
         component: resolve => require(["./catalog/system-dynamic-resources/index.vue"], resolve),
-      },{
-        path:'system-dynamic-details',
+      }, {
+        path: 'system-dynamic-details',
         name: 'system-dynamic-details',
         component: resolve => require(["./catalog/system-dynamic-details/index.vue"], resolve),
-      },{
-        path:'itemDetails',
-        name:'itemDetails',
+      }, {
+        path: 'itemDetails',
+        name: 'itemDetails',
         component: resolve => require(["./catalog/details/item/index.vue"], resolve),
+      }, {
+        path: 'depCardingCatalog',
+        name: 'depCardingCatalog',
+        component: resolve => require(["./catalog/depCardingCatalog/index.vue"], resolve),
+        children: [{
+          path: 'department-resources',
+          name: 'department-resources',
+          component: resolve => require(["./catalog/depCardingCatalog/department-resources/index.vue"], resolve),
+        }, {
+          path: 'demand-resources',
+          name: 'demand-resources',
+          component: resolve => require(["./catalog/depCardingCatalog/demand-resources/index.vue"], resolve),
+        }, {
+          path: 'economy-resources',
+          name: 'economy-resources',
+          component: resolve => require(["./catalog/depCardingCatalog/economy-resources/index.vue"], resolve),
+        }]
       }]
     }, {
       path: "subject",

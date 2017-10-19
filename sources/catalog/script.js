@@ -7,7 +7,7 @@ export default {
       regions: [],
       regions1: [{
         'name': '业务目录',
-        "hasLeaf": "1",
+        "hasLeaf": "0",
         path: 'department-resources'
       }, 
       // {
@@ -25,11 +25,11 @@ export default {
       // },
        {
         'name': '需求目录',
-        "hasLeaf": "1",
+        "hasLeaf": "0",
         path: 'demand-resources'
       }, {
         'name': '系统目录',
-        "hasLeaf": "1",
+        "hasLeaf": "0",
         path: 'economy-resources'
       }
       // , {
@@ -152,7 +152,7 @@ export default {
         }else if(rootPath == vm.regions[3].path){
      if (node.level === 2) {
             this.$router.push({
-              path: `/layout/catalog/${data.path}`,
+              path: `/layout/catalog/depCardingCatalog/${data.path}`,
               query: {
                 dirName: data.name,
                 dirCode: data.dept_Id
@@ -169,7 +169,7 @@ export default {
           }*/ else {
             let loadPath = vm.findNode(node);
             this.$router.push({
-              path: `/layout/catalog/${loadPath}`,
+              path: `/layout/catalog/depCardingCatalog/${loadPath}`,
               query: {
                 dirName: data.name,
                 dirCode: data.dept_Id
@@ -268,18 +268,22 @@ export default {
                 }
 
               });
-                 }else if(rootName =="部门政务信息梳理目录"){
-              vm.getDepartmentDataSecondLevelChild(node.data.dept_Id).then(function(res) {
-                if (res.status == 200) {
-                  console.log("yiji",res)
-                  data = res.data;
+                 }
+            else if(rootName =="部门政务信息梳理目录"){
+              // vm.getDepartmentDataSecondLevelChild(node.data.dept_Id).then(function(res) {
+              //   if (res.status == 200) {
+              //     console.log("yiji",res)
+              //     data = res.data;
+              //     resolve(data);
+              //   } else {
+              //     data = [];
+              //     resolve(data);
+              //   }
+              // })
+              data = [];
                   resolve(data);
-                } else {
-                  data = [];
-                  resolve(data);
-                }
-              })
-            }else{
+            }
+            else{
               vm.getDirNodesByParent(node.data.id).then(function (res) {
                 if (res.status == 200) {
                   data = res.data;
@@ -409,7 +413,12 @@ export default {
   },
   computed: {
     key() {
+      if(this.$route.name == 'economy-resources' || this.$route.name == 'demand-resources' ||this.$route.name == 'department-resources'){
+        return this.$route.name
+      }else{
+
       return this.$route.name !== undefined ? this.$route.name + new Date() : this.$route + new Date()
+      }
     }
   },
 };

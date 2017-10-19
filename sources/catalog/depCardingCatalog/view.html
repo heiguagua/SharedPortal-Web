@@ -1,0 +1,52 @@
+<main id="depCardingCatalog">
+  <div class="catalog-content">
+    <div class="filter-carding">
+      <div class="head-desc">部门政务信息梳理目录</div>
+      <table class="filter-table">
+        <tbody>
+          <tr class="border">
+            <td class="title">首字母：</td>
+            <td>
+              <ul class="data-ul">
+                <li>全部</li>
+                <li>A-G</li>
+                <li>H-N</li>
+                <li>O-T</li>
+                <li>U-Z</li>
+              </ul>
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="title">部门：</td>
+            <td>
+              <ul class="data-ul" v-bind:class="{'max_height':isActive,'auto_height':!isActive}">
+                <li v-for="depItem in depData" :class="{ active: (current_dep === depItem.name) }" @click="getDeptByFid(depItem)">{{depItem.name}}</li>
+              </ul>
+            </td>
+            <td @click="openDep"><span v-show="isActive">展开</span><span v-show="!isActive">收起</span><i :class="{'el-icon-arrow-right':isActive,'el-icon-arrow-down':!isActive}"></i></td>
+          </tr>
+          <tr v-show="showDepFid">
+            <td class="title">下设机构：</td>
+            <td>
+              <ul class="data-ul" v-bind:class="{'max_height':fidActive,'auto_height':!fidActive}">
+                <li v-for="depFidItem in depFidData" :class="{ active: (current_depFid === depFidItem.name) }" @click="getDepData(depFidItem)">{{depFidItem.name}}</li>
+              </ul>
+            </td>
+           <td @click="openFid"><span v-show="fidActive">展开</span><span v-show="!fidActive">收起</span><i :class="{'el-icon-arrow-right':fidActive,'el-icon-arrow-down':!fidActive}"></i></td>
+          </tr>
+          <tr class="type">
+            <td class="title">类型：</td>
+            <td>
+              <ul class="data-ul">
+                <li v-for="item in typeList" :class="{ active: (current_type === item.name) }" @click="getDepType(item)">{{item.name}}</li>
+              </ul>
+            </td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <router-view class="router-carding"></router-view>
+  </div>
+</main>

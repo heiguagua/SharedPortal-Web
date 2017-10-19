@@ -1,0 +1,28 @@
+<main id="resources">
+	<!-- <div class="catalog-content"> -->
+		<!-- <div class="head-desc">
+			<div class="title">{{head_title}}</div>
+			<div class="other-info"> 
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;共 {{totalResource}} 项需求资源</div>
+		</div> -->
+		<div class="search-box">
+			<div class="total-num">共 <span class="count">{{totalResource}}</span> 条结果</div>
+			<div class="search-input">
+				<el-input placeholder="请输入" v-model="keyword">
+				<el-button slot="append" icon="search" @click="handleSearch">搜索</el-button>
+				</el-input>
+			</div>
+		</div>
+		<el-table :data="tableData"	border	style="width: 100%" v-loading="loading" element-loading-text="数据加载中" slot="empty"
+		highlight-current-row   @current-change="handleCurrentChange">
+		<el-table-column prop="require_name" label="需求名称" width="20%"></el-table-column>
+		<el-table-column prop="dataset_name" label="需求信息资源名称" width="20%"></el-table-column>
+		<el-table-column prop="request_dept_name" label="需求部门"	width="20%"></el-table-column>
+		<el-table-column prop="source_dept_name" label="来源部门"	width="20%"></el-table-column>
+		<el-table-column prop="is_get" label="是否已获取" width="20%"></el-table-column>
+		<el-table-column prop="expect_update_frequence" label="数据使用频率" width="20%"></el-table-column>
+		</el-table>
+		<el-pagination  @current-change="handlePageChange" :current-page="currentPage"  layout="total, prev, pager, next, jumper" :total="totalResource">
+    	</el-pagination>
+	<!-- </div> -->
+</main>
