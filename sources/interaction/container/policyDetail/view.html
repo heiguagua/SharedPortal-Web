@@ -4,7 +4,7 @@
     <el-breadcrumb-item>当前位置 &nbsp; &gt; &nbsp;<span>最新政策详情</span></el-breadcrumb-item>
   </el-breadcrumb>
   <div class="article">
-    <h3 class="title">{{latestPolicyItem.title}}</h3>
+    <h3 class="title over_space" style="width: 100%" v-bind:title="latestPolicyItem.title">{{latestPolicyItem.title}}</h3>
     <div class="item_des">
       <span v-if="latestPolicyItem.dept_short_name">来源：<em>{{latestPolicyItem.dept_short_name}}</em></span>
       <span v-if="latestPolicyItem.author_name">作者：<em>{{latestPolicyItem.author_name}}</em></span>

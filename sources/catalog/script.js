@@ -5,6 +5,7 @@ export default {
   data() {
     return {
       regions: [],
+      regions_load_cl:0,//登录后regions的长度
       regions1: [{
         'name': '业务目录',
         "hasLeaf": "0",
@@ -71,6 +72,7 @@ export default {
           'name': '系统实时动态数据资源',
           'path': 'system'
         })
+        vm.regions_load_cl = vm.regions.length
       }
        if(vm.$route.path == '/layout/catalog'){
          vm.expandedKeys = [vm.regions[0].id];
@@ -88,6 +90,11 @@ export default {
   methods: {
     handleNodeClick(data, node) {
       var vm = this;
+      if(vm.regions.length == vm.regions_load_cl){//无论是否登录regions_length的值都是登录状态下的regions的数组个数
+         var regions_length = vm.regions.length;//第一级的数组个数
+      }else{
+        var regions_length = vm.regions.length + 1;
+      }
       vm.expandedKeys =[];
       var root =vm.findParent(node);
       let rootPath = root.path;
@@ -100,37 +107,9 @@ export default {
             id:data.id
           }
         });
-      } else {
-        if (rootPath == vm.regions[1].path) {
-          this.$router.push({
-            path: '/layout/catalog/resources',
-            query: {
-              dirName: data.name,
-              dirCode: data.tree_code
-            }
-          })
-        } else if (rootPath == vm.regions[0].path) {
-          if (node.level === 2) {
-            this.$router.push({
-              path: `/layout/catalog/${data.path}`,
-              query: {
-                dirName: data.name,
-                dirCode: data.dept_Id
-              }
-            })
-          } 
-          else {
-            let loadPath = vm.findNode(node);
-            this.$router.push({
-              path: `/layout/catalog/${loadPath}`,
-              query: {
-                dirName: data.name,
-                dirCode: data.dept_Id
-              }
-            })
-          }
-        } else if (rootPath == vm.regions[4].path) {
-          if(vm.regions.length>5 &&rootName ==vm.regions[5].name){
+      }else{
+          if (rootPath == vm.regions[regions_length-2].path) {
+            if(vm.regions.length == vm.regions_load_cl && rootName ==vm.regions[regions_length-1].name){
             this.$router.push({
               path: '/layout/catalog/system-dynamic-resources',
               query: {
@@ -149,7 +128,7 @@ export default {
               }
             })
           }
-        }else if(rootPath == vm.regions[3].path){
+        }else if(rootPath == vm.regions[regions_length-3].path){//部门政务信息梳理目录下的一级目录设置路由
      if (node.level === 2) {
             this.$router.push({
               path: `/layout/catalog/depCardingCatalog/${data.path}`,
@@ -158,15 +137,7 @@ export default {
                 dirCode: data.dept_Id
               }
             })
-          } /*else if (data.path) {
-            this.$router.push({
-              path: `/layout/catalog/${data.path}`,
-              query: {
-                dirName: data.name,
-                dirCode: data.code
-              }
-            })
-          }*/ else {
+          }else {
             let loadPath = vm.findNode(node);
             this.$router.push({
               path: `/layout/catalog/depCardingCatalog/${loadPath}`,
@@ -176,6 +147,15 @@ export default {
               }
             })
           }
+        }
+        else{
+          this.$router.push({
+            path: '/layout/catalog/resources',
+            query: {
+              dirName: data.name,
+              dirCode: data.tree_code
+            }
+          })
         }
       }
     },
@@ -395,7 +375,6 @@ export default {
       })
     },
     renderContent(h, { node, data, store }) {
-
       if(node.level === 1){
         return (
           <span class="el-tree-node__label"  title={node.label}>&nbsp;&nbsp;<i class="fa fa-list-alt"></i>&nbsp;&nbsp;{node.label}</span>

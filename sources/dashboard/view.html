@@ -59,7 +59,7 @@
                   <el-carousel-item v-for="picNew in carouselPicNews" :key="picNew.id">
                     <a class="img-list" href="javascript:void(0)" @click="getCarouselDetail(picNew)">
                       <img v-bind:src="picNew.picUrl" alt="新闻图" height="385" width="100%">
-                       <span class="img-info">{{picNew.title}}</span>
+                       <div class="img-info " ><span class="over_space" style="width: 50%;display: inline-block" v-bind:title="picNew.title">{{picNew.title}}</span></div>
                     </a>
                   </el-carousel-item>
                 </el-carousel>
@@ -329,7 +329,7 @@
   <!-- 新闻详情模态框 start -->
   <el-dialog :visible.sync="dialogNewVisible">
     <div class="article">
-      <h3 class="title">{{carouselDetail.title}}</h3>
+       <h3 class="title over_space" style="width: 100%" v-bind:title="carouselDetail.title">{{carouselDetail.title}}</h3>
       <div class="item_des">
         <span>时间：<em  class="source">{{carouselDetail.update_time}}</em></span>
       </div>
