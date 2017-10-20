@@ -25,6 +25,14 @@
 				<a class="item-link el-button el-button--primary" v-bind:href="current_item.api_url" target="_blank"><i class="fa fa-link"></i>&nbsp;访问链接</a>
 			</div></el-col>
 			</el-row>
+		<el-row>
+			<el-col :span="24">
+				<div class="info-item">
+					<label>接口描述 ：</label>
+			{{current_item.api_desc}}
+			</div>
+			</el-col>
+			</el-row>
 		</div>
 		</el-tab-pane>
 		</el-tabs>

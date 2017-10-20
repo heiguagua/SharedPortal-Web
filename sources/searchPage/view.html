@@ -9,7 +9,7 @@
               <div v-loading="loading1" element-loading-text="数据加载中">
               <div class="list-group" v-for="item in catalogData" @click="jumpDetailLatestCatalog(item)">
                 <div class="title">
-                  <span v-html="titlehtml(item.dataset_name)"></span>
+                 <span v-bind:title="item.dataset_name" class="over_space" style="width: 70%;display: inline-block" v-html="titlehtml(item.dataset_name)"></span>
                   <div class="rate">
                     <span>评分：</span>
                     <div class="over_space">
