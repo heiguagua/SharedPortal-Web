@@ -13,6 +13,7 @@ import Http from "./common/http.js";
 import Auth from "./common/auth.js";
 // component
 import Layout from "./layout/index.vue";
+import "babel-polyfill";
 
 Vue.use(VueRouter);
 Vue.use(ElementUI);
