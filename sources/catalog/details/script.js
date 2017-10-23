@@ -366,15 +366,16 @@ export default {
               vm.$message({
               type: "error",
               title: '评分失败！',
-              message: res.message
+              message: '评分失败!'
             });
             }
             
           } else {
+            alert(1)
             vm.$message({
               type: "error",
               title: '评分失败！',
-              message: res.message
+              message: '评分失败'
             });
           }
         })

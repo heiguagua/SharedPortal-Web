@@ -52,6 +52,11 @@ $white:#FFFFFF;
 @mixin main-color{
 color: #333;
 }
+@mixin over_space{
+   overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
 .over_space{
     overflow: hidden;
     white-space: nowrap;

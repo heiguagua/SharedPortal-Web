@@ -32,7 +32,7 @@ export default {
             vm.dialogLoginVisible = false;
             Encrypt.token.set("orgName", data.orgName);
             Encrypt.token.set("userName", data.userName);
-            vm.$router.go('department');
+            vm.$router.go(0);
           } else {
             vm.errorShow = true;
           }

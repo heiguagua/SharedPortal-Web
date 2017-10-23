@@ -1,5 +1,6 @@
 import Http from "../../../common/http.js";
 import Encrypt from "../../../common/encrypt.js";
+import { Notification } from 'element-ui';
 import elLogin from "../../../common/login-dialog/index.vue";
 const master = Http.url.master;
 export default {
@@ -90,7 +91,7 @@ export default {
       } else {
         vm.$message({
           showClose: true,
-          message: '请登录！',
+          message: '登录后才能执行操作，请登录！',
           duration: 2000,
           type: 'warning',
           customClass: "warning-alert"
