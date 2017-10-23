@@ -257,7 +257,7 @@ export default {
       const nodeArry = this.$refs.tree.getCheckedNodes();
       vm.depName = [];
       vm.ruleForm.depId = [];
-      $.each(nodeArry, function (i, v) {
+       _.forEach(nodeArry,function(v){
         vm.depName.push(v.name)
         vm.ruleForm.depId.push(v.id);
       })

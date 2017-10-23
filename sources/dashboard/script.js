@@ -69,7 +69,7 @@ export default {
             if (item.type == "2-3") {
               vm.parentName = item.name;
               vm.parentId = item.id;
-              $.each(depAllDeptInfo, function (i, v) {
+                 _.forEach(depAllDeptInfo,function(v){
                 if (v.type == '3') {
                   vm.getAllDirMenuInfo(v);
                 }
@@ -306,7 +306,8 @@ export default {
       vm.$router.push({
         path: '/layout/searchPage',
         query: {
-          keywords: $.trim(vm.keywords)
+          // keywords: $.trim(vm.keywords)
+          keywords: vm.keywords
         }
       })
     },
