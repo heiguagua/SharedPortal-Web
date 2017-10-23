@@ -16,8 +16,7 @@
 
   .el-tab-pane{
     .lstDl{
-      padding-bottom: 15px;
-      overflow: hidden;
+      // padding-bottom: 15px;
       &:last-child{
       border-bottom: 2px solid #4197F4;
       a.textaDep{
@@ -36,13 +35,17 @@
       padding-left: 14px;
       width: 140px;
       font-size: 16px;
-      float: left;
       font-weight: normal;
       color: #3D4557;
-      left: 0;
     }
     dd{
-      float: left;
+      position: relative;
+      left: 140px;
+      top: -18px;
+      span{
+        margin-bottom: 5px;
+        display: inline-block;
+      }
       span.active{
         color: #4197F4;
 

@@ -307,7 +307,7 @@ export default {
         path: '/layout/searchPage',
         query: {
           // keywords: $.trim(vm.keywords)
-          keywords: vm.keywords
+          keywords: _.trim(vm.keywords)
         }
       })
     },

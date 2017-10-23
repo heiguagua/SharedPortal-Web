@@ -8,19 +8,22 @@
   .left {
     margin-right: 15px;
     background: $white;
-    // filter: progid: DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=4);
+    min-height: 800px; // filter: progid: DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=4);
     // -moz-box-shadow: 2px 2px 10px #909090;
     // -webkit-box-shadow: 2px 2px 10px #909090;
     box-shadow: 2px 2px 10px #909090;
   }
-  .right{
+  .right {
     background: $white;
-    //     filter: progid: DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=4);
+    min-height: 800px;
+    margin-bottom: 60px;
+    padding: 30px 60px;
+    box-sizing: border-box; //     filter: progid: DXImageTransform.Microsoft.Shadow(color=#909090, direction=120, strength=4);
     // -moz-box-shadow: 2px 2px 10px #909090;
     // -webkit-box-shadow: 2px 2px 10px #909090;
     box-shadow: 2px 2px 10px #909090;
   }
-  p{
-        margin: 0 0 10px;
+  p {
+    margin: 0 0 10px;
   }
 }
