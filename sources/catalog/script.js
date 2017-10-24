@@ -400,4 +400,19 @@ export default {
       }
     }
   },
+   watch: {
+    $route() {
+      const vm =this;
+       if (vm.$route.path == '/layout/catalog') {
+      vm.expandedKeys = [vm.regions[0].id];
+         vm.$router.push({
+            path: '/layout/catalog/statistic',
+            query: {
+              dirName: vm.regions[0].name,
+              id: vm.regions[0].id
+            }
+          })
+       }
+    }
+  }
 };
