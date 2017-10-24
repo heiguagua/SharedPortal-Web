@@ -25,7 +25,7 @@ export default {
            vm.sysObj=result.data;
            document.title =result.data.projectPortalName;
           } else {
-            Notification({
+            vm.$notify({
               type: "error",
               title: '系统错误',
               message: result.message,

@@ -87,7 +87,7 @@ export default {
             }
             
           } else {
-            Notification({
+            vm.$notify({
               type: "error",
               title: '最新资源',
               message: result.message,
@@ -115,7 +115,7 @@ export default {
             vm.pageTotal = data[Pager.totalR];
             }
           } else {
-            Notification({
+            vm.$notify({
               type: "error",
               title: '最热资源',
               message: result.message,
@@ -143,7 +143,7 @@ export default {
             vm.pageTotal = data[Pager.totalR];
             }
           } else {
-            Notification({
+            vm.$notify({
               type: "error",
               title: '最新目录',
               message: result.message,
@@ -171,7 +171,7 @@ export default {
             vm.pageTotal = data[Pager.totalR];
             }
           } else {
-            Notification({
+            vm.$notify({
               type: "error",
               title: '最热目录',
               message: result.message,
@@ -205,7 +205,7 @@ export default {
             }
 
           } else {
-            Notification({
+            vm.$notify({
               type: "error",
               title: '最新政策',
               message: result.message,

@@ -43,7 +43,7 @@ export default {
             alert("退出成功");
             vm.$router.push("/login");
           } else {
-            Notification({
+            vm.$notify({
               type: "error",
               title: '退出登录',
               message: result.message,
@@ -62,7 +62,7 @@ export default {
            vm.sysObj=result.data;
            document.title =result.data.projectPortalName;
           } else {
-            Notification({
+            vm.$notify({
               type: "error",
               title: '系统错误',
               message: result.message,

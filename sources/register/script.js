@@ -90,7 +90,7 @@ export default {
                 });
                 }
               } else {
-                Notification({
+                vm.$notify({
                   type: "error",
                   title: '咨询建议',
                   message: result.message,
@@ -159,7 +159,7 @@ export default {
           let data = result.data;
           vm.depData = data;
         } else {
-          Notification({
+          vm.$notify({
             type: "error",
             title: '部门列表',
             message: result.message,

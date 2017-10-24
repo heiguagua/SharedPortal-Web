@@ -89,7 +89,7 @@ export default {
             }
 
           } else {
-            Notification({
+            vm.$message({
               type: "error",
               title: '数据目录',
               message: result.message,

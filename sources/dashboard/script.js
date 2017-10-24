@@ -1,6 +1,5 @@
 import Http from "../common/http.js";
 import Encrypt from "../common/encrypt.js";
-import { Notification } from 'element-ui';
 const master = Http.url.master;
 export default {
   data() {
@@ -82,7 +81,7 @@ export default {
               vm.parentId = item.id;
             }
           } else {
-            Notification({
+            vm.$notify({
               type: "error",
               title: '基础目录',
               message: result.message,
@@ -100,7 +99,7 @@ export default {
           if (result.status == 200) {
             vm.countDataShare = result.data;
           } else {
-            Notification({
+            vm.$notify({
               type: "error",
               title: '资源统计',
               message: result.message,
@@ -133,7 +132,7 @@ export default {
 
 
           } else {
-            Notification({
+            vm.$notify({
               type: "error",
               title: '最新政策',
               message: result.message,
@@ -156,7 +155,7 @@ export default {
             let data = result.data;
             vm.latestDirectory = data.body;
           } else {
-            Notification({
+            vm.$notify({
               type: "error",
               title: '最新动态-最新目录',
               message: result.message,
@@ -178,7 +177,7 @@ export default {
             let data = result.data;
             vm.listHottestDirectory = data.body;
           } else {
-            Notification({
+            vm.$notify({
               type: "error",
               title: '最新动态-最热目录',
               message: result.message,
@@ -200,7 +199,7 @@ export default {
             let data = result.data;
             vm.listLatestDbResource = data.body;
           } else {
-            Notification({
+            vm.$notify({
               type: "error",
               title: '最新动态-最新资源',
               message: result.message,
@@ -223,7 +222,7 @@ export default {
             let data = result.data;
             vm.listHottestResource = data.body;
           } else {
-            Notification({
+            vm.$notify({
               type: "error",
               title: '最新动态-最热资源',
               message: result.message,
@@ -245,7 +244,7 @@ export default {
             let data = result.data;
             vm.carouselPicNews = data.body;
           } else {
-            Notification({
+            vm.$notify({
               type: "error",
               title: '最新新闻',
               message: result.message,
@@ -267,7 +266,7 @@ export default {
             vm.carouselDetail = result.data;
             vm.dialogNewVisible = true;
           } else {
-            Notification({
+            vm.$notify({
               type: "error",
               title: '新闻详情',
               message: result.message,
@@ -288,7 +287,7 @@ export default {
             vm.getAllDirMenuInfo(vm.dirFirstName[1]); //主题目录
             vm.current_active = vm.dirFirstName[1].name
           } else {
-            Notification({
+            vm.$notify({
               type: "error",
               title: '系统错误',
               message: result.message,

@@ -27,7 +27,7 @@ export default {
           if (result.status == 200) {
            vm.latestPolicyItem = result.data;
           } else {
-            Notification({
+            vm.$notify({
               type: "error",
               title: '最新政策详情',
               message: result.message,

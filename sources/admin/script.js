@@ -8,11 +8,5 @@ export default {
   components: {
     sidebar,
     container
-  },
-  data() {
-    return {
-    }
-  },
-  methods: {
   }
 };

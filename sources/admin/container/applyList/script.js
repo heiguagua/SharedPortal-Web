@@ -63,7 +63,7 @@ export default {
             vm.applyCount.pendingNum = data.examiningCount;
             vm.applyCount.reviewedNum = data.examinedCount;
           } else {
-            Notification({
+            vm.$notify({
               type: "error",
               title: '申请列表',
               message: result.message,
@@ -92,7 +92,7 @@ export default {
              vm.applyCount.totalR = data[Pager.totalR];
             }
           } else {
-            Notification({
+            vm.$notify({
               type: "error",
               title: '申请列表详情',
               message: result.message,

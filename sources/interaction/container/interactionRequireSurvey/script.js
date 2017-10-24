@@ -1,6 +1,5 @@
 import Http from "../../../common/http.js";
 import Encrypt from "../../../common/encrypt.js";
-import { Notification } from 'element-ui';
 import elLogin from "../../../common/login-dialog/index.vue";
 const master = Http.url.master;
 export default {
@@ -128,7 +127,7 @@ export default {
             let data = result.data;
             vm.options = data;
           } else {
-            Notification({
+            vm.$notify({
               type: "error",
               title: '获取资源名称列表',
               message: result.message,
@@ -189,7 +188,7 @@ export default {
                   });
                 }
               } else {
-                Notification({
+                vm.$notify({
                   type: "error",
                   title: '咨询建议',
                   message: result.message,
@@ -213,7 +212,7 @@ export default {
             vm.depData = data;
             console.log(data)
           } else {
-            Notification({
+            vm.$notify({
               type: "error",
               title: '部门列表',
               message: result.message,

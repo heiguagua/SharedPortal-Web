@@ -46,7 +46,7 @@ export default {
                   });
                 }
               } else {
-                Notification({
+                vm.$notify({
                   type: "error",
                   title: '咨询建议',
                   message: result.message,
