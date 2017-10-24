@@ -79,7 +79,7 @@
                           <router-link :to="'interaction/policyDetail/'+item.id">
                             <span v-bind:title="item.title">{{item.title}}</span>
                           </router-link>
-                          <span>{{item.publish_date}}</span>
+                          <span>{{item.create_time}}</span>
                         </li>
                       </ul>
                     </el-tab-pane>
@@ -90,7 +90,7 @@
                           <router-link :to="'interaction/policyDetail/'+item.id">
                             <span v-bind:title="item.title">{{item.title}}</span>
                           </router-link>
-                          <span>{{item.publish_date}}</span>
+                          <span>{{item.create_time}}</span>
                         </li>
                       </ul>
                     </el-tab-pane>
@@ -101,7 +101,7 @@
                           <router-link :to="'interaction/policyDetail/'+item.id">
                             <span v-bind:title="item.title">{{item.title}}</span>
                           </router-link>
-                          <span>{{item.publish_date}}</span>
+                          <span>{{item.create_time}}</span>
                         </li>
                       </ul>
                     </el-tab-pane>
@@ -331,7 +331,7 @@
     <div class="article">
        <h3 class="title over_space" style="width: 100%" v-bind:title="carouselDetail.title">{{carouselDetail.title}}</h3>
       <div class="item_des">
-        <span>时间：<em  class="source">{{carouselDetail.update_time}}</em></span>
+        <span>时间：<em  class="source">{{carouselDetail.create_time}}</em></span>
       </div>
       <div class="policy_content" v-html="carouselDetail.news_content"></div>
     </div>

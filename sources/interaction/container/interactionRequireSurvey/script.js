@@ -257,9 +257,9 @@ export default {
       const nodeArry = this.$refs.tree.getCheckedNodes();
       vm.depName = [];
       vm.ruleForm.depId = [];
-       _.forEach(nodeArry,function(v){
-        vm.depName.push(v.name)
-        vm.ruleForm.depId.push(v.id);
+       _.forEach(nodeArry,function(item){
+        vm.depName.push(item.name)
+        vm.ruleForm.depId.push(item.id);
       })
       if (vm.depName.length < 1) {
         $("#dep_inp").height(33);

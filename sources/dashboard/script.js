@@ -68,9 +68,9 @@ export default {
             if (item.type == "2-3") {
               vm.parentName = item.name;
               vm.parentId = item.id;
-                 _.forEach(depAllDeptInfo,function(v){
-                if (v.type == '3') {
-                  vm.getAllDirMenuInfo(v);
+                 _.forEach(depAllDeptInfo,function(item){
+                if (v.item == '3') {
+                  vm.getAllDirMenuInfo(item);
                 }
               })
 
