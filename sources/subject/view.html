@@ -1,50 +1,61 @@
 <main id="subject">
   <div class="section-content">
-    <el-tabs type="border-card" v-model="activeName"  @tab-click="changeTab">
-        <el-tab-pane :key="item.name" v-for="(item, index) in devthemes" :label="item.name" :name="item.name">
-          <dl v-show="jumpRoute">
-            <dl v-for='subitem in item.children' class="lstDl">
-              <dt class="ui-link" >&nbsp;&nbsp;{{subitem.name}} >&nbsp;&nbsp;&nbsp;</dt>
-              <dd>
-                 <span v-for='ssubitem in subitem.children'>
+    <el-tabs type="border-card" v-model="activeName" @tab-click="changeTab">
+      <el-tab-pane :key="item.name" v-for="(item, index) in devthemes" :label="item.name" :name="item.name">
+        <dl v-show="jumpRoute">
+          <dl v-for='subitem in item.children' class="lstDl">
+            <dt class="ui-link">&nbsp;&nbsp;{{subitem.name}} >&nbsp;&nbsp;&nbsp;</dt>
+            <dd>
+              <span v-for='ssubitem in subitem.children'>
                   <span v-if='ssubitem.url'  :class="{ active: (current_item === ssubitem) }"   @click="Boxhide">
                    <a  class="texta" target="_blank" v-bind:title="ssubitem.name" @click="showLink(ssubitem,'')" > | {{ssubitem.name}}</a>
                   </span>
-                  <span v-else :class="{ active: (activeChild  === ssubitem.name) }">
+              <span v-else :class="{ active: (activeChild  === ssubitem.name) }">
                     <a  :class="{textaDep:istextaDep}" :pid="ssubitem.id" @click="handleClick(ssubitem,ssubitem.id)"> | {{ssubitem.name}}</a> 
                   </span>
-                </span>
-              </dd>
-            </dl>
+              </span>
+            </dd>
           </dl>
-          <div v-for='item in data1'>
-            <div v-show="showBox"  class="div_dep Box">
-              <a  :class="{ active: (current_item.name=== item.name) }"  @click="showLink(item,'dep')" target="_blank">|&nbsp;&nbsp;{{ item.name }}</a>
-            </div>
+        </dl>
+        <div v-for='item in data1'>
+          <div v-show="showBox" class="div_dep Box">
+            <a :class="{ active: (current_item.name=== item.name) }" @click="showLink(item,'dep')" target="_blank">|&nbsp;&nbsp;{{ item.name }}</a>
           </div>
-          <!--工具简介-->
-          <div class="tool-details" v-show="showLinkDom" >
-            <h3>工具简介</h3>
-            <el-row>
-              <el-col :span="4"><div class="grid-content tool-ico"><img class="logo" src="../assets/cd-logo.png"></div></el-col>
-              <el-col :span="8"><div class="grid-content">
+        </div>
+        <!--工具简介-->
+        <div class="tool-details" v-show="showLinkDom">
+          <h3>工具简介</h3>
+          <el-row>
+            <el-col :span="4">
+              <div class="grid-content tool-ico"><img class="logo" src="../assets/cd-logo.png"></div>
+            </el-col>
+            <el-col :span="8">
+              <div class="grid-content">
                 <div class="info-item"><label>工具名称：</label>{{current_item.name}}</div>
                 <div class="info-item"><label>工具类型：</label>{{current_item.appCategoryName}}</div>
                 <div class="info-item"><label>访问次数：</label>{{current_item.visitCount}}</div>
-              </div></el-col>
-              <el-col :span="8"><div class="grid-content">
+              </div>
+            </el-col>
+            <el-col :span="8">
+              <div class="grid-content">
                 <div class="info-item"><label>创建时间：</label>{{current_item.creatTime}} </div>
-              </div></el-col>
-              <el-col :span="4"><div class="grid-content">
+              </div>
+            </el-col>
+            <el-col :span="4">
+              <div class="grid-content">
                 <a class="item-link el-button el-button--primary" :href="current_item.url" target="_blank"><i class="fa fa-link"></i>&nbsp;访问链接</a>
-              </div></el-col>
-            </el-row>
-          </div>
-
-
-
-        </el-tab-pane>
+              </div>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="24">
+              <div class="info-item">
+                {{current_item.desc}}
+              </div>
+            </el-col>
+          </el-row>
+        </div>
+      </el-tab-pane>
     </el-tabs>
   </div>
 </main>
-
