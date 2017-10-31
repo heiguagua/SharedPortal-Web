@@ -276,6 +276,14 @@ export default {
         vm.ruleForm.depId = data.id;
       }
     },
+    renderContent(h, { node, data, store }) {
+    if(data.has_leaf === 0 ||data.has_leaf === "0") {
+        node.isLeaf = true;
+      }
+    return (
+      <span class="el-tree-node__label" title={node.label}>{node.label}</span>
+    );
+   }
 
     // deleNode(node) { //删除
     //   const vm = this;
