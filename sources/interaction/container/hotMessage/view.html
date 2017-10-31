@@ -46,11 +46,11 @@
         <div class="list">
           <template>
             <el-table :data="listHottestResource" border style="width: 100%" v-loading="loading2" element-loading-text="数据加载中" slot="empty"
-              @row-click="jumpDetailHotResource">
+              @row-click="jumpDetailResource">
               <el-table-column label="信息资源名称" width="180">
                 <template scope="scope">
                   <div class="over_space">
-                    <span v-bind:title="scope.row.dataset_name">{{scope.row.dataset_name}}</span>
+                    <span v-bind:title="scope.row.TABLE_NAME">{{scope.row.TABLE_NAME}}</span>
                   </div>
                 </template>
               </el-table-column>
@@ -64,7 +64,7 @@
               <el-table-column label="所属目标">
                 <template scope="scope">
                   <div class="over_space">
-                    <span v-bind:title="scope.row.classify_structure_name">{{scope.row.classify_structure_name}}</span>
+                    <span v-bind:title="scope.row.BELONG_STRUCTURE">{{scope.row.BELONG_STRUCTURE}}</span>
                   </div>
                 </template>
               </el-table-column>
@@ -118,18 +118,18 @@
         <div class="list">
           <template>
             <el-table :data="listHottestDirectory" border style="width: 100%" v-loading="loading4" element-loading-text="数据加载中" slot="empty"
-              @row-click="jumpDetailHotestCatalog">
+              @row-click="jumpDetailLatestCatalog">
               <el-table-column label="信息资源名称" width="180">
                 <template scope="scope">
                   <div class="over_space">
-                    <span v-bind:title="scope.row.classify_name">{{scope.row.classify_name}}</span>
+                    <span v-bind:title="scope.row.dataset_name">{{scope.row.dataset_name}}</span>
                   </div>
                 </template>
               </el-table-column>
               <el-table-column label="所属部门" width="180">
                 <template scope="scope">
                   <div class="over_space">
-                    <span v-bind:title="scope.row.dep_name">{{scope.row.dep_name}}</span>
+                    <span v-bind:title="scope.row.org_name">{{scope.row.org_name}}</span>
                   </div>
                 </template>
               </el-table-column>

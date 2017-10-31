@@ -251,7 +251,7 @@ export default {
       }
     },
     /**跳转到数据目录的相应的详情页面 */
-    jumpDetailResource(row, event, column) { //最新资源的跳转---系统实时动态数据资源详情页面
+    jumpDetailResource(row, event, column) { //资源的跳转---系统实时动态数据资源详情页面
       const vm = this;
       vm.$router.push({
         path: '/layout/catalog/system-dynamic-details',
@@ -261,7 +261,7 @@ export default {
         }
       })
     },
-    jumpDetailHotResource(row, event, column) { //最热资源的跳转---政务基础信息资源目录、  政务主题信息资源目录详情页面
+    jumpDetailLatestCatalog(row, event, column) { //目录的跳转---政务基础信息资源目录、  政务主题信息资源目录
       const vm = this;
       vm.$router.push({
         path: '/layout/catalog/details',
@@ -271,25 +271,6 @@ export default {
         }
       })
     },
-    jumpDetailLatestCatalog(row, event, column) { //最新目录的跳转---政务基础信息资源目录、  政务主题信息资源目录
-      const vm = this;
-      vm.$router.push({
-        path: '/layout/catalog/details',
-        query: {
-          dirName: row.dataset_name,
-          ddcm_id: row.resource_map_id
-        }
-      })
-    },
-    jumpDetailHotestCatalog(row, event, column) { //最热目录的跳转---政务基础信息资源目录、  政务主题信息资源目录列表页面
-      const vm = this;
-      vm.$router.push({
-        path: '/layout/catalog/resources',
-        query: {
-          dirName: row.classify_name,
-          dirCode: row.tree_code
-        }
-      })
-    }
+
   }
 };
