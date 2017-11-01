@@ -3,7 +3,8 @@
     <div class="banner">
       <div class="cont">
         <a class="navlog-brand">
-          <div class="navbar-logo"><img class="logo" src="../assets/header/logo.png" /></div>
+          <div class="navbar-logo">
+            <img class="logo" v-bind:src="sysObj.projectPortalLogo" alt="logo"  width="72" height="72" /></div>
           <div class="nav-text"><span class="text">{{sysObj.projectPortalName}}</span></br>
             <span class="des-english">{{sysObj.projectPortalEnName}}</span>
           </div>
@@ -104,8 +105,8 @@
       <router-link :to="{ path: '/layout/interaction/aboutUs' }" class="aboutus">
     关于我们</router-link>| <router-link :to="{ path: '/layout/interaction/aboutUs' }" class="interaction">互动交流</router-link>
     </p>
-    <p>
-      <span>主办：成都市人民政府</span><span class="m-30">承办：成都市大数据和电子政务管理办公室</span><span>  承建维护：成都市软件产业发展中心</span>
+    <p v-html="satelliteInfo.content">
+      <!-- <span>主办：成都市人民政府</span><span class="m-30">承办：成都市大数据和电子政务管理办公室</span><span>  承建维护：成都市软件产业发展中心</span> -->
     </p>
   </footer>
 

@@ -7,6 +7,7 @@ export default {
       ruleForm: {
         realName: '',
         loginName: '',
+        regionCode:'',
         orgCode: '',
         email: '',
         phoneNumber: ''
@@ -20,6 +21,11 @@ export default {
         loginName: [{
           required: true,
           message: '用户名不能为空',
+          trigger: 'blur'
+        }],
+         regionCode: [{
+          required: true,
+          message: '区域不能为空',
           trigger: 'blur'
         }],
         orgCode: [{
@@ -52,13 +58,20 @@ export default {
         label: 'name',
         children: 'children'
       },
+      regionProps: {
+        label: 'regionName',
+        children: 'children'
+      },
       depData: [],
-      depName: ''
+      depName: '',
+      regionData:[],
+      regionName:''
     }
   },
   mounted() {
     const vm = this;
-    vm.PdepData();
+    // vm.PdepData();
+    // vm.PregionData();
   },
 
   methods: {
@@ -120,14 +133,14 @@ export default {
         this.depName = data.name;
       }
     },
-    loadNode(node, resolve) {
+    loadNode(node, resolve) {//部门树
       const vm = this;
       if (node.level === 0) {
         return resolve(vm.depData);
       }
 
       var hasChild;
-      if (node.data.has_leaf == 1) {
+      if (node.data.hasLeaf == 1 || node.data.hasLeaf == '1') {
         hasChild = true;
       } else {
         hasChild = false;
@@ -136,7 +149,7 @@ export default {
       setTimeout(() => {
         var data;
         if (hasChild) {
-          this.getDepData(node.data.id).then(function (res) {
+          this.getDepData(node.data.regionCode).then(function (res) {
             if (res.status == 200) {
               data = res.data;
               resolve(data);
@@ -166,6 +179,68 @@ export default {
           });
         }
       })
-    }
+    },
+    /**区域列表 */
+    getRegionData: function (id) {
+      const vm = this;
+      return Http.fetch({
+        method: "post",
+        url: master + "/dept/getRegionSelectDataList",
+        data: {
+          pid: id,
+        }
+      })
+    },
+     regionHandleNodeClick(data) {
+        this.ruleForm.regionCode = data.id;
+        this.regionName = data.name;
+    },
+      regionLoadNode(node, resolve) {//区域树
+      const vm = this;
+      if (node.level === 0) {
+        return resolve(vm.depData);
+      }
+
+      var hasChild;
+      if (node.data.has_leaf == 1) {
+        hasChild = true;
+      } else {
+        hasChild = false;
+      }
+
+      setTimeout(() => {
+        var data;
+        if (hasChild) {
+          this.getRegionData(node.data.id).then(function (res) {
+            if (res.status == 200) {
+              data = res.data;
+              resolve(data);
+            } else {
+              data = [];
+              resolve(data);
+            }
+          });
+        } else {
+          data = [];
+          resolve(data);
+        }
+      }, 500);
+    },
+    PregionData() {
+      const vm = this;
+      vm.getRegionData().then(function (result) {
+        if (result.status == 200) {
+          let data = result.data;
+          vm.regionData = data.content.selectData;
+          console.log(vm.regionData)
+        } else {
+          vm.$notify({
+            type: "error",
+            title: '部门',
+            message: '系统错误',
+          });
+        }
+      })
+    },
   }
 };
