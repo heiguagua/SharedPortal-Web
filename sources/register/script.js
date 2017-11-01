@@ -95,6 +95,7 @@ export default {
                 });
                   vm.$refs[formName].resetFields(); //清空表单
                   vm.depName = '';
+                  vm.regionName='';
                 } else {
                  vm.$message({
                   showClose: true,
@@ -117,13 +118,14 @@ export default {
       });
     },
     /**部门列表 */
-    getDepData: function (id) {
+    getDepData: function (id,code) {
       const vm = this;
       return Http.fetch({
         method: "get",
         url: master + "/home/requirementNewDepTree",
         params: {
           pid: id,
+          regionCode:code
         }
       })
     },
@@ -140,7 +142,7 @@ export default {
       }
 
       var hasChild;
-      if (node.data.hasLeaf == 1 || node.data.hasLeaf == '1') {
+      if (node.data.has_leaf == 1) {
         hasChild = true;
       } else {
         hasChild = false;
@@ -149,7 +151,7 @@ export default {
       setTimeout(() => {
         var data;
         if (hasChild) {
-          this.getDepData(node.data.regionCode).then(function (res) {
+          this.getDepData(node.data.id,vm.ruleForm.regionCode).then(function (res) {
             if (res.status == 200) {
               data = res.data;
               resolve(data);
@@ -167,7 +169,8 @@ export default {
     },
     PdepData() {
       const vm = this;
-      vm.getDepData("root").then(function (result) {
+       vm.depName = '';
+      vm.getDepData("root",vm.ruleForm.regionCode).then(function (result) {
         if (result.status == 200) {
           let data = result.data;
           vm.depData = data;
@@ -184,16 +187,16 @@ export default {
     getRegionData: function (id) {
       const vm = this;
       return Http.fetch({
-        method: "post",
+        method: "get",
         url: master + "/dept/getRegionSelectDataList",
-        data: {
-          pid: id,
+        params: {
+          regionCode: id,
         }
       })
     },
      regionHandleNodeClick(data) {
-        this.ruleForm.regionCode = data.id;
-        this.regionName = data.name;
+        this.ruleForm.regionCode = data.regionCode;
+        this.regionName = data.regionName;
     },
       regionLoadNode(node, resolve) {//区域树
       const vm = this;
@@ -202,7 +205,7 @@ export default {
       }
 
       var hasChild;
-      if (node.data.has_leaf == 1) {
+      if (node.data.hasLeaf == 1) {
         hasChild = true;
       } else {
         hasChild = false;
@@ -211,9 +214,9 @@ export default {
       setTimeout(() => {
         var data;
         if (hasChild) {
-          this.getRegionData(node.data.id).then(function (res) {
+          this.getRegionData(node.data.regionCode).then(function (res) {
             if (res.status == 200) {
-              data = res.data;
+              data = res.data.content.selectData;
               resolve(data);
             } else {
               data = [];
@@ -228,11 +231,11 @@ export default {
     },
     PregionData() {
       const vm = this;
+       vm.regionName='';
       vm.getRegionData().then(function (result) {
         if (result.status == 200) {
           let data = result.data;
           vm.regionData = data.content.selectData;
-          console.log(vm.regionData)
         } else {
           vm.$notify({
             type: "error",
