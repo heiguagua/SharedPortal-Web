@@ -35,7 +35,7 @@
                 <input type="text" v-model="regionName" class="el-input__inner" @click="PregionData()">
                  </span>
                     <el-dropdown-menu slot="dropdown" style="min-width:400px;max-height:300px;overflow: auto">
-                      <el-tree :data="regionData" :props="regionProps"  :load="regionLoadNode" lazy accordion @node-click="regionHandleNodeClick" highlight-current></el-tree>
+                      <el-tree :data="regionData" :props="regionProps" :render-content="renderContent" :load="regionLoadNode" lazy accordion @node-click="regionHandleNodeClick" highlight-current></el-tree>
                     </el-dropdown-menu>
                   </el-dropdown>
                 </el-form-item>

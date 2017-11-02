@@ -142,7 +142,7 @@ export default {
       }
 
       var hasChild;
-      if (node.data.has_leaf == 1) {
+      if (node.data.has_leaf === 1 || node.data.has_leaf === "1") {
         hasChild = true;
       } else {
         hasChild = false;
@@ -205,7 +205,7 @@ export default {
       }
 
       var hasChild;
-      if (node.data.hasLeaf == 1) {
+      if (node.data.hasLeaf === 1 ||node.data.hasLeaf === "1") {
         hasChild = true;
       } else {
         hasChild = false;
@@ -246,7 +246,7 @@ export default {
       })
     },
    renderContent(h, { node, data, store }) {
-    if(data.has_leaf === 0 ||data.has_leaf === "0") {
+    if(data.has_leaf === 0 ||data.has_leaf === "0" || data.hasLeaf === 0 ||data.hasLeaf === "0") {
         node.isLeaf = true;
       }
     return (
