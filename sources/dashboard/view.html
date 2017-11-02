@@ -188,8 +188,8 @@
               <dd class="des-title">最热目录</dd>
               <dd class="list-group">
                 <ul id="HottestDirectory">
-                  <li v-for="item in listHottestDirectory" @click="jumpDetailHotestCatalog(item)">
-                    <p v-bind:title="item.classify_name">{{item.classify_name}}</p>
+                  <li v-for="item in listHottestDirectory" @click="jumpDetailLatestCatalog(item)">
+                    <p v-bind:title="item.dataset_name">{{item.dataset_name}}</p>
                   </li>
                 </ul>
               </dd>
@@ -229,8 +229,8 @@
               <dd class="des-title">最热资源</dd>
               <dd class="list-group">
                 <ul id="hotResource">
-                  <li v-for="item in listHottestResource" @click="jumpDetailHotResource(item)">
-                    <p v-bind:title="item.dataset_name">{{item.dataset_name}}</p>
+                  <li v-for="item in listHottestResource" @click="jumpDetailResource(item)">
+                    <p v-bind:title="item.TABLE_NAME">{{item.TABLE_NAME}}</p>
                   </li>
                 </ul>
               </dd>

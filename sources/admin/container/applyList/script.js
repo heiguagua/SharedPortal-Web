@@ -66,7 +66,7 @@ export default {
             vm.$notify({
               type: "error",
               title: '申请列表',
-              message: result.message,
+              message: result.data.message,
             });
           }
         });

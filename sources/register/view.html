@@ -53,13 +53,13 @@
                 <input type="text" v-model="depName" class="el-input__inner" @click="PdepData">
                  </span>
                     <el-dropdown-menu slot="dropdown" style="min-width:400px;max-height:300px;overflow: auto">
-                      <el-tree :data="depData" :props="props"  :load="loadNode" lazy accordion @node-click="handleNodeClick" highlight-current></el-tree>
+                      <el-tree :data="depData" :props="props"  :render-content="renderContent"  :load="loadNode" lazy accordion @node-click="handleNodeClick" highlight-current></el-tree>
                     </el-dropdown-menu>
                   </el-dropdown>
                 </el-form-item>
               </el-col>
               <el-col :span="6" :offset="1">
-                <label class=" help-block">请选择您想要申请账号的部门</label>
+                <label class=" help-block">请选择您想要申请账号的部门(最后一级才可选)</label>
               </el-col>
             </el-row>
             <el-row>
