@@ -77,7 +77,7 @@ export default {
           url: Http.url.master + "/login",
           params: {
             username: vm.username,
-            password: Encrypt.md5Encrypt(vm.password)
+           password: Encrypt.md5Encrypt(vm.password).substr(0, 11).toUpperCase()
           }
         })
         .then(function (result) {
