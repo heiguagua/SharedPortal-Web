@@ -33,6 +33,7 @@ export default {
       loading2: true,
       activeTab:'itemlist',
        tableInterfaces: [],
+       detail_pro:[]
     }
   },
   mounted() {
@@ -102,14 +103,53 @@ export default {
           }
         });
     },
+      getResDetails: function(ddcm_id) { // 获取资源详情
+          const vm = this;
+        return Http.fetch({
+          method: "post",
+          url: master + "/dataset/getDataSetDetailsById",
+          data: {
+            ddcm_id: ddcm_id
+          }
+        }).then(function(res) {
+          if (res.status == 200) {
+            vm.detail_pro = res.data;
+          } else {
+            vm.$message({
+              type: "error",
+              title: '系统错误',
+              message: res.message,
+            });
+          }
+        })
+      },
+      getInterfaces: function(ddcm_id) { // 获取接口信息
+        return Http.fetch({
+          method: "post",
+          url: master + "/serviceinfo/getServiceInfoByObjId",
+          data: {
+            obj_Id: ddcm_id // 资源code
+          }
+        })
+      },
     /** 点击申请列表任意一行得到详情页面*/
     getApplyItem(row, event, column) {
       const vm = this;
       vm.flag = false;
       vm.applyItem.name = row.dataset_name;
       vm.setId = row.dcm_id;
+      vm.getResDetails(vm.setId);
       vm.getApplyItemData(row.dcm_id, 1, vm.search_inp2);
     },
+    handleClick(tab, event) {
+        const vm = this;
+        console.log(tab, event);
+        if (tab.name == "interfaceinfo") {
+          vm.getInterfaces(vm.setId).then(function(res) {
+            vm.tableInterfaces = res.data;
+          })
+        }
+      },
     /** 分页*/
     handleCurrentChange1(val) {
       const vm = this;

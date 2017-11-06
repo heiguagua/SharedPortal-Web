@@ -32,13 +32,13 @@
               </div>
             </template>
           </el-table-column>
-          <el-table-column label="所属目录分类">
+           <el-table-column label="所属目录分类">
             <template scope="scope">
               <div class="over_space">
                 <span v-bind:title="scope.row.dirStructure">{{scope.row.dirStructure}}</span>
               </div>
             </template>
-          </el-table-column>
+          </el-table-column> 
           <el-table-column label="申请理由" width="180">
             <template scope="scope">
               <div class="over_space">
@@ -75,20 +75,20 @@
         <em class="goback" @click="goBack()"> < 返回</em>
       </div>
     </div>
-    <table  border="0" width="100%"><tbody>
+    	<table  border="0" width="100%"><tbody>
 			<tr class="">
 				<td width="20%">信息资源名称</td>
-				<td></td>
+				<td>{{detail_pro.dataset_name}}</td>
 			</tr>
 			<tr class="">
 				<td>所属部门</td>
-				<td></td>
+				<td>{{detail_pro.dept_name}}</td>
 			</tr>
 			<tr class="">
 				<td>相关业务</td>
-				<td></td>
+				<td>{{detail_pro.system_name}}</td>
 			</tr>
-    </tbody></table>
+		</tbody></table>
     
     		<el-tabs v-model="activeTab" @tab-click="">
 			<el-tab-pane label="数据项列表" name="itemlist">
