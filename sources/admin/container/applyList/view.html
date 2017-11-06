@@ -24,7 +24,8 @@
     </div>
     <div class="list_data">
       <template>
-        <el-table :data="getApplyList" border style="width: 100%" @row-click="getApplyItem" v-loading="loading" element-loading-text="数据加载中" slot="empty"> 
+        <el-table :data="getApplyList" border style="width: 100%" @row-click="getApplyItem" v-loading="loading" element-loading-text="数据加载中"
+          slot="empty">
           <el-table-column label="数据结构">
             <template scope="scope">
               <div class="over_space">
@@ -53,11 +54,17 @@
               </div>
             </template>
           </el-table-column>
+          <el-table-column label="详情" width="100">
+            <template slot-scope="scope">
+              <el-button @click="getApplyItem(scope.row)" type="text" size="small">查看</el-button>
+            </template>
+          </el-table-column>
         </el-table>
       </template>
     </div>
     <div class="block page">
-      <el-pagination @current-change="handleCurrentChange1"  :current-page="currentPage1"  layout="total, prev, pager, next, jumper" :total=applyCount.totalR>
+      <el-pagination @current-change="handleCurrentChange1" :current-page="currentPage1" layout="total, prev, pager, next, jumper"
+        :total=applyCount.totalR>
       </el-pagination>
     </div>
   </div>
@@ -123,7 +130,8 @@
       </template>
     </div>
     <div class="block page">
-      <el-pagination @current-change="handleCurrentChange2" :current-page="currentPage2"  layout="total, prev, pager, next, jumper" :total=applyCount.totalR>
+      <el-pagination @current-change="handleCurrentChange2" :current-page="currentPage2" layout="total, prev, pager, next, jumper"
+        :total=applyCount.totalR>
       </el-pagination>
     </div>
   </div>
