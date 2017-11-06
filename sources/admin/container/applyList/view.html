@@ -25,7 +25,14 @@
     <div class="list_data">
       <template>
         <el-table :data="getApplyList" border style="width: 100%" @row-click="getApplyItem" v-loading="loading" element-loading-text="数据加载中" slot="empty"> 
-          <el-table-column label="数据结构">
+          <el-table-column label="信息资源名称">
+            <template scope="scope">
+              <div class="over_space">
+                <span v-bind:title="scope.row.dataset_name">{{scope.row.dataset_name}}</span>
+              </div>
+            </template>
+          </el-table-column>
+          <el-table-column label="所属目录分类">
             <template scope="scope">
               <div class="over_space">
                 <span v-bind:title="scope.row.dirStructure">{{scope.row.dirStructure}}</span>
@@ -63,12 +70,29 @@
   </div>
   <div v-show="!flag" class="apply_item">
     <div class="hd">
-      <p class="hd-title">{{applyItem.name}}</p>
+      <p class="hd-title">{{applyItem.name}}-详情</p>
       <div class="hd-total">
-        <em class="goback" @click="goBack()">返回</em>
+        <em class="goback" @click="goBack()"> < 返回</em>
       </div>
     </div>
-    <div class="filter">
+    <table  border="0" width="100%"><tbody>
+			<tr class="">
+				<td width="20%">信息资源名称</td>
+				<td></td>
+			</tr>
+			<tr class="">
+				<td>所属部门</td>
+				<td></td>
+			</tr>
+			<tr class="">
+				<td>相关业务</td>
+				<td></td>
+			</tr>
+    </tbody></table>
+    
+    		<el-tabs v-model="activeTab" @tab-click="">
+			<el-tab-pane label="数据项列表" name="itemlist">
+		 <div class="filter">
       <div class="search">
         <el-input placeholder="请输入" icon="search" v-model="search_inp2" :on-icon-click="searchClick2">
         </el-input>
@@ -126,5 +150,36 @@
       <el-pagination @current-change="handleCurrentChange2" :current-page="currentPage2"  layout="total, prev, pager, next, jumper" :total=applyCount.totalR>
       </el-pagination>
     </div>
+			</el-tab-pane>
+			<el-tab-pane label="接口说明" name="interfaceinfo">
+				<p v-show="tableInterfaces.length == 0">暂无接口说明</p>
+				 <div v-show="tableInterfaces.length > 0">
+           <el-table
+				    :data="tableInterfaces"
+				    style="width: 100%">
+				    <el-table-column type="expand">
+				      <template scope="props">
+				        <el-form label-position="left"  class="demo-table-expand">
+				          <el-form-item label="使用说明">
+				            <span>{{ props.row.operation_desc }}</span>
+				          </el-form-item>
+				          <el-form-item label="字段说明">
+				            <span>{{ props.row.request_info }}</span>
+				          </el-form-item>
+				        </el-form>
+				      </template>
+				    </el-table-column>
+				    <el-table-column
+				      label="接口列表"
+				      prop="service_url">
+				      <template scope="props">
+				      	{{ props.row.service_url }}
+				      </template>
+				    </el-table-column>
+				  </el-table></div>
+			</el-tab-pane>
+			</el-tabs>
+
+   
   </div>
 </main>

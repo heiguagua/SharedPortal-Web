@@ -30,7 +30,9 @@ export default {
       currentPage1: 1,
       currentPage2: 1,
       loading: true,
-      loading2: true
+      loading2: true,
+      activeTab:'itemlist',
+       tableInterfaces: [],
     }
   },
   mounted() {
@@ -104,7 +106,7 @@ export default {
     getApplyItem(row, event, column) {
       const vm = this;
       vm.flag = false;
-      vm.applyItem.name = row.dirStructure;
+      vm.applyItem.name = row.dataset_name;
       vm.setId = row.dcm_id;
       vm.getApplyItemData(row.dcm_id, 1, vm.search_inp2);
     },

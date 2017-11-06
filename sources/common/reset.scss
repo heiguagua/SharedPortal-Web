@@ -155,4 +155,10 @@ html {
       top: 40%!important;
       left: 50%!important;
     }
+    /*el-tabs style */
+    #apply-list .el-tabs__nav-scroll {
+    border: 1px solid #DBE0E8;
+    background: #F9FBFF;
+    padding: 0 15px;
+  }
 }
