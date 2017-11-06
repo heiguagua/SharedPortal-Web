@@ -46,7 +46,7 @@
 		</div>
 		<div v-show="showTable"><el-table :data="tableData"	border	style="width: 100%" v-loading="loading" element-loading-text="数据加载中" slot="empty"
 		highlight-current-row   @current-change="handleCurrentChange" >
-		<el-table-column prop="dataset_name" label="信息资源名称" width="36%"></el-table-column>
+		<el-table-column prop="dataset_name" label="信息资源名称" width="26%"></el-table-column>
 		<el-table-column prop="share_type" label="共享类型"	width="24%"></el-table-column>
 		<el-table-column prop="is_open" label="开放类型"	width="24%"></el-table-column>
 		<el-table-column prop="dept_name" label="相关部门"	width="24%"></el-table-column>
@@ -60,6 +60,11 @@
 		{{ scope.row.update_time }}
 		</template>
 		</el-table-column>
+	 <el-table-column label="详情"  width="15%">
+      <template slot-scope="scope">
+        <el-button @click="handleCurrentChange(scope.row)"  type="text" size="small">查看</el-button>
+      </template>
+    </el-table-column>
 		</el-table>
 		</div>
 		<div v-show="!showTable" class="data-detail-view">

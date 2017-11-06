@@ -34,6 +34,11 @@
           <span v-bind:title="scope.row.table_source_type">{{ scope.row.table_source_type }}</span>
         </template>
       </el-table-column>
+       <el-table-column label="详情" width="10%">
+          <template slot-scope="scope">
+            <el-button @click="handleCurrentChange(scope.row)" type="text" size="small">查看</el-button>
+          </template>
+        </el-table-column>
     </el-table>
     <el-pagination @current-change="handlePageChange" :current-page="currentPage" layout="total, prev, pager, next, jumper" :total="totalResource">
     </el-pagination>

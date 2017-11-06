@@ -28,6 +28,10 @@
       padding: 20px;
       overflow: hidden;
       cursor: pointer;
+      &:hover .dem-head {
+        color: #4197F4;
+        text-decoration: underline;
+      }
       img {
         float: left;
         margin: 14px;
