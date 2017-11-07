@@ -20,6 +20,23 @@
       }
     }
   }
+  	table {
+		width: 100% !important;
+		background: #FFF;
+		border-collapse: collapse;
+		table-layout: fixed;
+
+		tr>td, tr>th {
+			padding: 8px;
+			line-height: 1.42857143;
+			vertical-align: top;
+			border-top: 1px solid #ddd;
+			border-left: 1px solid #F2F2F2;
+			border-right: 1px solid #F2F2F2;
+		}
+
+  }
+ 
   .filter{
     overflow: hidden;
     padding: 15px;

@@ -7,7 +7,8 @@ export default {
       islogin: false,
       username: "",
       password: "",
-      sysObj:{},
+      sysObj: {},
+      satelliteInfo: [],
       dialogLoginVisible: false,
       errorShow: false
     }
@@ -16,6 +17,7 @@ export default {
     const vm = this;
     vm.isloginStatus();
     vm.getSysName();
+    vm.getSatelliteInfo('footer');
   },
 
   methods: {
@@ -51,7 +53,7 @@ export default {
           }
         });
     },
-    getSysName: function () {//系统名称
+    getSysName: function () { //系统名称
       const vm = this;
       Http.fetch({
         method: "get",
@@ -59,8 +61,8 @@ export default {
       }).then(
         function (result) {
           if (result.status == 200) {
-           vm.sysObj=result.data;
-           document.title =result.data.projectPortalName;
+            vm.sysObj = result.data;
+            document.title = result.data.projectPortalName;
           } else {
             vm.$notify({
               type: "error",
@@ -120,6 +122,28 @@ export default {
     },
     openLoginDialog: function () {
       this.dialogLoginVisible = true;
-    }
+    },
+    getSatelliteInfo: function (type) {
+      const vm = this;
+      Http.fetch({
+        method: "get",
+        url: master + "/home/getSatelliteInfo",
+        params: {
+          category: type
+        }
+      }).then(
+        function (result) {
+          if (result.status == 200) {
+            let data = result.data;
+            vm.satelliteInfo = data[0];
+          } else {
+            vm.$notify({
+              type: "error",
+              title: '',
+              message: '系统错误',
+            });
+          }
+        });
+    },
   }
 };

@@ -19,6 +19,7 @@ export default {
       parentName: '',
       parentId: "",
       carouselPicNews: [],
+      porjectPic:[],
       depAllDeptInfoAA: [],
       depAllDeptInfoData: [],
       dirFirstName: [],
@@ -38,8 +39,7 @@ export default {
     vm.LatestDbResourceData(); //最新资源
     vm.HottestResourceData(); //最热资源
     vm.getCarouselPicNews(); //最新新闻
-
-
+    vm.getPorjectPic()
   },
   methods: {
     getAllDirMenuInfo: function (item) {
@@ -248,6 +248,25 @@ export default {
               type: "error",
               title: '最新新闻',
               message: result.message,
+            });
+          }
+        });
+    },
+      getPorjectPic: function () {
+      const vm = this;
+      Http.fetch({
+        method: "get",
+        url: master + "/home/getCarouselPictures"
+      }).then(
+        function (result) {
+          if (result.status == 200) {
+            let data = result.data;
+            vm.porjectPic = data;
+          } else {
+            vm.$notify({
+              type: "error",
+              title: '轮播图',
+              message: '系统错误',
             });
           }
         });

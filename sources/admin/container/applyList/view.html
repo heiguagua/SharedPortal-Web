@@ -26,7 +26,14 @@
       <template>
         <el-table :data="getApplyList" border style="width: 100%" @row-click="getApplyItem" v-loading="loading" element-loading-text="数据加载中"
           slot="empty">
-          <el-table-column label="数据结构">
+          <el-table-column label="信息资源名称">
+            <template scope="scope">
+              <div class="over_space">
+                <span v-bind:title="scope.row.dataset_name">{{scope.row.dataset_name}}</span>
+              </div>
+            </template>
+          </el-table-column>
+          <el-table-column label="所属目录分类">
             <template scope="scope">
               <div class="over_space">
                 <span v-bind:title="scope.row.dirStructure">{{scope.row.dirStructure}}</span>
@@ -70,69 +77,131 @@
   </div>
   <div v-show="!flag" class="apply_item">
     <div class="hd">
-      <p class="hd-title">{{applyItem.name}}</p>
+      <p class="hd-title">{{applyItem.name}}-详情</p>
       <div class="hd-total">
-        <em class="goback" @click="goBack()">返回</em>
+        <em class="goback" @click="goBack()"> < 返回</em>
       </div>
     </div>
-    <div class="filter">
-      <div class="search">
-        <el-input placeholder="请输入" icon="search" v-model="search_inp2" :on-icon-click="searchClick2">
-        </el-input>
-      </div>
-    </div>
-    <div class="list_data">
-      <template>
-        <el-table :data="getApplyItemList" border style="width: 100%" v-loading="loading2" element-loading-text="数据加载中" slot="empty">
-          <el-table-column label="数据项">
-            <template scope="scope">
-              <div class="over_space">
-                <span v-bind:title="scope.row.item_name">{{scope.row.item_name}}</span>
-              </div>
-            </template>
-          </el-table-column>
-          <el-table-column label="审核人" width="180">
-            <template scope="scope">
-              <div class="over_space">
-                <span v-bind:title="scope.row.user_name">{{scope.row.user_name}}</span>
-              </div>
-            </template>
-          </el-table-column>
-          <el-table-column label="审核组织" width="180">
-            <template scope="scope">
-              <div class="over_space">
-                <span v-bind:title="scope.row.dept_name">{{scope.row.dept_name}}</span>
-              </div>
-            </template>
-          </el-table-column>
-          <el-table-column label="审核时间" width="180">
-            <template scope="scope">
-              <div class="over_space">
-                <span v-bind:title="scope.row.audit_date">{{scope.row.audit_date}}</span>
-              </div>
-            </template>
-          </el-table-column>
-          <el-table-column label="意见" width="180">
-            <template scope="scope">
-              <div class="over_space">
-                <span v-bind:title="scope.row.audit_opinion">{{scope.row.audit_opinion}}</span>
-              </div>
-            </template>
-          </el-table-column>
-          <el-table-column label="状态" width="100">
-            <template scope="scope">
-              <div class="over_space">
-                <span v-bind:title="scope.row.status">{{scope.row.status}}</span>
-              </div>
-            </template>
-          </el-table-column>
-        </el-table>
-      </template>
-    </div>
-    <div class="block page">
-      <el-pagination @current-change="handleCurrentChange2" :current-page="currentPage2" layout="total, prev, pager, next, jumper"
-        :total=applyCount.totalR>
-      </el-pagination>
-    </div>
+    <table border="0" width="100%">
+      <tbody>
+        <tr class="">
+          <td width="20%">信息资源名称</td>
+          <td>{{detail_pro.dataset_name}}</td>
+        </tr>
+        <tr class="">
+          <td>所属部门</td>
+          <td>{{detail_pro.dept_name}}</td>
+        </tr>
+        <tr class="">
+          <td>相关业务</td>
+          <td>{{detail_pro.system_name}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <el-tabs v-model="activeTab" @tab-click="handleClick">
+      <el-tab-pane label="数据项列表" name="itemlist">
+        <div class="filter">
+          <div class="search">
+            <el-input placeholder="请输入" icon="search" v-model="search_inp2" :on-icon-click="searchClick2">
+            </el-input>
+          </div>
+        </div>
+        <div class="list_data">
+          <template>
+            <el-table :data="getApplyItemList" border style="width: 100%" v-loading="loading2" element-loading-text="数据加载中" slot="empty">
+              <el-table-column label="数据项">
+                <template scope="scope">
+                  <div class="over_space">
+                    <span v-bind:title="scope.row.item_name">{{scope.row.item_name}}</span>
+                  </div>
+                </template>
+              </el-table-column>
+              <el-table-column label="审核人" width="180">
+                <template scope="scope">
+                  <div class="over_space">
+                    <span v-bind:title="scope.row.user_name">{{scope.row.user_name}}</span>
+                  </div>
+                </template>
+              </el-table-column>
+              <el-table-column label="审核组织" width="180">
+                <template scope="scope">
+                  <div class="over_space">
+                    <span v-bind:title="scope.row.dept_name">{{scope.row.dept_name}}</span>
+                  </div>
+                </template>
+              </el-table-column>
+              <el-table-column label="审核时间" width="180">
+                <template scope="scope">
+                  <div class="over_space">
+                    <span v-bind:title="scope.row.audit_date">{{scope.row.audit_date}}</span>
+                  </div>
+                </template>
+              </el-table-column>
+              <el-table-column label="意见" width="180">
+                <template scope="scope">
+                  <div class="over_space">
+                    <span v-bind:title="scope.row.audit_opinion">{{scope.row.audit_opinion}}</span>
+                  </div>
+                </template>
+              </el-table-column>
+              <el-table-column label="状态" width="100">
+                <template scope="scope">
+                  <div class="over_space">
+                    <span v-bind:title="scope.row.status">{{scope.row.status}}</span>
+                  </div>
+                </template>
+              </el-table-column>
+            </el-table>
+          </template>
+        </div>
+        <div class="block page">
+          <el-pagination @current-change="handleCurrentChange2" :current-page="currentPage2" layout="total, prev, pager, next, jumper"
+            :total=applyCount.totalR>
+          </el-pagination>
+        </div>
+      </el-tab-pane>
+      <el-tab-pane label="接口说明" name="interfaceinfo">
+        <p v-show="tableInterfaces.length == 0">暂无接口说明</p>
+        <div v-show="tableInterfaces.length > 0">
+          <el-table :data="tableInterfaces" style="width: 100%">
+            <el-table-column type="expand">
+              <template scope="props">
+                <el-form label-position="left" class="demo-table-expand">
+                  <el-form-item label="接口方式">
+                    <span>HTTP</span>
+                  </el-form-item>
+                  <el-form-item label="请求类型">
+                    <span>POST</span>
+                  </el-form-item>
+                  <el-form-item label="请求Header设置">
+                    <span>Content-Type：application/json;charset=utf-8</span>
+                  </el-form-item>
+                   <el-form-item label="请求Body格式（参数传递JSON）">
+                    <span>请求参数实例：</span>
+                  </el-form-item>
+                   <el-form-item label="返回数据格式（返回JSON格式）">
+                    <span>结果返回实例：</span>
+                  </el-form-item>
+                  <el-form-item label="使用说明">
+                    <span>{{ props.row.operation_desc }}</span>
+                  </el-form-item>
+                  <el-form-item label="字段说明">
+                    <span>{{ props.row.request_info }}</span>
+                  </el-form-item>
+                </el-form>
+              </template>
+            </el-table-column>
+            <el-table-column label="接口列表" prop="service_url">
+              <template scope="props">
+                {{ props.row.service_url }}
+              </template>
+            </el-table-column>
+          </el-table>
+        </div>
+      </el-tab-pane>
+    </el-tabs>
+
+
   </div>
 </main>

@@ -7,6 +7,7 @@ export default {
       ruleForm: {
         realName: '',
         loginName: '',
+        regionCode:'',
         orgCode: '',
         email: '',
         phoneNumber: ''
@@ -20,6 +21,11 @@ export default {
         loginName: [{
           required: true,
           message: '用户名不能为空',
+          trigger: 'blur'
+        }],
+         regionCode: [{
+          required: true,
+          message: '区域不能为空',
           trigger: 'blur'
         }],
         orgCode: [{
@@ -52,13 +58,20 @@ export default {
         label: 'name',
         children: 'children'
       },
+      regionProps: {
+        label: 'regionName',
+        children: 'children'
+      },
       depData: [],
-      depName: ''
+      depName: '',
+      regionData:[],
+      regionName:''
     }
   },
   mounted() {
     const vm = this;
-    vm.PdepData();
+    // vm.PdepData();
+    // vm.PregionData();
   },
 
   methods: {
@@ -82,6 +95,7 @@ export default {
                 });
                   vm.$refs[formName].resetFields(); //清空表单
                   vm.depName = '';
+                  vm.regionName='';
                 } else {
                  vm.$message({
                   showClose: true,
@@ -104,13 +118,14 @@ export default {
       });
     },
     /**部门列表 */
-    getDepData: function (id) {
+    getDepData: function (id,code) {
       const vm = this;
       return Http.fetch({
         method: "get",
         url: master + "/home/requirementNewDepTree",
         params: {
           pid: id,
+          regionCode:code
         }
       })
     },
@@ -120,14 +135,14 @@ export default {
         this.depName = data.name;
       }
     },
-    loadNode(node, resolve) {
+    loadNode(node, resolve) {//部门树
       const vm = this;
       if (node.level === 0) {
         return resolve(vm.depData);
       }
 
       var hasChild;
-      if (node.data.has_leaf == 1) {
+      if (node.data.has_leaf === 1 || node.data.has_leaf === "1") {
         hasChild = true;
       } else {
         hasChild = false;
@@ -136,7 +151,7 @@ export default {
       setTimeout(() => {
         var data;
         if (hasChild) {
-          this.getDepData(node.data.id).then(function (res) {
+          this.getDepData(node.data.id,vm.ruleForm.regionCode).then(function (res) {
             if (res.status == 200) {
               data = res.data;
               resolve(data);
@@ -154,7 +169,8 @@ export default {
     },
     PdepData() {
       const vm = this;
-      vm.getDepData("root").then(function (result) {
+       vm.depName = '';
+      vm.getDepData("root",vm.ruleForm.regionCode).then(function (result) {
         if (result.status == 200) {
           let data = result.data;
           vm.depData = data;
@@ -167,8 +183,70 @@ export default {
         }
       })
     },
+    /**区域列表 */
+    getRegionData: function (id) {
+      const vm = this;
+      return Http.fetch({
+        method: "get",
+        url: master + "/dept/getRegionSelectDataList",
+        params: {
+          regionCode: id,
+        }
+      })
+    },
+     regionHandleNodeClick(data) {
+        this.ruleForm.regionCode = data.regionCode;
+        this.regionName = data.regionName;
+    },
+      regionLoadNode(node, resolve) {//区域树
+      const vm = this;
+      if (node.level === 0) {
+        return resolve(vm.depData);
+      }
+
+      var hasChild;
+      if (node.data.hasLeaf === 1 ||node.data.hasLeaf === "1") {
+        hasChild = true;
+      } else {
+        hasChild = false;
+      }
+
+      setTimeout(() => {
+        var data;
+        if (hasChild) {
+          this.getRegionData(node.data.regionCode).then(function (res) {
+            if (res.status == 200) {
+              data = res.data.content.selectData;
+              resolve(data);
+            } else {
+              data = [];
+              resolve(data);
+            }
+          });
+        } else {
+          data = [];
+          resolve(data);
+        }
+      }, 500);
+    },
+    PregionData() {
+      const vm = this;
+       vm.regionName='';
+      vm.getRegionData().then(function (result) {
+        if (result.status == 200) {
+          let data = result.data;
+          vm.regionData = data.content.selectData;
+        } else {
+          vm.$notify({
+            type: "error",
+            title: '部门',
+            message: '系统错误',
+          });
+        }
+      })
+    },
    renderContent(h, { node, data, store }) {
-    if(data.has_leaf === 0 ||data.has_leaf === "0") {
+    if(data.has_leaf === 0 ||data.has_leaf === "0" || data.hasLeaf === 0 ||data.hasLeaf === "0") {
         node.isLeaf = true;
       }
     return (

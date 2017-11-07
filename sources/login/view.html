@@ -2,7 +2,7 @@
   <header>
     <section class="top_conttitle">
        <router-link to="/layout/dashboard">
-      <img class="logopng" src="../assets/login/logo.png">
+      <img class="logopng" v-bind:src="sysObj.projectPortalLogo" alt="logo" width="56" height="56">
       <p>{{sysObj.projectPortalName}}</p>
        </router-link>
       <div class="righttext">

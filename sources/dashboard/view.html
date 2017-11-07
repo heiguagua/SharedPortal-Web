@@ -3,19 +3,9 @@
   <div class="banner">
     <template>
       <el-carousel :interval="5000" arrow="always">
-        <el-carousel-item>
+        <el-carousel-item v-for="pic in porjectPic" :key="pic.id">
           <a href="javascript:void(0)">
-            <img src="../assets/dashboard/banner3.png" alt="" height="420" width="100%">
-          </a>
-        </el-carousel-item>
-        <el-carousel-item>
-          <a href="javascript:void(0)">
-            <img src="../assets/dashboard/banner.png" alt="" height="420" width="100%">
-          </a>
-        </el-carousel-item>
-        <el-carousel-item>
-          <a href="javascript:void(0)">
-            <img src="../assets/dashboard/banner2.png" alt="" height="420" width="100%">
+            <img v-bind:src="pic.pic_path" alt="轮播图" height="420" width="100%">
           </a>
         </el-carousel-item>
       </el-carousel>
