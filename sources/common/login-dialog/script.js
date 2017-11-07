@@ -34,7 +34,7 @@ loginAjax(name, m5_password) { //登录
           });
           Encrypt.token.set("orgName", data.orgName);
           Encrypt.token.set("userName", data.userName);
-          vm.$router.push("/layout/dashboard");
+          vm.$router.go(0);
         } else {
           vm.loginAjax_11();
         }
@@ -53,7 +53,7 @@ loginAjax(name, m5_password) { //登录
           });
           Encrypt.token.set("orgName", data.orgName);
           Encrypt.token.set("userName", data.userName);
-          vm.$router.push("/layout/dashboard");
+          vm.$router.go(0);
         } else {
           vm.errorShow = true;
         }
