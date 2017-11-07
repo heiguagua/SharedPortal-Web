@@ -82,12 +82,12 @@
                       <span>{{ props.row.operation_desc }}</span>
                     </el-form-item>
                     <el-form-item label="字段说明">
-                      <span>
-											 <el-table :data="props.row.request_info" style="width: 100%">
+                      <span>{{props.row.request_info}}
+											 <!-- <el-table :data="props.row.request_info" style="width: 100%">
 													<el-table-column label="字段名" prop="itemName"></el-table-column >
 															<el-table-column label="字段中文名" prop="itemNameCn"></el-table-column >
 																	<el-table-column label="表名" prop="tableName"></el-table-column >
-												</el-table>
+												</el-table> -->
 										</span>
                     </el-form-item>
                   </el-form>
