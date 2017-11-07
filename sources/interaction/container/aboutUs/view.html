@@ -1,5 +1,5 @@
 <main id="aboutUs">
-  <div v-html="aboutUsInfo.content">
+  <div v-if="aboutUsInfo" v-html="aboutUsInfo.content">
     <!-- <h4 class="text-center">网站简介</h4> -->
     <!-- <p>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;成都市政务数据资源服务网是成都市各部门政务信息资源共享网站，由成都市大数据和电子政务管理办公室主办，成都市软件产业发展中心承办并负责运维工作。

@@ -65,11 +65,8 @@ export default {
         function(result) {
           if (result.status == 200) {
             vm.subAppList = result.data;
-              var param_item = vm.$route.query.current_item;
-            if(!param_item) {
             vm.current_item=result.data[0];
              vm.showLinkDom = true;
-            }
           } else {
             vm.$message({
               type: "error",
