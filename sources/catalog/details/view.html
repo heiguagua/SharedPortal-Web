@@ -62,12 +62,12 @@
             <el-table :data="tableInterfaces" style="width: 100%">
               <el-table-column type="expand">
                 <template scope="props">
-                  <el-form label-position="left" class="demo-table-expand">
+                  <el-form label-position="left"  class="demo-table-expand">
                     <el-form-item label="接口方式">
-                      <span>HTTP</span>
+                      <span>{{props.row.service_type}}</span>
                     </el-form-item>
                     <el-form-item label="请求类型">
-                      <span>POST</span>
+                      <span>{{props.row.request_method}}</span>
                     </el-form-item>
                     <el-form-item label="请求Header设置">
                       <span>Content-Type：application/json;charset=utf-8</span>
