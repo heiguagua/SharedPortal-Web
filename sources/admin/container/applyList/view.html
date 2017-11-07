@@ -161,45 +161,111 @@
           </el-pagination>
         </div>
       </el-tab-pane>
-      <el-tab-pane label="接口说明" name="interfaceinfo">
-        <p v-show="tableInterfaces.length == 0">暂无接口说明</p>
-        <div v-show="tableInterfaces.length > 0">
-          <el-table :data="tableInterfaces" style="width: 100%">
-            <el-table-column type="expand">
-              <template scope="props">
-                <el-form label-position="left" class="demo-table-expand">
-                  <el-form-item label="接口方式">
-                    <span>HTTP</span>
-                  </el-form-item>
-                  <el-form-item label="请求类型">
-                    <span>POST</span>
-                  </el-form-item>
-                  <el-form-item label="请求Header设置">
-                    <span>Content-Type：application/json;charset=utf-8</span>
-                  </el-form-item>
-                   <el-form-item label="请求Body格式（参数传递JSON）">
-                    <span>请求参数实例：</span>
-                  </el-form-item>
-                   <el-form-item label="返回数据格式（返回JSON格式）">
-                    <span>结果返回实例：</span>
-                  </el-form-item>
-                  <el-form-item label="使用说明">
-                    <span>{{ props.row.operation_desc }}</span>
-                  </el-form-item>
-                  <el-form-item label="字段说明">
-                    <span>{{ props.row.request_info }}</span>
-                  </el-form-item>
-                </el-form>
-              </template>
-            </el-table-column>
-            <el-table-column label="接口列表" prop="service_url">
-              <template scope="props">
-                {{ props.row.service_url }}
-              </template>
-            </el-table-column>
-          </el-table>
-        </div>
-      </el-tab-pane>
+       <el-tab-pane label="接口说明" name="interfaceinfo">
+          <p v-show="tableInterfaces.length == 0">暂无接口说明</p>
+          <div v-show="tableInterfaces.length > 0">
+            <el-table :data="tableInterfaces" style="width: 100%">
+              <el-table-column type="expand">
+                <template scope="props">
+                  <el-form label-position="left" class="demo-table-expand">
+                    <el-form-item label="接口方式">
+                      <span>{{props.row.service_type}}</span>
+                    </el-form-item>
+                    <el-form-item label="请求类型">
+                      <span>{{props.row.request_method}}</span>
+                    </el-form-item>
+                    <el-form-item label="请求Header设置">
+                      <span>Content-Type：application/json;charset=utf-8</span>
+                    </el-form-item>
+                    <el-form-item label="请求Body格式（参数传递JSON）">
+                      <span>请求参数实例：
+											<table  border="0" width="100%">
+													<thead>
+													<tr>
+														<th>参数名称</th>
+														<th>类型</th>
+														<th>描述</th>
+													</tr>
+													</thead>
+													<tbody>
+															<tr>
+																<td>sys_log.operate_type</td>
+																<td>string</td>
+																<td>形如 tableName.itemName(表名.字段名)</td>
+															</tr>
+															<tr>
+																<td>sys_log.operator_id</td>
+																<td>string</td>
+																<td>形如 09f4fef9249c457ca67b4a7a45823730(表名.字段id)</td>
+															</tr>
+															<tr>
+																<td>sys_log.id</td>
+																<td>string</td>
+																<td>形如 0288216939814a2a91c359e686fd8108(表名.表id)</td>
+															</tr>
+															<tr>
+																<td>startIndex</td>
+																<td>string</td>
+																<td>当前页</td>
+															</tr>
+															<tr>
+																<td>offIndex</td>
+																<td>string</td>
+																<td>每页条数</td>
+															</tr>
+														</tbody>
+											</table>
+											</span>
+                    </el-form-item>
+                    <el-form-item label="返回数据格式（返回JSON格式）">
+                      <span>结果返回实例：
+													<table  border="0" width="100%">
+													<thead>
+													<tr>
+														<th>返回属性名称</th>
+														<th>描述</th>
+													</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>msg</td>
+															<td>提示信息（如："查询成功"）</td>
+														</tr>
+														<tr>
+															<td>state</td>
+															<td>返回状态（如：true）</td>
+														</tr>
+														<tr>
+															<td>content</td>
+															<td>返回结果，content内部有一个有多个对象的data数组</td>
+														</tr>
+													</tbody>
+													</table>
+											</span>
+                    </el-form-item>
+                    <el-form-item label="使用说明">
+                      <span>{{ props.row.operation_desc }}</span>
+                    </el-form-item>
+                    <el-form-item label="字段说明">
+                      <!-- <span> -->
+											  <el-table :data="props.row.request_info"  max-height="250" style="width: 100%">
+													<el-table-column label="字段名" prop="itemName"></el-table-column >
+													<el-table-column label="字段中文名" prop="itemNameCn"></el-table-column >
+													<el-table-column label="表名" prop="tableName"></el-table-column >
+												</el-table> 
+										<!-- </span> -->
+                    </el-form-item>
+                  </el-form>
+                </template>
+              </el-table-column>
+              <el-table-column label="接口列表" prop="service_url">
+                <template scope="props">
+                  {{ props.row.service_url }}
+                </template>
+              </el-table-column>
+            </el-table>
+          </div>
+        </el-tab-pane>
     </el-tabs>
 
 
