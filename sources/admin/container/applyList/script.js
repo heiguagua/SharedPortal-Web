@@ -135,6 +135,7 @@ export default {
     /** 点击申请列表任意一行得到详情页面*/
     getApplyItem(row, event, column) {
       const vm = this;
+      vm.activeTab='itemlist';
       vm.flag = false;
       vm.applyItem.name = row.dataset_name;
       vm.setId = row.dcm_id;
