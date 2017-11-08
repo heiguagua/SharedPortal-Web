@@ -146,7 +146,11 @@ export default {
         console.log(tab, event);
         if (tab.name == "interfaceinfo") {
           vm.getInterfaces(vm.setId).then(function(res) {
-            vm.tableInterfaces = res.data;
+            let tableData = res.data;
+             _.forEach(tableData,function(item){
+                item.request_info=JSON.parse(item.request_info)
+             });
+            vm.tableInterfaces = tableData;
           })
         }
       },
