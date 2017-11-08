@@ -7,7 +7,7 @@
             <dt class="ui-link">&nbsp;&nbsp;{{subitem.name}} >&nbsp;&nbsp;&nbsp;</dt>
             <dd>
               <span v-for='ssubitem in subitem.children'>
-                  <span v-if='ssubitem.url'  :class="{ active: (current_item === ssubitem) }"   @click="Boxhide">
+                  <span v-if='ssubitem.url'  :class="{ active: (current_item === ssubitem) }">
                    <a  class="texta" target="_blank" v-bind:title="ssubitem.name" @click="showLink(ssubitem,'')" > | {{ssubitem.name}}</a>
                   </span>
               <span v-else :class="{ active: (activeChild  === ssubitem.name) }">

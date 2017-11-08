@@ -94,10 +94,6 @@ export default {
       vm.jumpRoute = true;
       vm.showLinkDom = false;
     },
-    Boxhide: function () { /*jquery取消隐藏元素*/
-      const vm = this;
-      jquery(".Box").hide();
-    }
 
   },
 };
