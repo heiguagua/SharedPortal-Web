@@ -1,5 +1,6 @@
 import Http from "../common/http.js";
 import Encrypt from "../common/encrypt.js";
+import {formatDate} from "../common/date.js";
 const master = Http.url.master;
 export default {
   data() {
@@ -19,7 +20,7 @@ export default {
       parentName: '',
       parentId: "",
       carouselPicNews: [],
-      porjectPic:[],
+      porjectPic: [],
       depAllDeptInfoAA: [],
       depAllDeptInfoData: [],
       dirFirstName: [],
@@ -68,7 +69,7 @@ export default {
             if (item.type == "2-3") {
               vm.parentName = item.name;
               vm.parentId = item.id;
-                 _.forEach(depAllDeptInfo,function(_item){
+              _.forEach(depAllDeptInfo, function (_item) {
                 if (_item.type == '3') {
                   vm.getAllDirMenuInfo(_item);
                 }
@@ -252,7 +253,7 @@ export default {
           }
         });
     },
-      getPorjectPic: function () {
+    getPorjectPic: function () {
       const vm = this;
       Http.fetch({
         method: "get",
@@ -357,5 +358,11 @@ export default {
         }
       })
     },
+  },
+  filters: {
+    formatDate(time) {
+      let date = new Date(time);
+      return formatDate(date, 'yyyy-MM-dd');
+    }
   }
 };
