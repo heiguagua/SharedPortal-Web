@@ -72,7 +72,7 @@ export default {
         method: "get",
         url: master + "/home/listLatestDbResource",
         params: {
-          pageSize: 10,
+          pageSize: 20,
           pageNum: d_curr_page,
           keywords: search_inp
         }
@@ -101,7 +101,7 @@ export default {
         method: "get",
         url: master + "/home/getHottestDirResourceList",
         params: {
-          pageSize: 10,
+          pageSize: 20,
           pageNum: d_curr_page,
           keywords: search_inp
         }
@@ -129,7 +129,7 @@ export default {
         method: "get",
         url: master + "/home/listLatestDirectory",
         params: {
-          pageSize: 10,
+          pageSize: 20,
           pageNum: d_curr_page,
           keywords: search_inp
         }
@@ -157,7 +157,7 @@ export default {
         method: "get",
         url: master + "/home/getHottestDirectoryList",
         params: {
-          pageSize: 10,
+          pageSize: 20,
           pageNum: d_curr_page,
           keywords: search_inp
         }

@@ -23,7 +23,7 @@
 		<el-table-column prop="is_get" label="是否已获取" width="20%"></el-table-column>
 		<el-table-column prop="expect_update_frequence" label="数据使用频率" width="20%"></el-table-column>
 		</el-table>
-		<el-pagination  @current-change="handlePageChange" :current-page="currentPage"  layout="total, prev, pager, next, jumper" :total="totalResource">
+		<el-pagination  @current-change="handlePageChange" :current-page="currentPage"  page-size=20  layout="total, prev, pager, next, jumper" :total="totalResource">
     	</el-pagination>
 	</div>
 </main>

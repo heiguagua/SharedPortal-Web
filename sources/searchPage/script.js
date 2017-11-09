@@ -89,7 +89,7 @@ export default {
             }
 
           } else {
-            vm.$message({
+            vm.$notify({
               type: "error",
               title: '数据目录',
               message: result.message,
@@ -118,7 +118,7 @@ export default {
               vm.totalR = data[Pager.totalR];
             }
           } else {
-            vm.$message({
+            vm.$notify({
               type: "error",
               title: '开发者工具',
               message: "内部错误",
@@ -147,7 +147,7 @@ export default {
               vm.totalR = data[Pager.totalR];
             }
           } else {
-            vm.$message({
+           vm.$notify({
               type: "error",
               title: '专题应用',
               message: "内部错误",
@@ -171,7 +171,7 @@ export default {
             let data = result.data;
             vm.latestDirectory = data.body;
           } else {
-            vm.$message({
+            vm.$notify({
               type: "error",
               title: '最新数据目录',
               message: "内部错误",
@@ -193,7 +193,7 @@ export default {
             let data = result.data;
             vm.listHottestDirectory = data.body;
           } else {
-            vm.$message({
+           vm.$notify({
               type: "error",
               title: '热门数据目录',
               message: "内部错误",
@@ -215,7 +215,7 @@ export default {
           if (result.status == 200) {
             vm.hotAppsByDept = result.data.body;
           } else {
-            vm.$message({
+           vm.$notify({
               type: "error",
               title: '热门应用',
               message: "内部错误",
