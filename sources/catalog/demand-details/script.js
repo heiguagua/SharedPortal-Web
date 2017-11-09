@@ -6,9 +6,10 @@ export default {
     return {
       loading:true,
       head_title:'',
-      detail_pro:{},
+      detail_pro:[],
       activeTab: 'itemlist',
       tableDataItem:[],
+      loading:true,
       operateble:false,
         correctionForm: {
           content: ''
@@ -48,6 +49,7 @@ export default {
         vm.head_title = vm.$route.query.dirName;
         vm.dirCode = vm.$route.query.dirCode;
         vm.getResDetails(vm.dirCode).then(function(res){
+          vm.loading=false;
           if(res.status == 200) {
             vm.detail_pro = res.data;
           }

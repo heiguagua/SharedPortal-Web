@@ -8,7 +8,7 @@ export default {
       tableData: [],
       objCount: {},
       search_inp: "",
-      loading:true
+      loading: true
     }
   },
   mounted() {
@@ -29,13 +29,16 @@ export default {
         }
       }).then(
         function (result) {
-          vm.loading=false;
+          vm.loading = false;
           if (result.status == 200) {
             let data = result.data;
             vm.tableData = data.body;
-            if(!data.previous){
-            vm.objCount.totalR = data[Pager.totalR];
+            if (!data.previous) {
+              vm.objCount.totalR = data[Pager.totalR];
             }
+          } else if (result.status == 511) {
+            alert('登录超时，请重新登录！');
+             return
           } else {
             vm.$notify({
               type: "error",
