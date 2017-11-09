@@ -66,11 +66,12 @@ export default {
             vm.applyCount.pendingNum = data.examiningCount;
             vm.applyCount.reviewedNum = data.examinedCount;
           } else {
-            vm.$notify({
-              type: "error",
-              title: '申请列表',
-              message: result.data.message,
-            });
+            // vm.$notify({
+            //   type: "error",
+            //   title: '申请列表',
+            //   message: result.data.message,
+            // });
+            alert("请先登录")
           }
         });
     },
