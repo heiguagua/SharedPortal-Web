@@ -24,7 +24,7 @@
     </div>
     <div class="list_data">
       <template>
-        <el-table :data="getApplyList" border style="width: 100%" @row-click="getApplyItem" v-loading="loading" element-loading-text="数据加载中"
+        <el-table :data="getApplyList" border style="width: 100%"  v-loading="loading" element-loading-text="数据加载中"
           slot="empty">
           <el-table-column label="信息资源名称">
             <template scope="scope">
@@ -82,7 +82,7 @@
         <em class="goback" @click="goBack()"> < 返回</em>
       </div>
     </div>
-    <table border="0" width="100%">
+    <table class="table-detail" border="0" width="100%">
       <tbody>
         <tr class="">
           <td width="20%">信息资源名称</td>
@@ -179,7 +179,7 @@
                     </el-form-item>
                     <el-form-item label="请求Body格式（参数传递JSON）">
                       <span>请求参数实例：
-											<table  border="0" width="100%">
+											<table class="table-detail"  border="0" width="100%">
 													<thead>
 													<tr>
 														<th>参数名称</th>
@@ -219,7 +219,7 @@
                     </el-form-item>
                     <el-form-item label="返回数据格式（返回JSON格式）">
                       <span>结果返回实例：
-													<table  border="0" width="100%">
+													<table class="table-detail" border="0" width="100%">
 													<thead>
 													<tr>
 														<th>返回属性名称</th>
