@@ -192,7 +192,7 @@ export default {
           if (res.status == 200) {
             vm.tableDataItem = res.data;
           } else {
-            vm.$message({
+           vm.$notify({
               type: "error",
               title: '系统错误',
               message: res.message,
@@ -264,7 +264,7 @@ export default {
                 });
               }
             } else {
-              vm.$message({
+              vm.$notify({
                 type: "error",
                 title: '查询错误',
                 message: res.message
@@ -290,7 +290,7 @@ export default {
                 });
               }
             } else {
-              vm.$message({
+              vm.$notify({
                 type: "error",
                 title: '查询错误',
                 message: res.message,
@@ -339,7 +339,7 @@ export default {
             }
             
           } else {
-            vm.$message({
+            vm.$notify({
               type: "error",
               title: '纠错失败！',
               message: res.message
@@ -376,7 +376,7 @@ export default {
             
           } else {
             alert(1)
-            vm.$message({
+            vm.$notify({
               type: "error",
               title: '评分失败！',
               message: '评分失败'

@@ -40,7 +40,7 @@ export default {
           if (result.status == 200) {
             vm.data1 = result.data.rs.aaData;
           } else {
-            vm.$message({
+           vm.$notify({
               type: "error",
               title: '应用部门',
               message: "内部错误",
@@ -67,7 +67,7 @@ export default {
               console.log(vm.current_item)
             }
           } else {
-            vm.$message({
+           vm.$notify({
               type: "error",
               title: '专题应用',
               message: "内部错误",

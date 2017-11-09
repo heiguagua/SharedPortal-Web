@@ -45,7 +45,7 @@ export default {
               vm.getSubApps(data[0].devlp_Id);
             }
           } else {
-            vm.$message({
+            vm.$notify({
               type: "error",
               title: '查询出错！',
               message: result.message,

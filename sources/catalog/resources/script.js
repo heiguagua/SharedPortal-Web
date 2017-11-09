@@ -48,7 +48,7 @@ export default {
             
           }
           else{
-             vm.$message({
+             vm.$notify({
                   type: "error",
                   title: '系统错误',
                   message: res.message,
