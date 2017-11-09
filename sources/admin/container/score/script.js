@@ -36,10 +36,13 @@ export default {
              if(!data.previous){
             vm.objCount.totalR = data[Pager.totalR];
             }
+          } else if (result.status == 511) {
+            alert('登录超时，请重新登录！');
+            return
           } else {
             vm.$notify({
               type: "error",
-              title: '我的评分',
+              title: '我的纠错',
               message: result.data.message,
             });
           }

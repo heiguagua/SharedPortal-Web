@@ -62,7 +62,7 @@ export default {
       this.$router.push({
         path: '/layout/catalog/demand-details',
         query: {
-          dirName: val.dataset_name,
+          dirName: val.request_dept_name,
           dirCode: val.require_source_id
         }
       })

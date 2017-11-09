@@ -187,6 +187,9 @@ export default {
                     type: 'success'
                   });
                 }
+              } else if (result.status == 511) {
+                alert('登录超时，请重新登录！');
+                return
               } else {
                 vm.$notify({
                   type: "error",
@@ -257,7 +260,7 @@ export default {
       const nodeArry = this.$refs.tree.getCheckedNodes();
       vm.depName = [];
       vm.ruleForm.depId = [];
-       _.forEach(nodeArry,function(item){
+      _.forEach(nodeArry, function (item) {
         vm.depName.push(item.name)
         vm.ruleForm.depId.push(item.id);
       })
@@ -276,14 +279,23 @@ export default {
         vm.ruleForm.depId = data.id;
       }
     },
-    renderContent(h, { node, data, store }) {
-    if(data.has_leaf === 0 ||data.has_leaf === "0") {
+    renderContent(h, {
+      node,
+      data,
+      store
+    }) {
+      if (data.has_leaf === 0 || data.has_leaf === "0") {
         node.isLeaf = true;
       }
-    return (
-      <span class="el-tree-node__label" title={node.label}>{node.label}</span>
-    );
-   }
+      return ( <
+        span class = "el-tree-node__label"
+        title = {
+          node.label
+        } > {
+          node.label
+        } < /span>
+      );
+    }
 
     // deleNode(node) { //删除
     //   const vm = this;
