@@ -67,10 +67,10 @@ export default {
             vm.totalResource = r_data[Pager.totalR];//总共多少页
               }
           } else {
-            Notification({
+            vm.$notify({
               type: "error",
-              title: '系统错误',
-              message: res.data.head.message,
+              title: '错误',
+              message: res.data.message,
             });
           }
         })

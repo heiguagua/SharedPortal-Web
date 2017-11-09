@@ -375,7 +375,6 @@ export default {
             }
             
           } else {
-            alert(1)
             vm.$notify({
               type: "error",
               title: '评分失败！',

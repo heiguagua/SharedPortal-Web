@@ -37,10 +37,10 @@ export default {
             vm.total = res.data.total //资源
           }
           else{
-            Notification({
+            vm.$notify({
                   type: "error",
-                  title: '系统错误',
-                  message: res.data.head.message,
+                  title: '错误',
+                  message: res.data.message,
                 });
           }
         })

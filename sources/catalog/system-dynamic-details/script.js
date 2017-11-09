@@ -31,10 +31,10 @@ export default {
         if (res.status == 200) {
           vm.detail_pro = res.data;
         } else {
-          Notification({
+          vm.$notify({
             type: "error",
-            title: '系统错误',
-            message: res.message,
+            title: '错误',
+            message: res.data.message,
           });
         }
       })
@@ -49,10 +49,10 @@ export default {
           vm.tableDataItem = r_data.body;
           // vm.totalResource= r_data[Pager.totalR];//total
         } else {
-          Notification({
+          vm.$notify({
             type: "error",
-            title: '系统错误',
-            message: res.message,
+            title: '错误',
+            message: res.data.message,
           });
         }
       })

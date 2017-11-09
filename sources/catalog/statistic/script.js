@@ -18,10 +18,10 @@ export default {
           vm.tableData = res.data;
         }
         else{
-          Notification({
+          vm.$notify({
                 type: "error",
                 title: '系统列表',
-                message: res.data.head.message,
+                message: res.data.message,
               });
         }
       })

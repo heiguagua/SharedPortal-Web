@@ -44,10 +44,10 @@ export default {
         });
         vm.depData = data;
       } else {
-        Notification({
+        vm.$notify({
           type: "error",
-          title: '部门',
-          message: res.data.head.message,
+          title: '错误',
+          message: res.data.message,
         });
       }
     })
@@ -85,10 +85,10 @@ export default {
             });
             vm.depFidData = data;
           } else {
-            Notification({
+            vm.$notify({
               type: "error",
-              title: '部门',
-              message: res.data.head.message,
+              title: '错误',
+              message: res.data.message,
             });
           }
         });
