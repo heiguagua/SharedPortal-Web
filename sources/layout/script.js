@@ -42,8 +42,14 @@ export default {
             Encrypt.token.empty("userName");
             Encrypt.token.empty("orgName");
             vm.islogin = false;
-            alert("退出成功");
-            vm.$router.push("/login");
+             vm.$message({
+              showClose: true,
+              message: '退出成功！',
+              type: 'success'
+            });
+             setTimeout(() => {
+              vm.$router.push("/login");
+             },1000);
           } else {
             vm.$notify({
               type: "error",

@@ -53,7 +53,9 @@ export default {
             });
             Encrypt.token.set("orgName", data.orgName);
             Encrypt.token.set("userName", data.userName);
-            vm.$router.push("/layout/dashboard");
+             setTimeout(() => {
+               vm.$router.push("/layout/dashboard");
+             },1000);
           } else {
             vm.errorShow = true;
           }

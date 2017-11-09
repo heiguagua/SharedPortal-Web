@@ -40,7 +40,7 @@
     </template>
   </div>
   <div class="block page">
-    <el-pagination @current-change="handleCurrentChange" :page-size=5 layout="total, prev, pager, next, jumper" :total=objCount.totalR>
+    <el-pagination @current-change="handleCurrentChange" ::page-size="5" layout="total, prev, pager, next, jumper" :total=objCount.totalR>
     </el-pagination>
   </div>
 </main>
