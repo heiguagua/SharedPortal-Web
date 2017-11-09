@@ -54,7 +54,7 @@ export default {
             vm.$notify({
               type: "error",
               title: '退出登录',
-              message: result.message,
+              message: result.data.message,
             });
           }
         });
@@ -73,7 +73,7 @@ export default {
             vm.$notify({
               type: "error",
               title: '系统错误',
-              message: result.message,
+              message: result.data.message,
             });
           }
         });

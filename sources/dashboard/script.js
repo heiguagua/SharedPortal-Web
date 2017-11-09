@@ -84,7 +84,7 @@ export default {
             vm.$notify({
               type: "error",
               title: '基础目录',
-              message: result.message,
+              message: result.data.message,
             });
           }
         });
@@ -102,7 +102,7 @@ export default {
             vm.$notify({
               type: "error",
               title: '资源统计',
-              message: result.message,
+              message: result.data.message,
             });
           }
         });
@@ -135,7 +135,7 @@ export default {
             vm.$notify({
               type: "error",
               title: '最新政策',
-              message: result.message,
+              message: result.data.message,
             });
           }
         });
@@ -158,7 +158,7 @@ export default {
             vm.$notify({
               type: "error",
               title: '最新动态-最新目录',
-              message: result.message,
+              message: result.data.message,
             });
           }
         });
@@ -180,7 +180,7 @@ export default {
             vm.$notify({
               type: "error",
               title: '最新动态-最热目录',
-              message: result.message,
+              message: result.data.message,
             });
           }
         });
@@ -202,7 +202,7 @@ export default {
             vm.$notify({
               type: "error",
               title: '最新动态-最新资源',
-              message: result.message,
+              message: result.data.message,
             });
           }
         });
@@ -225,7 +225,7 @@ export default {
             vm.$notify({
               type: "error",
               title: '最新动态-最热资源',
-              message: result.message,
+              message: result.data.message,
             });
           }
         });
@@ -247,7 +247,7 @@ export default {
             vm.$notify({
               type: "error",
               title: '最新新闻',
-              message: result.message,
+              message: result.data.message,
             });
           }
         });
@@ -266,7 +266,7 @@ export default {
             vm.$notify({
               type: "error",
               title: '轮播图',
-              message: '系统错误',
+              message: result.data.message,
             });
           }
         });
@@ -288,7 +288,7 @@ export default {
             vm.$notify({
               type: "error",
               title: '新闻详情',
-              message: result.message,
+              message: result.data.message,
             });
           }
         });
@@ -309,7 +309,7 @@ export default {
             vm.$notify({
               type: "error",
               title: '系统错误',
-              message: result.message,
+              message: result.data.message,
             });
           }
         });

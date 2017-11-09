@@ -28,7 +28,7 @@ export default {
             vm.$notify({
               type: "error",
               title: '系统错误',
-              message: result.message,
+              message: result.data.message,
             });
           }
         });

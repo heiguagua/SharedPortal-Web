@@ -162,7 +162,7 @@
         </div>
       </el-tab-pane>
        <el-tab-pane label="接口说明" name="interfaceinfo">
-          <p v-show="tableInterfaces.length == 0">暂无接口说明</p>
+          <p v-show="tableInterfaces.length == 0" style="padding-left:30px;">暂无接口说明</p>
           <div v-show="tableInterfaces.length > 0">
             <el-table :data="tableInterfaces" style="width: 100%">
               <el-table-column type="expand">

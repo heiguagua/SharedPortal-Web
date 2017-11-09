@@ -98,7 +98,7 @@ export default {
             vm.$notify({
               type: "error",
               title: '申请列表详情',
-              message: result.message,
+              message: result.data.message,
             });
           }
         });
