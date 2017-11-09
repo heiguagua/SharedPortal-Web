@@ -214,34 +214,6 @@
           margin: 0 30px;
         }
       }
-      .float-profile {
-        position: fixed;
-        top: 170px;
-        right: 6px;
-        z-index: 9999;
-        .share-link {
-          display: block;
-          text-decoration: none;
-          img {
-            width: 50px;
-          }
-        }
-        p {
-          text-align: center;
-          color: $main-blue;
-        }
-        .other-link {
-          display: none;
-          li:first-child {
-            padding: 15px 0;
-          }
-        }
-        &:hover {
-          .other-link {
-            display: block;
-          }
-        }
-      }
       .inputdiv {
         margin: 30px auto;
         text-align: center;
