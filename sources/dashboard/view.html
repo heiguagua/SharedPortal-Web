@@ -69,7 +69,7 @@
                           <router-link :to="'interaction/policyDetail/'+item.id">
                             <span v-bind:title="item.title">{{item.title}}</span>
                           </router-link>
-                          <span>{{item.create_time}}</span>
+                          <span>{{item.create_time | formatDate}}</span>
                         </li>
                       </ul>
                     </el-tab-pane>
@@ -80,7 +80,7 @@
                           <router-link :to="'interaction/policyDetail/'+item.id">
                             <span v-bind:title="item.title">{{item.title}}</span>
                           </router-link>
-                          <span>{{item.create_time}}</span>
+                          <span>{{item.create_time | formatDate}}</span>
                         </li>
                       </ul>
                     </el-tab-pane>
@@ -91,7 +91,7 @@
                           <router-link :to="'interaction/policyDetail/'+item.id">
                             <span v-bind:title="item.title">{{item.title}}</span>
                           </router-link>
-                          <span>{{item.create_time}}</span>
+                          <span>{{item.create_time | formatDate}}</span>
                         </li>
                       </ul>
                     </el-tab-pane>
