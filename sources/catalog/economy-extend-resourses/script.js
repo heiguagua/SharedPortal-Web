@@ -59,7 +59,7 @@ export default {
         console.log(val)
         this.currentRow = val;
         this.$router.push({ path: '/layout/catalog/list-details',
-          query:{dirName:val.dataset_name,dirCode:val.dataset_id}})
+          query:{dirName:val.dataset_name,dirCode:val.dataset_id,ddcm_id:val.ddcm_id}})
       },
       handlePageChange(val){// 分页处理
         const vm = this;

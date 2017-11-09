@@ -41,7 +41,7 @@ export default {
           method: "post",
           url: master + "/dataset/getDataSetAllDetailsById",
           data: {
-            dataset_id: dirCode
+            ddcm_id: dirCode
           }
         })
       },
@@ -58,7 +58,8 @@ export default {
         const vm = this;
         vm.head_title = vm.$route.query.dirName;
         vm.dirCode = vm.$route.query.dirCode;
-        vm.getResDetails(vm.dirCode).then(function(res){
+        vm.ddcm_id = vm.$route.query.ddcm_id
+        vm.getResDetails(vm.ddcm_id).then(function(res){
           vm.loading = false;
           if(res.status == 200) {
             vm.detail_pro = res.data;
