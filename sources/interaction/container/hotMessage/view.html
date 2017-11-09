@@ -4,8 +4,7 @@
       <el-tab-pane label="最新资源" name="latestResources">
         <div class="list">
           <template>
-            <el-table :data="listLatestDbResource" border style="width: 100%" v-loading="loading1" element-loading-text="数据加载中" slot="empty"
-              @row-click="jumpDetailResource">
+            <el-table :data="listLatestDbResource" border style="width: 100%" v-loading="loading1" element-loading-text="数据加载中" slot="empty">
               <el-table-column label="信息资源名称" width="180">
                 <template scope="scope">
                   <div class="over_space">
@@ -50,8 +49,7 @@
       <el-tab-pane label="最热资源" name="hottestPolicy">
         <div class="list">
           <template>
-            <el-table :data="listHottestResource" border style="width: 100%" v-loading="loading2" element-loading-text="数据加载中" slot="empty"
-              @row-click="jumpDetailResource">
+            <el-table :data="listHottestResource" border style="width: 100%" v-loading="loading2" element-loading-text="数据加载中" slot="empty">
               <el-table-column label="信息资源名称" width="180">
                 <template scope="scope">
                   <div class="over_space">
@@ -91,8 +89,7 @@
       <el-tab-pane label="最新目录" name="latestCatalog">
         <div class="list">
           <template>
-            <el-table :data="listLatestDirectory" border style="width: 100%" v-loading="loading3" element-loading-text="数据加载中" slot="empty"
-              @row-click="jumpDetailLatestCatalog">
+            <el-table :data="listLatestDirectory" border style="width: 100%" v-loading="loading3" element-loading-text="数据加载中" slot="empty">
               <el-table-column label="信息资源名称" width="180">
                 <template scope="scope">
                   <div class="over_space">
@@ -132,8 +129,7 @@
       <el-tab-pane label="最热目录" name="hottestCatalog">
         <div class="list">
           <template>
-            <el-table :data="listHottestDirectory" border style="width: 100%" v-loading="loading4" element-loading-text="数据加载中" slot="empty"
-              @row-click="jumpDetailLatestCatalog">
+            <el-table :data="listHottestDirectory" border style="width: 100%" v-loading="loading4" element-loading-text="数据加载中" slot="empty">
               <el-table-column label="信息资源名称" width="180">
                 <template scope="scope">
                   <div class="over_space">

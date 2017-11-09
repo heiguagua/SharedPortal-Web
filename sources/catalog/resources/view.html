@@ -45,22 +45,22 @@
 		</div>
 		</div>
 		<div v-show="showTable"><el-table :data="tableData"	border	style="width: 100%" v-loading="loading" element-loading-text="数据加载中" slot="empty"
-		highlight-current-row   @current-change="handleCurrentChange" >
-		<el-table-column prop="dataset_name" label="信息资源名称" width="26%"></el-table-column>
-		<el-table-column prop="share_type" label="共享类型"	width="24%"></el-table-column>
-		<el-table-column prop="is_open" label="开放类型"	width="24%"></el-table-column>
-		<el-table-column prop="dept_name" label="相关部门"	width="24%"></el-table-column>
-		<el-table-column label="所属目录" width="20%">
+		highlight-current-row>
+		<el-table-column prop="dataset_name" label="信息资源名称" ></el-table-column>
+		<el-table-column prop="share_type" label="共享类型"></el-table-column>
+		<el-table-column prop="is_open" label="开放类型"></el-table-column>
+		<el-table-column prop="dept_name" label="相关部门"	></el-table-column>
+		<el-table-column label="所属目录" >
 		<template scope="scope">
 		{{ head_title }}
 		</template>
 		</el-table-column>
-		<el-table-column label="更新时间" width="20%">
+		<el-table-column label="更新时间" >
 		<template scope="scope">
 		{{ scope.row.update_time }}
 		</template>
 		</el-table-column>
-	 <el-table-column label="详情"  width="15%">
+	 <el-table-column label="详情" width="80">
       <template slot-scope="scope">
         <el-button @click="handleCurrentChange(scope.row)"  type="text" size="small">查看</el-button>
       </template>

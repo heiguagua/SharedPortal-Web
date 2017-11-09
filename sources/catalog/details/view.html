@@ -15,7 +15,7 @@
         <span><img src="../../assets/catalog/group.png"  width="16" height="16" /></span> 评分
       </li>
     </ul>
-    <table border="0" width="100%">
+    <table class="table-detail" border="0" width="100%">
       <tbody>
         <tr class="">
           <td width="20%">信息资源名称</td>
@@ -42,16 +42,16 @@
             @selection-change="handleSelectionChange">
             <el-table-column type="selection" prop='uuid' label="全选" :selectable="checkboxInit" width="55">
             </el-table-column>
-            <el-table-column label="数据项名称" width="150">
+            <el-table-column label="数据项名称" >
               <template scope="scope">
                 <a @click="handleItemDetail(scope.row.item_name,scope.row)">{{scope.row.item_name}}</a>
               </template>
             </el-table-column>
-            <el-table-column prop="share_type" label="共享类型" width="100">
+            <el-table-column prop="share_type" label="共享类型">
             </el-table-column>
-            <el-table-column prop="is_open" label="是否可开放" width="100">
+            <el-table-column prop="is_open" label="是否可开放">
             </el-table-column>
-            <el-table-column prop="r_status" label="状态" width="100">
+            <el-table-column prop="r_status" label="状态" >
 
             </el-table-column>
           </el-table>
@@ -74,7 +74,7 @@
                     </el-form-item>
                     <el-form-item label="请求Body格式（参数传递JSON）">
                       <span>请求参数实例：
-											<table  border="0" width="100%">
+											<table  class="table-detail" border="0" width="100%">
 													<thead>
 													<tr>
 														<th>参数名称</th>
@@ -114,7 +114,7 @@
                     </el-form-item>
                     <el-form-item label="返回数据格式（返回JSON格式）">
                       <span>结果返回实例：
-													<table  border="0" width="100%">
+													<table class="table-detail" border="0" width="100%">
 													<thead>
 													<tr>
 														<th>返回属性名称</th>
