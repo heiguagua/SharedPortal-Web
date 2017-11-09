@@ -19,7 +19,7 @@
 		<el-table-column prop="system_desc" label="系统描述"	width="30%"></el-table-column>
 		<el-table-column prop="dept_name" label="来源部门" width="30%"></el-table-column>
 		</el-table>
-		<el-pagination  @current-change="handlePageChange" :current-page="currentPage"  page-size=20 layout="total, prev, pager, next, jumper" :total="totalResource">
+		<el-pagination  @current-change="handlePageChange" :current-page="currentPage"  :page-size="20" layout="total, prev, pager, next, jumper" :total="totalResource">
     	</el-pagination>
 	</div>
 </main>

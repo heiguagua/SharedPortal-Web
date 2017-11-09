@@ -1,6 +1,5 @@
 import Http from "../../common/http.js";
 import Encrypt from "../../common/encrypt.js";
-import { Notification } from 'element-ui';
 const master = Http.url.master;
 export default {
   data() {
@@ -19,10 +18,10 @@ export default {
         if (res.status == 200) {
           vm.tableData = res.data;
         } else {
-          Notification({
+          vm.$notify({
             type: "error",
             title: '系统错误',
-            message: res.message,
+            message: res.data.message,
           });
         }
       })
@@ -33,10 +32,10 @@ export default {
         if (res.status == 200) {
           vm.tableData = res.data;
         } else {
-          Notification({
+          vm.$notify({
             type: "error",
             title: '系统错误',
-            message: res.message,
+            message: res.data.message,
           });
         }
       })

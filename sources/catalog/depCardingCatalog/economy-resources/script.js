@@ -38,10 +38,10 @@ export default {
             vm.itemCount = res.data.itemCount; // 数据项
           }
         } else {
-          Notification({
+          vm.$notify({
             type: "error",
-            title: '系统错误',
-            message: res.data.head.message,
+            title: '错误',
+            message: res.data.message,
           });
         }
       })

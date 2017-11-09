@@ -30,7 +30,7 @@ export default {
             vm.$notify({
               type: "error",
               title: '',
-              message: '系统错误',
+              message:result.data.message,
             });
           }
         });

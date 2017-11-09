@@ -37,10 +37,10 @@ export default {
              }
           }
           else{
-            Notification({
+           vm.$notify({
                   type: "error",
                   title: '系统错误',
-                  message: res.data.head.message,
+                  message: res.data.message,
                 });
           }
         })

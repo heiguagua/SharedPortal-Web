@@ -39,7 +39,7 @@
           </template>
         </el-table-column>
     </el-table>
-    <el-pagination @current-change="handlePageChange" :current-page="currentPage" page-size=20 layout="total, prev, pager, next, jumper" :total="totalResource">
+    <el-pagination @current-change="handlePageChange" :current-page="currentPage" :page-size="20" layout="total, prev, pager, next, jumper" :total="totalResource">
     </el-pagination>
   </div>
 </main>

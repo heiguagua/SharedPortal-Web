@@ -195,7 +195,7 @@ export default {
            vm.$notify({
               type: "error",
               title: '系统错误',
-              message: res.message,
+              message: res.data.message,
             });
           }
         },function(error){
@@ -215,7 +215,7 @@ export default {
             vm.$message({
               type: "error",
               title: '系统错误',
-              message: res.message,
+              message: res.data.message,
             });
           }
         })
@@ -267,7 +267,7 @@ export default {
               vm.$notify({
                 type: "error",
                 title: '查询错误',
-                message: res.message
+                message: res.data.message
               });
             }
           })
@@ -293,7 +293,7 @@ export default {
               vm.$notify({
                 type: "error",
                 title: '查询错误',
-                message: res.message,
+                message: res.data.message,
               });
             }
           })
@@ -334,7 +334,7 @@ export default {
               vm.$message({
                 type: "error",
                 title: '纠错失败',
-                message: res.message,
+                message: res.data.message,
               });
             }
             
@@ -342,7 +342,7 @@ export default {
             vm.$notify({
               type: "error",
               title: '纠错失败！',
-              message: res.message
+              message: res.data.message
             });
           }
 
@@ -375,7 +375,6 @@ export default {
             }
             
           } else {
-            alert(1)
             vm.$notify({
               type: "error",
               title: '评分失败！',

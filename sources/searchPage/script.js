@@ -92,7 +92,7 @@ export default {
             vm.$notify({
               type: "error",
               title: '数据目录',
-              message: result.message,
+              message: result.data.message,
             });
           }
         });

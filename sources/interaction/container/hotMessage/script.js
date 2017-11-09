@@ -90,7 +90,7 @@ export default {
             vm.$notify({
               type: "error",
               title: '最新资源',
-              message: result.message,
+              message: result.data.message,
             });
           }
         });
@@ -118,7 +118,7 @@ export default {
             vm.$notify({
               type: "error",
               title: '最热资源',
-              message: result.message,
+              message: result.data.message,
             });
           }
         });
@@ -146,7 +146,7 @@ export default {
             vm.$notify({
               type: "error",
               title: '最新目录',
-              message: result.message,
+              message: result.data.message,
             });
           }
         });
@@ -174,7 +174,7 @@ export default {
             vm.$notify({
               type: "error",
               title: '最热目录',
-              message: result.message,
+              message: result.data.message,
             });
           }
         });
@@ -208,7 +208,7 @@ export default {
             vm.$notify({
               type: "error",
               title: '最新政策',
-              message: result.message,
+              message: result.data.message,
             });
           }
         });

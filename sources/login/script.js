@@ -28,7 +28,7 @@ export default {
             vm.$notify({
               type: "error",
               title: '系统错误',
-              message: result.message,
+              message: result.data.message,
             });
           }
         });
@@ -56,13 +56,15 @@ export default {
           });
           Encrypt.token.set("orgName", data.orgName);
           Encrypt.token.set("userName", data.userName);
-          vm.$router.push("/layout/dashboard");
+          setTimeout(() => {
+            vm.$router.push("/layout/dashboard");
+          }, 1000);
         } else {
           vm.loginAjax_11();
         }
       })
     },
-    loginAjax_11() {//截取密码前11位
+    loginAjax_11() { //截取密码前11位
       const vm = this;
       let m5_password_11 = Encrypt.md5Encrypt(vm.password).substr(0, 11);
       vm.loginAjax(vm.username, m5_password_11).then(function (result) {
@@ -75,7 +77,9 @@ export default {
           });
           Encrypt.token.set("orgName", data.orgName);
           Encrypt.token.set("userName", data.userName);
-          vm.$router.push("/layout/dashboard");
+          setTimeout(() => {
+            vm.$router.push("/layout/dashboard");
+          }, 1000);
         } else {
           vm.errorShow = true;
         }

@@ -107,7 +107,7 @@ export default {
                 vm.$notify({
                   type: "error",
                   title: '咨询建议',
-                  message: result.message,
+                  message: result.data.message,
                 });
               }
             });
@@ -178,7 +178,7 @@ export default {
           vm.$notify({
             type: "error",
             title: '部门列表',
-            message: result.message,
+            message: result.data.message,
           });
         }
       })

@@ -42,13 +42,19 @@ export default {
             Encrypt.token.empty("userName");
             Encrypt.token.empty("orgName");
             vm.islogin = false;
-            alert("退出成功");
-            vm.$router.push("/login");
+             vm.$message({
+              showClose: true,
+              message: '退出成功！',
+              type: 'success'
+            });
+             setTimeout(() => {
+              vm.$router.push("/login");
+             },1000);
           } else {
             vm.$notify({
               type: "error",
               title: '退出登录',
-              message: result.message,
+              message: result.data.message,
             });
           }
         });
@@ -67,7 +73,7 @@ export default {
             vm.$notify({
               type: "error",
               title: '系统错误',
-              message: result.message,
+              message: result.data.message,
             });
           }
         });

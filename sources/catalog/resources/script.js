@@ -51,7 +51,7 @@ export default {
              vm.$notify({
                   type: "error",
                   title: '系统错误',
-                  message: res.message,
+                  message: res.data.message,
                 });
           }
         })

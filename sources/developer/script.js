@@ -48,7 +48,7 @@ export default {
             vm.$notify({
               type: "error",
               title: '查询出错！',
-              message: result.message,
+              message: result.data.message,
             });
           }
         });

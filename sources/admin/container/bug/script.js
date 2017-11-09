@@ -40,7 +40,7 @@ export default {
             vm.$notify({
               type: "error",
               title: '我的纠错',
-              message: result.message,
+              message: result.data.message,
             });
           }
         });
