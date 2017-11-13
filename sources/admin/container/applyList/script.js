@@ -120,7 +120,7 @@ export default {
           } else {
             vm.$message({
               type: "error",
-              title: '系统错误',
+              title: '提示',
               message: res.message,
             });
           }

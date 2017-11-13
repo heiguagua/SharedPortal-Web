@@ -71,7 +71,7 @@ export default {
             vm.$message({
               type: "error",
               title: '查询出错！',
-              message: result.message,
+              message: result.data.message,
             });
           }
         });
