@@ -29,7 +29,7 @@ export default {
           } else {
             vm.$notify({
               type: "error",
-              title: '',
+              title: '版权信息',
               message:result.data.message,
             });
           }

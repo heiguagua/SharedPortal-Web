@@ -146,8 +146,8 @@ export default {
           } else {
             vm.$notify({
               type: "error",
-              title: '',
-              message: '系统错误',
+              title: '版权信息',
+              message: result.data.message,
             });
           }
         });
