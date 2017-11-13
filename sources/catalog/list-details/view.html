@@ -54,8 +54,8 @@
 				{{head_title}}
 			</div>
 			<el-table :data="tableData"	style="width: 100%" v-loading="loading" element-loading-text="数据加载中" slot="empty">
-		<el-table-column prop="item_name" label="数据项名称" ></el-table-column>
-		<el-table-column prop="item_desc" label="数据项说明"	></el-table-column>
+		<el-table-column prop="item_name" label="数据项名称"></el-table-column>
+		<el-table-column prop="item_desc" label="数据项说明"></el-table-column>
 		</el-table>
 		<!-- <el-pagination  @current-change="handlePageChange" :current-page="currentPage"  layout="total, prev, pager, next, jumper" :total="totalResource">
     	</el-pagination> -->

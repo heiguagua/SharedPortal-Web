@@ -364,5 +364,5 @@ export default {
       let date = new Date(time);
       return formatDate(date, 'yyyy-MM-dd');
     }
-  },
+  }
 };

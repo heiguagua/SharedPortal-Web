@@ -227,7 +227,7 @@ export default {
         console.log(tab, event);
         if (tab.name == "interfaceinfo") {
           vm.getInterfaces(vm.ddcm_id).then(function(res) {
-            let tableData = res.data;
+             let tableData = res.data;
              _.forEach(tableData,function(item){
                 item.request_info=JSON.parse(item.request_info)
              });
