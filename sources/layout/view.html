@@ -75,7 +75,7 @@
             </router-link>
           </li>
            <li class="nav_li5">
-            <a href="http://10.190.239.12:8080/data-view-web-scatter/index.html" target="_blank">
+            <a v-bind:href="sysObj.keshihua"  target="_blank">
               <div class="bg_ico">
                 <span>可视化展示</span>
               </div>
@@ -92,7 +92,7 @@
       </div>
     </nav>
   </header>
-  <router-view class="router-layout" ></router-view>
+  <router-view class="router-layout" :sysObj="sysObj" ></router-view>
   <footer>
     <p class="firstfooterp">
       <router-link :to="{ path: '/layout/interaction/aboutUs' }" class="aboutus">

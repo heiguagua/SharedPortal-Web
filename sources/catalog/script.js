@@ -2,6 +2,7 @@ import Http from "../common/http.js";
 import Encrypt from "../common/encrypt.js";
 const master = Http.url.master;
 export default {
+   props:['sysObj'],
   data() {
     return {
       regions: [],

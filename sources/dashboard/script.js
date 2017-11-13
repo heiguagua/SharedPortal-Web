@@ -3,6 +3,7 @@ import Encrypt from "../common/encrypt.js";
 import {formatDate} from "../common/date.js";
 const master = Http.url.master;
 export default {
+  props:['sysObj'],
   data() {
     return {
       keywords: "", //搜索关键词
@@ -40,7 +41,7 @@ export default {
     vm.LatestDbResourceData(); //最新资源
     vm.HottestResourceData(); //最热资源
     vm.getCarouselPicNews(); //最新新闻
-    vm.getPorjectPic()
+    vm.getPorjectPic();
   },
   methods: {
     getAllDirMenuInfo: function (item) {
