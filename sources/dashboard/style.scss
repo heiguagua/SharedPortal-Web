@@ -4,7 +4,7 @@
     font-style: normal;
   }
   .article {
-      min-height: 400px;
+    min-height: 400px;
     .title {
       font-size: 18px;
       color: #475065;
@@ -22,7 +22,7 @@
     width: 1270px;
     margin: 0 auto;
     overflow: hidden;
-    padding: 20px 0 ;
+    padding: 20px 0;
   }
   ul {
     padding: 0;
@@ -119,7 +119,7 @@
   }
   .main-1 {
     background: #F5F5F5;
-    margin-top: 40px;
+    padding-top: 40px;
     .main-title {
       position: relative;
       margin-bottom: 10px;
@@ -144,8 +144,7 @@
       }
     }
     .content {
-      background: #FFFFFF;
-      // border: 1px solid #DFDFDF;
+      background: #FFFFFF; // border: 1px solid #DFDFDF;
       height: 385px;
       .left {
         padding-left: 0;
@@ -219,7 +218,7 @@
   .main-2 {
     background: $white;
     box-sizing: border-box;
-    .active{
+    .active {
       background: #4197F4;
       color: #fff;
       border: none;
@@ -233,7 +232,7 @@
         border: 1px solid #DFDFDF;
         padding-top: 27px;
         display: inline-block;
-        margin: 0 14px;
+        margin: 0 20px;
         margin-top: 20px;
         a {
           text-decoration: none;
@@ -242,12 +241,12 @@
             text-decoration: underline;
             color: $main-blue;
           }
-          dd{
-             width: 90%;
-          display: inline-block;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
+          dd {
+            width: 90%;
+            display: inline-block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
           }
         }
         .des {
@@ -320,29 +319,39 @@
           padding: 4px 8px;
         }
         dd {
-          padding: 0 15px;
+          padding: 0 25px;
           ul {
-            margin: 0 70px;
+            // margin: 0 70px;
             text-align: left;
-            li p {
+            li {
               width: 100%;
-              display: inline-block;
-              white-space: nowrap;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              text-decoration: none;
-              color: $white;
-              cursor: pointer;
-              &:hover {
+              line-height: 20px;
+              &:hover .name {
                 text-decoration: underline;
                 opacity: 0.7;
+              }
+              .dep {
+                // text-align: right;
+                float: right;
+                color: #ddd;
+              }
+              p {
+                width: 40%;
+                display: inline-block;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                text-decoration: none;
+              }
+              .name{
+                 color: $white;
+                  cursor: pointer;
               }
             }
           }
         }
         dt img {
-          width: 100px;
-          // height: 114px;
+          width: 100px; // height: 114px;
         }
       }
     }
@@ -373,8 +382,7 @@
       }
       .ico {
         position: absolute;
-        width: 80px;
-        // height: 109px;
+        width: 80px; // height: 109px;
         top: -30px;
       }
       .map-more {
@@ -398,14 +406,13 @@
         display: inline-block;
         margin: 0 35px;
         img {
-          width: 160px;
-          // height: 283px;
+          width: 160px; // height: 283px;
         }
       }
     }
     .tool-content {
       text-align: center;
-      margin:0 50px;
+      margin: 0 50px;
       .img-group {
         width: 180px;
         height: 180px;
@@ -416,8 +423,7 @@
         margin: 0 20px;
         box-sizing: border-box;
         img {
-          width: 44px;
-          // height: 64px;
+          width: 44px; // height: 64px;
           display: inline-block;
         }
         &:hover {
@@ -442,7 +448,7 @@
     }
     .ico-right {
       text-align: right;
-      .in-block{
+      .in-block {
         width: 80px;
       }
     }

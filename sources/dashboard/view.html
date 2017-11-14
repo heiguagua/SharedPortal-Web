@@ -121,10 +121,10 @@
       <div class="tab-body">
         <div class="img-group" v-for="item in depAllDeptInfoAA">
           <el-tooltip placement="bottom" effect="light">
-            <ul slot="content" >
+            <ul slot="content">
               <li v-for="(itemChild,index) in item.children " v-if="index<3">{{itemChild.name}}</li>
               <li v-if="item.children.length>3">...</li>
-               <li v-if="item.children.length == 0">无子集</li>
+              <li v-if="item.children.length == 0">无子集</li>
             </ul>
             <dl class="base-item0">
               <router-link :to="{ path: '/layout/catalog/resources', query: {dirName:item.name,dirCode:item.code}}">
@@ -166,10 +166,11 @@
                 </router-link>
               </dt>
               <dd class="des-title">最新目录</dd>
-              <dd class="list-group">
-                <ul id="LatestDirectory">
+              <dd >
+              <ul class="list-group">
                   <li v-for="item in latestDirectory" @click="jumpDetailLatestCatalog(item)">
-                    <p href="" v-bind:title="item.dataset_name">{{item.dataset_name}}</p>
+                      <p class="name"><span v-bind:title="item.dataset_name">{{item.dataset_name}}</span></p>
+                      <p class="dep" ><span v-bind:title="item.org_name">{{item.org_name}}</span></p>
                   </li>
                 </ul>
               </dd>
@@ -187,9 +188,10 @@
               </dt>
               <dd class="des-title">最热目录</dd>
               <dd class="list-group">
-                <ul id="HottestDirectory">
+                 <ul class="list-group">
                   <li v-for="item in listHottestDirectory" @click="jumpDetailLatestCatalog(item)">
-                    <p v-bind:title="item.dataset_name">{{item.dataset_name}}</p>
+                      <p class="name"><span v-bind:title="item.dataset_name">{{item.dataset_name}}</span></p>
+                      <p class="dep" ><span v-bind:title="item.org_name">{{item.org_name}}</span></p>
                   </li>
                 </ul>
               </dd>
@@ -206,11 +208,12 @@
                 </router-link>
               </dt>
               <dd class="des-title">最新资源</dd>
-              <dd class="list-group">
-                <ul id="newResource">
+              <dd>
+                <ul class="list-group">
                   <li v-for="item in listLatestDbResource" @click="jumpDetailResource(item)">
-                    <p v-show="item.TABLE_CN_NAME" v-bind:title="item.TABLE_CN_NAME">{{item.TABLE_CN_NAME}}</p>
-                    <p v-show="!item.TABLE_CN_NAME" v-bind:title="item.TABLE_NAME">{{item.TABLE_NAME}}</p>
+                      <p class="name" v-show="item.TABLE_CN_NAME"><span v-bind:title="item.TABLE_CN_NAME">{{item.TABLE_CN_NAME}}</span></p>
+                      <p class="name" v-show="!item.TABLE_CN_NAME"><span v-bind:title="item.TABLE_NAME">{{item.TABLE_NAME}}</span></p>
+                      <p class="dep" ><span v-bind:title="item.dept_name">{{item.dept_name}}</span></p>
                   </li>
                 </ul>
               </dd>
@@ -227,10 +230,11 @@
                 </router-link>
               </dt>
               <dd class="des-title">最热资源</dd>
-              <dd class="list-group">
-                <ul id="hotResource">
+              <dd>
+                <ul class="list-group">
                   <li v-for="item in listHottestResource" @click="jumpDetailResource(item)">
-                    <p v-bind:title="item.TABLE_NAME">{{item.TABLE_NAME}}</p>
+                      <p class="name"><span v-bind:title="item.TABLE_NAME">{{item.TABLE_NAME}}</span></p>
+                      <p class="dep" ><span v-bind:title="item.dept_name">{{item.dept_name}}</span></p>
                   </li>
                 </ul>
               </dd>
@@ -255,17 +259,17 @@
           Visualization map
         </h2>
         <img class="ico" src="../assets/dashboard/ico1.png" />
-        <a v-bind:href="sysObj.datamapmore"  target="_blank" class="map-more">更多></a>
+        <a v-bind:href="sysObj.datamapmore" target="_blank" class="map-more">更多></a>
       </div>
       <div class="content">
         <a class="m-l-0" v-bind:href="sysObj.datamap1" target="_blank">
         <img src="../assets/dashboard/map1.png" /></a>
         <a class="m-l-0" v-bind:href="sysObj.datamap2" target="_blank">
         <img src="../assets/dashboard/map2.png" /></a>
-          <a class="m-l-0" v-bind:href="sysObj.datamap3" target="_blank">
+        <a class="m-l-0" v-bind:href="sysObj.datamap3" target="_blank">
              <img src="../assets/dashboard/map3.png" /></a>
-         <a class="m-l-0" v-bind:href="sysObj.datamap4" target="_blank"><img src="../assets/dashboard/map4.png" /></a>
-        <a v-bind:href="sysObj.datamap5"  target="_blank" class="m-r-0"> <img src="../assets/dashboard/map5.png" /></a>
+        <a class="m-l-0" v-bind:href="sysObj.datamap4" target="_blank"><img src="../assets/dashboard/map4.png" /></a>
+        <a v-bind:href="sysObj.datamap5" target="_blank" class="m-r-0"> <img src="../assets/dashboard/map5.png" /></a>
       </div>
       <section>
         <div class="main-title">
@@ -321,7 +325,7 @@
   <!-- 新闻详情模态框 start -->
   <el-dialog :visible.sync="dialogNewVisible">
     <div class="article">
-       <h3 class="title over_space" style="width: 100%" v-bind:title="carouselDetail.title">{{carouselDetail.title}}</h3>
+      <h3 class="title over_space" style="width: 100%" v-bind:title="carouselDetail.title">{{carouselDetail.title}}</h3>
       <div class="item_des">
         <span>时间：<em  class="source">{{carouselDetail.create_time}}</em></span>
       </div>

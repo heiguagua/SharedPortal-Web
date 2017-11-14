@@ -149,7 +149,7 @@ export default {
         url: master + "/home/listLatestDirectory",
         params: {
           resourceType: "directory",
-          pageSize: 3
+          pageSize: 4
         }
       }).then(
         function (result) {
@@ -171,7 +171,7 @@ export default {
         method: "get",
         url: master + "/home/getHottestDirectoryList",
         params: {
-          pageSize: 3
+          pageSize: 4
         }
       }).then(
         function (result) {
@@ -193,7 +193,7 @@ export default {
         method: "get",
         url: master + "/home/listLatestDbResource",
         params: {
-          pageSize: 3
+          pageSize: 4
         }
       }).then(
         function (result) {
@@ -215,7 +215,7 @@ export default {
         method: "get",
         url: master + "/home/getHottestDirResourceList",
         params: {
-          pageSize: 3,
+          pageSize: 4,
           resourceType: "service"
         }
       }).then(
