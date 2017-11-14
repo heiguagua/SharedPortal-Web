@@ -22,7 +22,7 @@
     width: 1270px;
     margin: 0 auto;
     overflow: hidden;
-    padding: 60px 0 60px 0;
+    padding: 20px 0 ;
   }
   ul {
     padding: 0;
@@ -119,9 +119,10 @@
   }
   .main-1 {
     background: #F5F5F5;
+    margin-top: 40px;
     .main-title {
       position: relative;
-      margin-bottom: 40px;
+      margin-bottom: 10px;
       .title {
         position: absolute;
         text-align: center;
@@ -129,13 +130,13 @@
         top: -12px;
         font-weight: normal;
         margin-bottom: 65px;
-        font-size: 24px;
+        font-size: 26px;
         color: #4197F4;
       }
       .opacity-title {
         opacity: 0.05;
         font-family: PingFangSC-Medium;
-        font-size: 48px;
+        font-size: 44px;
         color: #475065;
         line-height: 48px;
         font-weight: normal;
@@ -144,7 +145,7 @@
     }
     .content {
       background: #FFFFFF;
-      border: 1px solid #DFDFDF;
+      // border: 1px solid #DFDFDF;
       height: 385px;
       .left {
         padding-left: 0;
@@ -174,7 +175,7 @@
         }
       }
       .right {
-        margin: 30px;
+        margin: 24px;
         .r-body {
           position: relative;
           .more {
@@ -227,12 +228,12 @@
       text-align: center;
       .img-group {
         box-sizing: border-box;
-        width: 150px;
-        height: 150px;
+        width: 140px;
+        height: 140px;
         border: 1px solid #DFDFDF;
         padding-top: 27px;
         display: inline-block;
-        margin: 0 7px;
+        margin: 0 14px;
         margin-top: 20px;
         a {
           text-decoration: none;
@@ -266,7 +267,7 @@
     background: $main-blue;
     .main-title {
       position: relative;
-      margin-bottom: 40px;
+      margin-bottom: 10px;
       .title {
         position: absolute;
         text-align: center;
@@ -274,13 +275,13 @@
         top: -12px;
         font-weight: normal;
         margin-bottom: 65px;
-        font-size: 24px;
+        font-size: 26px;
         color: $white;
       }
       .opacity-title {
         opacity: 0.05;
         font-family: PingFangSC-Medium;
-        font-size: 48px;
+        font-size: 44px;
         color: #475065;
         line-height: 48px;
         font-weight: normal;
@@ -340,8 +341,8 @@
           }
         }
         dt img {
-          width: 114px;
-          height: 114px;
+          width: 100px;
+          // height: 114px;
         }
       }
     }
@@ -350,7 +351,7 @@
     background: $white;
     .main-title {
       position: relative;
-      margin-bottom: 40px;
+      margin-bottom: 10px;
       .title {
         position: absolute;
         text-align: center;
@@ -358,13 +359,13 @@
         top: -12px;
         font-weight: normal;
         margin-bottom: 65px;
-        font-size: 24px;
+        font-size: 26px;
         color: #4197F4;
       }
       .opacity-title {
         opacity: 0.05;
         font-family: PingFangSC-Medium;
-        font-size: 48px;
+        font-size: 44px;
         color: #475065;
         line-height: 48px;
         font-weight: normal;
@@ -372,13 +373,13 @@
       }
       .ico {
         position: absolute;
-        width: 118px;
-        height: 109px;
-        top: -50px;
+        width: 80px;
+        // height: 109px;
+        top: -30px;
       }
       .map-more {
         position: absolute;
-        right: 0;
+        right: 20px;
         bottom: 0;
         padding: 4px 7px;
         background: #4197F4;
@@ -391,30 +392,32 @@
       }
     }
     .content {
-      padding-bottom: 60px;
+      padding-bottom: 40px;
+      margin: 0 50px;
       a {
         display: inline-block;
-        margin: 0 20px;
+        margin: 0 35px;
         img {
-          width: 210px;
-          height: 283px;
+          width: 160px;
+          // height: 283px;
         }
       }
     }
     .tool-content {
       text-align: center;
+      margin:0 50px;
       .img-group {
-        width: 226px;
-        height: 226px;
+        width: 180px;
+        height: 180px;
         border-radius: 50%;
         border: 1px solid #DFDFDF;
-        padding-top: 60px;
+        padding-top: 50px;
         display: inline-block;
-        margin: 0 12px;
+        margin: 0 20px;
         box-sizing: border-box;
         img {
-          width: 64px;
-          height: 64px;
+          width: 44px;
+          // height: 64px;
           display: inline-block;
         }
         &:hover {
@@ -439,6 +442,9 @@
     }
     .ico-right {
       text-align: right;
+      .in-block{
+        width: 80px;
+      }
     }
   }
 }

@@ -6,27 +6,31 @@
       header {
         .banner {
           background: $main-blue;
-          height: 140px;
+          height: 92px;
           // width: 530px;
+          line-height: 92px;
           position: absolute;
           .img-bg {
             width: 40px;
-            height: 140px;
+            height: 92px;
             bottom: 0;
             right: -40px;
             position: absolute;
           }
           .navbar-logo {
-            padding: 0 20px 0 30px;
-            margin-top: 33px;
+            padding: 0 10px 0 20px;
+            margin-top: 18px;
             @include pull-left;
+            .logo{
+              width: 55px;
+            }
           }
           .nav-text {
             // margin-top: 35px;
-            line-height: 140px;
+            // line-height: 92px;
             @include pull-left;
             .text {
-              font-size: 30px;
+              font-size: 27px;
               color: #FFFFFF;
               letter-spacing: 3.33px;
             }
@@ -37,14 +41,15 @@
         }
         .login-register {
           background: #142444;
-          height: 40px;
-          line-height: 40px;
+          // height: 40px;
+          line-height: 25px;
           padding-right: 30px;
           text-align: right;
           .cont {
             margin: 0;
             color: #ddd;
             .admin {
+              font-size: 12px;
               margin-right: 15px;
               .el-dropdown-link {
                 color: #ddd;
@@ -78,18 +83,18 @@
           }
         }
         .head-nav {
-          height: 100px;
+          height: 66px;
           background: #FFFFFF;
           .menu_ul {
             padding-right: 15px;
-            margin-top: 10px;
+            // margin-top: 10px;
             margin-bottom: 0;
-            height: 50px;
+            // height: 50px;
             @include pull-right;
             .router-link-active {
               transform: skew(-15deg);
               background: #4197F4;
-              padding: 17px 25px;
+              padding: 10px 20px;
               .bg_ico {
                 transform: skew(15deg);
                 color: #fff!important;
@@ -97,10 +102,11 @@
             }
             >li {
               display: inline-block;
+              // margin-left: 20px;
               a {
                 margin-left: 10px;
                 font-size: 16px;
-                padding: 17px 25px;
+                padding: 10px 20px;
                 text-align: center;
                 display: block;
                 color: #333;
@@ -194,7 +200,7 @@
       }
       footer {
         background: #142444;
-        padding: 32px 0;
+        padding: 25px 0;
         color: #fff;
         text-align: center;
         a {
