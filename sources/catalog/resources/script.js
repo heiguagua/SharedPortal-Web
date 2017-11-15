@@ -86,6 +86,7 @@ export default {
       },
       handleCurrentChange(val) {// 点击表格行
         this.currentRow = val;
+        alert(val.dataset_name+" "+ val.ddcm_id)
         this.$router.push({ path: '/layout/catalog/details',
           query:{dirName:val.dataset_name,ddcm_id:val.ddcm_id}})
       },

@@ -29,6 +29,10 @@
           <td>相关业务</td>
           <td>{{detail_pro.system_name}}</td>
         </tr>
+        <tr class="">
+          <td>所属系统</td>
+          <td>{{detail_pro.system_name}}</td>
+        </tr>
       </tbody>
     </table>
     <div class="item-content">
@@ -42,16 +46,18 @@
             @selection-change="handleSelectionChange">
             <el-table-column type="selection" prop='uuid' label="全选" :selectable="checkboxInit" width="55">
             </el-table-column>
-            <el-table-column label="数据项名称" >
+            <el-table-column label="数据项名称">
               <template scope="scope">
-                <a @click="handleItemDetail(scope.row.item_name,scope.row)">{{scope.row.item_name}}</a>
+                <div class="over_space">
+                 <a @click="handleItemDetail(scope.row.item_name,scope.row)"> <span v-bind:title="scope.row.item_name">{{scope.row.item_name}}</span></a>
+                </div>
               </template>
             </el-table-column>
             <el-table-column prop="share_type" label="共享类型">
             </el-table-column>
             <el-table-column prop="is_open" label="是否可开放">
             </el-table-column>
-            <el-table-column prop="r_status" label="状态" >
+            <el-table-column prop="r_status" label="状态">
 
             </el-table-column>
           </el-table>

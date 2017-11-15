@@ -3,7 +3,7 @@ html {
   * {
     margin: 0;
     padding: 0;
-    word-wrap:break-word;
+    word-wrap: break-word;
   }
   @include fill;
   @include clean;
@@ -19,7 +19,7 @@ html {
       @include clean;
     }
   }
-  *{
+  * {
     font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
   }
   ul {
@@ -27,11 +27,11 @@ html {
     margin: 0;
     padding: 0;
   }
-  span.error{
-        display: block;
+  span.error {
+    display: block;
     text-align: center;
-        color:red;
-      }
+    color: red;
+  }
   /** header*/
   .el-dropdown-menu__item>a {
     text-decoration: none;
@@ -149,20 +149,29 @@ html {
   .el-rate__item {
     display: inline-block;
   }
-   /* alert style  */
-  .el-message{
-      position: absolute!important;
-      top: 40%!important;
-      left: 50%!important;
-    }
-    /*el-tabs style */
-    #apply-list .el-tabs__nav-scroll {
+  .el-table .cell,
+  .el-table th>div {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  /* input common style */
+  .el-input__inner {
+    height: 30px!important;
+  }
+  /* alert style  */
+  .el-message {
+    position: absolute!important;
+    top: 40%!important;
+    left: 50%!important;
+  }
+  /*el-tabs style */
+  #apply-list .el-tabs__nav-scroll {
     border: 1px solid #DBE0E8;
     background: #F9FBFF;
     padding: 0 15px;
   }
-    /* select style*/
-    .el-tree{
-      border: none;
-    }
+  /* select style*/
+  .el-tree {
+    border: none;
+  }
 }

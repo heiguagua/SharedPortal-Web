@@ -2,7 +2,7 @@
   <div class="section-content">
     <el-tabs type="border-card" v-model="activeName" @tab-click="changeTab">
       <el-tab-pane :key="item.name" v-for="(item, index) in devthemes" :label="item.name" :name="item.name">
-        <dl v-show="jumpRoute">
+        <div v-show="jumpRoute">
           <dl v-for='subitem in item.children' class="lstDl">
             <dt class="ui-link">&nbsp;&nbsp;{{subitem.name}} >&nbsp;&nbsp;&nbsp;</dt>
             <dd>
@@ -16,9 +16,9 @@
               </span>
             </dd>
           </dl>
-        </dl>
+        </div>
         <div v-for='item in data1'>
-          <div v-show="showBox" class="div_dep Box">
+          <div v-show="activeChild!=''" class="div_dep Box">
             <a :class="{ active: (current_item.name=== item.name) }" @click="showLink(item,'dep')" target="_blank">|&nbsp;&nbsp;{{ item.name }}</a>
           </div>
         </div>

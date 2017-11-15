@@ -15,9 +15,27 @@
   </div>
   <el-table :data="tableData" border style="width: 100%" v-loading="loading" element-loading-text="数据加载中" slot="empty" highlight-current-row>
     <!-- <el-table-column prop="require_name" label="需求信息资源名称"></el-table-column> -->
-     <el-table-column prop="request_dept_name" label="需求部门" ></el-table-column> 
-    <el-table-column prop="source_dept_name" label="来源部门" ></el-table-column>
-    <el-table-column prop="create_time" label="创建时间" ></el-table-column>
+    <el-table-column label="需求部门">
+      <template scope="scope">
+        <div class="over_space">
+          <span v-bind:title="scope.row.request_dept_name">{{scope.row.request_dept_name}}</span>
+        </div>
+      </template>
+    </el-table-column>
+    <el-table-column label="来源部门">
+      <template scope="scope">
+        <div class="over_space">
+          <span v-bind:title="scope.row.source_dept_name">{{scope.row.source_dept_name}}</span>
+        </div>
+      </template>
+    </el-table-column>
+    <el-table-column label="创建时间">
+      <template scope="scope">
+        <div class="over_space">
+          <span v-bind:title="scope.row.create_time">{{scope.row.create_time}}</span>
+        </div>
+      </template>
+    </el-table-column>
     <!-- <el-table-column prop="is_get" label="是否已获取" ></el-table-column>
     <el-table-column prop="expect_update_frequence" label="数据使用频率" ></el-table-column> -->
     <el-table-column label="详情" width="80">
@@ -26,7 +44,8 @@
       </template>
     </el-table-column>
   </el-table>
-  <el-pagination @current-change="handlePageChange" :current-page="currentPage" :page-size="20" layout="total, prev, pager, next, jumper" :total="totalResource">
+  <el-pagination @current-change="handlePageChange" :current-page="currentPage" :page-size="20" layout="total, prev, pager, next, jumper"
+    :total="totalResource">
   </el-pagination>
   <!-- </div> -->
 </main>

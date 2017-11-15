@@ -9,12 +9,14 @@ export default {
   data() {
     return {
       loading: true,
+      loading2:true,
       head_title: '',
       totalResource: 0,
       currentPage: 1,
       pageSize: 5,
       detail_pro: {}, //详情
       tableDataItem: [], //信息
+      activeTab: 'itemlist',
     }
   },
   mounted() {
@@ -47,6 +49,7 @@ export default {
         if (res.status == 200) {
           var r_data = res.data;
           vm.tableDataItem = r_data.body;
+          console.log(vm.tableDataItem)
           if(!cache_total) {
             vm.totalResource = r_data[Pager.totalR]; //total
           }
@@ -87,6 +90,31 @@ export default {
       vm.currentPage = val;
       vm.tableColumns(true);
     },
+    handleClick(tab, event) {
+      const vm = this;
+      // console.log(tab, event);
+      if (tab.name == "interfaceinfo") {
+        vm.relatedResources(vm.$route.query.tableId).then(function (res) {
+           vm.loading2 = false;
+          vm.tableInterfaces = res.data;
+        })
+      }
+    },
+     relatedResources: function (table_Id) { // 获取关联资源信息列表
+      return Http.fetch({
+        method: "post",
+        url: master + "/serviceinfo/getServiceInfoByObjId",
+        data: {
+          obj_Id: table_Id
+        }
+      })
+    },
+    handleCurrentChange(val) {// 点击关联资源表格行
+        this.currentRow = val;
+          this.$router.push({ path: '/layout/catalog/system-dynamic-details-item',
+          //  query:{dirName:val.dataset_name,ddcm_id:val.ddcm_id}})
+           query:{dirName:'身份证信息',ddcm_id:'7A6EEE21822B4F9DAEF9ADDA47B1FCA4'}})
+      },
     goback() {
       this.$router.go(-1);
     }

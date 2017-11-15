@@ -1,37 +1,112 @@
 <main id="system-details">
-	<div class="catalog-content">
-		<div class="head-desc">{{head_title}}-详情
-			<a href="javascript:;" class="back-link" @click='goback()'><i class="fa fa-angle-left font-bold"></i> 返回</a>
-		</div>
-		<table class="table-detail" border="0" width="100%"><tbody>
-			<tr class="">
-				<td width="20%">表英文名</td>
-				<td>{{detail_pro.enName}}</td>
-			</tr>
-			<tr class="">
-				<td>中文名</td>
-				<td>{{detail_pro.cnName}}</td>
-			</tr>
-			<tr class="">
-				<td>来源</td>
-				<td>{{detail_pro.table_source_type}}</td>
-      </tr>
-      <tr class="">
-				<td>更新时间</td>
-				<td>{{detail_pro.table_updateTime| formatDate}}</td>
-			</tr>
-		</tbody></table>
-		<div class="item-content">
-        <div class="item-header">{{head_title}} </div>
-		  <el-table :data="tableDataItem"	border	style="width: 100%" v-loading="loading" element-loading-text="数据加载中" slot="empty"
-      highlight-current-row  >
-      <el-table-column prop="name" label="
-      字段英文名" ></el-table-column>
-      <el-table-column prop="column_desc" label="中文描述"></el-table-column>
-      </el-table>
-      <el-pagination  @current-change="handlePageChange" :current-page="currentPage"  :page-size="5" layout="total, prev, pager, next, jumper" :total="totalResource">
-        </el-pagination>
-		</div>
-	</div>
+  <div class="catalog-content">
+    <div class="head-desc">{{head_title}}-详情
+      <a href="javascript:;" class="back-link" @click='goback()'><i class="fa fa-angle-left font-bold"></i> 返回</a>
+    </div>
+    <table class="table-detail" border="0" width="100%">
+      <tbody>
+        <tr class="">
+          <td width="20%">表英文名</td>
+          <td>{{detail_pro.enName}}</td>
+        </tr>
+        <tr class="">
+          <td>中文名</td>
+          <td>{{detail_pro.cnName}}</td>
+        </tr>
+        <tr class="">
+          <td>来源</td>
+          <td>{{detail_pro.table_source_type}}</td>
+        </tr>
+        <tr class="">
+          <td>更新时间</td>
+          <td>{{detail_pro.table_updateTime| formatDate}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="item-content">
+      <div class="item-header">{{head_title}} </div>
+      <el-tabs v-model="activeTab" @tab-click="handleClick">
+        <el-tab-pane label="数据项列表" name="itemlist">
+          <el-table :data="tableDataItem" border style="width: 100%" tooltip-effect="dark" v-loading="loading" element-loading-text="数据加载中">
+            <el-table-column label="字段名">
+              <template scope="scope">
+                <div class="over_space">
+                  <span v-bind:title="scope.row.name">{{scope.row.name}}</span>
+                </div>
+              </template>
+            </el-table-column>
+            <el-table-column label="中文描述">
+              <template scope="scope">
+                <div class="over_space">
+                  <span v-bind:title="scope.row.column_desc">{{scope.row.column_desc}}</span>
+                </div>
+              </template>
+            </el-table-column>
+          </el-table>
+          <el-pagination @current-change="handlePageChange" :current-page="currentPage" :page-size="5" layout="total, prev, pager, next, jumper"
+            :total="totalResource">
+          </el-pagination>
+        </el-tab-pane>
+        <el-tab-pane label="关联资源" name="interfaceinfo">
+          <el-table :data="tableDataItem" border style="width: 100%" tooltip-effect="dark" v-loading="loading2" element-loading-text="数据加载中">
+            <el-table-column label="信息资源名称">
+              <template scope="scope">
+                <div class="over_space">
+                  <span v-bind:title="scope.row.name">{{scope.row.name}}</span>
+                </div>
+              </template>
+            </el-table-column>
+            <el-table-column label="接口状态">
+              <template scope="scope">
+                <div class="over_space">
+                  <span v-bind:title="scope.row.column_desc">{{scope.row.column_desc}}</span>
+                </div>
+              </template>
+            </el-table-column>
+            <el-table-column label="收藏">
+              <template scope="scope">
+                <div class="over_space">
+                  <span v-bind:title="scope.row.column_desc">{{scope.row.column_desc}}</span>
+                </div>
+              </template>
+            </el-table-column>
+            <el-table-column label="纠错内容">
+              <template scope="scope">
+                <div class="over_space">
+                  <span v-bind:title="scope.row.column_desc">{{scope.row.column_desc}}</span>
+                </div>
+              </template>
+            </el-table-column>
+            <el-table-column label="评分">
+              <template scope="scope">
+                <div class="over_space">
+                  <span v-bind:title="scope.row.column_desc">{{scope.row.column_desc}}</span>
+                </div>
+              </template>
+            </el-table-column>
+            <el-table-column label="是否申请">
+              <template scope="scope">
+                <div class="over_space">
+                  <span v-bind:title="scope.row.column_desc">{{scope.row.column_desc}}</span>
+                </div>
+              </template>
+            </el-table-column>
+            <el-table-column label="审核结果">
+              <template scope="scope">
+                <div class="over_space">
+                  <span v-bind:title="scope.row.column_desc">{{scope.row.column_desc}}</span>
+                </div>
+              </template>
+            </el-table-column>
+            <el-table-column label="详情" width="80">
+              <template slot-scope="scope">
+                <el-button @click="handleCurrentChange(scope.row)" type="text" size="small">查看</el-button>
+              </template>
+            </el-table-column>
+          </el-table>
+        </el-tab-pane>
+      </el-tabs>
+    </div>
+  </div>
 
 </main>

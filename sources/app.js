@@ -131,6 +131,10 @@ const router = new VueRouter({
         name: 'system-dynamic-details',
         component: resolve => require(["./catalog/system-dynamic-details/index.vue"], resolve),
       }, {
+        path: 'system-dynamic-details-item',
+        name: 'system-dynamic-details-item',
+        component: resolve => require(["./catalog/system-dynamic-details-item/index.vue"], resolve),
+      }, {
         path: 'itemDetails',
         name: 'itemDetails',
         component: resolve => require(["./catalog/details/item/index.vue"], resolve),

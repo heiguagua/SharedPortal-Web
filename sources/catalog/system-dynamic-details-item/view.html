@@ -1,0 +1,220 @@
+<main id="details">
+  <div class="catalog-content">
+    <div class="head-desc">{{head_title}}-详情
+      <a href="javascript:;" class="back-link" @click='goback()'><i class="fa fa-angle-left font-bold"></i> 返回</a>
+    </div>
+    <ul class="operate-wrap" v-if="operateble">
+      <li class="op-item" @click="handleCollection()">
+        <span v-show="collectionStatus"><img src="../../assets/catalog/star_active.png"  width="18" height="17" /></span>
+        <span v-show="!collectionStatus"><img src="../../assets/catalog/star.png" width="18" height="17" /></span> 收藏
+      </li>
+      <li class="op-item" @click="getCorrection()">
+        <span><img src="../../assets/catalog/error.png"  width="18" height="18" /></span> 纠错
+      </li>
+      <li class="op-item" @click="getStars()">
+        <span><img src="../../assets/catalog/group.png"  width="16" height="16" /></span> 评分
+      </li>
+    </ul>
+    <table class="table-detail" border="0" width="100%">
+      <tbody>
+        <tr class="">
+          <td width="20%">信息资源名称</td>
+          <td>{{detail_pro.dataset_name}}</td>
+        </tr>
+        <tr class="">
+          <td>所属部门</td>
+          <td>{{detail_pro.dept_name}}</td>
+        </tr>
+        <tr class="">
+          <td>相关业务</td>
+          <td>{{detail_pro.system_name}}</td>
+        </tr>
+        <!-- <tr class="">
+          <td>所属系统</td>
+          <td>{{detail_pro.system_name}}</td>
+        </tr> -->
+      </tbody>
+    </table>
+    <div class="item-content">
+      <div class="item-header">
+        {{head_title}}
+        <a class='apply-btn' @click="applyData()">申请数据</a>
+      </div>
+      <el-tabs v-model="activeTab" @tab-click="handleClick">
+        <el-tab-pane label="数据项列表" name="itemlist">
+          <el-table v-loading="loading" ref="multipleTable" :data="tableDataItem" border tooltip-effect="dark" style="width: 100%"
+            @selection-change="handleSelectionChange">
+            <el-table-column type="selection" prop='uuid' label="全选" :selectable="checkboxInit" width="35">
+            </el-table-column>
+            <el-table-column label="数据项名称">
+              <template scope="scope">
+                <div class="over_space">
+                <span v-bind:title="scope.row.item_name">{{scope.row.item_name}}</span>
+                </div>
+              </template>
+            </el-table-column>
+            <el-table-column prop="share_type" label="共享类型">
+            </el-table-column>
+            <el-table-column prop="is_open" label="是否可开放">
+            </el-table-column>
+            <el-table-column prop="r_status" label="状态">
+
+            </el-table-column>
+          </el-table>
+        </el-tab-pane>
+        <el-tab-pane label="接口说明" name="interfaceinfo">
+          <p v-show="tableInterfaces.length == 0">暂无接口说明</p>
+          <div v-show="tableInterfaces.length > 0">
+            <el-table :data="tableInterfaces" style="width: 100%">
+              <el-table-column type="expand">
+                <template scope="props">
+                  <el-form label-position="left" class="demo-table-expand">
+                    <el-form-item label="接口方式">
+                      <span>{{props.row.service_type}}</span>
+                    </el-form-item>
+                    <el-form-item label="请求类型">
+                      <span>{{props.row.request_method}}</span>
+                    </el-form-item>
+                    <el-form-item label="请求Header设置">
+                      <span>Content-Type：application/json;charset=utf-8</span>
+                    </el-form-item>
+                    <el-form-item label="请求Body格式（参数传递JSON）">
+                      <span>请求参数实例：
+											<table  class="table-detail" border="0" width="100%">
+													<thead>
+													<tr>
+														<th>参数名称</th>
+														<th>类型</th>
+														<th>描述</th>
+													</tr>
+													</thead>
+													<tbody>
+															<tr>
+																<td>sys_log.operate_type</td>
+																<td>string</td>
+																<td>形如 tableName.itemName(表名.字段名)</td>
+															</tr>
+															<tr>
+																<td>sys_log.operator_id</td>
+																<td>string</td>
+																<td>形如 09f4fef9249c457ca67b4a7a45823730(表名.字段id)</td>
+															</tr>
+															<tr>
+																<td>sys_log.id</td>
+																<td>string</td>
+																<td>形如 0288216939814a2a91c359e686fd8108(表名.表id)</td>
+															</tr>
+															<tr>
+																<td>startIndex</td>
+																<td>string</td>
+																<td>当前页</td>
+															</tr>
+															<tr>
+																<td>offIndex</td>
+																<td>string</td>
+																<td>每页条数</td>
+															</tr>
+														</tbody>
+											</table>
+											</span>
+                    </el-form-item>
+                    <el-form-item label="返回数据格式（返回JSON格式）">
+                      <span>结果返回实例：
+													<table class="table-detail" border="0" width="100%">
+													<thead>
+													<tr>
+														<th>返回属性名称</th>
+														<th>描述</th>
+													</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>msg</td>
+															<td>提示信息（如："查询成功"）</td>
+														</tr>
+														<tr>
+															<td>state</td>
+															<td>返回状态（如：true）</td>
+														</tr>
+														<tr>
+															<td>content</td>
+															<td>返回结果，content内部有一个有多个对象的data数组</td>
+														</tr>
+													</tbody>
+													</table>
+											</span>
+                    </el-form-item>
+                    <el-form-item label="使用说明">
+                      <span>{{ props.row.operation_desc }}</span>
+                    </el-form-item>
+                    <el-form-item label="字段说明">
+                      <span>
+											  <el-table :data="props.row.request_info"  max-height="250" style="width: 100%">
+													<el-table-column label="字段名" prop="itemName"></el-table-column >
+													<el-table-column label="字段中文名" prop="itemNameCn"></el-table-column >
+													<el-table-column label="表名" prop="tableName"></el-table-column >
+												</el-table> 
+										</span>
+                    </el-form-item>
+                  </el-form>
+                </template>
+              </el-table-column>
+              <el-table-column label="接口列表" prop="service_url">
+                <template scope="props">
+                  {{ props.row.service_url }}
+                </template>
+              </el-table-column>
+            </el-table>
+          </div>
+        </el-tab-pane>
+      </el-tabs>
+    </div>
+  </div>
+  <!--纠错对话框-->
+  <el-dialog title="纠错说明" :visible.sync="dialogFormVisible" size="tiny">
+    <el-form :model="correctionForm">
+      <el-form-item label="">
+        <el-input type="textarea" :rows="10" placeholder="请详细描述纠错内容" v-model="correctionForm.content"></el-input>
+      </el-form-item>
+    </el-form>
+    <div slot="footer" class="dialog-footer">
+      <el-button @click="dialogFormVisible = false">取 消</el-button>
+      <el-button type="primary" @click="handleCorrection()">提 交</el-button>
+    </div>
+  </el-dialog>
+  <!--评分对话框-->
+  <el-dialog title="评分" :visible.sync="dialogRateVisible" size="tiny">
+    <el-form :model="rateForm">
+      <el-form-item label="">
+        <el-rate v-model="rateForm.stars"></el-rate>
+      </el-form-item>
+    </el-form>
+    <div slot="footer" class="dialog-footer">
+      <el-button type="primary" @click="handleRating()">提 交</el-button>
+    </div>
+  </el-dialog>
+  <!--申请数据-->
+  <el-dialog title="申请数据" :visible.sync="dialogApplyVisible" size="small" class="apply-dialog">
+    <el-form :model="applyForm" :rules="formRules" ref="applyForm" label-width="90px" class="demo-ruleForm">
+      <el-form-item label="访问次数" prop="count">
+        <el-col :span="11">
+          <el-input v-model="applyForm.count"></el-input>
+        </el-col>
+      </el-form-item>
+      <el-form-item label="访问时间段">
+        <el-col :span="11">
+          <el-date-picker v-model="applyForm.timeRange" type="datetimerange" editable="editable" placeholder="选择时间范围">
+          </el-date-picker>
+        </el-col>
+      </el-form-item>
+      <el-form-item label="申请理由">
+        <el-input type="textarea" :rows="6" placeholder="请详细填写申请理由" v-model="applyForm.description"></el-input>
+      </el-form-item>
+    </el-form>
+    <div slot="footer" class="dialog-footer">
+      <div class="pull-left" style="color:#5F98FB;">文件格式：XLS、XML、JSON、CSV</div>
+      <el-button @click="dialogApplyVisible = false">取 消</el-button>
+      <el-button type="primary" @click="handleApply('applyForm')">完 成</el-button>
+    </div>
+  </el-dialog>
+</main>

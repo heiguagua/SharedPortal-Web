@@ -15,9 +15,27 @@
 		</div>
 		<el-table :data="tableData"	border	style="width: 100%" v-loading="loading" element-loading-text="数据加载中" slot="empty"
 		highlight-current-row>
-		<el-table-column prop="system_name" label="系统名称" ></el-table-column>
-		<el-table-column prop="main_feature" label="系统描述"	></el-table-column>
-		<el-table-column prop="dept_name" label="来源部门" ></el-table-column>
+		<el-table-column  label="系统名称" >
+			 <template scope="scope">
+          <div class="over_space">
+            <span v-bind:title="scope.row.system_name">{{scope.row.system_name}}</span>
+          </div>
+        </template>
+		</el-table-column>
+		<el-table-column  label="系统描述"	>
+			 <template scope="scope">
+          <div class="over_space">
+            <span v-bind:title="scope.row.main_feature">{{scope.row.main_feature}}</span>
+          </div>
+        </template>
+		</el-table-column>
+		<el-table-column label="来源部门" >
+			 <template scope="scope">
+          <div class="over_space">
+            <span v-bind:title="scope.row.dept_name">{{scope.row.dept_name}}</span>
+          </div>
+        </template>
+		</el-table-column>
 		<el-table-column label="详情" width="80">
       <template slot-scope="scope">
         <el-button @click="handleCurrentChange(scope.row)" type="text" size="small">查看</el-button>

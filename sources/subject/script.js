@@ -9,7 +9,6 @@ export default {
     return {
       activeName: "",
       activeChild: '',
-      showBox:false,
       devthemes: {},
       data1: [],
       current_item: {},
@@ -28,7 +27,6 @@ export default {
       vm.current_item = item;
       vm.activeChild = item.name;
       vm.showLinkDom = false;
-      vm.showBox = true;
       Http.fetch({
         method: "GET",
         url: master + "/home/getAppsByDept",
@@ -40,7 +38,7 @@ export default {
           if (result.status == 200) {
             vm.data1 = result.data.rs.aaData;
           } else {
-           vm.$notify({
+            vm.$notify({
               type: "error",
               title: '应用部门',
               message: "内部错误",
@@ -58,16 +56,19 @@ export default {
           if (result.status == 200) {
             let themeApplicationsdata = result.data.rs.aaData;
             vm.devthemes = themeApplicationsdata;
-            vm.activeName = themeApplicationsdata[0].name;
             var param_item = vm.$route.query.current_item;
+            vm.activeName = themeApplicationsdata[0].name;
             if (param_item) {
               vm.current_item = param_item;
               vm.showLinkDom = true;
               vm.jumpRoute = false;
-              console.log(vm.current_item)
+              $(".el-tabs__item").removeClass("is-active");
+            } else {
+              vm.current_item = themeApplicationsdata[0].children[0].children[0];
+              vm.showLinkDom = true;
             }
           } else {
-           vm.$notify({
+            vm.$notify({
               type: "error",
               title: '专题应用',
               message: "内部错误",
@@ -79,7 +80,6 @@ export default {
       const vm = this;
       if (val != 'dep') {
         vm.activeChild = "";
-         vm.showBox = false;
       }
       vm.current_item = item;
       console.log(vm.current_item)
@@ -88,11 +88,16 @@ export default {
     },
     changeTab: function () {
       const vm = this;
-      vm.activeChild='';
-      vm.showBox= false;
-      vm.current_item=[];
+      vm.activeChild = '';
+      let acitveTab1 = vm.devthemes[0].name;
+      let acitveTab2 = vm.devthemes[1].name;
+      if (vm.activeName == acitveTab1) {
+        vm.current_item = vm.devthemes[0].children[0].children[0];
+      } else {
+        vm.current_item = vm.devthemes[1].children[0].children[0];
+      }
+      vm.showLinkDom = true;
       vm.jumpRoute = true;
-      vm.showLinkDom = false;
     },
 
   },

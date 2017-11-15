@@ -88,7 +88,7 @@ export default {
       const vm = this;
       // console.log(tab, event);
       if (tab.name == "interfaceinfo") {
-        vm.getInterfaces(vm.$route.query.tableId).then(function (res) {
+        vm.relatedResources(vm.$route.query.tableId).then(function (res) {
           vm.tableInterfaces = res.data;
         })
       }
@@ -102,6 +102,21 @@ export default {
         }
       })
     },
+    relatedResources: function (table_Id) { // 获取关联资源信息列表
+      return Http.fetch({
+        method: "post",
+        url: master + "/serviceinfo/getServiceInfoByObjId",
+        data: {
+          obj_Id: table_Id
+        }
+      })
+    },
+    handleCurrentChange(val) {// 点击关联资源表格行
+        this.currentRow = val;
+          this.$router.push({ path: '/layout/catalog/system-dynamic-details-item',
+          //  query:{dirName:val.dataset_name,ddcm_id:val.ddcm_id}})
+           query:{dirName:'身份证信息',ddcm_id:'7A6EEE21822B4F9DAEF9ADDA47B1FCA4'}})
+      },
     goback() {
       this.$router.go(-1);
     }

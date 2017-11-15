@@ -1,1 +1,10 @@
 @import "../../../common/base.scss";
+#service-request ul{
+list-style:disc;
+margin-left: 15px;
+li:hover{
+  color: $main-blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+}
