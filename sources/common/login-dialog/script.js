@@ -29,9 +29,11 @@ loginAjax(name, m5_password) { //登录
           const data = result.data;
           vm.$message({
             showClose: true,
-            message: '登录成功！',
+            message: '登录成功!',
             type: 'success'
           });
+
+
           Encrypt.token.set("orgName", data.orgName);
           Encrypt.token.set("userName", data.userName);
           vm.$router.go(0);
@@ -40,7 +42,9 @@ loginAjax(name, m5_password) { //登录
         }
       })
     },
-    loginAjax_11() {//截取密码前11位
+
+
+    loginAjax_11() {//截取密码前面的11位数字
       const vm = this;
       let m5_password_11 = Encrypt.md5Encrypt(vm.password).substr(0, 11);
       vm.loginAjax(vm.username, m5_password_11).then(function (result) {
