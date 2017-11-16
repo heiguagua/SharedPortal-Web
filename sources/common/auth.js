@@ -1,6 +1,10 @@
 import Http from "./http.js";
 import Encrypt from "./encrypt.js";
-import {Message} from 'element-ui';
+import Vue from "vue";
+// ui
+import ElementUI from "element-ui";
+import "element-ui/lib/theme-default/index.css";
+Vue.use(ElementUI);
 export default {
   /**
    * Is access allowed
@@ -25,6 +29,7 @@ export default {
    * Json Web Token handler
    */
   interceptor() {
+    const vm =this;
     Http.fetch.interceptors.request.use(function (config) {
       const token = Encrypt.token.get();
       if (token)
@@ -34,8 +39,11 @@ export default {
       return Promise.reject(error);
     });
     Http.fetch.interceptors.response.use(function (response) {
-      
       if(response.status  === 511) {
+        alert(11)
+        //  Vue.prototype.$alert('请重新登录！', {
+        //   dangerouslyUseHTMLString: true
+        // });
         window.location.href = "#/login";
       }
       // const head = response.data.head;
