@@ -40,7 +40,6 @@ export default {
     });
     Http.fetch.interceptors.response.use(function (response) {
       if(response.status  === 511) {
-        alert(11)
         //  Vue.prototype.$alert('请重新登录！', {
         //   dangerouslyUseHTMLString: true
         // });
