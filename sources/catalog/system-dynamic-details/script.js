@@ -7,6 +7,7 @@ export default {
   data() {
     return {
       loading: true,
+      loading2:true,
       head_title: '',
       detail_pro: {}, //详情
       tableDataItem: [], //信息
@@ -89,6 +90,7 @@ export default {
       // console.log(tab, event);
       if (tab.name == "interfaceinfo") {
         vm.relatedResources(vm.$route.query.tableId).then(function (res) {
+           vm.loading2 = false;
           vm.tableInterfaces = res.data;
         })
       }
