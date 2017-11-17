@@ -20,7 +20,7 @@
         </div>
       </div>
       <div class="input-patch">
-        <input @keyup.enter="keydownLogin($event)" type="text" v-model="keywords" class="form-control" placeholder="请输入数据目录/应用/工具名称关键词">
+        <input @keyup.enter="keydownSearch($event)" type="text" v-model="keywords" class="form-control" placeholder="请输入数据目录/应用/工具名称关键词">
         <span class="input-group-btn">
           <button @click="searchKeywords()" class="btn btn-default" type="button">搜索</button>
         </span>
@@ -283,7 +283,14 @@
           </router-link>
         </div>
         <div class="tool-content">
-          <dl class="img-group m-l-0">
+          <dl class="img-group m-l-0" v-for="tool_item in getDevelopApisData">
+            <a :href="tool_item.api_url" target="_blank">
+               <dt v-if="tool_item.icon" class="in-block"><img :src="tool_item.icon" /></dt> 
+              <dt v-else class="in-block"><img src="../assets/dashboard/tool1.png" /></dt>
+              <dd class="des">{{tool_item.api_name}}</dd>
+            </a>
+          </dl>
+          <!-- <dl class="img-group m-l-0">
             <a href="/jp:hk_datacombing" target="_blank">
               <dt class="in-block"><img src="../assets/dashboard/tool1.png" /></dt>
               <dd class="des">资源梳理</dd>
@@ -312,7 +319,7 @@
               <dt class="in-block"><img src="../assets/dashboard/tool5.png" /></dt>
               <dd class="des">服务封装</dd>
             </a>
-          </dl>
+          </dl> -->
         </div>
         <div class="ico-right">
           <img class="in-block" src="../assets/dashboard/ico2.png" />

@@ -1,9 +1,11 @@
 import Http from "../common/http.js";
 import Encrypt from "../common/encrypt.js";
-import {formatDate} from "../common/date.js";
+import {
+  formatDate
+} from "../common/date.js";
 const master = Http.url.master;
 export default {
-  props:['sysObj'],
+  props: ['sysObj'],
   data() {
     return {
       keywords: "", //搜索关键词
@@ -25,6 +27,7 @@ export default {
       depAllDeptInfoAA: [],
       depAllDeptInfoData: [],
       dirFirstName: [],
+      getDevelopApisData:[],
       carouselDetail: {},
       dialogNewVisible: false,
       showMorecatalog: false,
@@ -42,6 +45,7 @@ export default {
     vm.HottestResourceData(); //最热资源
     vm.getCarouselPicNews(); //最新新闻
     vm.getPorjectPic();
+    vm.getDevelopApis(1);
   },
   methods: {
     getAllDirMenuInfo: function (item) {
@@ -86,6 +90,27 @@ export default {
             vm.$notify({
               type: "error",
               title: '基础目录',
+              message: result.data.message,
+            });
+          }
+        });
+    },
+    getDevelopApis: function (show) {
+      const vm = this;
+      Http.fetch({
+        method: "post",
+        url: master + "/developapis/getDevelopApisByFid",
+         data: {
+          is_show:show
+        }
+      }).then(
+        function (result) {
+          if (result.status == 200) {
+            vm.getDevelopApisData = result.data;
+          } else {
+            vm.$notify({
+              type: "error",
+              title: '工具',
               message: result.data.message,
             });
           }
@@ -331,7 +356,7 @@ export default {
         }
       })
     },
-    keydownLogin(ev) {
+    keydownSearch(ev) {
       const vm = this;
       var event = ev || window.event;
       if (event.keyCode == '13') { //keyCode=13是回车键

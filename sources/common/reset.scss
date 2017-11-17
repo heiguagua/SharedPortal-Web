@@ -158,11 +158,11 @@ html {
   .el-input__inner {
     height: 30px!important;
   }
-  /* alert style  */
+  /* message common style  */
   .el-message {
-    position: absolute!important;
-    top: 40%!important;
-    left: 50%!important;
+    position: fixed;
+    top: 40%;
+    left: 50%;
   }
   /*el-tabs style */
   #apply-list .el-tabs__nav-scroll {

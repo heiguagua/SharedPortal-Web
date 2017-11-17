@@ -4,6 +4,27 @@
       <div class="title">{{head_title}}</div>
       <div class="other-info"> {{itemCount}} 个资源&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;共 {{totalResource}}个处室</div>
     </div>
+    <table class="table-detail" border="0" width="100%">
+      <tbody>
+        <tr class="">
+          <td width="20%">系统名</td>
+          <td>{{infoSystem.system_name}}</td>
+        </tr>
+        <tr class="">
+          <td>所属部门</td>
+          <td>{{infoSystem.dept_name}}</td>
+        </tr>
+        <tr class="">
+          <td>系统描述</td>
+          <td>{{infoSystem.main_feature}}</td>
+        </tr>
+        <tr class="">
+          <td>系统级别</td>
+          <td>{{infoSystem.system_level}}</td>
+        </tr>
+      </tbody>
+    </table>
+     <div class="content">
     <div class="search-box">
       <div class="total-num">共 <span class="count">{{totalResource}}</span> 条结果</div>
       <div class="search-input">
@@ -34,5 +55,6 @@
     <el-pagination @current-change="handlePageChange" :current-page="currentPage" :page-size="20" layout="total, prev, pager, next, jumper"
       :total="totalResource">
     </el-pagination>
+     </div>
   </div>
 </main>

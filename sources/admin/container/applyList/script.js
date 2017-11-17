@@ -66,12 +66,12 @@ export default {
             vm.applyCount.pendingNum = data.examiningCount;
             vm.applyCount.reviewedNum = data.examinedCount;
           } else if (result.status == 511) {
-            alert('登录超时，请重新登录！');
+            alert('登录已失效，请重新登录！');
             return
           } else {
             vm.$notify({
               type: "error",
-              title: '我的纠错',
+              title: '申请列表',
               message: result.data.message,
             });
           }

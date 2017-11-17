@@ -27,11 +27,11 @@
         </tr>
         <tr class="">
           <td>相关业务</td>
-          <td>{{detail_pro.system_name}}</td>
+          <td>{{detail_pro.business_info}}</td>
         </tr>
-        <tr class="">
+        <tr class="" v-if="detail_pro.system_info">
           <td>所属系统</td>
-          <td>{{detail_pro.system_name}}</td>
+          <td><a @click="jumpToSystem(systemInfo)" class="jump_system">{{systemInfo.system_name}}</a></td>
         </tr>
       </tbody>
     </table>

@@ -1,6 +1,10 @@
 @import "../../common/base.scss";
 
 #details {
+	.jump_system{
+		text-decoration: underline;
+		color: $main-blue;
+	}
 	.item-content {
 		border: 1px solid #DBE0E8;
 		margin-top: 20px;
