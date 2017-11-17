@@ -51,7 +51,7 @@ export default {
           const data = result.data;
           vm.$message({
             showClose: true,
-            message: '登录成功！',
+            message: '登录成功   ！',
             type: 'success'
           });
           Encrypt.token.set("orgName", data.orgName);
@@ -64,6 +64,8 @@ export default {
         }
       })
     },
+
+
     loginAjax_11() { //截取密码前11位
       const vm = this;
       let m5_password_11 = Encrypt.md5Encrypt(vm.password).substr(0, 11);
