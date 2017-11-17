@@ -93,29 +93,29 @@ export default {
         })
       }
     },
-    getInterfaces: function (table_Id) { // 获取接口信息
+    // getInterfaces: function (table_Id) { // 获取接口信息
+    //   return Http.fetch({
+    //     method: "post",
+    //     url: master + "/serviceinfo/getServiceInfoByObjId",
+    //     data: {
+    //       obj_Id: table_Id
+    //     }
+    //   })
+    // },
+    relatedResources: function (table_id) { // 获取关联资源信息列表
       return Http.fetch({
         method: "post",
-        url: master + "/serviceinfo/getServiceInfoByObjId",
+        url: master + "/dataset/getDataSetByTableId",
         data: {
-          obj_Id: table_Id
-        }
-      })
-    },
-    relatedResources: function (table_Id) { // 获取关联资源信息列表
-      return Http.fetch({
-        method: "post",
-        url: master + "/serviceinfo/getServiceInfoByObjId",
-        data: {
-          obj_Id: table_Id
+          table_Id: table_id
         }
       })
     },
     handleCurrentChange(val) {// 点击关联资源表格行
         this.currentRow = val;
-          this.$router.push({ path: '/layout/catalog/system-dynamic-details-item',
-          //  query:{dirName:val.dataset_name,ddcm_id:val.ddcm_id}})
-           query:{dirName:'身份证信息',ddcm_id:'7A6EEE21822B4F9DAEF9ADDA47B1FCA4'}})
+          this.$router.push({ path: '/layout/catalog/details',
+           query:{dirName:val.dataset_name,ddcm_id:val.ddcm_id}})
+          //  query:{dirName:'身份证信息',ddcm_id:'7A6EEE21822B4F9DAEF9ADDA47B1FCA4'}})
       },
     goback() {
       this.$router.go(-1);

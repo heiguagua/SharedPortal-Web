@@ -8,6 +8,7 @@ export default {
       return {
         head_title: this.$route.query.dirName,
         tableData: [],
+        infoSystem:{},
         loading:true,
         totalResource:0,
         itemCount:0,
@@ -17,11 +18,16 @@ export default {
     },
     mounted() {
       const vm = this;
-      vm.loadData();
+      vm.getInfoSystem(vm.$route.query.infoSystemId).then(function(res){
+        if(res.status == 200) {
+          vm.infoSystem = res.data;
+        }
+      });
+      vm.loadData(false);
     },
 
     methods: {
-      loadData(){
+      loadData(cache_total){
         const vm = this;
         vm.head_title = vm.$route.query.dirName;
         var dirCode = vm.$route.query.dirCode;
@@ -30,6 +36,10 @@ export default {
           vm.loading = false;
           if(res.status == 200) {
             var r_data = res.data;
+              if (!cache_total) {
+            vm.tableData = r_data.body;
+            vm.totalResource = r_data[Pager.totalR];
+          }
             vm.tableData = r_data.body;
             vm.totalResource = r_data[Pager.totalR];
           }
@@ -55,6 +65,15 @@ export default {
           }
         })
       },
+          getInfoSystem: function (system_Id) { // 获取系统详情
+      return Http.fetch({
+        method: "post",
+        url: master + "/infosystem/getInfoSystemById",
+        data: {
+          info_system_Id: system_Id
+        }
+      })
+          },
       handleCurrentChange(val) {// 点击表格行
         console.log(val)
         this.currentRow = val;
@@ -64,12 +83,12 @@ export default {
       handlePageChange(val){// 分页处理
         const vm = this;
         vm.currentPage = val;
-        vm.loadData();
+        vm.loadData(true);
       },
       handleSearch(){
         const vm = this;
         vm.currentPage = 1;
-        vm.loadData();
+        vm.loadData(false);
       }
     },
     filters:{

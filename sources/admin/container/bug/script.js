@@ -37,7 +37,7 @@ export default {
               vm.objCount.totalR = data[Pager.totalR];
             }
           } else if (result.status == 511) {
-            alert('登录超时，请重新登录！');
+            alert('登录已失效，请重新登录！');
              return
           } else {
             vm.$notify({
