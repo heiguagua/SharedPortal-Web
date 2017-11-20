@@ -47,10 +47,10 @@
               </div>
             </template>
           </el-table-column>
-          <el-table-column label="申请时间" width="180">
+          <el-table-column label="申请时间" width="100">
             <template scope="scope">
               <div class="over_space">
-                <span v-bind:title="scope.row.apply_date">{{scope.row.apply_date}}</span>
+                <span v-bind:title="scope.row.apply_date">{{scope.row.apply_date | formatDate}}</span>
               </div>
             </template>
           </el-table-column>
@@ -131,10 +131,10 @@
                   </div>
                 </template>
               </el-table-column>
-              <el-table-column label="审核时间" width="180">
+              <el-table-column label="审核时间" width="100">
                 <template scope="scope">
                   <div class="over_space">
-                    <span v-bind:title="scope.row.audit_date">{{scope.row.audit_date}}</span>
+                    <span v-bind:title="scope.row.audit_date">{{scope.row.audit_date | formatDate}}</span>
                   </div>
                 </template>
               </el-table-column>

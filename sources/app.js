@@ -11,6 +11,7 @@ import "element-ui/lib/theme-default/index.css";
 // util
 import Http from "./common/http.js";
 import Auth from "./common/auth.js";
+import {formatDate} from "./common/date.js";
 // component
 import Layout from "./layout/index.vue";
 import "babel-polyfill";
@@ -208,6 +209,15 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   Auth.accessibility(to, from, next);
   Auth.interceptor();
+})
+
+Vue.filter('formatDate', function (time) {
+  if (!time || time == '无') {
+    return "无";
+  }
+  let date = new Date(time);
+  return formatDate(date, 'yyyy-MM-dd');
+
 })
 
 const app = new Vue({

@@ -41,7 +41,7 @@
       </el-table-column>
       <el-table-column label="更新时间">
         <template scope="scope">
-          {{ scope.row.update_time }}
+          {{ scope.row.update_time | formatDate }}
         </template>
       </el-table-column>
       <el-table-column prop="dept_name" label="来源部门">

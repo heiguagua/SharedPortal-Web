@@ -29,10 +29,10 @@
             </div>
           </template>
         </el-table-column>
-        <el-table-column label="更新时间" width="180">
+        <el-table-column label="更新时间" width="100">
           <template scope="scope">
             <div class="over_space">
-              <span v-bind:title="scope.row.rate_date">{{scope.row.rate_date}}</span>
+              <span v-bind:title="scope.row.rate_date">{{scope.row.rate_date | formatDate}}</span>
             </div>
           </template>
         </el-table-column>

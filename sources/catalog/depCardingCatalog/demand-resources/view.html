@@ -32,7 +32,7 @@
     <el-table-column label="创建时间">
       <template scope="scope">
         <div class="over_space">
-          <span v-bind:title="scope.row.create_time">{{scope.row.create_time}}</span>
+          <span v-bind:title="scope.row.create_time">{{scope.row.create_time | formatDate}}</span>
         </div>
       </template>
     </el-table-column>
