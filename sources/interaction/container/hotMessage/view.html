@@ -27,12 +27,12 @@
                   </div>
                 </template>
               </el-table-column>
-              <el-table-column prop="UPDATE_TIME" label="更新时间" width='180'>
-                <!-- <template scope="scope">
+              <el-table-column  label="更新时间" width='100'>
+                 <template scope="scope">
                   <div class="over_space">
-                  <span v-bind:title="scope.row.UPDATE_TIME" >{{scope.row.UPDATE_TIME}}</span>
+                  <span v-bind:title="scope.row.UPDATE_TIME" >{{scope.row.UPDATE_TIME | formatDate}}</span>
                   </div>
-                </template> -->
+                </template> 
               </el-table-column>
               <el-table-column label="详情" width="100">
                 <template slot-scope="scope">
@@ -112,7 +112,12 @@
                   </div>
                 </template>
               </el-table-column>
-              <el-table-column prop="update_time" label="更新时间" width='180'>
+              <el-table-column  label="更新时间" width='100'>
+                  <template scope="scope">
+                  <div class="over_space">
+                  <span v-bind:title="scope.row.update_time" >{{scope.row.update_time | formatDate}}</span>
+                  </div>
+                </template> 
               </el-table-column>
                <el-table-column label="详情" width="100">
                 <template slot-scope="scope">

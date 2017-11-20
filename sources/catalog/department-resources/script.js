@@ -1,8 +1,8 @@
 import Http from "../../common/http.js";
 import Encrypt from "../../common/encrypt.js";
-import {
-  formatDate
-} from "../../common/date.js";
+// import {
+//   formatDate
+// } from "../../common/date.js";
 import Pager from "../../common/pager.js";
 import elLogin from "../../common/login-dialog/index.vue";
 const master = Http.url.master;
@@ -109,10 +109,10 @@ export default {
         vm.loadData(false);
       }
     },
-    filters: {
-      formatDate(time) {
-        let date = new Date(time);
-        return formatDate(date, 'yyyy-MM-dd');
-      }
-    }
+    // filters: {
+    //   formatDate(time) {
+    //     let date = new Date(time);
+    //     return formatDate(date, 'yyyy-MM-dd');
+    //   }
+    // }
 };

@@ -69,14 +69,15 @@
         <el-table-column label="所属目录">
           <template scope="scope">
             <div class="over_space">
-              <span v-bind:title="scope.row.classify_name">{{scope.row.classify_name}}</span>
+              <span v-bind:title="scope.row.classify_structure_name
+">{{scope.row.classify_name}}</span>
             </div>
           </template>
         </el-table-column>
-        <el-table-column label="更新时间">
+        <el-table-column label="更新时间"  width="100">
           <template scope="scope">
             <div class="over_space">
-              <span v-bind:title="scope.row.update_time">{{scope.row.update_time}}</span>
+              <span v-bind:title="scope.row.update_time">{{scope.row.update_time | formatDate}}</span>
             </div>
           </template>
         </el-table-column>

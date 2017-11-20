@@ -1,8 +1,8 @@
 import Http from "../../../common/http.js";
 import Encrypt from "../../../common/encrypt.js";
-import {
-  formatDate
-} from "../../../common/date.js";
+// import {
+//   formatDate
+// } from "../../../common/date.js";
 import Pager from "../../../common/pager.js";
 const master = Http.url.master;
 export default {
@@ -52,8 +52,8 @@ export default {
         method: "post",
         url: master + "/infosystem/getInfoSystemByDeptId",
         data: {
-          info_system_Id: dirCode,
-          dept_Id: "",
+          // info_system_Id: dirCode,
+          dept_Id: dirCode,
           size: psize,
           pageNum: currentPage,
           keywords: keyword
@@ -84,12 +84,12 @@ export default {
       vm.loadData(false);
     }
   },
-  filters: {
-    formatDate(time) {
-      let date = new Date(time);
-      return formatDate(date, 'yyyy-MM-dd');
-    }
-  },
+  // filters: {
+  //   formatDate(time) {
+  //     let date = new Date(time);
+  //     return formatDate(date, 'yyyy-MM-dd');
+  //   }
+  // },
   watch: {
     $route() {
       this.loadData(false);
