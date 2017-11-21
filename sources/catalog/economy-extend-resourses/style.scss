@@ -1,5 +1,11 @@
 @import "../../common/base.scss";
-
-#resources .content{
-  border-top: 1px solid #ddd;
+#resources {
+  .content {
+    border-top: 1px solid #ddd;
+  }
+  .info {
+    float: left;
+    margin: 15px 25px;
+    line-height: 30px;
+  }
 }

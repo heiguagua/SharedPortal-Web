@@ -1,9 +1,14 @@
 <main id="resources">
   <div class="catalog-content">
-    <div class="head-desc">
-      <div class="title">{{head_title}}</div>
-      <div class="other-info"> {{itemCount}} 个资源&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;共 {{totalResource}}个处室</div>
+
+     <div class="head-desc">{{head_title}}-详情
+      <a href="javascript:;" class="back-link" @click='goback()'><i class="fa fa-angle-left font-bold"></i> 返回</a>
     </div>
+
+    <!-- <div class="head-desc">
+      <div class="title">{{head_title}}</div>
+     
+    </div> -->
     <table class="table-detail" border="0" width="100%">
       <tbody>
         <tr class="">
@@ -27,6 +32,7 @@
      <div class="content">
     <div class="search-box">
       <div class="total-num">共 <span class="count">{{totalResource}}</span> 条结果</div>
+       <div class="info"> {{itemCount}} 个资源&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;共 {{totalResource}}个处室</div>
       <div class="search-input">
         <el-input placeholder="请输入信息资源名称" v-model="keyword">
           <el-button slot="append" icon="search" @click="handleSearch">搜索</el-button>

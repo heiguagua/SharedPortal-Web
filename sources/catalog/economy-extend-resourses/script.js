@@ -89,6 +89,9 @@ export default {
         const vm = this;
         vm.currentPage = 1;
         vm.loadData(false);
+      },
+      goback() {
+        this.$router.go(-1);
       }
     },
     filters:{
