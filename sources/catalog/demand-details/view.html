@@ -38,10 +38,10 @@
 			</tr>
 		</tbody></table> -->
     <el-table :data="detail_pro" border style="width: 100%" v-loading="loading" element-loading-text="数据加载中" slot="empty" highlight-current-row>
-      <el-table-column prop="dataset_name" label="需求信息资源名称"></el-table-column>
+      <el-table-column prop="require_name" label="需求信息资源名称"></el-table-column>
       <el-table-column prop="request_dept_name" label="需求部门"></el-table-column>
       <el-table-column prop="source_dept_name" label="来源部门"></el-table-column>
-      <el-table-column prop="require_name" label="需求资源"></el-table-column>
+      <!-- <el-table-column prop="require_name" label="需求资源"></el-table-column> -->
       <el-table-column prop="expect_update_frequence" label="数据使用频率"></el-table-column>
       <el-table-column prop="is_get" label="是否已获取"></el-table-column>
     </el-table>
