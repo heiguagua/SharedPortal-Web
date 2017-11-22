@@ -1,13 +1,14 @@
 @import "../common/base.scss";
 
 #developer {
-	min-height: 720px;
+	// min-height: 720px;
 
 	* {
 		box-sizing: border-box;
 	}
 
 	.section-content {
+		min-height: 720px;
 		width: 1270px;
 		margin: 0 auto;
 		overflow: hidden;
