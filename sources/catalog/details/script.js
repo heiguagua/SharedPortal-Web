@@ -58,7 +58,18 @@ export default {
         },
         formRules: {
           count: [{
-            validator: checkCount,
+            required: true,
+            message: '访问次数不能为空',
+            trigger: 'blur'
+          }],
+          timeRange: [{
+            required: true,
+            message: '访问时间段不能为空',
+            trigger: 'blur'
+          }],
+          description: [{
+            required: true,
+            message: '申请理由不能为空',
             trigger: 'blur'
           }]
         }
