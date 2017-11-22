@@ -14,7 +14,7 @@ export default {
   mounted() {
     const vm = this;
     
-    vm.getDevApps(); //获取系统列表
+    vm.getDevApps('root'); //获取系统列表
   },
   methods: {
     handleClick(tab, event) {
@@ -22,11 +22,14 @@ export default {
       var pid = tab.$attrs.id;
       this.getSubApps(pid);
     },
-    getDevApps: function() {
+    getDevApps: function(devlp_Id) {
       const vm = this;
       Http.fetch({
         method: "post",
-        url: master + "/developapis/getDevelopApisByFid"
+        url: master + "/developapis/getDevelopApisByFid",
+        data:{
+          devlp_Id:devlp_Id
+        }
       }).then(
         function(result) {
           if (result.status == 200) {
