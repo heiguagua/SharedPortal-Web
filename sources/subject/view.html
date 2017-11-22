@@ -42,7 +42,7 @@
               </div>
             </el-col>
             <el-col :span="4">
-              <div class="grid-content">
+              <div class="grid-content" @click="count(current_item.id)">
                 <a class="item-link el-button el-button--primary" :href="current_item.url" target="_blank"><i class="fa fa-link"></i>&nbsp;访问链接</a>
               </div>
             </el-col>

@@ -76,6 +76,20 @@ export default {
           }
         });
     },
+    count(id) {
+      const vm = this;
+      Http.fetch({
+        method: "post",
+        url: master + "/developapis/increaseDevelopApiVisitCount",
+        data: {
+          api_id: id
+        }
+      }).then(function (result) {
+        if (result.status == 200) {
+          console.log('计数成功')
+        }
+      })
+    },
     showLink: function (item, val) {
       const vm = this;
       if (val != 'dep') {
