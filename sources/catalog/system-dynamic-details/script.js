@@ -13,7 +13,7 @@ export default {
       tableDataItem: [], //信息
       activeTab: 'itemlist',
       tableInterfaces: [],
-      // totalResource:0,
+      totalResource:0,
       currentPage: 1,
       pageSize: 5,
     }
@@ -48,7 +48,9 @@ export default {
         if (res.status == 200) {
           var r_data = res.data;
           vm.tableDataItem = r_data.body;
-          // vm.totalResource= r_data[Pager.totalR];//total
+          if (!r_data.previous) {
+              vm.totalResource= r_data[Pager.totalR];//total
+            }
         } else {
           vm.$notify({
             type: "error",
@@ -83,7 +85,7 @@ export default {
     handlePageChange(val) { // 分页处理
       const vm = this;
       vm.currentPage = val;
-      vm.TableColumns();
+      vm.tableColumns();
     },
     handleClick(tab, event) {
       const vm = this;

@@ -16,6 +16,7 @@ export default {
       pageSize: 5,
       detail_pro: {}, //详情
       tableDataItem: [], //信息
+      tableInterfaces:[],
       activeTab: 'itemlist',
     }
   },

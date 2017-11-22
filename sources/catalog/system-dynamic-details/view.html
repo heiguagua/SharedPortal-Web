@@ -50,6 +50,9 @@
               </template>
             </el-table-column>
           </el-table>
+          <el-pagination @current-change="handlePageChange" :current-page="currentPage" :page-size="5" layout="total, prev, pager, next, jumper"
+            :total="totalResource">
+          </el-pagination>
 				</el-tab-pane>
 				 <el-tab-pane label="关联资源" name="interfaceinfo">
 					 <el-table :data="tableInterfaces" border style="width: 100%" tooltip-effect="dark" v-loading="loading2" element-loading-text="数据加载中">
