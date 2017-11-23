@@ -1,10 +1,5 @@
 import Http from "./http.js";
 import Encrypt from "./encrypt.js";
-import Vue from "vue";
-// ui
-import ElementUI from "element-ui";
-import "element-ui/lib/theme-default/index.css";
-Vue.use(ElementUI);
 export default {
   /**
    * Is access allowed

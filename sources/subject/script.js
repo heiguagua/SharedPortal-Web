@@ -1,6 +1,5 @@
 import Http from "../common/http.js";
 import Encrypt from "../common/encrypt.js";
-import jquery from "jquery";
 const master = Http.url.master;
 
 
@@ -62,7 +61,6 @@ export default {
               vm.current_item = param_item;
               vm.showLinkDom = true;
               vm.jumpRoute = false;
-              $(".el-tabs__item").removeClass("is-active");
             } else {
               vm.current_item = themeApplicationsdata[0].children[0].children[0];
               vm.showLinkDom = true;
