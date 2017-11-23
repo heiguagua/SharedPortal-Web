@@ -1,39 +1,47 @@
 <main id="developer">
-	<div class="section-content">
-		<el-tabs v-model="activeName"  @tab-click="handleClick">
-		<el-tab-pane v-for="appItem in devApps"  v-bind:label="appItem.api_name" v-bind:name="appItem.api_name" v-bind:id="appItem.devlp_Id" >
-		<ul class="sub_apps">
-			<li :class="{ active: (current_item.devlp_Id === item.devlp_Id) }" v-for="item in subAppList">
-				<a class="" dataid="item.devlp_Id" dataurl="item.api_url" v-on:click="showLink(item)">{{item.api_name}}</a>
-				<span class="spliter">|</span>
-			</li>
-		</ul>
-		<!-- <p class="app-link" v-show="showLinkDom"><span>链接：<a v-bind:href="current_item.url" target="_blank">{{current_item.url}}</a></span></p> -->
-		<div class="tool-details" v-show="showLinkDom">
-			<h3>工具简介</h3>
-			<el-row>
-			<el-col :span="4"><div class="grid-content tool-ico"><img class="logo" src="../assets/cd-logo.png"></div></el-col>
-			<el-col :span="8"><div class="grid-content">
-					<div class="info-item"><label>工具名称：</label>{{current_item.api_name}}</div>
-					<div class="info-item"><label>工具类型：{{current_item.api_category}}</label></div>
-					<div class="info-item"><label>访问次数：{{current_item.visit_count}}</label></div>
-			</div></el-col>
-			<el-col :span="8"><div class="grid-content">
-				<div class="info-item"><label>创建时间：</label>{{current_item.create_time}}</div>
-			</div></el-col>
-			<el-col :span="4"><div class="grid-content">
-				<a class="item-link el-button el-button--primary" v-bind:href="current_item.api_url" target="_blank"><i class="fa fa-link"></i>&nbsp;访问链接</a>
-			</div></el-col>
-			</el-row>
-		<el-row>
-			<el-col :span="24">
-				<div class="info-item">
-			{{current_item.api_desc}}
-			</div>
-			</el-col>
-			</el-row>
-		</div>
-		</el-tab-pane>
-		</el-tabs>
-	</div>
+  <div class="section-content">
+    <el-tabs v-model="activeName" @tab-click="handleClick">
+      <el-tab-pane v-for="appItem in devApps" v-bind:label="appItem.api_name" v-bind:name="appItem.api_name" v-bind:id="appItem.devlp_Id">
+        <ul class="sub_apps">
+          <li :class="{ active: (current_item.devlp_Id === item.devlp_Id) }" v-for="item in subAppList">
+            <a class="" dataid="item.devlp_Id" dataurl="item.api_url" v-on:click="showLink(item)">{{item.api_name}}</a>
+            <span class="spliter">|</span>
+          </li>
+        </ul>
+        <!-- <p class="app-link" v-show="showLinkDom"><span>链接：<a v-bind:href="current_item.url" target="_blank">{{current_item.url}}</a></span></p> -->
+        <div class="tool-details" v-show="showLinkDom">
+          <h3>工具简介</h3>
+          <el-row>
+            <el-col :span="4">
+              <div class="grid-content tool-ico"><img class="logo" src="../assets/cd-logo.png"></div>
+            </el-col>
+            <el-col :span="8">
+              <div class="grid-content">
+                <div class="info-item"><label>工具名称：</label>{{current_item.api_name}}</div>
+                <div class="info-item"><label>工具类型：{{current_item.api_category}}</label></div>
+                <div class="info-item"><label>访问次数：{{current_item.visit_count}}</label></div>
+              </div>
+            </el-col>
+            <el-col :span="8">
+              <div class="grid-content">
+                <div class="info-item"><label>创建时间：</label>{{current_item.create_time}}</div>
+              </div>
+            </el-col>
+            <el-col :span="4">
+              <div class="grid-content" @click="count(current_item.devlp_Id)">
+                <a class="item-link el-button el-button--primary" v-bind:href="current_item.api_url" target="_blank"><i class="fa fa-link"></i>&nbsp;访问链接</a>
+              </div>
+            </el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="24">
+              <div class="info-item">
+                {{current_item.api_desc}}
+              </div>
+            </el-col>
+          </el-row>
+        </div>
+      </el-tab-pane>
+    </el-tabs>
+  </div>
 </main>

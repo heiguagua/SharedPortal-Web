@@ -6,14 +6,14 @@ export default {
     return {
       activeName: "",
       devApps: {},
-      subAppList:[],
-      current_item:{},
-      showLinkDom:false
+      subAppList: [],
+      current_item: {},
+      showLinkDom: false
     }
   },
   mounted() {
     const vm = this;
-    
+
     vm.getDevApps('root'); //获取系统列表
   },
   methods: {
@@ -22,27 +22,29 @@ export default {
       var pid = tab.$attrs.id;
       this.getSubApps(pid);
     },
-    getDevApps: function(devlp_Id) {
-      const vm = this;
-      Http.fetch({
+    getDevAppsHttp: function (id) {
+      return Http.fetch({
         method: "post",
         url: master + "/developapis/getDevelopApisByFid",
-        data:{
-          devlp_Id:devlp_Id
+        data: {
+          devlp_Id: id
         }
-      }).then(
-        function(result) {
+      })
+    },
+    getDevApps: function (devlp_Id) {
+      const vm = this;
+      vm.getDevAppsHttp(devlp_Id).then(
+        function (result) {
           if (result.status == 200) {
             var data = result.data;
             vm.devApps = data;
             var param_item = vm.$route.query.current_item;
-            if(param_item) {
+            if (param_item) {
               vm.current_item = param_item;
               vm.activeName = param_item.parent_name;
               vm.showLinkDom = true;
               vm.getSubApps(param_item.parent_id);
-            }
-            else{
+            } else {
               vm.showLinkDom = false;
               vm.activeName = data[0].api_name;
               vm.getSubApps(data[0].devlp_Id);
@@ -56,20 +58,14 @@ export default {
           }
         });
     },
-    getSubApps: function(devlp_Id) {
+    getSubApps: function (devlp_Id) {
       const vm = this;
-      Http.fetch({
-        method: "post",
-        url: master + "/developapis/getDevelopApisByFid",
-        data:{
-          devlp_Id:devlp_Id
-        }
-      }).then(
-        function(result) {
+      vm.getDevAppsHttp(devlp_Id).then(
+        function (result) {
           if (result.status == 200) {
             vm.subAppList = result.data;
-            vm.current_item=result.data[0];
-             vm.showLinkDom = true;
+            vm.current_item = result.data[0];
+            vm.showLinkDom = true;
           } else {
             vm.$message({
               type: "error",
@@ -79,10 +75,24 @@ export default {
           }
         });
     },
-    showLink:function(item){
+    showLink: function (item) {
       const vm = this;
       vm.current_item = item;
       vm.showLinkDom = true;
-    }
+    },
+    count(id) {
+      const vm = this;
+      Http.fetch({
+        method: "post",
+        url: master + "/developapis/increaseDevelopApiVisitCount",
+        data: {
+          api_id: id
+        }
+      }).then(function (result) {
+        if (result.status == 200) {
+          console.log('计数成功')
+        }
+      })
+    },
   }
 };
