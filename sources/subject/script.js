@@ -80,7 +80,7 @@ export default {
       const vm = this;
       Http.fetch({
         method: "post",
-        url: master + "/developapis/increaseDevelopApiVisitCount",
+        url: master + "/home/increaseThematicAppVisitCount",
         data: {
           api_id: id
         }
