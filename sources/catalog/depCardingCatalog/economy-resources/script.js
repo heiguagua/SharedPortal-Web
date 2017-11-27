@@ -50,10 +50,10 @@ export default {
       const vm = this;
       return Http.fetch({
         method: "post",
-        url: master + "/infosystem/getInfoSystemByDeptId",
+        url: master + "/infosystem/getInfoSystemByDeptTreeCode",
         data: {
           // info_system_Id: dirCode,
-          dept_Id: dirCode,
+          tree_code: dirCode,
           size: psize,
           pageNum: currentPage,
           keywords: keyword

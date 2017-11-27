@@ -48,11 +48,11 @@ export default {
       const vm = this;
       return Http.fetch({
         method: "post",
-        url: master + "/businessrequirement/getBusinessreQuirementByDeptId",
+        url: master + "/businessrequirement/getBusinessreQuirementByDeptTreeCode",
         data: {
           pageNum: currentPage,
           size: psize,
-          dept_Id: dirCode,
+          tree_code: dirCode,
           keywords: keyword
         }
       })

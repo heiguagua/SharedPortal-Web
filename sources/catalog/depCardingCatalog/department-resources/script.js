@@ -57,8 +57,8 @@ export default {
     loadData(cache_total) {
       const vm = this;
       vm.head_title = vm.$route.query.dirName;
-      var deptId = vm.$route.query.dirCode;
-      vm.getBusinessTableList(vm.currentPage, 20, deptId, vm.keyword).then(function (res) {
+      var code = vm.$route.query.dirCode;
+      vm.getBusinessTableList(vm.currentPage, 20, code, vm.keyword).then(function (res) {
         vm.loading = false;
         if (res.status == 200) {
           var r_data = res.data;
@@ -75,15 +75,15 @@ export default {
         }
       })
     },
-    getBusinessTableList: function (currentPage, psize, deptId, keyword) {
+    getBusinessTableList: function (currentPage, psize, treeCode, keyword) {
       const vm = this;
       return Http.fetch({
         method: "post",
-        url: master + "/businessactivity/getBusinessActivityByDeptId",
+        url: master + "/businessactivity/getBusinessActivityByDeptTreeCode",
         data: {
           pageNum: currentPage,
           size: psize,
-          dept_Id: deptId,
+          tree_code: treeCode,
           keywords: keyword
         }
       })
