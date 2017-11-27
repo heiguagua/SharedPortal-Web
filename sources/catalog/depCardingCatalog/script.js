@@ -112,7 +112,7 @@ export default {
         path: `/layout/catalog/depCardingCatalog/${vm.current_type_path}`,
         query: {
           dirName: vm.current_type,
-          dirCode: item.dept_Id
+          dirCode: item.tree_code
         }
       })
     },
