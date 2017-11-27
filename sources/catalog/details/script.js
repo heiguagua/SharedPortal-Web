@@ -63,9 +63,10 @@ export default {
             trigger: 'blur'
           }],
           timeRange: [{
+            type: 'date',
             required: true,
             message: '访问时间段不能为空',
-            trigger: 'blur'
+            trigger: 'blur,change'
           }],
           description: [{
             required: true,

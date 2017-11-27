@@ -7,7 +7,10 @@ module.exports = {
   context: path.resolve(__dirname, "../sources"),
   entry: {
     app: "./app.js",
-    vendor: [ "vue", "vuex", "vue-router", "element-ui", "axios", "lodash",]
+    vendor: [
+      "vue", "vuex", "vue-router", "element-ui", "axios",
+      "lodash",
+    ]
   },
   resolve: {
     extensions: [".js", ".vue", ".json"],
