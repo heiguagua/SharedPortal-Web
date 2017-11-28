@@ -22,7 +22,7 @@ export default {
       current_active: '',
       parentName: '',
       parentId: "",
-      carouselPicNews: [],
+      carouselPicNews:[],
       porjectPic: [],
       depAllDeptInfoAA: [],
       depAllDeptInfoData: [],
@@ -269,7 +269,7 @@ export default {
         function (result) {
           if (result.status == 200) {
             let data = result.data;
-            vm.carouselPicNews = data.body;
+            // vm.carouselPicNews = data.body;
           } else {
             vm.$notify({
               type: "error",
