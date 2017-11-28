@@ -9,7 +9,7 @@ module.exports = {
     app: "./app.js",
     vendor: [
       "vue", "vuex", "vue-router", "element-ui", "axios",
-      "lodash",
+      "jquery", "lodash", "moment",
     ]
   },
   resolve: {
@@ -28,6 +28,16 @@ module.exports = {
       names: ["vendor", "manifest"]
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
+    new webpack.ProvidePlugin({
+      'window.jQuery': 'jquery',
+      jQuery: "jquery",
+      $: "jquery"
+    })
+
+    // new webpack.ProvidePlugin({
+    //     jQuery: "jquery",
+    //     $: "jquery"
+    // })
   ],
   module: {
     rules: [{
