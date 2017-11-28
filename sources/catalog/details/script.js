@@ -1,13 +1,13 @@
 import Http from "../../common/http.js";
 import Encrypt from "../../common/encrypt.js";
-// import {formatDate} from "../../common/date.js";
+import {formatDate} from "../../common/date.js";
 const master = Http.url.master;
 export default {
   data() {
       var checkCount = (rule, value, callback) => {
         console.log(value);
-        if (value == null || value == '') {
-          return callback();
+       if (!value) {
+          return callback(new Error('访问次数不能为空'));
         }
         //setTimeout(() => {
           if (isNaN(value)) {
@@ -57,16 +57,16 @@ export default {
           description: ''
         },
         formRules: {
-          count: [{
-            required: true,
-            message: '访问次数不能为空',
+         count: [{
+          required: true,
+            validator: checkCount,
             trigger: 'blur'
           }],
           timeRange: [{
-            type: 'date',
+            type: 'array',
             required: true,
             message: '访问时间段不能为空',
-            trigger: 'blur,change'
+            trigger: 'change'
           }],
           description: [{
             required: true,
