@@ -14,7 +14,7 @@ export default {
         requirementType: 'interface',
         others: '',
         // depId: [],//部门多选时用
-        depId: "", //部门单选时用
+        depId:'', //部门单选时用
         resourceId: []
       },
       initForm: {
@@ -145,7 +145,6 @@ export default {
     submitForm(formName) {
       const vm = this;
       this.$refs[formName].validate((valid) => {
-        console.log(vm.ruleForm)
         if (valid) {
 
           if (vm.ruleForm.resourceId.length == 0 && vm.ruleForm.others == '') {
@@ -173,11 +172,14 @@ export default {
                     type: 'success'
                   });
                   vm.$refs[formName].resetFields(); //清空表单
-                  vm.ruleForm = {};
+                   vm.ruleForm.others='',
+                  vm.ruleForm.resourceId = []
+                  console.log(vm.ruleForm)
+                  // vm.ruleForm = {};
                   // vm.ruleForm.requirementType = 'interface';
                   // vm.depName = [];//部门多选时用
                   vm.depName = ""; //部门单选时用
-                  vm.ruleForm.resourceId = []
+                  // vm.ruleForm.resourceId = []
                   // vm.$refs.tree.setCheckedKeys([]);//部门多选时用
                   $("#dep_inp").height(33);
                 } else {
