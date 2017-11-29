@@ -187,16 +187,17 @@ export default {
                     type: 'success'
                   });
                 }
-              } else if (result.status == 511) {
-                alert('登录已失效，请重新登录！');
-                return
-              } else {
-                vm.$notify({
-                  type: "error",
-                  title: '咨询建议',
-                  message: result.data.message,
-                });
               }
+              //  else if (result.status == 511) {
+              //   alert('登录已失效，请重新登录！');
+              //   return
+              // } else {
+              //   vm.$notify({
+              //     type: "error",
+              //     title: '咨询建议',
+              //     message: result.data.message,
+              //   });
+              // }
             });
         } else {
           console.log('error submit!!');

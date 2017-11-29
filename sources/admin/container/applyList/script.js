@@ -65,16 +65,17 @@ export default {
             }
             vm.applyCount.pendingNum = data.examiningCount;
             vm.applyCount.reviewedNum = data.examinedCount;
-          } else if (result.status == 511) {
-            alert('登录已失效，请重新登录！');
-            return
-          } else {
-            vm.$notify({
-              type: "error",
-              title: '申请列表',
-              message: result.data.message,
-            });
           }
+          //  else if (result.status == 511) {
+          //   alert('登录已失效，请重新登录！');
+          //   return
+          // } else {
+          //   vm.$notify({
+          //     type: "error",
+          //     title: '申请列表',
+          //     message: result.data.message,
+          //   });
+          // }
         });
     },
     getApplyItemData: function (dcm_id, curr_page, search_inp) {
