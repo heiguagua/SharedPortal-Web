@@ -109,9 +109,6 @@ export default {
       _.forEach(vm.devthemes, function (_item, index) {
         if (vm.activeName == _item.name) {
           vm.current_item = _item.children[0].children[0];
-          vm.urlCode = vm.current_item.url;
-          $("#qrcode" + index).html('');
-          vm.qrcode('qrcode' + index);
         }
       })
       vm.showLinkDom = true;
