@@ -2,9 +2,12 @@
 #service-request ul{
 list-style:disc;
 margin-left: 15px;
-li:hover{
+li a{
+  color: #333;
+  text-decoration: none;
+  &:hover{
   color: $main-blue;
   text-decoration: underline;
-  cursor: pointer;
+}
 }
 }
