@@ -13,19 +13,24 @@
       </div>
     </div>
     <el-table :data="tableData" border style="width: 100%" v-loading="loading" element-loading-text="数据加载中" slot="empty" highlight-current-row>
-      <el-table-column prop="enName" label="表英文名">
+      <!-- <el-table-column prop="enName" label="表英文名">
         <template scope="scope">
           <span v-bind:title="scope.row.enName">{{ scope.row.enName }}</span>
         </template>
-      </el-table-column>
-      <el-table-column prop="cnName" label="表中文名" >
+      </el-table-column> -->
+      <el-table-column label="表名" >
         <template scope="scope">
-          <span v-bind:title="scope.row.cnName">{{ scope.row.cnName }}</span>
+            <div class="over_space">
+          <span v-bind:title="scope.row.enName">{{ scope.row.enName }}</span>
+          <span v-if="scope.row.cnName !==null || scope.row.cnName !==''" v-bind:title="scope.row.cnName">[{{ scope.row.cnName }}]</span>
+            </div>
         </template>
       </el-table-column>
       <el-table-column prop="table_source_type" label="来源" >
         <template scope="scope">
+            <div class="over_space">
           <span v-bind:title="scope.row.table_source_type">{{ scope.row.table_source_type }}</span>
+            </div>
         </template>
       </el-table-column>
        <el-table-column label="详情" width="80">
