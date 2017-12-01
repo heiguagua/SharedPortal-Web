@@ -26,13 +26,14 @@ export default {
           if (result.status == 200) {
             let data = result.data;
             vm.aboutUsInfo = data[0];
-          } else {
-            vm.$notify({
-              type: "error",
-              title: '版权信息',
-              message:result.data.message,
-            });
-          }
+          } 
+          // else {
+          //   vm.$notify({
+          //     type: "error",
+          //     title: '版权信息',
+          //     message:result.data.message,
+          //   });
+          // }
         });
     },
   }

@@ -49,13 +49,14 @@ export default {
               vm.activeName = data[0].api_name;
               vm.getSubApps(data[0].devlp_Id);
             }
-          } else {
-            vm.$notify({
-              type: "error",
-              title: '查询出错！',
-              message: result.data.message,
-            });
-          }
+          } 
+          // else {
+          //   vm.$notify({
+          //     type: "error",
+          //     title: '查询出错！',
+          //     message: result.data.message,
+          //   });
+          // }
         });
     },
     getSubApps: function (devlp_Id) {

@@ -33,13 +33,14 @@ export default {
       vm.getSystemTableById(vm.$route.query.tableId).then(function (res) {
         if (res.status == 200) {
           vm.detail_pro = res.data;
-        } else {
-          vm.$notify({
-            type: "error",
-            title: '错误',
-            message: res.data.message,
-          });
-        }
+        } 
+        // else {
+        //   vm.$notify({
+        //     type: "error",
+        //     title: '错误',
+        //     message: res.data.message,
+        //   });
+        // }
       })
     },
     tableColumns(cache_total) {
@@ -55,13 +56,14 @@ export default {
             vm.totalResource = r_data[Pager.totalR]; //total
           }
           
-        } else {
-          vm.$notify({
-            type: "error",
-            title: '错误',
-            message: res.data.message,
-          });
         }
+        //  else {
+        //   vm.$notify({
+        //     type: "error",
+        //     title: '错误',
+        //     message: res.data.message,
+        //   });
+        // }
       })
     },
     //  查询系统静态数据资源目录 详情

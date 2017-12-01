@@ -66,13 +66,14 @@ export default {
           if (!cache_total) {
             vm.totalResource = r_data[Pager.totalR]; //总共多少页
           }
-        } else {
-          vm.$notify({
-            type: "error",
-            title: '错误',
-            message: res.data.message,
-          });
         }
+        //  else {
+        //   vm.$notify({
+        //     type: "error",
+        //     title: '错误',
+        //     message: res.data.message,
+        //   });
+        // }
       })
     },
     getBusinessTableList: function (currentPage, psize, treeCode, keyword) {

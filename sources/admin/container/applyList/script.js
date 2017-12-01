@@ -98,13 +98,14 @@ export default {
              if(!data.previous){
              vm.applyCount.totalR = data[Pager.totalR];
             }
-          } else {
-            vm.$notify({
-              type: "error",
-              title: '申请列表详情',
-              message: result.data.message,
-            });
-          }
+          } 
+          // else {
+          //   vm.$notify({
+          //     type: "error",
+          //     title: '申请列表详情',
+          //     message: result.data.message,
+          //   });
+          // }
         });
     },
       getResDetails: function(ddcm_id) { // 获取资源详情

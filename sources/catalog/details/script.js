@@ -197,13 +197,14 @@ export default {
           vm.loading = false;
           if (res.status == 200) {
             vm.tableDataItem = res.data;
-          } else {
-           vm.$notify({
-              type: "error",
-              title: '系统错误',
-              message: res.data.message,
-            });
           }
+          //  else {
+          //  vm.$notify({
+          //     type: "error",
+          //     title: '系统错误',
+          //     message: res.data.message,
+          //   });
+          // }
         },function(error){
           console.log("getdataitme error:",error);
         })
@@ -220,13 +221,14 @@ export default {
             }
             vm.collectionStatus = vm.detail_pro.isCollection;
             vm.getDataItemList(); // 获取数据项列表
-          } else {
-            vm.$message({
-              type: "error",
-              title: '系统错误',
-              message: res.data.message,
-            });
           }
+          //  else {
+          //   vm.$message({
+          //     type: "error",
+          //     title: '系统错误',
+          //     message: res.data.message,
+          //   });
+          // }
         })
 
       },
