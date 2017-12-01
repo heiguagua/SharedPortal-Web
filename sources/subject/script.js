@@ -86,10 +86,10 @@ export default {
         }
       }).then(function (result) {
         if (result.status == 200) {
-          if(result.data.result){
- console.log('计数成功')
+          if (result.data.result) {
+            console.log('计数成功')
           }
-         
+
         }
       })
     },
@@ -106,13 +106,14 @@ export default {
     changeTab: function () {
       const vm = this;
       vm.activeChild = '';
-      let acitveTab1 = vm.devthemes[0].name;
-      let acitveTab2 = vm.devthemes[1].name;
-      if (vm.activeName == acitveTab1) {
-        vm.current_item = vm.devthemes[0].children[0].children[0];
-      } else {
-        vm.current_item = vm.devthemes[1].children[0].children[0];
-      }
+      _.forEach(vm.devthemes, function (_item, index) {
+        if (vm.activeName == _item.name) {
+          vm.current_item = _item.children[0].children[0];
+          vm.urlCode = vm.current_item.url;
+          $("#qrcode" + index).html('');
+          vm.qrcode('qrcode' + index);
+        }
+      })
       vm.showLinkDom = true;
       vm.jumpRoute = true;
     },
