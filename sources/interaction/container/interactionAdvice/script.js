@@ -45,13 +45,14 @@ export default {
                     type: 'success'
                   });
                 }
-              } else {
-                vm.$notify({
-                  type: "error",
-                  title: '咨询建议',
-                  message: result.message,
-                });
               }
+              //  else {
+              //   vm.$notify({
+              //     type: "error",
+              //     title: '咨询建议',
+              //     message: result.message,
+              //   });
+              // }
             });
         } else {
           console.log('error submit!!');

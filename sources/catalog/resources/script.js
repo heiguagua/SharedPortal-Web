@@ -47,13 +47,13 @@ export default {
             }
             
           }
-          else{
-             vm.$notify({
-                  type: "error",
-                  title: '系统错误',
-                  message: res.data.message,
-                });
-          }
+          // else{
+          //    vm.$notify({
+          //         type: "error",
+          //         title: '系统错误',
+          //         message: res.data.message,
+          //       });
+          // }
         })
       },
       getResources: function(dirCode,currentPage,psize,keyword,open_status,share_type) {

@@ -86,13 +86,14 @@ export default {
             vm.pageTotal = data[Pager.totalR];
             }
             
-          } else {
-            vm.$notify({
-              type: "error",
-              title: '最新资源',
-              message: result.data.message,
-            });
-          }
+          } 
+          // else {
+          //   vm.$notify({
+          //     type: "error",
+          //     title: '最新资源',
+          //     message: result.data.message,
+          //   });
+          // }
         });
     },
     listHottestResourceData: function (d_curr_page, search_inp) {
@@ -114,13 +115,14 @@ export default {
             if(!data.previous){
             vm.pageTotal = data[Pager.totalR];
             }
-          } else {
-            vm.$notify({
-              type: "error",
-              title: '最热资源',
-              message: result.data.message,
-            });
-          }
+          } 
+          // else {
+          //   vm.$notify({
+          //     type: "error",
+          //     title: '最热资源',
+          //     message: result.data.message,
+          //   });
+          // }
         });
     },
     listLatestDirectoryData: function (d_curr_page, search_inp) {
@@ -142,13 +144,14 @@ export default {
            if(!data.previous){
             vm.pageTotal = data[Pager.totalR];
             }
-          } else {
-            vm.$notify({
-              type: "error",
-              title: '最新目录',
-              message: result.data.message,
-            });
-          }
+          } 
+          // else {
+          //   vm.$notify({
+          //     type: "error",
+          //     title: '最新目录',
+          //     message: result.data.message,
+          //   });
+          // }
         });
     },
     hottestCatalogData: function (d_curr_page, search_inp) {
@@ -170,13 +173,14 @@ export default {
          if(!data.previous){
             vm.pageTotal = data[Pager.totalR];
             }
-          } else {
-            vm.$notify({
-              type: "error",
-              title: '最热目录',
-              message: result.data.message,
-            });
-          }
+          } 
+          // else {
+          //   vm.$notify({
+          //     type: "error",
+          //     title: '最热目录',
+          //     message: result.data.message,
+          //   });
+          // }
         });
     },
     hotPolicyData: function (d_curr_page, search_inp) {
@@ -204,13 +208,14 @@ export default {
             vm.pageTotal = data[Pager.totalR];
             }
 
-          } else {
-            vm.$notify({
-              type: "error",
-              title: '最新政策',
-              message: result.data.message,
-            });
           }
+          //  else {
+          //   vm.$notify({
+          //     type: "error",
+          //     title: '最新政策',
+          //     message: result.data.message,
+          //   });
+          // }
         });
     },
     /**分页 */

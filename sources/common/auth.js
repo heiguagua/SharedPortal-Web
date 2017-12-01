@@ -47,8 +47,8 @@ export default {
         }, 3000);
       } else if (response.status !== 200 && response.status !== 511) {
         Notification.error({
-          title:"系统错误"+response.status,
-          message:'Http：'+response.status+"\n"+response.data.message
+          title:'系统异常 '+'Http:'+response.status,
+          message:response.data.message
         })
       }
       // const head = response.data.head;

@@ -126,13 +126,14 @@ export default {
           if (result.status == 200) {
             let data = result.data;
             vm.options = data;
-          } else {
-            vm.$notify({
-              type: "error",
-              title: '获取资源名称列表',
-              message: result.data.message,
-            });
           }
+          //  else {
+          //   vm.$notify({
+          //     type: "error",
+          //     title: '获取资源名称列表',
+          //     message: result.data.message,
+          //   });
+          // }
         });
     },
     visibleChange(val) {
@@ -217,13 +218,14 @@ export default {
             let data = result.data;
             vm.depData = data;
             console.log(data)
-          } else {
-            vm.$notify({
-              type: "error",
-              title: '部门列表',
-              message: result.data.message,
-            });
-          }
+          } 
+          // else {
+          //   vm.$notify({
+          //     type: "error",
+          //     title: '部门列表',
+          //     message: result.data.message,
+          //   });
+          // }
         });
     },
     loadNode(node, resolve) {

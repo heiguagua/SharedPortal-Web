@@ -24,13 +24,14 @@ export default {
           if (result.status == 200) {
             vm.sysObj = result.data;
             document.title = result.data.projectPortalName;
-          } else {
-            vm.$notify({
-              type: "error",
-              title: '系统错误',
-              message: result.data.message,
-            });
           }
+          //  else {
+          //   vm.$notify({
+          //     type: "error",
+          //     title: '系统错误',
+          //     message: result.data.message,
+          //   });
+          // }
         });
     },
     loginAjax(name, m5_password) { //登录

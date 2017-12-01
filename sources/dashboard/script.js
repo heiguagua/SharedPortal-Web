@@ -86,13 +86,14 @@ export default {
               vm.parentName = item.name;
               vm.parentId = item.id;
             }
-          } else {
-            vm.$notify({
-              type: "error",
-              title: '基础目录',
-              message: result.data.message,
-            });
-          }
+          } 
+          // else {
+          //   vm.$notify({
+          //     type: "error",
+          //     title: '基础目录',
+          //     message: result.data.message,
+          //   });
+          // }
         });
     },
     getDevelopApis: function (show) {
@@ -107,13 +108,14 @@ export default {
         function (result) {
           if (result.status == 200) {
             vm.getDevelopApisData = result.data;
-          } else {
-            vm.$notify({
-              type: "error",
-              title: '工具',
-              message: result.data.message,
-            });
-          }
+          } 
+          // else {
+          //   vm.$notify({
+          //     type: "error",
+          //     title: '工具',
+          //     message: result.data.message,
+          //   });
+          // }
         });
     },
     getCountDataShare: function () {
@@ -125,13 +127,14 @@ export default {
         function (result) {
           if (result.status == 200) {
             vm.countDataShare = result.data;
-          } else {
-            vm.$notify({
-              type: "error",
-              title: '资源统计',
-              message: result.data.message,
-            });
           }
+          //  else {
+          //   vm.$notify({
+          //     type: "error",
+          //     title: '资源统计',
+          //     message: result.data.message,
+          //   });
+          // }
         });
     },
     Latestpolicies: function (policyType) {
@@ -158,13 +161,14 @@ export default {
             }
 
 
-          } else {
-            vm.$notify({
-              type: "error",
-              title: '最新政策',
-              message: result.data.message,
-            });
           }
+          //  else {
+          //   vm.$notify({
+          //     type: "error",
+          //     title: '最新政策',
+          //     message: result.data.message,
+          //   });
+          // }
         });
     },
     latestDirectoryData: function () {
@@ -181,13 +185,14 @@ export default {
           if (result.status == 200) {
             let data = result.data;
             vm.latestDirectory = data.body;
-          } else {
-            vm.$notify({
-              type: "error",
-              title: '最新动态-最新目录',
-              message: result.data.message,
-            });
           }
+          //  else {
+          //   vm.$notify({
+          //     type: "error",
+          //     title: '最新动态-最新目录',
+          //     message: result.data.message,
+          //   });
+          // }
         });
     },
     HottestDirectoryData: function () {
@@ -203,13 +208,14 @@ export default {
           if (result.status == 200) {
             let data = result.data;
             vm.listHottestDirectory = data.body;
-          } else {
-            vm.$notify({
-              type: "error",
-              title: '最新动态-最热目录',
-              message: result.data.message,
-            });
-          }
+          } 
+          // else {
+          //   vm.$notify({
+          //     type: "error",
+          //     title: '最新动态-最热目录',
+          //     message: result.data.message,
+          //   });
+          // }
         });
     },
     LatestDbResourceData: function () {
@@ -225,13 +231,14 @@ export default {
           if (result.status == 200) {
             let data = result.data;
             vm.listLatestDbResource = data.body;
-          } else {
-            vm.$notify({
-              type: "error",
-              title: '最新动态-最新资源',
-              message: result.data.message,
-            });
-          }
+          } 
+          // else {
+          //   vm.$notify({
+          //     type: "error",
+          //     title: '最新动态-最新资源',
+          //     message: result.data.message,
+          //   });
+          // }
         });
     },
     HottestResourceData: function () {
@@ -248,13 +255,14 @@ export default {
           if (result.status == 200) {
             let data = result.data;
             vm.listHottestResource = data.body;
-          } else {
-            vm.$notify({
-              type: "error",
-              title: '最新动态-最热资源',
-              message: result.data.message,
-            });
-          }
+          } 
+          // else {
+          //   vm.$notify({
+          //     type: "error",
+          //     title: '最新动态-最热资源',
+          //     message: result.data.message,
+          //   });
+          // }
         });
     },
     getCarouselPicNews: function () {
@@ -270,13 +278,14 @@ export default {
           if (result.status == 200) {
             let data = result.data;
             vm.carouselPicNews = data.body;
-          } else {
-            vm.$notify({
-              type: "error",
-              title: '最新新闻',
-              message: result.data.message,
-            });
-          }
+          } 
+          // else {
+          //   vm.$notify({
+          //     type: "error",
+          //     title: '最新新闻',
+          //     message: result.data.message,
+          //   });
+          // }
         });
     },
     getPorjectPic: function () {
@@ -289,13 +298,14 @@ export default {
           if (result.status == 200) {
             let data = result.data;
             vm.porjectPic = data;
-          } else {
-            vm.$notify({
-              type: "error",
-              title: '轮播图',
-              message: result.data.message,
-            });
-          }
+          } 
+          // else {
+          //   vm.$notify({
+          //     type: "error",
+          //     title: '轮播图',
+          //     message: result.data.message,
+          //   });
+          // }
         });
     },
     getCarouselDetail: function (item) {
@@ -311,13 +321,14 @@ export default {
           if (result.status == 200) {
             vm.carouselDetail = result.data;
             vm.dialogNewVisible = true;
-          } else {
-            vm.$notify({
-              type: "error",
-              title: '新闻详情',
-              message: result.data.message,
-            });
           }
+          //  else {
+          //   vm.$notify({
+          //     type: "error",
+          //     title: '新闻详情',
+          //     message: result.data.message,
+          //   });
+          // }
         });
     },
     getDirNodesByParent: function () {
@@ -332,13 +343,14 @@ export default {
             vm.dirFirstName = result.data;
             vm.getAllDirMenuInfo(vm.dirFirstName[1]); //主题目录
             vm.current_active = vm.dirFirstName[1].name
-          } else {
-            vm.$notify({
-              type: "error",
-              title: '系统错误',
-              message: result.data.message,
-            });
-          }
+          } 
+          // else {
+          //   vm.$notify({
+          //     type: "error",
+          //     title: '系统错误',
+          //     message: result.data.message,
+          //   });
+          // }
         });
     },
     clickMenu: function (item) {

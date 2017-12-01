@@ -43,13 +43,14 @@ export default {
           name: "全部"
         });
         vm.depData = data;
-      } else {
-        vm.$notify({
-          type: "error",
-          title: '错误',
-          message: res.data.message,
-        });
       }
+      //  else {
+      //   vm.$notify({
+      //     type: "error",
+      //     title: '错误',
+      //     message: res.data.message,
+      //   });
+      // }
     })
   },
   methods: {
@@ -84,13 +85,14 @@ export default {
               name: "全部"
             });
             vm.depFidData = data;
-          } else {
-            vm.$notify({
-              type: "error",
-              title: '错误',
-              message: res.data.message,
-            });
-          }
+          } 
+          // else {
+          //   vm.$notify({
+          //     type: "error",
+          //     title: '错误',
+          //     message: res.data.message,
+          //   });
+          // }
         });
       }
       vm.getDepType(item);
