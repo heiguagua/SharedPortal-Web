@@ -1,7 +1,8 @@
 import Http from "./http.js";
 import Encrypt from "./encrypt.js";
 import {
-  Message
+  Message,
+  Notification
 } from 'element-ui';
 export default {
   /**
@@ -39,12 +40,16 @@ export default {
     Http.fetch.interceptors.response.use(function (response) {
       if (response.status === 511) {
         Message.error({
-          message: '登录已失效，请重新登录！'
+          message: '登录已失效或用户未登录过，请登录！'
         })
         setTimeout(() => {
           window.location.href = "#/login";
         }, 3000);
-
+      } else if (response.status !== 200 && response.status !== 511) {
+        Notification.error({
+          title:"系统错误"+response.status,
+          message:'Http：'+response.status+"\n"+response.data.message
+        })
       }
       // const head = response.data.head;
       // if (head && typeof head === "object" && head.hasOwnProperty("status")) {

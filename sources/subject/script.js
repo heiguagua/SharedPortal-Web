@@ -80,11 +80,14 @@ export default {
         method: "post",
         url: master + "/home/increaseThematicAppVisitCount",
         data: {
-          api_id: id
+          app_id: id
         }
       }).then(function (result) {
         if (result.status == 200) {
-          console.log('计数成功')
+          if(result.data.result){
+ console.log('计数成功')
+          }
+         
         }
       })
     },

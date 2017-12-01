@@ -28,6 +28,14 @@ export default {
           }
         //}, 1000);
       };
+          var checkContent = (rule, value, callback) => {
+      if (value.length > 500) {
+        return callback('最多只能输入500个字符,你已经不能再输入了！');
+      }
+       else {
+          callback();
+        }
+    };
       return {
         userName: null,
         loading: true,
@@ -73,7 +81,13 @@ export default {
             message: '申请理由不能为空',
             trigger: 'blur'
           }]
-        }
+        },
+         formRules1: {
+        content: [{
+          validator: checkContent,
+          trigger: 'blur,change'
+        }]
+      }
       }
     },
     mounted() {
@@ -258,13 +272,14 @@ export default {
                   type: 'success'
                 });
               }
-            } else {
-              vm.$notify({
-                type: "error",
-                title: '查询错误',
-                message: res.data.message
-              });
             }
+            //  else {
+            //   vm.$notify({
+            //     type: "error",
+            //     title: '查询错误',
+            //     message: res.data.message
+            //   });
+            // }
           })
         } else { // 未收藏，则收藏
           vm.insertCollection(vm.ddcm_id).then(function(res) {
@@ -284,13 +299,14 @@ export default {
                   type: 'error'
                 });
               }
-            } else {
-              vm.$notify({
-                type: "error",
-                title: '查询错误',
-                message: res.data.message,
-              });
-            }
+            } 
+            // else {
+            //   vm.$notify({
+            //     type: "error",
+            //     title: '查询错误',
+            //     message: res.data.message,
+            //   });
+            // }
           })
         }
         }
@@ -333,13 +349,14 @@ export default {
               });
             }
             
-          } else {
-            vm.$notify({
-              type: "error",
-              title: '纠错失败！',
-              message: res.data.message
-            });
-          }
+          } 
+          // else {
+          //   vm.$notify({
+          //     type: "error",
+          //     title: '纠错失败！',
+          //     message: res.data.message
+          //   });
+          // }
 
         })
       },
@@ -369,13 +386,14 @@ export default {
             });
             }
             
-          } else {
-            vm.$notify({
-              type: "error",
-              title: '评分失败！',
-              message: '评分失败'
-            });
           }
+          //  else {
+          //   vm.$notify({
+          //     type: "error",
+          //     title: '评分失败！',
+          //     message: '评分失败'
+          //   });
+          // }
         })
       },
       applyData() { // 点击申请数据
@@ -429,13 +447,14 @@ export default {
                 vm.applyForm.timeRange = [];
                 vm.applyForm.count = '';
                 vm.applyForm.description = '';
-              } else {
-                vm.$message({
-                  showClose: true,
-                  message: '申请失败！',
-                  type: 'error'
-                });
               }
+              //  else {
+              //   vm.$message({
+              //     showClose: true,
+              //     message: '申请失败！',
+              //     type: 'error'
+              //   });
+              // }
               vm.dialogApplyVisible = false;
             })
           } else {
