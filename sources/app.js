@@ -208,9 +208,8 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   Auth.accessibility(to, from, next);
-  Auth.interceptor();
 })
-
+Auth.interceptor();
 Vue.filter('formatDate', function (time) {
   if (!time || time == '无') {
     return "无";

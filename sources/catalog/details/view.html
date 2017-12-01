@@ -172,9 +172,9 @@
   </div>
   <!--纠错对话框-->
   <el-dialog title="纠错说明" :visible.sync="dialogFormVisible" size="tiny">
-    <el-form :model="correctionForm">
-      <el-form-item label="">
-        <el-input type="textarea" :rows="10" placeholder="请详细描述纠错内容" v-model="correctionForm.content"></el-input>
+    <el-form :model="correctionForm"  :rules="formRules1" ref="correctionForm">
+      <el-form-item label="" prop="content" label-suffix="sfdfsd">
+        <el-input type="textarea" :rows="10" :maxlength=500 placeholder="请详细描述纠错内容" v-model="correctionForm.content"></el-input>
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">

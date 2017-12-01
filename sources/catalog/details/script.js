@@ -28,6 +28,14 @@ export default {
           }
         //}, 1000);
       };
+          var checkContent = (rule, value, callback) => {
+      if (value.length > 500) {
+        return callback('最多只能输入500个字符,你已经不能再输入了！');
+      }
+       else {
+          callback();
+        }
+    };
       return {
         userName: null,
         loading: true,
@@ -73,7 +81,13 @@ export default {
             message: '申请理由不能为空',
             trigger: 'blur'
           }]
-        }
+        },
+         formRules1: {
+        content: [{
+          validator: checkContent,
+          trigger: 'blur,change'
+        }]
+      }
       }
     },
     mounted() {
