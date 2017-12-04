@@ -64,26 +64,26 @@ export default {
           if(res.status == 200) {
             vm.detail_pro = res.data;
           }
-          else{
-            vm.$notify({
-                  type: "error",
-                  title: '错误',
-                  message: res.data.message,
-                });
-          }
+          // else{
+          //   vm.$notify({
+          //         type: "error",
+          //         title: '错误',
+          //         message: res.data.message,
+          //       });
+          // }
         });
         vm.getDataTable(vm.dirCode).then(function(res){
           vm.loading = false;
           if(res.status == 200) {
             vm.tableData = res.data;
           }
-          else{
-            vm.$notify({
-                  type: "error",
-                  title: '错误',
-                  message: res.data.message,
-                });
-          }
+          // else{
+          //   vm.$notify({
+          //         type: "error",
+          //         title: '错误',
+          //         message: res.data.message,
+          //       });
+          // }
         })
       },
       handleItemDetail(itemName,uuid){//点击数据项名称
