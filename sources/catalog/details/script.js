@@ -216,7 +216,7 @@ export default {
         vm.getResDetails(vm.ddcm_id).then(function(res) {
           if (res.status == 200) {
             vm.detail_pro = res.data;
-            if(vm.detail_pro.system_info !== null){
+            if(vm.detail_pro.system_info !== null && vm.detail_pro.system_info != undefined && vm.detail_pro.system_info != ''){
                 vm.systemInfo =JSON.parse(vm.detail_pro.system_info);
             }
             vm.collectionStatus = vm.detail_pro.isCollection;
