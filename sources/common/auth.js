@@ -38,7 +38,7 @@ export default {
       return Promise.reject(error);
     });
     Http.fetch.interceptors.response.use(function (response) {
-      var reg = /^.*\/login$/;
+        var reg = /^.*\/login$/;
       if (reg.test(response.config.url)) {} else {
         if (response.status === 511) {
           Message.error({
