@@ -19,38 +19,38 @@ export default {
       itemCount: 0,
       currentPage: 1,
       keyword: '',
-      showStyle: {
-        display: 'none'
-      },
+      // showStyle: {
+      //   display: 'none'
+      // },
       showDialogComponent: false,
     }
   },
   mounted() {
     const vm = this;
-    var username = Encrypt.token.get("userName");
-    if (username) {
-      vm.showStyle = {
-        display: 'block'
-      }
-      // vm.$refs.business.style.display = "block";
-      // vm.$refs.search.style.display = "block";
-    } else {
-      vm.$message({
-        showClose: true,
-        message: '请登录！',
-        duration: 2000,
-        type: 'warning',
-        customClass: "warning-alert"
-      });
-      setTimeout(function () {
-        vm.showDialogComponent = true;
-      }, 1000);
+    // var username = Encrypt.token.get("userName");
+    // if (username) {
+    //   vm.showStyle = {
+    //     display: 'block'
+    //   }
+    //   // vm.$refs.business.style.display = "block";
+    //   // vm.$refs.search.style.display = "block";
+    // } else {
+    //   vm.$message({
+    //     showClose: true,
+    //     message: '请登录！',
+    //     duration: 2000,
+    //     type: 'warning',
+    //     customClass: "warning-alert"
+    //   });
+    //   setTimeout(function () {
+    //     vm.showDialogComponent = true;
+    //   }, 1000);
       // 弹出登录框
       // setTimeout(function() {
       //   // vm.$parent.$parent.openLoginDialog();
 
       // }, 1000);
-    }
+    // }
     vm.loadData(false);
   },
   methods: {

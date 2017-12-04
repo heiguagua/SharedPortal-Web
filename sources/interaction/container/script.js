@@ -1,15 +1,9 @@
 import Http from "../../common/http.js";
 import Encrypt from "../../common/encrypt.js";
 export default {
-  data() {
-    return {
-      data1: "",
-      data2: ""
-    }
+ computed: {
+    key() {
+      return this.$route.name !== undefined ? this.$route.name + new Date() : this.$route + new Date()
+      }
   },
-  methods: {
-    onSearch() {
-      console.log("on Search!");
-    }
-  }
 };

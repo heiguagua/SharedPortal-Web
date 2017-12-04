@@ -482,7 +482,11 @@ export default {
         console.log(time);
       },
       goback() {
+      if (this.$route.query.t) {
+        this.$router.go(-2);
+      } else {
         this.$router.go(-1);
       }
+    },
     }
 };

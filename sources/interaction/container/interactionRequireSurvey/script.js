@@ -79,26 +79,35 @@ export default {
   methods: {
     /**判断当前用户是否登录并获得当前用户信息 */
     getLoginUserInfo() {
-      const vm = this;
-      var username = Encrypt.token.get("userName");
-      if (username) {
-        vm.showStyle = {
+      const vm =this;
+    if (vm.checkLogin()) {
+       vm.showStyle = {
           display: 'block'
         }
-        vm.initForm.name = username;
-        vm.initForm.unit = Encrypt.token.get("orgName");
-      } else {
-        vm.$message({
-          showClose: true,
-          message: '登录后才能执行操作，请登录！',
-          duration: 2000,
-          type: 'warning',
-          customClass: "warning-alert"
-        });
-        setTimeout(function () {
-          vm.showDialogComponent = true;
-        }, 1000);
+    }else{
+      vm.elLogin('登录后才能执行操作，请登录！');
+    }
+
+    },
+
+    checkLogin: function () { //是否登录
+      if (Encrypt.token.get("userName")) {
+        return true;
       }
+      return false;
+    },
+    elLogin(message) { //弹出登录框的描述信息
+      const vm = this;
+      vm.$message({
+        showClose: true,
+        message: message,
+        type: 'warning'
+      });
+      // 弹出登录框
+      setTimeout(function () {
+        console.log(vm.$root)
+        vm.$root.$children[0].openLoginDialog();
+      }, 1000);
     },
     /**部门列表 */
     getDepData: function (id) {
