@@ -38,18 +38,21 @@ export default {
       return Promise.reject(error);
     });
     Http.fetch.interceptors.response.use(function (response) {
-      if (response.status === 511) {
-        Message.error({
-          message: '登录已失效或用户未登录过，请登录！'
-        })
-        setTimeout(() => {
-          window.location.href = "#/login";
-        }, 3000);
-      } else if (response.status !== 200 && response.status !== 511) {
-        Notification.error({
-          title:'系统异常 '+'Http:'+response.status,
-          message:response.data.message
-        })
+        var reg = /^.*\/login$/;
+      if (reg.test(response.config.url)) {} else {
+        if (response.status === 511) {
+          Message.error({
+            message: '登录已失效或用户未登录过，请登录！'
+          })
+          setTimeout(() => {
+            window.location.href = "#/login";
+          }, 3000);
+        } else if (response.status !== 200 && response.status !== 511) {
+          Notification.error({
+            title: '系统异常 ' + 'Http:' + response.status,
+            message: response.data.message
+          })
+        }
       }
       // const head = response.data.head;
       // if (head && typeof head === "object" && head.hasOwnProperty("status")) {
