@@ -111,6 +111,12 @@ export default {
             vm.islogin = true;
             Encrypt.token.set("orgName", data.orgName);
             Encrypt.token.set("userName", data.userName);
+             vm.$router.push({
+              path: vm.$route.fullPath,
+              query: {
+                t: +new Date()
+              }
+            })
           } else {
             vm.errorShow = true;
           }
