@@ -1,15 +1,15 @@
 <main id="layout">
   <header>
     <div class="banner">
-      <div class="cont">
-        <a class="navlog-brand">
+      <div class="cont navlog-brand">
+            <router-link to="/layout/dashboard">
           <div class="navbar-logo">
             <img class="logo" v-bind:src="sysObj.defaultIcon" />
           </div>
           <div class="nav-text"><span class="text">{{sysObj.projectPortalName}}</span></br>
             <!-- <span class="des-english">{{sysObj.projectPortalEnName}}</span> -->
           </div>
-        </a>
+        </router-link >
       </div>
       <img class="img-bg" src="../assets/header/bg.png" />
     </div>
