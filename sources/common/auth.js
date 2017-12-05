@@ -10,13 +10,19 @@ export default {
    */
   accessibility(to, from, next) {
     if (to.matched.some(record => record.meta.auth)) {
-      if (!Encrypt.token.get()) {
-        next({
+      if (!Encrypt.token.get('userName')) {
+        Message.error({
+          message: '未登录，请先登录！',
+          duration:2000
+        })
+        setTimeout(() => {
+            next({
           path: "/login",
           query: {
             redirect: to.fullPath
           }
         })
+          }, 2000);
       } else {
         next()
       }
@@ -38,15 +44,16 @@ export default {
       return Promise.reject(error);
     });
     Http.fetch.interceptors.response.use(function (response) {
-        var reg = /^.*\/login$/;
+      var reg = /^.*\/login$/;
       if (reg.test(response.config.url)) {} else {
         if (response.status === 511) {
           Message.error({
-            message: '登录已失效或用户未登录过，请登录！'
+            message: '登录已失效或用户未登录过，请登录！',
+            duration:2000
           })
           setTimeout(() => {
             window.location.href = "#/login";
-          }, 3000);
+          }, 2000);
         } else if (response.status !== 200 && response.status !== 511) {
           Notification.error({
             title: '系统异常 ' + 'Http:' + response.status,

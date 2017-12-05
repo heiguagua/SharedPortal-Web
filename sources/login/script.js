@@ -57,9 +57,11 @@ export default {
           });
           Encrypt.token.set("orgName", data.orgName);
           Encrypt.token.set("userName", data.userName);
-          setTimeout(() => {
-            vm.$router.push("/layout/dashboard");
-          }, 1000);
+          if(vm.$route.query.redirect){
+              vm.$router.push(vm.$route.query.redirect);
+            }else{
+              vm.$router.push('/layout/dashboard');
+            }
         } else {
           vm.loginAjax_11();
         }
@@ -78,9 +80,11 @@ export default {
           });
           Encrypt.token.set("orgName", data.orgName);
           Encrypt.token.set("userName", data.userName);
-          setTimeout(() => {
-            vm.$router.push("/layout/dashboard");
-          }, 1000);
+         if(vm.$route.query.redirect){
+              vm.$router.push(vm.$route.query.redirect);
+            }else{
+              vm.$router.push('/layout/dashboard');
+            }
         } else {
           vm.errorShow = true;
         }

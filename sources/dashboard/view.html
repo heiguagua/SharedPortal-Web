@@ -19,12 +19,11 @@
           <span>访问总数:<i id="serviceCallCount">{{countDataShare.serviceCallCount}}</i></span>
         </div>
       </div>
-      <div class="input-patch">
-        <input @keyup.enter="keydownSearch($event)" type="text" v-model="keywords" class="form-control" placeholder="请输入数据目录/应用/工具名称关键词">
-        <span class="input-group-btn">
-          <button @click="searchKeywords()" class="btn btn-default" type="button">搜索</button>
-        </span>
-      </div>
+      <div class="search" @keyup.enter="searchKeywords($event)">
+          <el-input placeholder="请输入数据目录/应用/工具名称关键词" v-model="keywords">
+            <el-button slot="append"  @click="searchKeywords()">搜索</el-button>
+          </el-input>
+        </div>
     </div>
   </div>
   <!-- banner end -->
