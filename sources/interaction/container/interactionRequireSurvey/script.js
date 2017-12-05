@@ -84,6 +84,8 @@ export default {
        vm.showStyle = {
           display: 'block'
         }
+          vm.initForm.unit = Encrypt.token.get("orgName");
+          vm.initForm.name = Encrypt.token.get("userName");
     }else{
       vm.elLogin('登录后才能执行操作，请登录！');
     }

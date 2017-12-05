@@ -54,7 +54,12 @@ export default {
             });
             Encrypt.token.set("orgName", data.orgName);
             Encrypt.token.set("userName", data.userName);
-            vm.$router.push("/layout/dashboard");
+            if(vm.$route.query.redirect){
+              vm.$router.push(vm.$route.query.redirect);
+            }else{
+              vm.$router.push('/layout/dashboard');
+            }
+            
           } else {
             vm.errorShow = true;
           }

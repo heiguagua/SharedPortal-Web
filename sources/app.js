@@ -11,7 +11,9 @@ import "element-ui/lib/theme-default/index.css";
 // util
 import Http from "./common/http.js";
 import Auth from "./common/auth.js";
-import {formatDate} from "./common/date.js";
+import {
+  formatDate
+} from "./common/date.js";
 // component
 import Layout from "./layout/index.vue";
 import "babel-polyfill";
@@ -147,6 +149,9 @@ const router = new VueRouter({
           path: 'department-resources',
           name: 'department-resources',
           component: resolve => require(["./catalog/depCardingCatalog/department-resources/index.vue"], resolve),
+          meta: {
+            auth: true
+          }
         }, {
           path: 'demand-resources',
           name: 'demand-resources',

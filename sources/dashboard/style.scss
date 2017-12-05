@@ -75,7 +75,7 @@
           display: inline-block;
         }
       }
-      .input-patch {
+      .search {
         width: 40%;
         margin-top: 17px;
         float: right;
@@ -83,59 +83,40 @@
         padding-left: 0;
         position: relative;
         display: table;
-        input {
-          display: block;
-          width: 100%;
-          padding: 8px 12px;
-          font-size: 14px;
-          color: #555;
-          border: 1px solid #ccc;
+        .el-input-group__append,
+        .el-input-group__prepend {
+          background-color: $main-blue;
+          border-color: $main-blue;
         }
-        .input-group-btn {
-          position: relative;
-          font-size: 0;
-          white-space: nowrap;
-          width: 1%;
-          white-space: nowrap;
-          vertical-align: middle;
-          display: table-cell;
+        .el-button {
+          color: $white;
+          padding-left: 32px;
+          padding-right: 32px;
         }
-        button {
-          background: #4197F4;
-          width: 100px;
-          color: #fff !important;
-          position: relative;
-          display: inline-block;
-          padding: 8px 0;
-          font-size: 14px;
-          text-align: center;
-          white-space: nowrap;
-          vertical-align: middle;
-          cursor: pointer;
-          border: none; // border-radius: 4px;
+        .el-input__inner {
+          height: 35px;
         }
       }
     }
   }
-  .main-title{
-position: relative;
-      margin-bottom: 20px;
-      .title{
-        position: absolute;
-        text-align: center;
-        width: 100%;
-        top: 5px;
-        font-weight: normal;
-        margin-bottom: 65px;
-        font-size: 26px;
-      }
+  .main-title {
+    position: relative;
+    margin-bottom: 20px;
+    .title {
+      position: absolute;
+      text-align: center;
+      width: 100%;
+      top: 5px;
+      font-weight: normal;
+      margin-bottom: 65px;
+      font-size: 26px;
+    }
   }
   .main-1 {
     background: #F5F5F5;
     padding-top: 40px;
     .main-title {
       .title {
-        
         color: #4197F4;
       }
       .opacity-title {
@@ -271,7 +252,6 @@ position: relative;
     background: $main-blue;
     .main-title {
       .title {
-        
         color: $white;
       }
       .opacity-title {
@@ -340,9 +320,9 @@ position: relative;
                 text-overflow: ellipsis;
                 text-decoration: none;
               }
-              .name{
-                 color: $white;
-                  cursor: pointer;
+              .name {
+                color: $white;
+                cursor: pointer;
               }
             }
           }
@@ -357,7 +337,6 @@ position: relative;
     background: $white;
     .main-title {
       .title {
-       
         color: #4197F4;
       }
       .opacity-title {
@@ -412,7 +391,7 @@ position: relative;
         margin: 0 20px;
         box-sizing: border-box;
         img {
-          width: 44px; 
+          width: 44px;
           height: 44px;
           display: inline-block;
         }
