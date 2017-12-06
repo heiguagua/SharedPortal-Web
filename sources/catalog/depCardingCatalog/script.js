@@ -9,6 +9,7 @@ export default {
       current_dep: '全部',
       current_type: this.$route.query.dirName,
       current_depFid: '全部',
+      current_pingYing:'全部',
       current_type_path: '',
       typeList: [{
           'name': '业务目录',
@@ -25,9 +26,25 @@ export default {
           path: 'economy-resources'
         }
       ],
+      pingYingList: [{
+        'name': '全部',
+        'value': ''
+      }, {
+        'name': 'A-G',
+        'value': 'ABCDEFG'
+      }, {
+        'name': 'H-N',
+        'value': 'HIJKLMN'
+      }, {
+        'name': 'O-T',
+        'value': 'OPQRST'
+      }, {
+        'name': 'U-Z',
+        'value': 'UVWXYZ'
+      }],
       showDepFid: false,
-      isActive:true,
-      fidActive:true
+      isActive: true,
+      fidActive: true
     }
   },
   mounted() {
@@ -54,15 +71,31 @@ export default {
     })
   },
   methods: {
-    getDepartmentDataSecondLevelChild: function (fId) {
+    getDepartmentDataSecondLevelChild: function (fId,pingying) {
       const vm = this;
       return Http.fetch({
         method: "post",
         url: master + "/dept/getDeptByFid",
         data: {
-          fId: fId
+          fId: fId,
+          firstLetter:pingying
         }
       })
+    },
+     getDep: function (item) {
+      const vm = this;
+      vm.current_pingYing = item.name;
+       vm.getDepartmentDataSecondLevelChild('',item.value).then(function (res) {
+          if (res.status == 200) {
+            let data = res.data;
+            data.unshift({
+              dept_Id: "",
+              hasLeaf: 0,
+              name: "全部"
+            });
+            vm.depData = data;
+          }
+        });
     },
     getDeptByFid: function (item) {
       const vm = this;
@@ -85,7 +118,7 @@ export default {
               name: "全部"
             });
             vm.depFidData = data;
-          } 
+          }
           // else {
           //   vm.$notify({
           //     type: "error",
@@ -118,11 +151,11 @@ export default {
         }
       })
     },
-    openDep:function(){
-      this.isActive=!this.isActive;
+    openDep: function () {
+      this.isActive = !this.isActive;
     },
-    openFid:function(){
-      this.fidActive=! this.fidActive;
+    openFid: function () {
+      this.fidActive = !this.fidActive;
     }
   },
 };
