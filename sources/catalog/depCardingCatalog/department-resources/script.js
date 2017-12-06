@@ -19,9 +19,9 @@ export default {
       itemCount: 0,
       currentPage: 1,
       keyword: '',
-      // showStyle: {
-      //   display: 'none'
-      // },
+      showStyle: {
+        display: 'none'
+      },
       showDialogComponent: false,
     }
   },
