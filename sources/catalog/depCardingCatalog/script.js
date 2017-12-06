@@ -11,6 +11,7 @@ export default {
       current_depFid: '全部',
       current_pingYing:'全部',
       current_type_path: '',
+      current_pingiying:'',
       typeList: [{
           'name': '业务目录',
           "hasLeaf": "0",
@@ -50,7 +51,7 @@ export default {
   mounted() {
     const vm = this;
     vm.head_title = vm.$route.query.dirName;
-    vm.getDepartmentDataSecondLevelChild('').then(function (res) {
+    vm.getDepartmentDataSecondLevelChild('','').then(function (res) {
       // vm.loading = false;
       if (res.status == 200) {
         let data = res.data;
@@ -85,6 +86,11 @@ export default {
      getDep: function (item) {
       const vm = this;
       vm.current_pingYing = item.name;
+      vm.current_pingiying = item.value;
+      if (vm.current_type_path == '') { //当页面刷新时获取路由
+        let current_path = vm.$route.path;
+        vm.current_type_path = current_path.split('/')[4];
+      }
        vm.getDepartmentDataSecondLevelChild('',item.value).then(function (res) {
           if (res.status == 200) {
             let data = res.data;
@@ -96,6 +102,8 @@ export default {
             vm.depData = data;
           }
         });
+        let depitem = {'name':'全部','tree_code':''}
+        vm.getDepType(depitem);
     },
     getDeptByFid: function (item) {
       const vm = this;
@@ -137,6 +145,7 @@ export default {
     },
     getDepType: function (item) {
       const vm = this;
+       vm.current_dep =item.name;
       if (item.name == '系统目录' || item.name == '业务目录' || item.name == '需求目录') {
         vm.current_dep = '全部';
         vm.showDepFid = false
@@ -147,7 +156,8 @@ export default {
         path: `/layout/catalog/depCardingCatalog/${vm.current_type_path}`,
         query: {
           dirName: vm.current_type,
-          dirCode: item.tree_code
+          dirCode: item.tree_code,
+          firstLetter:vm.current_pingiying
         }
       })
     },
