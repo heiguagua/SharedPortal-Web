@@ -72,13 +72,16 @@
       text-indent: 10px;
       border: none;
       border: 1px solid #dfdfdf;
+      border-left: none;
     }
     .inputdiv {
       margin: 30px auto;
       .spanuser {
         display: inline-block;
         background: #4197F4;
-        vertical-align: middle;
+        vertical-align:top;
+         border: 1px solid #4197F4;
+        height: 38px;
       }
       .spanuser img {
         padding: 8px 13px;

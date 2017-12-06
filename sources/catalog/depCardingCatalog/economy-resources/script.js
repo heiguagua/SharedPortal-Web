@@ -26,8 +26,9 @@ export default {
     loadData(cache_total) {
       const vm = this;
       vm.head_title = vm.$route.query.dirName;
-      var dirCode = vm.$route.query.dirCode;
-      vm.getTableList(dirCode, vm.currentPage, 20, vm.keyword).then(function (res) {
+       let dirCode = vm.$route.query.dirCode;
+      let pinying = vm.$route.query.firstLetter;
+      vm.getTableList(dirCode, vm.currentPage, 20, vm.keyword,pinying).then(function (res) {
         vm.loading = false;
         if (res.status == 200) {
           console.log(res)
@@ -47,7 +48,7 @@ export default {
         // }
       })
     },
-    getTableList: function (dirCode, currentPage, psize, keyword) {
+    getTableList: function (dirCode, currentPage, psize, keyword,pingying) {
       const vm = this;
       return Http.fetch({
         method: "post",
@@ -57,7 +58,8 @@ export default {
           tree_code: dirCode,
           size: psize,
           pageNum: currentPage,
-          keywords: keyword
+          keywords: keyword,
+          firstLetter:pingying
         }
       })
     },
