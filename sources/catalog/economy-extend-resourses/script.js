@@ -61,7 +61,8 @@ export default {
             info_system_Id: infoSystemId,
             dept_Id: dirCode,
             pageNum:currentPage,
-            size:psize
+            size:psize,
+            keywords:keyword
           }
         })
       },
