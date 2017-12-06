@@ -1,8 +1,5 @@
 import Http from "../../common/http.js";
 import Encrypt from "../../common/encrypt.js";
-import {
-  formatDate
-} from "../../common/date.js";
 import Pager from "../../common/pager.js";
 const master = Http.url.master;
 export default {
@@ -122,10 +119,4 @@ export default {
       this.$router.go(-1);
     }
   },
-  filters: {
-    formatDate(time) {
-      let date = new Date(time);
-      return formatDate(date, 'yyyy-MM-dd');
-    }
-  }
 };
