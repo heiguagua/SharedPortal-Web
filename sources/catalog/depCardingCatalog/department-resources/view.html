@@ -8,12 +8,25 @@
   <!-- <div class="search-box" :style="showStyle" ref="search"> -->
      <div class="search-box"  ref="search">
     <div class="total-num">共 <span class="count">{{totalResource}}</span> 条结果</div>
+     
     <div class="search-input">
       <el-input placeholder="请输入业务事项" v-model="keyword">
         <el-button slot="append" icon="search" @click="handleSearch">搜索</el-button>
       </el-input>
     </div>
+     <div class="filters">
+        <div class="selection">
+          <label for="service">  
+			        服务对象：
+			    </label>
+          <el-select v-model="service_target" @change="toggleServiceTarget()" clearable placeholder="请选择">
+            <el-option v-for="item in service_target_options" :key="item.dict_code" :label="item.dict_name" :value="item.dict_code">
+            </el-option>
+          </el-select>
+        </div>
+      </div>
   </div>
+ 
   <!-- <div :style="showStyle" ref="business"> -->
     <div ref="business">
     <el-table :data="tableData" border style="width: 100%" v-loading="loading" element-loading-text="数据加载中" slot="empty" highlight-current-row

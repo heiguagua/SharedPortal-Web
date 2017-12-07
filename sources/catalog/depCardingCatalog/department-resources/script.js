@@ -19,6 +19,8 @@ export default {
       itemCount: 0,
       currentPage: 1,
       keyword: '',
+      service_target:null,
+      service_target_options:null,
       showStyle: {
         display: 'none'
       },
@@ -51,6 +53,7 @@ export default {
 
       // }, 1000);
     // }
+    vm.getSysDict('serviceTarget');
     vm.loadData(false);
   },
   methods: {
@@ -59,7 +62,7 @@ export default {
       vm.head_title = vm.$route.query.dirName;
       let code = vm.$route.query.dirCode;
       let pinying = vm.$route.query.firstLetter;
-      vm.getBusinessTableList(vm.currentPage, 20, code, vm.keyword,pinying).then(function (res) {
+      vm.getBusinessTableList(vm.currentPage, 20, code, vm.keyword,pinying,vm.service_target).then(function (res) {
         vm.loading = false;
         if (res.status == 200) {
           var r_data = res.data;
@@ -77,7 +80,19 @@ export default {
         // }
       })
     },
-    getBusinessTableList: function (currentPage, psize, treeCode, keyword,pingying) {
+    getSysDict: function (target) {
+      const vm = this;
+      return Http.fetch({
+        method: "post",
+        url: master + "/sysdict/getSysDictByCategory",
+        data:{
+          category:target
+        }
+      }).then(function(result){
+        vm.service_target_options = result.data;
+      })
+    },
+     getBusinessTableList: function (currentPage, psize, treeCode, keyword,pingying,dict_code) {
       const vm = this;
       return Http.fetch({
         method: "post",
@@ -87,7 +102,8 @@ export default {
           size: psize,
           tree_code: treeCode,
           keywords: keyword,
-           firstLetter:pingying
+          firstLetter:pingying,
+          serviceTarget:dict_code
         }
       })
     },
@@ -110,7 +126,11 @@ export default {
       const vm = this;
       vm.currentPage = 1;
       vm.loadData(false);
-    }
+    },
+      toggleServiceTarget(){
+        const vm = this;
+        vm.loadData(false);
+      }
   },
   // filters: {
   //   formatDate(time) {
