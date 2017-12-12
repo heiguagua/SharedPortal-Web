@@ -1,18 +1,47 @@
-<main id="resources">
+<main id="economy-resources">
 	<!-- <div class="catalog-content"> -->
 		<!-- <div class="head-desc">
 			<div class="title">{{head_title}}</div>
 			<div class="other-info"> {{totalResource}} 个系统
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;共 {{itemCount}} 个资源</div>
 		</div> -->
+
 		<div class="search-box">
-			<div class="total-num">共 <span class="count">{{totalResource}}</span> 条结果</div>
-			<div class="search-input">
+      <div class="total-num">共 <span class="count">{{totalResource}}</span> 条结果</div>
+      	<div class="search-input">
 				<el-input placeholder="请输入系统名称" v-model="keyword">
 				<el-button slot="append" icon="search" @click="handleSearch">搜索</el-button>
 				</el-input>
 			</div>
+			<div class="filters">
+        <div class="selection">
+          <label for="shared">  
+			        存储位置：
+			    </label>
+          <el-select v-model="phisical_location" @change="togglePhisicalLocation()" clearable placeholder="请选择">
+            <el-option v-for="item in phisical_location_options" :key="item.dict_code" :label="item.dict_name" :value="item.dict_code">
+            </el-option>
+          </el-select>
+        </div>
+        <div class="selection ">
+          系统性质：
+          <el-select v-model="system_level" @change="toggleSystemLevel()" clearable placeholder="请选择">
+            <el-option v-for="item in system_level_options" :key="item.dict_code" :label="item.dict_name" :value="item.dict_code">
+            </el-option>
+          </el-select>
+        </div>
+				 <div class="selection ">
+          是否自建：
+          <el-select v-model="self_build_flag" @change="toggleSelfBuildFlag()" clearable placeholder="请选择">
+            <el-option v-for="item in self_build_flag_options" :key="item.dict_code" :label="item.dict_name" :value="item.dict_code">
+            </el-option>
+          </el-select>
+        </div>
+      </div>
+		
+					 
 		</div>
+		
 		<el-table :data="tableData"	border	style="width: 100%" v-loading="loading" element-loading-text="数据加载中" slot="empty"
 		highlight-current-row>
 		<el-table-column  label="系统名称" >
