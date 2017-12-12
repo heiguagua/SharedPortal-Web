@@ -34,6 +34,7 @@ export default {
         "hasLeaf": "0",
         path: 'economy-resources'
       }
+      //软中特别要求
       // , {
       //   'name': '系统资源目录',
       //   "hasLeaf": "1",
