@@ -63,11 +63,13 @@ export default {
          'id':1,
         'name': '部门政务信息梳理目录',
        'path': 'department'
-      },{
-        'id':4,
-        'name': '系统静态数据资源目录',
-        'path': 'system'
-      });
+      }
+      // ,{
+      //   'id':4,
+      //   'name': '系统静态数据资源目录',
+      //   'path': 'system'
+      // }
+    );
       if (username) {
         vm.regions.push({
           'name': '系统实时动态数据资源',
@@ -109,7 +111,7 @@ export default {
           }
         });
       }else{
-          if (rootPath == vm.regions[regions_length-2].path) {
+          if (rootPath == vm.regions[regions_length-1].path) {
             if(vm.regions.length == vm.regions_load_cl && rootName ==vm.regions[regions_length-1].name){
             this.$router.push({
               path: '/layout/catalog/system-dynamic-resources',
@@ -129,7 +131,7 @@ export default {
               }
             })
           }
-        }else if(rootPath == vm.regions[regions_length-3].path){//部门政务信息梳理目录下的一级目录设置路由
+        }else if(rootPath == vm.regions[regions_length-2].path){//部门政务信息梳理目录下的一级目录设置路由
      if (node.level === 2) {
             this.$router.push({
               path: `/layout/catalog/depCardingCatalog/${data.path}`,
