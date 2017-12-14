@@ -5,6 +5,11 @@ export default {
    props:['sysObj'],
   data() {
     return {
+      jumpSystem:{
+        'jump_drap':master+"/jp:hk_drap",
+        'jump_directory':master+"/jp:hk_directory",
+        'jump_service':master+"/jp:hk_service"
+      },
       regions: [],
       regions_load_cl:0,//登录后regions的长度
       regions1: [{
@@ -92,6 +97,48 @@ export default {
 
   },
   methods: {
+        /**判断当前用户是否登录并获得当前用户信息 */
+    getLoginUserInfo(url) {
+      const vm =this;
+    if (vm.checkLogin()) {
+      window.open(url)
+    }else{
+      vm.elLogin('登录已失效或未登录，请登录！');
+    }
+    },
+   checkLogin: function () { //是否登录
+      // const vm = this;
+      // return Http.fetch({
+      //   method: "get",
+      //   url: master + "/getLoginUserInfo"
+      // }).then(function(res){
+      //   if(res.status == 200){
+      //       if(res.isLogin){
+      //           return true;
+      //       }else{
+      //           return false;
+      //     }
+      //   }
+      // })
+       if (Encrypt.token.get("userName")) {
+        return true;
+      }
+      return false;
+    
+    },
+    elLogin(message) { //弹出登录框的描述信息
+      const vm = this;
+      vm.$message({
+        showClose: true,
+        message: message,
+        type: 'warning'
+      });
+      // 弹出登录框
+      setTimeout(function () {
+        console.log(vm.$root)
+        vm.$root.$children[0].openLoginDialog();
+      }, 1000);
+    },
     handleNodeClick(data, node) {
       var vm = this;
       if(vm.regions.length == vm.regions_load_cl){//无论是否登录regions_length的值都是登录状态下的regions的数组个数
@@ -103,7 +150,6 @@ export default {
       var root =vm.findParent(node);
       let rootPath = root.path;
       let rootName = root.name;
-      alert(rootPath + rootName)
       if (node.level === 1) {
         this.$router.push({
           path: `/layout/catalog/${data.path}`,
