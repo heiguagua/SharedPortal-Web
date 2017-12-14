@@ -34,7 +34,6 @@ export default {
         "hasLeaf": "0",
         path: 'economy-resources'
       }
-      //软中特别要求
       // , {
       //   'name': '系统资源目录',
       //   "hasLeaf": "1",
@@ -65,6 +64,7 @@ export default {
         'name': '部门政务信息梳理目录',
        'path': 'department'
       }
+       //软中特别要求
       // ,{
       //   'id':4,
       //   'name': '系统静态数据资源目录',
@@ -103,6 +103,7 @@ export default {
       var root =vm.findParent(node);
       let rootPath = root.path;
       let rootName = root.name;
+      alert(rootPath + rootName)
       if (node.level === 1) {
         this.$router.push({
           path: `/layout/catalog/${data.path}`,
@@ -112,26 +113,14 @@ export default {
           }
         });
       }else{
-          if (rootPath == vm.regions[regions_length-1].path) {
-            if(vm.regions.length == vm.regions_load_cl && rootName ==vm.regions[regions_length-1].name){
-            this.$router.push({
-              path: '/layout/catalog/system-dynamic-resources',
-              query: {
-                dirName: data.name,
-                info_system_id: data.info_system_id,
-                db_id:(data.hasOwnProperty('db_id'))?data.db_id:''
-              }
-            })
-          }else{
-            this.$router.push({
-              path: '/layout/catalog/system-resources',
-              query: {
-                dirName: data.name,
-                info_system_id: data.info_system_id,
-                db_id:(data.hasOwnProperty('db_id'))?data.db_id:''
-              }
-            })
-          }
+          if (rootPath == vm.regions[0].path) {
+       this.$router.push({
+            path: '/layout/catalog/resources',
+            query: {
+              dirName: data.name,
+              dirCode: data.tree_code
+            }
+          })
         }else if(rootPath == vm.regions[regions_length-2].path){//部门政务信息梳理目录下的一级目录设置路由
      if (node.level === 2) {
             this.$router.push({
@@ -153,13 +142,26 @@ export default {
           }
         }
         else{
-          this.$router.push({
-            path: '/layout/catalog/resources',
-            query: {
-              dirName: data.name,
-              dirCode: data.tree_code
-            }
-          })
+                  if(vm.regions.length == vm.regions_load_cl && rootName ==vm.regions[regions_length-1].name){
+            this.$router.push({
+              path: '/layout/catalog/system-dynamic-resources',
+              query: {
+                dirName: data.name,
+                info_system_id: data.info_system_id,
+                db_id:(data.hasOwnProperty('db_id'))?data.db_id:''
+              }
+            })
+          }else{
+            this.$router.push({
+              path: '/layout/catalog/system-resources',
+              query: {
+                dirName: data.name,
+                info_system_id: data.info_system_id,
+                db_id:(data.hasOwnProperty('db_id'))?data.db_id:''
+              }
+            })
+          }
+       
         }
       }
     },
