@@ -109,26 +109,14 @@ export default {
           }
         });
       }else{
-          if (rootPath == vm.regions[regions_length-2].path) {
-            if(vm.regions.length == vm.regions_load_cl && rootName ==vm.regions[regions_length-1].name){
-            this.$router.push({
-              path: '/layout/catalog/system-dynamic-resources',
-              query: {
-                dirName: data.name,
-                info_system_id: data.info_system_id,
-                db_id:(data.hasOwnProperty('db_id'))?data.db_id:''
-              }
-            })
-          }else{
-            this.$router.push({
-              path: '/layout/catalog/system-resources',
-              query: {
-                dirName: data.name,
-                info_system_id: data.info_system_id,
-                db_id:(data.hasOwnProperty('db_id'))?data.db_id:''
-              }
-            })
-          }
+          if (rootPath == vm.regions[0].path) {
+              this.$router.push({
+            path: '/layout/catalog/resources',
+            query: {
+              dirName: data.name,
+              dirCode: data.tree_code
+            }
+          })
         }else if(rootPath == vm.regions[regions_length-3].path){//部门政务信息梳理目录下的一级目录设置路由
      if (node.level === 2) {
             this.$router.push({
@@ -150,13 +138,25 @@ export default {
           }
         }
         else{
-          this.$router.push({
-            path: '/layout/catalog/resources',
-            query: {
-              dirName: data.name,
-              dirCode: data.tree_code
-            }
-          })
+            if(vm.regions.length == vm.regions_load_cl && rootName ==vm.regions[regions_length-1].name){
+            this.$router.push({
+              path: '/layout/catalog/system-dynamic-resources',
+              query: {
+                dirName: data.name,
+                info_system_id: data.info_system_id,
+                db_id:(data.hasOwnProperty('db_id'))?data.db_id:''
+              }
+            })
+          }else{
+            this.$router.push({
+              path: '/layout/catalog/system-resources',
+              query: {
+                dirName: data.name,
+                info_system_id: data.info_system_id,
+                db_id:(data.hasOwnProperty('db_id'))?data.db_id:''
+              }
+            })
+          }
         }
       }
     },
