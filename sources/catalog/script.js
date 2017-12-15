@@ -77,11 +77,14 @@ export default {
       // }
     );
       if (username) {
-        vm.regions.push({
+        if(username != 'yz'){
+           vm.regions.push({
           'name': '系统实时动态数据资源',
           'path': 'system'
         })
         vm.regions_load_cl = vm.regions.length
+        }
+       
       }
        if(vm.$route.path == '/layout/catalog'){
          vm.expandedKeys = [vm.regions[0].id];
