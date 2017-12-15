@@ -8,6 +8,7 @@ export default {
   },
   data() {
     return {
+      disable:false,
       ruleForm: {
         title: '',
         content: '',
@@ -156,6 +157,7 @@ export default {
     },
     submitForm(formName) {
       const vm = this;
+       vm.disable=true;
       this.$refs[formName].validate((valid) => {
         if (valid) {
 
@@ -212,6 +214,7 @@ export default {
               //     message: result.data.message,
               //   });
               // }
+              vm.disable=false;
             });
         } else {
           console.log('error submit!!');
@@ -303,14 +306,7 @@ export default {
       if (data.has_leaf === 0 || data.has_leaf === "0") {
         node.isLeaf = true;
       }
-      return ( <
-        span class = "el-tree-node__label"
-        title = {
-          node.label
-        } > {
-          node.label
-        } < /span>
-      );
+      return ( <span class = "el-tree-node__label" title = { node.label} > {node.label} </span>);
     }
 
     // deleNode(node) { //删除
