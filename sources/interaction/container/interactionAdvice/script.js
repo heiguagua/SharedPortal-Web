@@ -5,6 +5,7 @@ const master = Http.url.master;
 export default {
   data() {
     return {
+      disable:false,
       ruleForm: {
         title: '',
         content: '',
@@ -23,6 +24,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           const vm = this;
+          vm.disable=true;
           Http.fetch({
             method: "post",
             url: master + "/home/submitCustomerQuestion",
@@ -53,6 +55,7 @@ export default {
               //     message: result.message,
               //   });
               // }
+              vm.disable=false;
             });
         } else {
           console.log('error submit!!');
