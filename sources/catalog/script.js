@@ -163,22 +163,14 @@ export default {
         });
       }else{
           if (rootPath == vm.regions[0].path) {
-<<<<<<< HEAD
        this.$router.push({
-=======
-              this.$router.push({
->>>>>>> develop-temp
             path: '/layout/catalog/resources',
             query: {
               dirName: data.name,
               dirCode: data.tree_code
             }
           })
-<<<<<<< HEAD
         }else if(rootPath == vm.regions[regions_length-2].path){//部门政务信息梳理目录下的一级目录设置路由
-=======
-        }else if(rootPath == vm.regions[regions_length-3].path){//部门政务信息梳理目录下的一级目录设置路由
->>>>>>> develop-temp
      if (node.level === 2) {
             this.$router.push({
               path: `/layout/catalog/depCardingCatalog/${data.path}`,
@@ -199,11 +191,7 @@ export default {
           }
         }
         else{
-<<<<<<< HEAD
                   if(vm.regions.length == vm.regions_load_cl && rootName ==vm.regions[regions_length-1].name){
-=======
-            if(vm.regions.length == vm.regions_load_cl && rootName ==vm.regions[regions_length-1].name){
->>>>>>> develop-temp
             this.$router.push({
               path: '/layout/catalog/system-dynamic-resources',
               query: {
@@ -222,10 +210,7 @@ export default {
               }
             })
           }
-<<<<<<< HEAD
        
-=======
->>>>>>> develop-temp
         }
       }
     },
