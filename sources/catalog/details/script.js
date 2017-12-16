@@ -436,6 +436,7 @@ export default {
       },
       handleApply(applyForm) { // 提交申请数据
         const vm = this;
+        vm.disable=this;
         vm.$refs[applyForm].validate((valid) => {
           if (valid) {
             vm.disable=true;
