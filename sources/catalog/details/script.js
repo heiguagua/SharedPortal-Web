@@ -31,7 +31,9 @@ export default {
           var checkContent = (rule, value, callback) => {
       if (value.length > 500) {
         return callback('最多只能输入500个字符,你已经不能再输入了！');
-      }
+      }else if (!value) {
+          return callback(new Error('理由不能为空'));
+        }
        else {
           callback();
         }
@@ -79,8 +81,8 @@ export default {
           }],
           description: [{
             required: true,
-            message: '申请理由不能为空',
-            trigger: 'blur'
+            validator: checkContent,
+            trigger: 'blur,change'
           }]
         },
          formRules1: {
