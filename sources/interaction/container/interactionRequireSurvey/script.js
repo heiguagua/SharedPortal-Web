@@ -11,7 +11,7 @@ export default {
       disable:false,
       ruleForm: {
         title: '',
-        content: '',
+        // content: '',//需求描述
         requirementType: 'interface',
         others: '',
         // depId: [],//部门多选时用
@@ -44,11 +44,11 @@ export default {
           message: '需求类型不能为空',
           trigger: 'blur'
         }],
-        content: [{
-          required: true,
-          message: '需求描述不能为空',
-          trigger: 'blur'
-        }],
+        // content: [{
+        //   required: true,
+        //   message: '需求描述不能为空',
+        //   trigger: 'blur'
+        // }],
 
       },
       depData: [],
