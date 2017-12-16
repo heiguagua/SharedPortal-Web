@@ -434,7 +434,6 @@ export default {
       },
       handleApply(applyForm) { // 提交申请数据
         const vm = this;
-        vm.disable=this;
         vm.$refs[applyForm].validate((valid) => {
           if (valid) {
             var item_code = _.map(vm.multipleSelection, "id");
@@ -442,8 +441,9 @@ export default {
             if(vm.applyForm.timeRange) {
               date_range = formatDate(vm.applyForm.timeRange[0],'yyyy-MM-dd hh:mm:ss') + "-" + formatDate(vm.applyForm.timeRange[1],'yyyy-MM-dd hh:mm:ss');
             }
-            
+            vm.disable=true;
             vm.insertApplyInfo(item_code, vm.detail_pro.dcm_id, vm.applyForm.count, date_range, vm.applyForm.description).then(function(res) {
+              
               if (res.status == 200) {
                 vm.$message({
                   showClose: true,
