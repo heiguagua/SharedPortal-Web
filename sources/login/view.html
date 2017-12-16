@@ -27,7 +27,7 @@
     </div>
     <span v-show="errorShow" class="error">用户名或密码错误，请重新输入!</span>
     <div class="inputdiv">
-      <button class="login_subtn"  type="button" @click="onSubmit()">登&emsp;录</button>
+      <el-button class="login_subtn" :disabled="disable" type="button" @click="onSubmit()">登&emsp;录</el-button>
     </div>
   </form>
 </main>

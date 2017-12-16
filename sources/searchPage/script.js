@@ -12,6 +12,8 @@ export default {
       keywords: this.$route.query.keywords,
       activeName: "catalog",
       totalR: 0,
+      totalR2: 0,
+      totalR3: 0,
       catalogData: [],
       latestDirectory: [],
       listHottestDirectory: [],
@@ -116,7 +118,7 @@ export default {
             let data = result.data;
             vm.developerData = data.body;
             if (!data.previous) {
-              vm.totalR = data[Pager.totalR];
+              vm.totalR3 = data[Pager.totalR];
             }
           }
           //  else {
@@ -146,7 +148,7 @@ export default {
             let data = result.data;
             vm.subjectData = data.body;
             if (!data.previous) {
-              vm.totalR = data[Pager.totalR];
+              vm.totalR2 = data[Pager.totalR];
             }
           } 
           // else {

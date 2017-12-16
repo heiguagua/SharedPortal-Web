@@ -53,7 +53,7 @@
                   </el-carousel-item>
                 </el-carousel>
               </template>
-              <img class="des_title" src="../assets/dashboard/main1-bg.png" alt="" />
+              <!-- <img class="des_title" src="../assets/dashboard/main1-bg.png" alt="" /> -->
             </div>
           </el-col>
           <el-col :span="12">
@@ -283,7 +283,7 @@
         </div>
         <div class="tool-content">
           <dl class="img-group m-l-0" v-for="tool_item in getDevelopApisData">
-            <a :href="tool_item.api_url" target="_blank">
+            <a href="javascript:viod(0)" @click="getDevelopJump(tool_item.api_url)">
                <dt v-if="tool_item.icon" class="in-block"><img :src="tool_item.icon" /></dt> 
               <dt v-else class="in-block"><img src="../assets/dashboard/tool1.png" /></dt>
               <dd class="des">{{tool_item.api_name}}</dd>

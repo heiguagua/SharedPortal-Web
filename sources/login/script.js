@@ -3,6 +3,7 @@ import Encrypt from "../common/encrypt.js";
 export default {
   data() {
     return {
+      disable:false,
       username: "",
       password: "",
       sysObj: "",
@@ -46,6 +47,7 @@ export default {
     },
     onSubmit() {
       const vm = this;
+       vm.disable=true;
       let m5_password = Encrypt.md5Encrypt(vm.password);
       vm.loginAjax(vm.username, m5_password).then(function (result) {
         if (result.status == 200) {
@@ -65,6 +67,7 @@ export default {
         } else {
           vm.loginAjax_11();
         }
+         vm.disable=false;
       })
     },
     loginAjax_11() { //截取密码前11位

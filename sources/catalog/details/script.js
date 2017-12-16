@@ -37,6 +37,7 @@ export default {
         }
     };
       return {
+        disable:false,
         userName: null,
         loading: true,
         head_title: '',
@@ -332,6 +333,7 @@ export default {
       },
       handleCorrection() { // 提交纠错内容
         const vm = this;
+        vm.disable=true;
         vm.insertCorrection(vm.ddcm_id, vm.detail_pro.correction_Id,vm.correctionForm.content).then(function(res) {
           if (res.status == 200) {
             if(res.data.status) {
@@ -359,7 +361,7 @@ export default {
           //     message: res.data.message
           //   });
           // }
-
+          vm.disable=false;
         })
       },
       getStars() { // 获取评分
@@ -369,6 +371,7 @@ export default {
       },
       handleRating() { // 提交评分
         const vm = this;
+        vm.disable=true;
         vm.updateStatus(vm.ddcm_id, vm.detail_pro.rate_score_Id, vm.rateForm.stars).then(function(res) {
           if (res.status == 200) {
             if(res.data.status) {
@@ -396,6 +399,7 @@ export default {
           //     message: '评分失败'
           //   });
           // }
+          vm.disable=false;
         })
       },
       applyData() { // 点击申请数据
@@ -430,6 +434,7 @@ export default {
       },
       handleApply(applyForm) { // 提交申请数据
         const vm = this;
+        vm.disable=this;
         vm.$refs[applyForm].validate((valid) => {
           if (valid) {
             var item_code = _.map(vm.multipleSelection, "id");
@@ -458,6 +463,7 @@ export default {
               //   });
               // }
               vm.dialogApplyVisible = false;
+              vm.disable=false;
             })
           } else {
             return false;
