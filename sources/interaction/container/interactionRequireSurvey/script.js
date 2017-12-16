@@ -157,10 +157,8 @@ export default {
     },
     submitForm(formName) {
       const vm = this;
-       vm.disable=true;
       this.$refs[formName].validate((valid) => {
         if (valid) {
-
           if (vm.ruleForm.resourceId.length == 0 && vm.ruleForm.others == '') {
             vm.$message({
               showClose: true,
@@ -171,6 +169,7 @@ export default {
             });
             return
           }
+          vm.disable=true;
           Http.fetch({
             method: "post",
             url: master + "/home/insertNewRequirement",

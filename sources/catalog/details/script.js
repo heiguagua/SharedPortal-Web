@@ -31,7 +31,9 @@ export default {
           var checkContent = (rule, value, callback) => {
       if (value.length > 500) {
         return callback('最多只能输入500个字符,你已经不能再输入了！');
-      }
+      }else if (!value) {
+          return callback(new Error('理由不能为空'));
+        }
        else {
           callback();
         }
@@ -79,8 +81,8 @@ export default {
           }],
           description: [{
             required: true,
-            message: '申请理由不能为空',
-            trigger: 'blur'
+            validator: checkContent,
+            trigger: 'blur,change'
           }]
         },
          formRules1: {
@@ -434,9 +436,9 @@ export default {
       },
       handleApply(applyForm) { // 提交申请数据
         const vm = this;
-        vm.disable=this;
         vm.$refs[applyForm].validate((valid) => {
           if (valid) {
+            vm.disable=true;
             var item_code = _.map(vm.multipleSelection, "id");
             var date_range = null;
             if(vm.applyForm.timeRange) {
