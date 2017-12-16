@@ -27,7 +27,8 @@ export default {
         method: "post",
         url: master + "/developapis/getDevelopApisByFid",
         data: {
-          devlp_Id: id
+          devlp_Id: id,
+          is_use:1
         }
       })
     },
