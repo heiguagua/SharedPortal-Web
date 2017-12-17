@@ -196,11 +196,11 @@
   <!--申请数据-->
   <el-dialog title="申请数据" :visible.sync="dialogApplyVisible" size="small" class="apply-dialog">
     <el-form :model="applyForm" :rules="formRules" ref="applyForm" label-width="100px" class="demo-ruleForm">
-      <el-form-item label="访问次数" prop="count" label-suffix="sfdfsd">
+      <!-- <el-form-item label="访问次数" prop="count" label-suffix="sfdfsd">
         <el-col :span="11">
           <el-input v-model="applyForm.count"></el-input>
         </el-col>
-      </el-form-item>
+      </el-form-item> -->
       <el-form-item label="访问时间段" prop="timeRange" label-suffix="sfdfsd">
         <el-col :span="11">
           <el-date-picker v-model="applyForm.timeRange" type="datetimerange" editable="editable" placeholder="选择时间范围">
