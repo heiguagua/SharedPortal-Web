@@ -59,7 +59,7 @@ export default {
       }).then(
         function (result) {
           if (result.status == 200) {
-           window.open(tool_url);
+           window.open(result.data);
           }
         });
     },
