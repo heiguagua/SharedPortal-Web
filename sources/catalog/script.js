@@ -60,16 +60,16 @@ export default {
         item.path = "statistic";
       });
       vm.regions.push({
+         'id':1,
+        'name': '部门政务信息梳理目录',
+       'path': 'department'
+      },{
         'id':4,
         'name': '系统静态数据资源目录',
         'path': 'system'
       });
       if (username) {
         vm.regions.push({
-         'id':1,
-        'name': '部门政务信息梳理目录',
-       'path': 'department'
-      },{
           'name': '系统实时动态数据资源',
           'path': 'system'
         })
@@ -117,7 +117,7 @@ export default {
               dirCode: data.tree_code
             }
           })
-        }else if(rootPath == vm.regions[regions_length-2].path){//部门政务信息梳理目录下的一级目录设置路由
+        }else if(rootPath == vm.regions[regions_length-3].path){//部门政务信息梳理目录下的一级目录设置路由
      if (node.level === 2) {
             this.$router.push({
               path: `/layout/catalog/depCardingCatalog/${data.path}`,

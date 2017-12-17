@@ -149,9 +149,9 @@ const router = new VueRouter({
           path: 'department-resources',
           name: 'department-resources',
           component: resolve => require(["./catalog/depCardingCatalog/department-resources/index.vue"], resolve),
-          // meta: {
-          //   auth: true
-          // }
+          meta: {
+            auth: true
+          }
         }, {
           path: 'demand-resources',
           name: 'demand-resources',
