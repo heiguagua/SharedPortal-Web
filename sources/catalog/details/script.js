@@ -63,16 +63,16 @@ export default {
           stars: 0
         },
         applyForm: {
-          count: null,
+          // count: null,
           timeRange: null,
           description: ''
         },
         formRules: {
-         count: [{
-          required: true,
-            validator: checkCount,
-            trigger: 'blur'
-          }],
+        //  count: [{
+        //   required: true,
+        //     validator: checkCount,
+        //     trigger: 'blur'
+        //   }],
           timeRange: [{
             type: 'array',
             required: true,
@@ -180,14 +180,14 @@ export default {
           }
         })
       },
-      insertApplyInfo: function(data_item, dcm_id, count, date_period, description) {
+      insertApplyInfo: function(data_item, dcm_id, date_period, description) {
         return Http.fetch({
           method: "put",
           url: master + "/dataItemapply/createDataApply",
           data: {
             dcm_id: dcm_id, // 
             items: data_item, // 数据项id
-             limit_visit_cnt: count,
+            //  limit_visit_cnt: count,
              limit_visit_date_period: date_period,
             apply_info: description
           }
@@ -444,7 +444,7 @@ export default {
               date_range = formatDate(vm.applyForm.timeRange[0],'yyyy-MM-dd hh:mm:ss') + "-" + formatDate(vm.applyForm.timeRange[1],'yyyy-MM-dd hh:mm:ss');
             }
             vm.disable=true;
-            vm.insertApplyInfo(item_code, vm.detail_pro.dcm_id, vm.applyForm.count, date_range, vm.applyForm.description).then(function(res) {
+            vm.insertApplyInfo(item_code, vm.detail_pro.dcm_id, date_range, vm.applyForm.description).then(function(res) {
               
               if (res.status == 200) {
                 vm.$message({
@@ -454,7 +454,7 @@ export default {
                 });
                 vm.getDataItemList(); // 刷新数据项列表
                 vm.applyForm.timeRange = [];
-                vm.applyForm.count = '';
+                // vm.applyForm.count = '';
                 vm.applyForm.description = '';
               }
               //  else {
