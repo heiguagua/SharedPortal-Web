@@ -64,21 +64,25 @@ export default {
       _.forEach(vm.regions,function(item){
         item.path = "statistic";
       });
-      vm.regions.push({
-         'id':1,
-        'name': '部门政务信息梳理目录',
-       'path': 'department'
-      }
-       //软中特别要求
-      // ,{
-      //   'id':4,
-      //   'name': '系统静态数据资源目录',
-      //   'path': 'system'
-      // }
-    );
+    //   vm.regions.push({
+    //      'id':1,
+    //     'name': '部门政务信息梳理目录',
+    //    'path': 'department'
+    //   }
+    //    //软中特别要求
+    //   // ,{
+    //   //   'id':4,
+    //   //   'name': '系统静态数据资源目录',
+    //   //   'path': 'system'
+    //   // }
+    // );
       if (username) {
         if(username != 'yz'){
            vm.regions.push({
+         'id':1,
+        'name': '部门政务信息梳理目录',
+       'path': 'department'
+      },{
           'name': '系统实时动态数据资源',
           'path': 'system'
         })
