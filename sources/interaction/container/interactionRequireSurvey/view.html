@@ -16,9 +16,10 @@
             <el-row>
               <el-col :span="23" :offset="1">
                 <el-form-item label="需求类型" prop="requirementType" label-suffix="sfdfsd">
-                  <el-select v-model="ruleForm.requirementType" placeholder="请选择">
+                  <el-select v-model="ruleForm.requirementType" placeholder="请选择" @change="validaterequirement(ruleForm.requirementType)">
                     <el-option label="接口" value="interface"></el-option>
                     <el-option label="资源" value="resource"></el-option>
+                    <el-option label="手填" value="handfilled"></el-option>
                   </el-select>
                 </el-form-item>
               </el-col>
@@ -61,9 +62,9 @@
 <!-- 部门可多选 -->
   </el-col>
   </el-row>
-  <el-row>
+  <el-row v-if="resourceSwitch">
     <el-col :span="23" :offset="1">
-      <el-form-item label="资源名称" label-suffix="sfdfsd">
+      <el-form-item label="资源名称" prop="resourceId" label-suffix="sfdfsd">
         <el-select value-key="id" v-model="ruleForm.resourceId" multiple placeholder="请选择" @visible-change="visibleChange">
           <el-option v-for="item in options" :key="item.id" :label="item.name" :value="item">
           </el-option>
@@ -71,23 +72,23 @@
       </el-form-item>
     </el-col>
   </el-row>
-  <el-row>
+  <el-row v-if="!resourceSwitch">
     <el-col :span="23" :offset="1">
-      <el-form-item label="其他" label-suffix="sfdfsd">
-        <el-input type="textarea" v-model="ruleForm.others"></el-input>
+      <el-form-item label="资源名称" prop="resourceName" label-suffix="sfdfsd">
+        <el-input type="textarea" v-model="ruleForm.resourceName"></el-input>
       </el-form-item>
     </el-col>
   </el-row>
   </el-form-item>
   </el-col>
   </el-row>
-  <!-- <el-row>
+   <el-row>
     <el-col :span="16" :offset="1">
       <el-form-item label="需求描述" prop="content">
         <el-input type="textarea" v-model="ruleForm.content"></el-input>
       </el-form-item>
     </el-col>
-  </el-row> -->
+  </el-row> 
   <el-row>
     <el-col :span="16" :offset="1">
       <el-form-item label="个人资料" label-suffix="sfdfsd">
