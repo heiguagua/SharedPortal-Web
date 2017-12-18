@@ -21,8 +21,10 @@
       <el-table-column label="表名" >
         <template scope="scope">
             <div class="over_space">
-          <span v-bind:title="scope.row.enName">{{ scope.row.enName }}</span>
-          <span v-if="scope.row.cnName !==null || scope.row.cnName !==''" v-bind:title="scope.row.cnName">[{{ scope.row.cnName }}]</span>
+                <span v-bind:title="scope.row.enName">{{ scope.row.enName }}</span>&nbsp;
+                <span v-if="scope.row.enName != null && scope.row.cnName != null">[</span>
+                <span v-if="scope.row.cnName != null" v-bind:title="scope.row.cnName">{{ scope.row.cnName }}</span>
+                <span  v-if="scope.row.enName != null && scope.row.cnName != null">]</span>
             </div>
         </template>
       </el-table-column>
