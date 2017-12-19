@@ -43,12 +43,12 @@ export default {
             var param_item = vm.$route.query.current_item;
             if (param_item) {
               vm.current_item = param_item;
-              vm.activeName = param_item.parent_name;
+              vm.activeName = param_item.parent_id;
               vm.showLinkDom = true;
               vm.getSubApps(param_item.parent_id,false);
             } else {
               vm.showLinkDom = false;
-              vm.activeName = data[0].api_name;
+              vm.activeName = data[0].devlp_Id;
               vm.getSubApps(data[0].devlp_Id,true);
             }
           } 
