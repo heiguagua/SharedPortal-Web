@@ -18,8 +18,8 @@ export default {
   },
   methods: {
     handleClick(tab, event) {
-
-      console.log(tab.$attrs);
+      this.subAppList=[];
+      this.showLinkDom=false;
       var pid = tab.$attrs.id;
       this.getSubApps(pid,true);
     },
@@ -66,7 +66,11 @@ export default {
       vm.getDevAppsHttp(devlp_Id).then(
         function (result) {
           if (result.status == 200) {
-            vm.subAppList = result.data;
+            let data = result.data;
+            if(data){
+              vm.showLinkDom=false;
+            }
+            vm.subAppList = data;
             if(jump){
                vm.current_item = result.data[0];
             }

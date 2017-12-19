@@ -7,7 +7,8 @@ export default {
       username: "",
       password: "",
       sysObj: "",
-      errorShow: false
+      errorShow: false,
+      errorMessage:null
     }
   },
   mounted() {
@@ -89,6 +90,7 @@ export default {
               vm.$router.push('/layout/dashboard');
             }
         } else {
+          vm.errorMessage= data.message;
           vm.errorShow = true;
         }
       })

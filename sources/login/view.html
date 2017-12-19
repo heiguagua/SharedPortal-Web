@@ -25,7 +25,7 @@
         <img src="../assets/login/Password.png"/>
        </span><input type="password" v-model="password" class="admin_pwd" name="password" placeholder="密码" />
     </div>
-    <span v-show="errorShow" class="error">用户名或密码错误，请重新输入!</span>
+    <span v-show="errorShow" class="error">{{errorMessage}}</span>
     <div class="inputdiv">
       <el-button class="login_subtn" :disabled="disable" type="button" @click="onSubmit()">登&emsp;录</el-button>
     </div>
