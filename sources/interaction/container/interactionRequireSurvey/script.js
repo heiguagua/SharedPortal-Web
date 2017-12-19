@@ -79,14 +79,15 @@ export default {
         display: 'none'
       },
       showDialogComponent: false,
-      resourceSwitch:true//资源名称方式（手填 or 下拉框）
+      resourceSwitch:true,//资源名称方式（手填 or 下拉框）
+      loading:false
     }
 
   },
   mounted() {
     const vm = this;
     vm.getLoginUserInfo();
-    vm.PdepData();
+    // vm.PdepData();
   },
 
   methods: {
@@ -146,6 +147,7 @@ export default {
     /**获取资源名称列表 */
     getNewResourceByDep(requireType, orgStr) {
       const vm = this;
+      vm.loading=true;
       Http.fetch({
         method: "post",
         url: master + "/home/getNewResourceByDep",
@@ -153,8 +155,7 @@ export default {
           requireType: requireType,
           orgIds: orgStr
         }
-      }).then(
-        function (result) {
+      }).then(function (result) {
           if (result.status == 200) {
             let data = result.data;
             vm.options = data;
@@ -166,12 +167,13 @@ export default {
           //     message: result.data.message,
           //   });
           // }
+           vm.loading=false;
         });
     },
     visibleChange(val) {
       const vm = this;
+      vm.options=[];
       if (val) {
-        console.log(vm.ruleForm.requirementType, vm.ruleForm.depId)
         vm.getNewResourceByDep(vm.ruleForm.requirementType, vm.ruleForm.depId);
       }
     },
@@ -245,7 +247,8 @@ export default {
 
     PdepData() {
       let vm = this
-      vm.depName = [];
+      vm.depData=[];
+      vm.depName = '';
       vm.getDepData('root').then(
         function (result) {
           if (result.status == 200) {
