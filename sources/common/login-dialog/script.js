@@ -7,7 +7,8 @@ export default {
       username: "",
       password: "",
       dialogLoginVisible: true,
-      errorShow: false
+      errorShow: false,
+      errorMessage:null
     }
   },
   methods: {
@@ -34,6 +35,7 @@ export default {
             Encrypt.token.set("userName", data.userName);
             vm.$router.go(0);
           } else {
+            vm.errorMessage=data.message;
             vm.errorShow = true;
           }
         })

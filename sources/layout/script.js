@@ -10,7 +10,8 @@ export default {
       sysObj: {},
       satelliteInfo: [],
       dialogLoginVisible: false,
-      errorShow: false
+      errorShow: false,
+      errorMessage:null
     }
   },
   mounted() {
@@ -118,6 +119,7 @@ export default {
               }
             })
           } else {
+            vm.errorMessage=data.message;
             vm.errorShow = true;
           }
         })

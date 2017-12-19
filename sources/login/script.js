@@ -7,7 +7,8 @@ export default {
       username: "",
       password: "",
       sysObj: "",
-      errorShow: false
+      errorShow: false,
+      errorMessage:null
     }
   },
   mounted() {
@@ -63,6 +64,7 @@ export default {
             }
             
           } else {
+            vm.errorMessage=data.message;
             vm.errorShow = true;
           }
           vm.disable=false;
