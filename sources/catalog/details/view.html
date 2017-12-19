@@ -203,7 +203,7 @@
       </el-form-item> -->
       <el-form-item label="访问时间段" prop="timeRange" label-suffix="sfdfsd">
         <el-col :span="11">
-          <el-date-picker v-model="applyForm.timeRange" type="datetimerange" editable="editable" placeholder="选择时间范围">
+          <el-date-picker v-model="applyForm.timeRange" type="datetimerange" :editable="editable" placeholder="选择时间范围">
           </el-date-picker>
         </el-col>
       </el-form-item>
