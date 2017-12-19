@@ -77,7 +77,7 @@ export default {
     //   // }
     // );
       if (username) {
-        if(username != 'yz'){
+        if(username != 'yzuser'){
            vm.regions.push({
          'id':1,
         'name': '部门政务信息梳理目录',
