@@ -56,7 +56,7 @@ export default {
           Encrypt.token.set("userName", data.userName);
           vm.$router.go(0);
         } else {
-          vm.errorMessage=data.message;
+          vm.errorMessage= result.data.message;
           vm.errorShow = true;
         }
       })

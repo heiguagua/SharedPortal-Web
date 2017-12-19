@@ -90,7 +90,7 @@ export default {
               vm.$router.push('/layout/dashboard');
             }
         } else {
-          vm.errorMessage= data.message;
+          vm.errorMessage= result.data.message;
           vm.errorShow = true;
         }
       })
