@@ -1,7 +1,7 @@
 <main id="developer">
   <div class="section-content">
     <el-tabs v-model="activeName" @tab-click="handleClick">
-      <el-tab-pane v-for="appItem in devApps" v-bind:label="appItem.api_name" v-bind:name="appItem.api_name" v-bind:id="appItem.devlp_Id">
+      <el-tab-pane v-for="appItem in devApps" v-bind:label="appItem.api_name" v-bind:name="appItem.devlp_Id" v-bind:id="appItem.devlp_Id">
         <ul class="sub_apps">
           <li :class="{ active: (current_item.devlp_Id === item.devlp_Id) }" v-for="item in subAppList">
             <a class="" dataid="item.devlp_Id" dataurl="item.api_url" v-on:click="showLink(item)">{{item.api_name}}</a>
