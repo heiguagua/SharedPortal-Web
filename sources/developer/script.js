@@ -18,9 +18,10 @@ export default {
   },
   methods: {
     handleClick(tab, event) {
+
       console.log(tab.$attrs);
       var pid = tab.$attrs.id;
-      this.getSubApps(pid);
+      this.getSubApps(pid,true);
     },
     getDevAppsHttp: function (id) {
       return Http.fetch({
@@ -32,7 +33,7 @@ export default {
         }
       })
     },
-    getDevApps: function (devlp_Id) {
+    getDevApps: function (devlp_Id,jump) {
       const vm = this;
       vm.getDevAppsHttp(devlp_Id).then(
         function (result) {
@@ -44,11 +45,11 @@ export default {
               vm.current_item = param_item;
               vm.activeName = param_item.parent_name;
               vm.showLinkDom = true;
-              vm.getSubApps(param_item.parent_id);
+              vm.getSubApps(param_item.parent_id,false);
             } else {
               vm.showLinkDom = false;
               vm.activeName = data[0].api_name;
-              vm.getSubApps(data[0].devlp_Id);
+              vm.getSubApps(data[0].devlp_Id,true);
             }
           } 
           // else {
@@ -60,13 +61,15 @@ export default {
           // }
         });
     },
-    getSubApps: function (devlp_Id) {
+    getSubApps: function (devlp_Id,jump) {
       const vm = this;
       vm.getDevAppsHttp(devlp_Id).then(
         function (result) {
           if (result.status == 200) {
             vm.subAppList = result.data;
-            vm.current_item = result.data[0];
+            if(jump){
+               vm.current_item = result.data[0];
+            }
             vm.showLinkDom = true;
           } else {
             vm.$message({
