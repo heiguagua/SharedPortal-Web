@@ -18,20 +18,22 @@ export default {
   },
   methods: {
     handleClick(tab, event) {
-      console.log(tab.$attrs);
+      this.subAppList=[];
+      this.showLinkDom=false;
       var pid = tab.$attrs.id;
-      this.getSubApps(pid);
+      this.getSubApps(pid,true);
     },
     getDevAppsHttp: function (id) {
       return Http.fetch({
         method: "post",
         url: master + "/developapis/getDevelopApisByFid",
         data: {
-          devlp_Id: id
+          devlp_Id: id,
+          is_use:1
         }
       })
     },
-    getDevApps: function (devlp_Id) {
+    getDevApps: function (devlp_Id,jump) {
       const vm = this;
       vm.getDevAppsHttp(devlp_Id).then(
         function (result) {
@@ -41,13 +43,13 @@ export default {
             var param_item = vm.$route.query.current_item;
             if (param_item) {
               vm.current_item = param_item;
-              vm.activeName = param_item.parent_name;
+              vm.activeName = param_item.parent_id;
               vm.showLinkDom = true;
-              vm.getSubApps(param_item.parent_id);
+              vm.getSubApps(param_item.parent_id,false);
             } else {
               vm.showLinkDom = false;
-              vm.activeName = data[0].api_name;
-              vm.getSubApps(data[0].devlp_Id);
+              vm.activeName = data[0].devlp_Id;
+              vm.getSubApps(data[0].devlp_Id,true);
             }
           } 
           // else {
@@ -59,13 +61,19 @@ export default {
           // }
         });
     },
-    getSubApps: function (devlp_Id) {
+    getSubApps: function (devlp_Id,jump) {
       const vm = this;
       vm.getDevAppsHttp(devlp_Id).then(
         function (result) {
           if (result.status == 200) {
-            vm.subAppList = result.data;
-            vm.current_item = result.data[0];
+            let data = result.data;
+            if(data){
+              vm.showLinkDom=false;
+            }
+            vm.subAppList = data;
+            if(jump){
+               vm.current_item = result.data[0];
+            }
             vm.showLinkDom = true;
           } else {
             vm.$message({

@@ -110,7 +110,7 @@ export default {
         });
       }else{
           if (rootPath == vm.regions[0].path) {
-         this.$router.push({
+              this.$router.push({
             path: '/layout/catalog/resources',
             query: {
               dirName: data.name,
@@ -138,7 +138,7 @@ export default {
           }
         }
         else{
-             if(vm.regions.length == vm.regions_load_cl && rootName ==vm.regions[regions_length-1].name){
+            if(vm.regions.length == vm.regions_load_cl && rootName ==vm.regions[regions_length-1].name){
             this.$router.push({
               path: '/layout/catalog/system-dynamic-resources',
               query: {

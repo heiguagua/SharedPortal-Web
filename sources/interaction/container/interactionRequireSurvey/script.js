@@ -8,11 +8,12 @@ export default {
   },
   data() {
     return {
+      disable:false,
       ruleForm: {
         title: '',
-        content: '',
+        content: '',//需求描述
         requirementType: 'interface',
-        others: '',
+        resourceName: '',
         // depId: [],//部门多选时用
         depId:'', //部门单选时用
         resourceId: []
@@ -48,6 +49,17 @@ export default {
           message: '需求描述不能为空',
           trigger: 'blur'
         }],
+        resourceId: [{
+          type: 'array',
+          required: true,
+          message: '资源名称不能为空',
+          trigger: 'blur'
+        }],
+         resourceName: [{
+          required: true,
+          message: '资源名称不能为空',
+          trigger: 'blur'
+        }],
 
       },
       depData: [],
@@ -67,13 +79,15 @@ export default {
         display: 'none'
       },
       showDialogComponent: false,
+      resourceSwitch:true,//资源名称方式（手填 or 下拉框）
+      loading:false
     }
 
   },
   mounted() {
     const vm = this;
     vm.getLoginUserInfo();
-    vm.PdepData();
+    // vm.PdepData();
   },
 
   methods: {
@@ -111,6 +125,14 @@ export default {
         vm.$root.$children[0].openLoginDialog();
       }, 1000);
     },
+    validaterequirement:function(val){
+      const vm =this;
+       if(val == 'handfilled'){
+          vm.resourceSwitch=false;
+        }else{
+          vm.resourceSwitch = true;
+        }
+    },
     /**部门列表 */
     getDepData: function (id) {
       const vm = this;
@@ -125,6 +147,7 @@ export default {
     /**获取资源名称列表 */
     getNewResourceByDep(requireType, orgStr) {
       const vm = this;
+      vm.loading=true;
       Http.fetch({
         method: "post",
         url: master + "/home/getNewResourceByDep",
@@ -132,8 +155,7 @@ export default {
           requireType: requireType,
           orgIds: orgStr
         }
-      }).then(
-        function (result) {
+      }).then(function (result) {
           if (result.status == 200) {
             let data = result.data;
             vm.options = data;
@@ -145,12 +167,13 @@ export default {
           //     message: result.data.message,
           //   });
           // }
+           vm.loading=false;
         });
     },
     visibleChange(val) {
       const vm = this;
+      vm.options=[];
       if (val) {
-        console.log(vm.ruleForm.requirementType, vm.ruleForm.depId)
         vm.getNewResourceByDep(vm.ruleForm.requirementType, vm.ruleForm.depId);
       }
     },
@@ -158,17 +181,17 @@ export default {
       const vm = this;
       this.$refs[formName].validate((valid) => {
         if (valid) {
-
-          if (vm.ruleForm.resourceId.length == 0 && vm.ruleForm.others == '') {
-            vm.$message({
-              showClose: true,
-              message: '资源名称和其他不能同时为空!',
-              duration: 2000,
-              type: 'warning',
-              customClass: "warning-alert"
-            });
-            return
-          }
+          // if (vm.ruleForm.resourceId.length == 0 && vm.ruleForm.resourceName == '') {
+          //   vm.$message({
+          //     showClose: true,
+          //     message: '资源名称和其他不能同时为空!',
+          //     duration: 2000,
+          //     type: 'warning',
+          //     customClass: "warning-alert"
+          //   });
+          //   return
+          // }
+          vm.disable=true;
           Http.fetch({
             method: "post",
             url: master + "/home/insertNewRequirement",
@@ -184,7 +207,7 @@ export default {
                     type: 'success'
                   });
                   vm.$refs[formName].resetFields(); //清空表单
-                   vm.ruleForm.others='',
+                   vm.ruleForm.resourceName='',
                   vm.ruleForm.resourceId = []
                   console.log(vm.ruleForm)
                   // vm.ruleForm = {};
@@ -193,6 +216,7 @@ export default {
                   vm.depName = ""; //部门单选时用
                   // vm.ruleForm.resourceId = []
                   // vm.$refs.tree.setCheckedKeys([]);//部门多选时用
+                  //  vm.resourceSwitch=true;
                   $("#dep_inp").height(33);
                 } else {
                   vm.$message({
@@ -212,6 +236,7 @@ export default {
               //     message: result.data.message,
               //   });
               // }
+              vm.disable=false;
             });
         } else {
           console.log('error submit!!');
@@ -222,7 +247,8 @@ export default {
 
     PdepData() {
       let vm = this
-      vm.depName = [];
+      vm.depData=[];
+      vm.depName = '';
       vm.getDepData('root').then(
         function (result) {
           if (result.status == 200) {
@@ -303,14 +329,7 @@ export default {
       if (data.has_leaf === 0 || data.has_leaf === "0") {
         node.isLeaf = true;
       }
-      return ( <
-        span class = "el-tree-node__label"
-        title = {
-          node.label
-        } > {
-          node.label
-        } < /span>
-      );
+      return ( <span class = "el-tree-node__label" title = { node.label} > {node.label} </span>);
     }
 
     // deleNode(node) { //删除

@@ -48,6 +48,21 @@ export default {
     vm.getDevelopApis(1);
   },
   methods: {
+      getDevelopJump: function (tool_url) {//工具
+      const vm = this;
+      Http.fetch({
+        method: "post",
+        url: master + "/developapis/developJump",
+         data: {
+          url:tool_url
+        }
+      }).then(
+        function (result) {
+          if (result.status == 200) {
+           window.open(result.data);
+          }
+        });
+    },
     getAllDirMenuInfo: function (item) {
       const vm = this;
       var pid = item.id;

@@ -3,10 +3,12 @@ import Encrypt from "../common/encrypt.js";
 export default {
   data() {
     return {
+      disable:false,
       username: "",
       password: "",
       sysObj: "",
-      errorShow: false
+      errorShow: false,
+      errorMessage:null
     }
   },
   mounted() {
@@ -36,6 +38,7 @@ export default {
     },
         onSubmit() {
       const vm = this;
+      vm.disable=true;
       Http.fetch({
           method: "get",
           url: Http.url.master + "/login",
@@ -61,8 +64,10 @@ export default {
             }
             
           } else {
+            vm.errorMessage=data.message;
             vm.errorShow = true;
           }
+          vm.disable=false;
         })
     },
     keydownLogin(ev) {

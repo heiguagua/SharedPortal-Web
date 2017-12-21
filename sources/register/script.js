@@ -4,6 +4,7 @@ const master = Http.url.master;
 export default {
   data() {
     return {
+      disable:false,
       ruleForm: {
         realName: '',
         loginName: '',
@@ -79,6 +80,7 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           const vm = this;
+          vm.disable=true;
           Http.fetch({
             method: "post",
             url: master + "/home/submitRegisterUerInfo",
@@ -111,6 +113,7 @@ export default {
               //     message: result.data.message,
               //   });
               // }
+              vm.disable=false;
             });
         } else {
           console.log('error submit!!');

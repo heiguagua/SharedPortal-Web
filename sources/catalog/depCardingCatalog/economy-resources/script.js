@@ -14,11 +14,32 @@ export default {
       totalResource: 0,
       itemCount: 0,
       currentPage: 1,
-      keyword: ''
+      keyword: '',
+      phisical_location_options: null,
+      system_level_options: null,
+      self_build_flag_options: null,
+      phisical_location: null,
+      system_level: null,
+      self_build_flag: null
     }
   },
   mounted() {
     const vm = this;
+    vm.getSysDictByCategory("systemDeploymentLocation").then(function (res) {
+      if (res.status == 200) {
+        vm.phisical_location_options = res.data;
+      }
+    });
+    vm.getSysDictByCategory("systemLevel").then(function (res) {
+      if (res.status == 200) {
+        vm.system_level_options = res.data;
+      }
+    });
+    vm.getSysDictByCategory("isLoacl").then(function (res) {
+      if (res.status == 200) {
+        vm.self_build_flag_options = res.data;
+      }
+    });
     vm.loadData(false);
   },
 
@@ -26,9 +47,9 @@ export default {
     loadData(cache_total) {
       const vm = this;
       vm.head_title = vm.$route.query.dirName;
-       let dirCode = vm.$route.query.dirCode;
+      let dirCode = vm.$route.query.dirCode;
       let pinying = vm.$route.query.firstLetter;
-      vm.getTableList(dirCode, vm.currentPage, 20, vm.keyword,pinying).then(function (res) {
+      vm.getTableList(dirCode, vm.currentPage, 20, vm.keyword, pinying,vm.phisical_location,vm.system_level,vm.self_build_flag).then(function (res) {
         vm.loading = false;
         if (res.status == 200) {
           console.log(res)
@@ -38,7 +59,7 @@ export default {
             vm.totalResource = r_data[Pager.totalR];
             vm.itemCount = res.data.itemCount; // 数据项
           }
-        } 
+        }
         // else {
         //   vm.$notify({
         //     type: "error",
@@ -48,7 +69,7 @@ export default {
         // }
       })
     },
-    getTableList: function (dirCode, currentPage, psize, keyword,pingying) {
+    getTableList: function (dirCode, currentPage, psize, keyword, pingying,location,syslevel,selfbuild) {
       const vm = this;
       return Http.fetch({
         method: "post",
@@ -59,7 +80,20 @@ export default {
           size: psize,
           pageNum: currentPage,
           keywords: keyword,
-          firstLetter:pingying
+          firstLetter: pingying,
+          phisicalLocation:location,
+          systemLevel:syslevel,
+          selfBuildFlag:selfbuild
+        }
+      })
+    },
+    getSysDictByCategory: function (target) {
+      const vm = this;
+      return Http.fetch({
+        method: "post",
+        url: master + "/sysdict/getSysDictByCategory",
+        data: {
+          category:target
         }
       })
     },
@@ -85,7 +119,22 @@ export default {
       const vm = this;
       vm.currentPage = 1;
       vm.loadData(false);
-    }
+    },
+     togglePhisicalLocation(){
+        const vm = this;
+        console.log(vm.open_status);
+        vm.loadData(false);
+      },
+      toggleSystemLevel(){
+        const vm = this;
+
+        vm.loadData(false);
+      },
+       toggleSelfBuildFlag(){
+        const vm = this;
+        console.log(vm.open_status);
+        vm.loadData(false);
+      }
   },
   // filters: {
   //   formatDate(time) {

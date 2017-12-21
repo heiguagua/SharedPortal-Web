@@ -56,8 +56,8 @@ export default {
           }, 2000);
         } else if (response.status !== 200 && response.status !== 511) {
           Notification.error({
-            title: '系统异常 ' + 'Http:' + response.status,
-            message: response.data.message
+            title: 'Http:' + response.status,
+            message: '系统异常 '
           })
         }
       }

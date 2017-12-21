@@ -31,12 +31,15 @@ export default {
           var checkContent = (rule, value, callback) => {
       if (value.length > 500) {
         return callback('最多只能输入500个字符,你已经不能再输入了！');
-      }
+      }else if (!value) {
+          return callback(new Error('理由不能为空'));
+        }
        else {
           callback();
         }
     };
       return {
+        disable:false,
         userName: null,
         loading: true,
         head_title: '',
@@ -60,16 +63,16 @@ export default {
           stars: 0
         },
         applyForm: {
-          count: null,
+          // count: null,
           timeRange: null,
           description: ''
         },
         formRules: {
-         count: [{
-          required: true,
-            validator: checkCount,
-            trigger: 'blur'
-          }],
+        //  count: [{
+        //   required: true,
+        //     validator: checkCount,
+        //     trigger: 'blur'
+        //   }],
           timeRange: [{
             type: 'array',
             required: true,
@@ -78,8 +81,8 @@ export default {
           }],
           description: [{
             required: true,
-            message: '申请理由不能为空',
-            trigger: 'blur'
+            validator: checkContent,
+            trigger: 'blur,change'
           }]
         },
          formRules1: {
@@ -177,14 +180,14 @@ export default {
           }
         })
       },
-      insertApplyInfo: function(data_item, dcm_id, count, date_period, description) {
+      insertApplyInfo: function(data_item, dcm_id, date_period, description) {
         return Http.fetch({
           method: "put",
           url: master + "/dataItemapply/createDataApply",
           data: {
             dcm_id: dcm_id, // 
             items: data_item, // 数据项id
-             limit_visit_cnt: count,
+            //  limit_visit_cnt: count,
              limit_visit_date_period: date_period,
             apply_info: description
           }
@@ -332,6 +335,7 @@ export default {
       },
       handleCorrection() { // 提交纠错内容
         const vm = this;
+        vm.disable=true;
         vm.insertCorrection(vm.ddcm_id, vm.detail_pro.correction_Id,vm.correctionForm.content).then(function(res) {
           if (res.status == 200) {
             if(res.data.status) {
@@ -359,7 +363,7 @@ export default {
           //     message: res.data.message
           //   });
           // }
-
+          vm.disable=false;
         })
       },
       getStars() { // 获取评分
@@ -369,6 +373,7 @@ export default {
       },
       handleRating() { // 提交评分
         const vm = this;
+        vm.disable=true;
         vm.updateStatus(vm.ddcm_id, vm.detail_pro.rate_score_Id, vm.rateForm.stars).then(function(res) {
           if (res.status == 200) {
             if(res.data.status) {
@@ -396,6 +401,7 @@ export default {
           //     message: '评分失败'
           //   });
           // }
+          vm.disable=false;
         })
       },
       applyData() { // 点击申请数据
@@ -437,8 +443,9 @@ export default {
             if(vm.applyForm.timeRange) {
               date_range = formatDate(vm.applyForm.timeRange[0],'yyyy-MM-dd hh:mm:ss') + "-" + formatDate(vm.applyForm.timeRange[1],'yyyy-MM-dd hh:mm:ss');
             }
-            
-            vm.insertApplyInfo(item_code, vm.detail_pro.dcm_id, vm.applyForm.count, date_range, vm.applyForm.description).then(function(res) {
+            vm.disable=true;
+            vm.insertApplyInfo(item_code, vm.detail_pro.dcm_id, date_range, vm.applyForm.description).then(function(res) {
+              
               if (res.status == 200) {
                 vm.$message({
                   showClose: true,
@@ -447,7 +454,7 @@ export default {
                 });
                 vm.getDataItemList(); // 刷新数据项列表
                 vm.applyForm.timeRange = [];
-                vm.applyForm.count = '';
+                // vm.applyForm.count = '';
                 vm.applyForm.description = '';
               }
               //  else {
@@ -458,6 +465,7 @@ export default {
               //   });
               // }
               vm.dialogApplyVisible = false;
+              vm.disable=false;
             })
           } else {
             return false;
