@@ -33,6 +33,9 @@ export default {
         return Http.fetch({
           method: "post",
           url: master + "/dept/getDeptSourceCounts",
+           data:{
+            id:1//该参数无意义但必须存在
+          }
         })
     },
     handleCurrentChange(val) {
