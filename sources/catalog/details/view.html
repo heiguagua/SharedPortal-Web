@@ -33,6 +33,10 @@
           <td>所属系统</td>
           <td><a @click="jumpToSystem(systemInfo)" class="jump_system">{{systemInfo.system_name}}</a></td>
         </tr>
+         <tr class="" v-else>
+          <td>所属系统</td>
+          <td>无</td>
+        </tr>
       </tbody>
     </table>
     <div class="item-content">
