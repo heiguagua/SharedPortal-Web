@@ -33,13 +33,6 @@ export default {
             vm.totalResource = r_data[Pager.totalR];
             vm.itemCount = res.data.itemCount; // 数据项
           }
-          else{
-            vm.$notify({
-                  type: "error",
-                  title: '错误',
-                  message: res.data.message,
-                });
-          }
         })
       },
       getTableList: function(deptId,currentPage,psize,keyword) {

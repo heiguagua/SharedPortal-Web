@@ -191,12 +191,6 @@ export default {
           vm.loading = false;
           if (res.status == 200) {
             vm.tableDataItem = res.data;
-          } else {
-           vm.$notify({
-              type: "error",
-              title: '系统错误',
-              message: res.data.message,
-            });
           }
         },function(error){
           console.log("getdataitme error:",error);
@@ -263,12 +257,6 @@ export default {
                   type: 'success'
                 });
               }
-            } else {
-              vm.$notify({
-                type: "error",
-                title: '查询错误',
-                message: res.data.message
-              });
             }
           })
         } else { // 未收藏，则收藏
@@ -289,12 +277,6 @@ export default {
                   type: 'error'
                 });
               }
-            } else {
-              vm.$notify({
-                type: "error",
-                title: '查询错误',
-                message: res.data.message,
-              });
             }
           })
         }
@@ -338,12 +320,6 @@ export default {
               });
             }
             
-          } else {
-            vm.$notify({
-              type: "error",
-              title: '纠错失败！',
-              message: res.data.message
-            });
           }
 
         })
@@ -374,12 +350,6 @@ export default {
             });
             }
             
-          } else {
-            vm.$notify({
-              type: "error",
-              title: '评分失败！',
-              message: '评分失败'
-            });
           }
         })
       },
