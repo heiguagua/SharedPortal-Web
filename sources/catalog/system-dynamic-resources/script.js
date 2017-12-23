@@ -39,13 +39,6 @@ export default {
             
 
           }
-          // else{
-          //   vm.$notify({
-          //         type: "error",
-          //         title: '错误',
-          //         message: res.data.message,
-          //       });
-          // }
         })
       },
       getSystemTables:function(info_system_id,db_id,currentPage,psize,keyword){

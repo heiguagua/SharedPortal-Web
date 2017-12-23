@@ -17,13 +17,6 @@ export default {
         if(res.status == 200) {
           vm.tableData = res.data;
         }
-        else{
-          vm.$notify({
-                type: "error",
-                title: '系统列表',
-                message: res.data.message,
-              });
-        }
       })
     },
 

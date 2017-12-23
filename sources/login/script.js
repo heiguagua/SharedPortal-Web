@@ -27,13 +27,6 @@ export default {
             vm.sysObj = result.data;
             document.title = result.data.projectPortalName;
           }
-          //  else {
-          //   vm.$notify({
-          //     type: "error",
-          //     title: '系统错误',
-          //     message: result.data.message,
-          //   });
-          // }
         });
     },
         onSubmit() {

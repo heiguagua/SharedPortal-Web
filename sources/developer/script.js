@@ -52,13 +52,6 @@ export default {
               vm.getSubApps(data[0].devlp_Id,true);
             }
           } 
-          // else {
-          //   vm.$notify({
-          //     type: "error",
-          //     title: '查询出错！',
-          //     message: result.data.message,
-          //   });
-          // }
         });
     },
     getSubApps: function (devlp_Id,jump) {

@@ -36,13 +36,6 @@ export default {
             vm.itemCount = res.data.itemCount; // 处室
             vm.total = res.data.total //资源
           }
-          else{
-            vm.$notify({
-                  type: "error",
-                  title: '错误',
-                  message: res.data.message,
-                });
-          }
         })
       },
       getTableList: function(deptId,currentPage,psize,keyword) {

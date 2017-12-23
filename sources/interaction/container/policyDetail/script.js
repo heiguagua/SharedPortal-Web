@@ -26,14 +26,7 @@ export default {
         function (result) {
           if (result.status == 200) {
            vm.latestPolicyItem = result.data;
-          } 
-          // else {
-          //   vm.$notify({
-          //     type: "error",
-          //     title: '最新政策详情',
-          //     message: result.message,
-          //   });
-          // }
+          }
         });
     },
   }
