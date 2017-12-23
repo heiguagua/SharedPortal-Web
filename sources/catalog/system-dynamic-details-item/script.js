@@ -321,7 +321,6 @@ export default {
             }
             
           }
-
         })
       },
       getStars() { // 获取评分

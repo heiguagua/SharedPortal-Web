@@ -43,21 +43,9 @@ export default {
             Encrypt.token.empty("userName");
             Encrypt.token.empty("orgName");
             vm.islogin = false;
-            //  vm.$message({
-            //   showClose: true,
-            //   message: '退出成功！',
-            //   type: 'success'
-            // });
             vm.$router.push("/login");
 
           }
-          //  else {
-          //   vm.$notify({
-          //     type: "error",
-          //     title: '退出登录',
-          //     message: result.data.message,
-          //   });
-          // }
         });
     },
     getSysName: function () { //系统名称
@@ -70,14 +58,7 @@ export default {
           if (result.status == 200) {
             vm.sysObj = result.data;
             document.title = result.data.projectPortalName;
-          } 
-          // else {
-          //   vm.$notify({
-          //     type: "error",
-          //     title: '系统错误',
-          //     message: result.data.message,
-          //   });
-          // }
+          }
         });
     },
  loginAjax(name, m5_password) { //登录
@@ -159,14 +140,7 @@ export default {
           if (result.status == 200) {
             let data = result.data;
             vm.satelliteInfo = data[0];
-          } 
-          // else {
-          //   vm.$notify({
-          //     type: "error",
-          //     title: '版权信息',
-          //     message: result.data.message,
-          //   });
-          // }
+          }
         });
     },
   }
