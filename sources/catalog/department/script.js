@@ -17,13 +17,6 @@ export default {
         if(res.status == 200) {
           vm.tableData = res.data;
         }
-        else{
-          vm.$notify({
-                type: "error",
-                title: '系统列表',
-                message: res.data.message,
-              });
-        }
       })
     },
 
@@ -33,6 +26,9 @@ export default {
         return Http.fetch({
           method: "post",
           url: master + "/dept/getDeptSourceCounts",
+           data:{
+            id:1//该参数无意义但必须存在
+          }
         })
     },
     handleCurrentChange(val) {

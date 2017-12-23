@@ -160,13 +160,6 @@ export default {
             let data = result.data;
             vm.options = data;
           }
-          //  else {
-          //   vm.$notify({
-          //     type: "error",
-          //     title: '获取资源名称列表',
-          //     message: result.data.message,
-          //   });
-          // }
            vm.loading=false;
         });
     },
@@ -226,16 +219,6 @@ export default {
                   });
                 }
               }
-              //  else if (result.status == 511) {
-              //   alert('登录已失效，请重新登录！');
-              //   return
-              // } else {
-              //   vm.$notify({
-              //     type: "error",
-              //     title: '咨询建议',
-              //     message: result.data.message,
-              //   });
-              // }
               vm.disable=false;
             });
         } else {
@@ -255,14 +238,7 @@ export default {
             let data = result.data;
             vm.depData = data;
             console.log(data)
-          } 
-          // else {
-          //   vm.$notify({
-          //     type: "error",
-          //     title: '部门列表',
-          //     message: result.data.message,
-          //   });
-          // }
+          }
         });
     },
     loadNode(node, resolve) {

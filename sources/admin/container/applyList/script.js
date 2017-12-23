@@ -66,16 +66,6 @@ export default {
             vm.applyCount.pendingNum = data.examiningCount;
             vm.applyCount.reviewedNum = data.examinedCount;
           }
-          //  else if (result.status == 511) {
-          //   alert('登录已失效，请重新登录！');
-          //   return
-          // } else {
-          //   vm.$notify({
-          //     type: "error",
-          //     title: '申请列表',
-          //     message: result.data.message,
-          //   });
-          // }
         });
     },
     getApplyItemData: function (dcm_id, curr_page, search_inp) {
@@ -98,14 +88,7 @@ export default {
              if(!data.previous){
              vm.applyCount.totalR = data[Pager.totalR];
             }
-          } 
-          // else {
-          //   vm.$notify({
-          //     type: "error",
-          //     title: '申请列表详情',
-          //     message: result.data.message,
-          //   });
-          // }
+          }
         });
     },
       getResDetails: function(ddcm_id) { // 获取资源详情

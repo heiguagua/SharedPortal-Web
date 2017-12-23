@@ -106,13 +106,6 @@ export default {
                 });
                 }
               } 
-              // else {
-              //   vm.$notify({
-              //     type: "error",
-              //     title: '咨询建议',
-              //     message: result.data.message,
-              //   });
-              // }
               vm.disable=false;
             });
         } else {
@@ -178,14 +171,7 @@ export default {
         if (result.status == 200) {
           let data = result.data;
           vm.depData = data;
-        } 
-        // else {
-        //   vm.$notify({
-        //     type: "error",
-        //     title: '部门列表',
-        //     message: result.data.message,
-        //   });
-        // }
+        }
       })
     },
     /**区域列表 */
@@ -242,13 +228,6 @@ export default {
           let data = result.data;
           vm.regionData = data.content.selectData;
         }
-        //  else {
-        //   vm.$notify({
-        //     type: "error",
-        //     title: '部门',
-        //     message: '系统错误',
-        //   });
-        // }
       })
     },
    renderContent(h, { node, data, store }) {

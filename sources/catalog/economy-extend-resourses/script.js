@@ -43,13 +43,6 @@ export default {
             vm.tableData = r_data.body;
             vm.totalResource = r_data[Pager.totalR];
           }
-          else{
-            vm.$notify({
-                  type: "error",
-                  title: '错误',
-                  message: res.data.message,
-                });
-          }
         })
       },
       getTableList: function(dirCode,infoSystemId,currentPage,psize,keyword) {

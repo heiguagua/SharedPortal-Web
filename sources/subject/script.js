@@ -37,13 +37,6 @@ export default {
           if (result.status == 200) {
             vm.data1 = result.data.rs.aaData;
           }
-          //  else {
-          //   vm.$notify({
-          //     type: "error",
-          //     title: '应用部门',
-          //     message: "内部错误",
-          //   });
-          // }
         });
     },
     getRemoteDatas: function () {
@@ -67,13 +60,6 @@ export default {
               vm.showLinkDom = true;
             }
           }
-          //  else {
-          //   vm.$notify({
-          //     type: "error",
-          //     title: '专题应用',
-          //     message: "内部错误",
-          //   });
-          // }
         });
     },
     count(id) {

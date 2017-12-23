@@ -35,13 +35,6 @@ export default {
             vm.itemCount = res.data.total; // 数据项
             }
           }
-          else{
-            vm.$notify({
-                  type: "error",
-                  title: '查询错误',
-                  message: res.data.message,
-                });
-          }
         })
       },
       getTableList: function(dirCode,currentPage,psize,keyword) {

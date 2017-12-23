@@ -71,13 +71,6 @@ export default {
             vm.totalResource = r_data[Pager.totalR]; //总共多少页
           }
         }
-        //  else {
-        //   vm.$notify({
-        //     type: "error",
-        //     title: '错误',
-        //     message: res.data.message,
-        //   });
-        // }
       })
     },
     getSysDict: function (target) {

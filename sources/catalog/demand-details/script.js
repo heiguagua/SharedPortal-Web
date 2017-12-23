@@ -53,13 +53,6 @@ export default {
           if(res.status == 200) {
             vm.detail_pro = res.data;
           }
-          else{
-            vm.$notify({
-                  type: "error",
-                  title: '查询错误',
-                  message: res.data.message,
-                });
-          }
         })
       },
       handleSelectionChange(val) {
