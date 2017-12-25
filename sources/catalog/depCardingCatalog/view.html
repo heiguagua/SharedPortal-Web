@@ -8,7 +8,7 @@
             <td class="title">首字母：</td>
             <td>
               <ul class="data-ul">
-                <li v-for="pingYing in pingYingList" :class="{ active: (current_pingYing === pingYing.name) }" @click="getDep(pingYing)">{{pingYing.name}}</li>
+                <li v-for="pingYing in pingYingList" :class="{ active: (current_pingYingName === pingYing.name) }" @click="getDep(pingYing)">{{pingYing.name}}</li>
               </ul>
             </td>
             <td></td>

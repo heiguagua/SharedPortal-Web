@@ -9,7 +9,7 @@ export default {
       current_dep: '全部',
       current_type: this.$route.query.dirName,
       current_depFid: '全部',
-      current_pingYing:'全部',
+      current_pingYingName:'全部',
       current_type_path: '',
       current_pingiying:'',
       typeList: [{
@@ -78,7 +78,7 @@ export default {
     },
      getDep: function (item) {
       const vm = this;
-      vm.current_pingYing = item.name;
+      vm.current_pingYingName = item.name;
       vm.current_pingiying = item.value;
       if (vm.current_type_path == '') { //当页面刷新时获取路由
         let current_path = vm.$route.path;
@@ -137,6 +137,9 @@ export default {
         vm.showDepFid = false
         vm.current_type = item.name;
         vm.current_type_path = item.path;
+      }
+      if(!!item.tree_code){
+      vm.current_pingiying = '';
       }
       vm.$router.push({
         path: `/layout/catalog/depCardingCatalog/${vm.current_type_path}`,
