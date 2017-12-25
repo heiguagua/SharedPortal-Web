@@ -9,7 +9,6 @@ export default {
       current_dep: '全部',
       current_type: this.$route.query.dirName,
       current_depFid: '全部',
-      current_pingYing:'全部',
       current_pingYingName:'全部',
       current_type_path: '',
       current_pingiying:'',
