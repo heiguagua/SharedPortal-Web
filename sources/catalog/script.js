@@ -5,6 +5,11 @@ export default {
    props:['sysObj'],
   data() {
     return {
+       jumpSystem:{
+        'jump_drap':master+"/jp:hk_drap",
+        'jump_directory':master+"/jp:hk_directory",
+        'jump_service':master+"/jp:hk_service"
+      },
       regions: [],
       regions_load_cl:0,//登录后regions的长度
       regions1: [{
@@ -89,6 +94,9 @@ export default {
 
   },
   methods: {
+    getLoginUserInfo(url) {//单点登录
+      window.open(url)
+    },
     handleNodeClick(data, node) {
       var vm = this;
       if(vm.regions.length == vm.regions_load_cl){//无论是否登录regions_length的值都是登录状态下的regions的数组个数
