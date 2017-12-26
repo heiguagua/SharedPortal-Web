@@ -60,16 +60,16 @@ export default {
         item.path = "statistic";
       });
       vm.regions.push({
-         'id':1,
-        'name': '部门政务信息梳理目录',
-       'path': 'department'
-      },{
         'id':4,
         'name': '系统静态数据资源目录',
         'path': 'system'
       });
       if (username) {
         vm.regions.push({
+         'id':1,
+        'name': '部门政务信息梳理目录',
+       'path': 'department'
+      },{
           'name': '系统实时动态数据资源',
           'path': 'system'
         })
@@ -94,7 +94,7 @@ export default {
       if(vm.regions.length == vm.regions_load_cl){//无论是否登录regions_length的值都是登录状态下的regions的数组个数
          var regions_length = vm.regions.length;//第一级的数组个数
       }else{
-        var regions_length = vm.regions.length + 1;
+        var regions_length = vm.regions.length + 2;
       }
       vm.expandedKeys =[];
       var root =vm.findParent(node);
@@ -118,7 +118,30 @@ export default {
             }
           })
         }else if(rootPath == vm.regions[regions_length-3].path){//部门政务信息梳理目录下的一级目录设置路由
-     if (node.level === 2) {
+
+           this.$router.push({
+              path: '/layout/catalog/system-resources',
+              query: {
+                dirName: data.name,
+                info_system_id: data.info_system_id,
+                db_id:(data.hasOwnProperty('db_id'))?data.db_id:''
+              }
+            })
+
+
+        }
+        else{
+            if(vm.regions.length == vm.regions_load_cl && rootName ==vm.regions[regions_length-1].name){
+            this.$router.push({
+              path: '/layout/catalog/system-dynamic-resources',
+              query: {
+                dirName: data.name,
+                info_system_id: data.info_system_id,
+                db_id:(data.hasOwnProperty('db_id'))?data.db_id:''
+              }
+            })
+          }else{
+                 if (node.level === 2) {
             this.$router.push({
               path: `/layout/catalog/depCardingCatalog/${data.path}`,
               query: {
@@ -136,26 +159,6 @@ export default {
               }
             })
           }
-        }
-        else{
-            if(vm.regions.length == vm.regions_load_cl && rootName ==vm.regions[regions_length-1].name){
-            this.$router.push({
-              path: '/layout/catalog/system-dynamic-resources',
-              query: {
-                dirName: data.name,
-                info_system_id: data.info_system_id,
-                db_id:(data.hasOwnProperty('db_id'))?data.db_id:''
-              }
-            })
-          }else{
-            this.$router.push({
-              path: '/layout/catalog/system-resources',
-              query: {
-                dirName: data.name,
-                info_system_id: data.info_system_id,
-                db_id:(data.hasOwnProperty('db_id'))?data.db_id:''
-              }
-            })
           }
         }
       }
