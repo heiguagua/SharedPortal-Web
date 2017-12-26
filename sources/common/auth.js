@@ -61,6 +61,7 @@ export default {
           })
         }
       }
+
       // const head = response.data.head;
       // if (head && typeof head === "object" && head.hasOwnProperty("status")) {
       //   if (head.status === 202) {

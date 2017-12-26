@@ -212,7 +212,7 @@
         </el-col>
       </el-form-item>
       <el-form-item label="申请理由" prop="description" label-suffix="sfdfsd">
-        <el-input type="textarea" :rows="6" placeholder="请详细填写申请理由" v-model="applyForm.description"></el-input>
+        <el-input type="textarea" :rows="6" :maxlength=500 placeholder="请详细填写申请理由" v-model="applyForm.description"></el-input>
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">

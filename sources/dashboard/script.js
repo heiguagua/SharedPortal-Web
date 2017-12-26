@@ -22,7 +22,7 @@ export default {
       current_active: '',
       parentName: '',
       parentId: "",
-      carouselPicNews: [],
+      carouselPicNews:[],
       porjectPic: [],
       depAllDeptInfoAA: [],
       depAllDeptInfoData: [],

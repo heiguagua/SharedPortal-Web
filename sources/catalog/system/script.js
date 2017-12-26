@@ -37,7 +37,10 @@ export default {
       const vm = this;
       return Http.fetch({
       method: "post",
-      url: master + "/dicttable/getSystemCounts"
+      url: master + "/dicttable/getSystemCounts",
+       data:{
+            id:1//该参数无意义但必须存在
+          }
     })
    },
    //系统实时动态数据资源 --统计

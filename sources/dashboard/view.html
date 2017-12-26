@@ -4,7 +4,7 @@
     <template>
       <el-carousel :interval="5000" arrow="always">
         <el-carousel-item v-for="pic in porjectPic" :key="pic.id">
-          <a href="javascript:void(0)">
+          <a href=javascript:void(0);>
             <img v-bind:src="pic.pic_path" alt="轮播图" height="420" width="100%">
           </a>
         </el-carousel-item>
@@ -251,7 +251,7 @@
   <!-- 数据图谱 start -->
   <section class="main-4">
     <div class="section-content">
-      <!-- <div class="main-title">
+      <div class="main-title">
         <h4 class="title">
           数据图谱
         </h4>
@@ -260,8 +260,8 @@
         </h2>
         <img class="ico" src="../assets/dashboard/ico1.png" />
         <a v-bind:href="sysObj.datamapmore" target="_blank" class="map-more">更多></a>
-      </div> -->
-      <!-- <div class="content">
+      </div>
+      <div class="content">
         <a class="m-l-0" v-bind:href="sysObj.datamap1" target="_blank">
         <img src="../assets/dashboard/map1.png" /></a>
         <a class="m-l-0" v-bind:href="sysObj.datamap2" target="_blank">
@@ -270,8 +270,8 @@
              <img src="../assets/dashboard/map3.png" /></a>
         <a class="m-l-0" v-bind:href="sysObj.datamap4" target="_blank"><img src="../assets/dashboard/map4.png" /></a>
         <a v-bind:href="sysObj.datamap5" target="_blank" class="m-r-0"> <img src="../assets/dashboard/map5.png" /></a>
-      </div> -->
-      <section>
+      </div>
+      <section v-if="getDevelopApisData.length">
         <div class="main-title">
           <h4 class="title">
             工具
@@ -284,7 +284,7 @@
         </div>
         <div class="tool-content">
           <dl class="img-group m-l-0" v-for="tool_item in getDevelopApisData">
-            <a href="javascript:viod(0)" @click="getDevelopJump(tool_item.api_url)">
+            <a href="javascript:void(0);" @click="getDevelopJump(tool_item.api_url)">
                <dt v-if="tool_item.icon" class="in-block"><img :src="tool_item.icon" /></dt> 
               <dt v-else class="in-block"><img src="../assets/dashboard/tool1.png" /></dt>
               <dd class="des">{{tool_item.api_name}}</dd>

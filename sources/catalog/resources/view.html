@@ -48,21 +48,21 @@
             </div>
           </template>
         </el-table-column>
-        <el-table-column label="共享类型" width="80">
+        <el-table-column label="共享类型" width="120">
           <template scope="scope">
             <div class="over_space">
               <span v-bind:title="scope.row.share_type">{{scope.row.share_type}}</span>
             </div>
           </template>
         </el-table-column>
-        <el-table-column label="开放类型" width="80">
+        <el-table-column label="开放类型" width="120">
           <template scope="scope">
             <div class="over_space">
               <span v-bind:title="scope.row.is_open">{{scope.row.is_open}}</span>
             </div>
           </template>
         </el-table-column>
-        <el-table-column label="相关部门">
+        <!-- <el-table-column label="相关部门">
           <template scope="scope">
             <div class="over_space">
               <span v-bind:title="scope.row.dept_name">{{scope.row.dept_name}}</span>
@@ -76,8 +76,8 @@
 ">{{scope.row.classify_name}}</span>
             </div>
           </template>
-        </el-table-column>
-        <el-table-column label="更新时间" width="100">
+        </el-table-column> -->
+        <el-table-column label="更新时间"  width="120">
           <template scope="scope">
             <div class="over_space">
               <span v-bind:title="scope.row.update_time">{{scope.row.update_time | formatDate}}</span>
