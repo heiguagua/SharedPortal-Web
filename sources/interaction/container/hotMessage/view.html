@@ -9,8 +9,13 @@
               <el-table-column label="信息资源名称" width="180">
                 <template scope="scope">
                   <div class="over_space">
+<<<<<<< HEAD
                     <span v-if="scope.row.TABLE_CN_NAME" v-bind:title="scope.row.TABLE_CN_NAME">{{scope.row.TABLE_NAME}}</span>
                     <span else v-bind:title="scope.row.TABLE_NAME">{{scope.row.TABLE_NAME}}</span>
+=======
+                     <p class="name" v-if="scope.row.TABLE_CN_NAME"><span v-bind:title="scope.row.TABLE_CN_NAME">{{item.TABLE_CN_NAME}}</span></p>
+                      <p class="name" v-else><span v-bind:title="item.TABLE_NAME">{{scope.row.TABLE_NAME}}</span></p>
+>>>>>>> develop-temp
                   </div>
                 </template>
               </el-table-column>
