@@ -211,7 +211,7 @@
                 <ul class="list-group">
                   <li v-for="item in listLatestDbResource" @click="jumpDetailResource(item)">
                       <p class="name" v-if="item.TABLE_CN_NAME"><span v-bind:title="item.TABLE_CN_NAME">{{item.TABLE_CN_NAME}}</span></p>
-                      <p class="name" else><span v-bind:title="item.TABLE_NAME">{{item.TABLE_NAME}}</span></p>
+                      <p class="name" v-else><span v-bind:title="item.TABLE_NAME">{{item.TABLE_NAME}}</span></p>
                       <p class="dep" ><span v-bind:title="item.dept_name">{{item.dept_name}}</span></p>
                   </li>
                 </ul>
@@ -233,7 +233,7 @@
                 <ul class="list-group">
                   <li v-for="item in listHottestResource" @click="jumpDetailResource(item)">
                        <p class="name" v-if="item.TABLE_CN_NAME"><span v-bind:title="item.TABLE_CN_NAME">{{item.TABLE_CN_NAME}}</span></p>
-                      <p class="name" else><span v-bind:title="item.TABLE_NAME">{{item.TABLE_NAME}}</span></p>
+                      <p class="name" v-else><span v-bind:title="item.TABLE_NAME">{{item.TABLE_NAME}}</span></p>
                       <p class="dep" ><span v-bind:title="item.dept_name">{{item.dept_name}}</span></p>
                   </li>
                 </ul>

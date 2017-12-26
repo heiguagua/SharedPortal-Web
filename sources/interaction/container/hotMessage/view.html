@@ -10,7 +10,7 @@
                 <template scope="scope">
                   <div class="over_space">
                      <p class="name" v-if="scope.row.TABLE_CN_NAME"><span v-bind:title="scope.row.TABLE_CN_NAME">{{item.TABLE_CN_NAME}}</span></p>
-                      <p class="name" else><span v-bind:title="item.TABLE_NAME">{{scope.row.TABLE_NAME}}</span></p>
+                      <p class="name" v-else><span v-bind:title="item.TABLE_NAME">{{scope.row.TABLE_NAME}}</span></p>
                   </div>
                 </template>
               </el-table-column>
@@ -56,7 +56,7 @@
                 <template scope="scope">
                   <div class="over_space">
                      <p class="name" v-if="scope.row.TABLE_CN_NAME"><span v-bind:title="scope.row.TABLE_CN_NAME">{{item.TABLE_CN_NAME}}</span></p>
-                      <p class="name" else><span v-bind:title="scope.row.TABLE_NAME">{{item.TABLE_NAME}}</span></p>
+                      <p class="name" v-else><span v-bind:title="scope.row.TABLE_NAME">{{item.TABLE_NAME}}</span></p>
                   </div>
                 </template>
               </el-table-column>
