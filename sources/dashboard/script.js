@@ -22,12 +22,12 @@ export default {
       current_active: '',
       parentName: '',
       parentId: "",
-      carouselPicNews:[],
+      carouselPicNews: [],
       porjectPic: [],
       depAllDeptInfoAA: [],
       depAllDeptInfoData: [],
       dirFirstName: [],
-      getDevelopApisData:[],
+      getDevelopApisData: [],
       carouselDetail: {},
       dialogNewVisible: false,
       showMorecatalog: false,
@@ -48,18 +48,18 @@ export default {
     vm.getDevelopApis(1);
   },
   methods: {
-      getDevelopJump: function (tool_url) {//工具
+    getDevelopJump: function (tool_url) { //工具
       const vm = this;
       Http.fetch({
         method: "post",
         url: master + "/developapis/developJump",
-         data: {
-          url:tool_url
+        data: {
+          url: tool_url
         }
       }).then(
         function (result) {
           if (result.status == 200) {
-           window.open(result.data);
+            window.open(result.data);
           }
         });
     },
@@ -75,18 +75,7 @@ export default {
       }).then(
         function (result) {
           if (result.status == 200) {
-            var depAllDeptInfo = [];
-            if (result.data.length < 15) {
-              vm.showMorecatalog = false;
-              var depAllDeptInfo = result.data;
-            } else {
-              vm.showMorecatalog = true;
-              for (var i = 0; i < 13; i++) {
-                depAllDeptInfo.push(result.data[i]);
-              }
-            }
-
-            if (item.type == "2-3") {
+            if (item.type == "2-3") {//政务部门信息资源目录
               vm.parentName = item.name;
               vm.parentId = item.id;
               _.forEach(depAllDeptInfo, function (_item) {
@@ -94,7 +83,17 @@ export default {
                   vm.getAllDirMenuInfo(_item);
                 }
               })
-
+            } else {
+              var depAllDeptInfo = [];
+              if (result.data.length < 15) {
+                vm.showMorecatalog = false;
+                var depAllDeptInfo = result.data;
+              } else {
+                vm.showMorecatalog = true;
+                for (var i = 0; i < 13; i++) {
+                  depAllDeptInfo.push(result.data[i]);
+                }
+              }
             }
             vm.depAllDeptInfoAA = depAllDeptInfo;
             if (item.type != '3') {
@@ -109,14 +108,14 @@ export default {
       Http.fetch({
         method: "post",
         url: master + "/developapis/getDevelopApisByFid",
-         data: {
-          is_show:show
+        data: {
+          is_show: show
         }
       }).then(
         function (result) {
           if (result.status == 200) {
             vm.getDevelopApisData = result.data;
-          } 
+          }
         });
     },
     getCountDataShare: function () {
@@ -202,7 +201,7 @@ export default {
           if (result.status == 200) {
             let data = result.data;
             vm.listLatestDbResource = data.body;
-          } 
+          }
         });
     },
     HottestResourceData: function () {
@@ -219,7 +218,7 @@ export default {
           if (result.status == 200) {
             let data = result.data;
             vm.listHottestResource = data.body;
-          } 
+          }
         });
     },
     getCarouselPicNews: function () {
@@ -235,7 +234,7 @@ export default {
           if (result.status == 200) {
             let data = result.data;
             vm.carouselPicNews = data.body;
-          } 
+          }
         });
     },
     getPorjectPic: function () {
@@ -279,7 +278,7 @@ export default {
             vm.dirFirstName = result.data;
             vm.getAllDirMenuInfo(vm.dirFirstName[1]); //主题目录
             vm.current_active = vm.dirFirstName[1].name
-          } 
+          }
         });
     },
     clickMenu: function (item) {
