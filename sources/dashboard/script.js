@@ -66,6 +66,7 @@ export default {
     getAllDirMenuInfo: function (item) {
       const vm = this;
       var pid = item.id;
+      console.log(item)
       Http.fetch({
         method: "get",
         url: master + "/home/getClassifyChildrenWithSubchildrenById",
@@ -78,14 +79,14 @@ export default {
             if (item.type == "2-3") {//政务部门信息资源目录
               vm.parentName = item.name;
               vm.parentId = item.id;
-              _.forEach(depAllDeptInfo, function (_item) {
+              _.forEach(item.children, function (_item) {
                 if (_item.type == '3') {
                   vm.getAllDirMenuInfo(_item);
                 }
               })
-            } else {
-              var depAllDeptInfo = [];
-              if (result.data.length < 15) {
+            }else{
+             var depAllDeptInfo = [];
+               if (result.data.length < 15) {
                 vm.showMorecatalog = false;
                 var depAllDeptInfo = result.data;
               } else {
@@ -94,8 +95,8 @@ export default {
                   depAllDeptInfo.push(result.data[i]);
                 }
               }
+               vm.depAllDeptInfoAA = depAllDeptInfo;
             }
-            vm.depAllDeptInfoAA = depAllDeptInfo;
             if (item.type != '3') {
               vm.parentName = item.name;
               vm.parentId = item.id;
