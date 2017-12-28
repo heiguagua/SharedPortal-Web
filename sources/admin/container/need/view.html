@@ -7,8 +7,9 @@
   </div>
   <div class="filter">
     <div class="search">
-      <el-input placeholder="请输入需求名称" icon="search" v-model="search_inp" :on-icon-click="searchClick">
-      </el-input>
+       <el-input placeholder="请输入需求名称" v-model="search_inp">
+          <el-button slot="append" icon="search" @click="searchClick">搜索</el-button>
+        </el-input>
     </div>
   </div>
   <div class="list_data">

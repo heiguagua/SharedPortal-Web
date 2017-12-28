@@ -10,7 +10,8 @@
     </div>
     <div class="filter">
       <div class="search">
-        <el-input placeholder="请输入信息资源名称/目录/理由" icon="search" v-model="search_inp" :on-icon-click="searchClick">
+        <el-input placeholder="请输入资源名称/目录/理由" v-model="search_inp">
+          <el-button slot="append" icon="search" @click="searchClick">搜索</el-button>
         </el-input>
       </div>
       <div class="select">
@@ -24,8 +25,7 @@
     </div>
     <div class="list_data">
       <template>
-        <el-table :data="getApplyList" border style="width: 100%"  v-loading="loading" element-loading-text="数据加载中"
-          slot="empty">
+        <el-table :data="getApplyList" border style="width: 100%" v-loading="loading" element-loading-text="数据加载中" slot="empty">
           <el-table-column label="信息资源名称">
             <template scope="scope">
               <div class="over_space">
@@ -161,24 +161,24 @@
           </el-pagination>
         </div>
       </el-tab-pane>
-       <el-tab-pane label="接口说明" name="interfaceinfo">
-          <p v-show="tableInterfaces.length == 0" style="padding-left:30px;">暂无接口说明</p>
-          <div v-show="tableInterfaces.length > 0">
-            <el-table :data="tableInterfaces" style="width: 100%">
-              <el-table-column type="expand">
-                <template scope="props">
-                  <el-form label-position="left" class="demo-table-expand">
-                    <el-form-item label="接口方式">
-                      <span>{{props.row.service_type}}</span>
-                    </el-form-item>
-                    <el-form-item label="请求类型">
-                      <span>{{props.row.request_method}}</span>
-                    </el-form-item>
-                    <el-form-item label="请求Header设置">
-                      <span>Content-Type：application/json;charset=utf-8</span>
-                    </el-form-item>
-                    <el-form-item label="请求Body格式（参数传递JSON）">
-                      <span>请求参数实例：
+      <el-tab-pane label="接口说明" name="interfaceinfo">
+        <p v-show="tableInterfaces.length == 0" style="padding-left:30px;">暂无接口说明</p>
+        <div v-show="tableInterfaces.length > 0">
+          <el-table :data="tableInterfaces" style="width: 100%">
+            <el-table-column type="expand">
+              <template scope="props">
+                <el-form label-position="left" class="demo-table-expand">
+                  <el-form-item label="接口方式">
+                    <span>{{props.row.service_type}}</span>
+                  </el-form-item>
+                  <el-form-item label="请求类型">
+                    <span>{{props.row.request_method}}</span>
+                  </el-form-item>
+                  <el-form-item label="请求Header设置">
+                    <span>Content-Type：application/json;charset=utf-8</span>
+                  </el-form-item>
+                  <el-form-item label="请求Body格式（参数传递JSON）">
+                    <span>请求参数实例：
 											<table class="table-detail"  border="0" width="100%">
 													<thead>
 													<tr>
@@ -216,9 +216,9 @@
 														</tbody>
 											</table>
 											</span>
-                    </el-form-item>
-                    <el-form-item label="返回数据格式（返回JSON格式）">
-                      <span>结果返回实例：
+                  </el-form-item>
+                  <el-form-item label="返回数据格式（返回JSON格式）">
+                    <span>结果返回实例：
 													<table class="table-detail" border="0" width="100%">
 													<thead>
 													<tr>
@@ -242,30 +242,30 @@
 													</tbody>
 													</table>
 											</span>
-                    </el-form-item>
-                    <el-form-item label="使用说明">
-                      <span>{{ props.row.operation_desc }}</span>
-                    </el-form-item>
-                    <el-form-item label="字段说明">
-                      <!-- <span> -->
-											  <el-table :data="props.row.request_info"  max-height="250" style="width: 100%">
-													<el-table-column label="字段名" prop="itemName"></el-table-column >
-													<el-table-column label="字段中文名" prop="itemNameCn"></el-table-column >
-													<el-table-column label="表名" prop="tableName"></el-table-column >
-												</el-table> 
-										<!-- </span> -->
-                    </el-form-item>
-                  </el-form>
-                </template>
-              </el-table-column>
-              <el-table-column label="接口列表" prop="service_url">
-                <template scope="props">
-                  {{ props.row.service_url }}
-                </template>
-              </el-table-column>
-            </el-table>
-          </div>
-        </el-tab-pane>
+                  </el-form-item>
+                  <el-form-item label="使用说明">
+                    <span>{{ props.row.operation_desc }}</span>
+                  </el-form-item>
+                  <el-form-item label="字段说明">
+                    <!-- <span> -->
+                    <el-table :data="props.row.request_info" max-height="250" style="width: 100%">
+                      <el-table-column label="字段名" prop="itemName"></el-table-column>
+                      <el-table-column label="字段中文名" prop="itemNameCn"></el-table-column>
+                      <el-table-column label="表名" prop="tableName"></el-table-column>
+                    </el-table>
+                    <!-- </span> -->
+                  </el-form-item>
+                </el-form>
+              </template>
+            </el-table-column>
+            <el-table-column label="接口列表" prop="service_url">
+              <template scope="props">
+                {{ props.row.service_url }}
+              </template>
+            </el-table-column>
+          </el-table>
+        </div>
+      </el-tab-pane>
     </el-tabs>
 
 

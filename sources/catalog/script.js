@@ -196,7 +196,6 @@ export default {
         if (hasChild) {
           if(node.level === 1) {// 第一级根节点
             //如果系统静态数据资源目录加载第一层子目录接口
-            alert(rootName)
             if(rootName =="系统静态数据资源目录"){
               vm.getSystemStaticDataFirstLevelChild().then(function (res) {
                 if (res.status == 200) {
