@@ -64,16 +64,15 @@ export default {
       _.forEach(vm.regions,function(item){
         item.path = "statistic";
       });
-      vm.regions.push({
-        'id':4,
-        'name': '系统静态数据资源目录',
-        'path': 'system'
-      });
       if (username) {
         vm.regions.push({
          'id':1,
         'name': '部门政务信息梳理目录',
        'path': 'department'
+      },{
+        'id':4,
+        'name': '系统静态数据资源目录',
+        'path': 'system'
       },{
           'name': '系统实时动态数据资源',
           'path': 'system'
@@ -102,7 +101,7 @@ export default {
       if(vm.regions.length == vm.regions_load_cl){//无论是否登录regions_length的值都是登录状态下的regions的数组个数
          var regions_length = vm.regions.length;//第一级的数组个数
       }else{
-        var regions_length = vm.regions.length + 2;
+        var regions_length = vm.regions.length + 3;
       }
       vm.expandedKeys =[];
       var root =vm.findParent(node);
@@ -117,7 +116,7 @@ export default {
           }
         });
       }else{
-          if (rootPath == vm.regions[0].path) {
+          if (rootPath == vm.regions[0].path) {//动态的基础、主题、部门目录
               this.$router.push({
             path: '/layout/catalog/resources',
             query: {
@@ -125,9 +124,10 @@ export default {
               dirCode: data.tree_code
             }
           })
-        }else if(rootPath == vm.regions[regions_length-3].path){
-             if(vm.regions.length == vm.regions_load_cl && rootName ==vm.regions[regions_length-1].name){
-            this.$router.push({
+        }else{
+          if(vm.regions.length == vm.regions_load_cl && rootPath == vm.regions[regions_length-1].path){
+            if(rootName ==vm.regions[regions_length-1].name){//系统实时动态数据资源
+               this.$router.push({
               path: '/layout/catalog/system-dynamic-resources',
               query: {
                 dirName: data.name,
@@ -135,7 +135,7 @@ export default {
                 db_id:(data.hasOwnProperty('db_id'))?data.db_id:''
               }
             })
-          }else{//静态目录
+            }else{//系统静态数据资源目录
                this.$router.push({
               path: '/layout/catalog/system-resources',
               query: {
@@ -144,10 +144,9 @@ export default {
                 db_id:(data.hasOwnProperty('db_id'))?data.db_id:''
               }
             })
-          }
-        }
-        else{//部门政务信息梳理目录下的一级目录设置路由
-                 if (node.level === 2) {
+            }
+          }else{//部门政务信息梳理目录
+                if (node.level === 2) {
             this.$router.push({
               path: `/layout/catalog/depCardingCatalog/${data.path}`,
               query: {
@@ -164,6 +163,7 @@ export default {
                 dirCode: data.dept_Id
               }
             })
+          }
           }
         }
       }
