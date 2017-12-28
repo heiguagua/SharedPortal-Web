@@ -76,7 +76,7 @@ export default {
         function (result) {
           if (result.status == 200) {
             var depAllDeptInfo = [];
-            if (result.data.length < 15) {
+            if (result.data.length <         15) {
               vm.showMorecatalog = false;
               var depAllDeptInfo = result.data;
             } else {
