@@ -125,21 +125,8 @@ export default {
               dirCode: data.tree_code
             }
           })
-        }else if(rootPath == vm.regions[regions_length-3].path){//部门政务信息梳理目录下的一级目录设置路由
-
-           this.$router.push({
-              path: '/layout/catalog/system-resources',
-              query: {
-                dirName: data.name,
-                info_system_id: data.info_system_id,
-                db_id:(data.hasOwnProperty('db_id'))?data.db_id:''
-              }
-            })
-
-
-        }
-        else{
-            if(vm.regions.length == vm.regions_load_cl && rootName ==vm.regions[regions_length-1].name){
+        }else if(rootPath == vm.regions[regions_length-3].path){
+             if(vm.regions.length == vm.regions_load_cl && rootName ==vm.regions[regions_length-1].name){
             this.$router.push({
               path: '/layout/catalog/system-dynamic-resources',
               query: {
@@ -148,7 +135,18 @@ export default {
                 db_id:(data.hasOwnProperty('db_id'))?data.db_id:''
               }
             })
-          }else{
+          }else{//静态目录
+               this.$router.push({
+              path: '/layout/catalog/system-resources',
+              query: {
+                dirName: data.name,
+                info_system_id: data.info_system_id,
+                db_id:(data.hasOwnProperty('db_id'))?data.db_id:''
+              }
+            })
+          }
+        }
+        else{//部门政务信息梳理目录下的一级目录设置路由
                  if (node.level === 2) {
             this.$router.push({
               path: `/layout/catalog/depCardingCatalog/${data.path}`,
@@ -166,7 +164,6 @@ export default {
                 dirCode: data.dept_Id
               }
             })
-          }
           }
         }
       }
@@ -199,6 +196,7 @@ export default {
         if (hasChild) {
           if(node.level === 1) {// 第一级根节点
             //如果系统静态数据资源目录加载第一层子目录接口
+            alert(rootName)
             if(rootName =="系统静态数据资源目录"){
               vm.getSystemStaticDataFirstLevelChild().then(function (res) {
                 if (res.status == 200) {
