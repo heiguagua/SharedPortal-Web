@@ -105,7 +105,7 @@ export default {
         path: '/layout/catalog/economy-extend-resourses',
         query: {
           dirName: val.system_name,
-          dirCode: vm.$route.query.dirCode,
+          // dirCode: vm.$route.query.dirCode,
           infoSystemId: val.info_system_Id
         }
       })
