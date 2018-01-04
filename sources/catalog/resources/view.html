@@ -41,10 +41,13 @@
         <el-table-column label="信息资源名称">
           <template scope="scope">
             <div class="over_space">
-              <span v-if="scope.row.storage_medium == 1" v-bind:title="scope.row.dataset_name"><img class="img" src="../../assets/catalog/etable.png" />{{scope.row.dataset_name}}</span>
-              <span v-else-if="scope.row.storage_medium == 2" v-bind:title="scope.row.dataset_name"><img class="img" src="../../assets/catalog/paperfile.png" />{{scope.row.dataset_name}}</span>
-              <span v-else-if="scope.row.storage_medium == 3" v-bind:title="scope.row.dataset_name"><img class="img" src="../../assets/catalog/database.png" />{{scope.row.dataset_name}}</span>
-              <span v-else v-bind:title="scope.row.dataset_name">{{scope.row.dataset_name}}</span>
+              <span v-if="scope.row.storage_medium == '01'" v-bind:title="scope.row.dataset_name"><img class="img" src="../../assets/catalog/paperfile.png" />{{scope.row.dataset_name}}</span>
+              <span v-else-if="scope.row.storage_medium == '02' " v-bind:title="scope.row.dataset_name"><img class="img" src="../../assets/catalog/etable.png" />{{scope.row.dataset_name}}</span>
+              <span v-else-if="scope.row.storage_medium == '03'" v-bind:title="scope.row.dataset_name"><img class="img" src="../../assets/catalog/database.png" />{{scope.row.dataset_name}}</span>
+               <span v-else-if="scope.row.storage_medium == '04'" v-bind:title="scope.row.dataset_name"><img class="img" src="../../assets/catalog/pic.png" />{{scope.row.dataset_name}}</span>
+                <span v-else-if="scope.row.storage_medium == '05'" v-bind:title="scope.row.dataset_name"><img class="img" src="../../assets/catalog/smedia.png" />{{scope.row.dataset_name}}</span>
+                 <span v-else-if="scope.row.storage_medium == '06'" v-bind:title="scope.row.dataset_name"><img class="img" src="../../assets/catalog/dformat.png" />{{scope.row.dataset_name}}</span>
+              <span v-else v-bind:title="scope.row.dataset_name"><img class="img" src="../../assets/catalog/default.png" />{{scope.row.dataset_name}}</span>
             </div>
           </template>
         </el-table-column>
@@ -86,7 +89,7 @@
         </el-table-column>
         <el-table-column label="详情" width="60">
           <template slot-scope="scope">
-            <el-button @click="handleCurrentChange(scope.row)" type="text" size="small"><em class="capsulate" :class="scope.row.isCapsulate ==0? 'isCapsulate' : 'noCapsulate' "></em>查看</el-button>
+            <el-button @click="handleCurrentChange(scope.row)" type="text" size="small"><em class="capsulate" :class="scope.row.isCapsulate ==1? 'isCapsulate' : 'noCapsulate' "></em>查看</el-button>
           </template>
         </el-table-column>
       </el-table>
