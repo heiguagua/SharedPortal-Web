@@ -34,7 +34,6 @@ export default {
    * Json Web Token handler
    */
   interceptor() {
-    alert()
     const vm = this;
     var httpStatus =true;//防止http并行时页面弹出多个提示框
     Http.fetch.interceptors.request.use(function (config) {
