@@ -34,7 +34,9 @@ export default {
    * Json Web Token handler
    */
   interceptor() {
+    alert()
     const vm = this;
+    var httpStatus =true;//防止http并行时页面弹出多个提示框
     Http.fetch.interceptors.request.use(function (config) {
       const token = Encrypt.token.get();
       if (token)
@@ -46,13 +48,15 @@ export default {
     Http.fetch.interceptors.response.use(function (response) {
       var reg = /^.*\/login$/;
       if (reg.test(response.config.url)) {} else {
-        if (response.status === 511) {
+        if (response.status === 511 && httpStatus) {
           Message.error({
             message: '登录已失效或用户未登录过，请登录！',
             duration:2000
           })
+          httpStatus = false;
           setTimeout(() => {
             window.location.href = "#/login";
+            httpStatus = true;
           }, 2000);
         } else if (response.status !== 200 && response.status !== 511) {
           Notification.error({
@@ -61,19 +65,8 @@ export default {
           })
         }
       }
-
-      // const head = response.data.head;
-      // if (head && typeof head === "object" && head.hasOwnProperty("status")) {
-      //   if (head.status === 202) {
-      //     window.location.href = "#/login";
-      //   }
-      // }
       return response;
     }, function (error) {
-
-      // Encrypt.token.empty("userName");
-      // Encrypt.token.empty("orgName");
-
       return Promise.reject(error);
     });
   }
