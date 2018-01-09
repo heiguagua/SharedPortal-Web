@@ -1,12 +1,23 @@
 import Http from "../../../common/http.js";
 import Encrypt from "../../../common/encrypt.js";
 import elLogin from "../../../common/login-dialog/index.vue";
+import forEach from 'lodash/foreach'
 const master = Http.url.master;
 export default {
   components: {
     elLogin
   },
   data() {
+      var checkContent = (rule, value, callback) => {
+      if (value.length >500) {
+        return callback('最多只能输入500个字符,你已经不能再输入了！');
+      }else if (!value) {
+          return callback(new Error('不能为空'));
+        }
+       else {
+          callback();
+        }
+    };
     return {
       disable:false,
       ruleForm: {
@@ -25,8 +36,8 @@ export default {
       rules2: {
         title: [{
           required: true,
-          message: '标题不能为空',
-          trigger: 'blur'
+          validator: checkContent,
+          trigger: 'blur,change'
         }],
         // depId: [{//部门多选时用
         //   type: 'array',
@@ -46,8 +57,8 @@ export default {
         }],
         content: [{
           required: true,
-          message: '需求描述不能为空',
-          trigger: 'blur'
+          validator: checkContent,
+          trigger: 'blur,change'
         }],
         resourceId: [{
           type: 'array',
@@ -57,8 +68,8 @@ export default {
         }],
          resourceName: [{
           required: true,
-          message: '资源名称不能为空',
-          trigger: 'blur'
+          validator: checkContent,
+          trigger: 'blur,change'
         }],
 
       },
@@ -130,6 +141,7 @@ export default {
        if(val == 'handfilled'){
           vm.resourceSwitch=false;
         }else{
+          vm.ruleForm.resourceId=[];
           vm.resourceSwitch = true;
         }
     },
@@ -210,7 +222,7 @@ export default {
                   // vm.ruleForm.resourceId = []
                   // vm.$refs.tree.setCheckedKeys([]);//部门多选时用
                   //  vm.resourceSwitch=true;
-                  $("#dep_inp").height(33);
+                  // $("#dep_inp").height(33);//部门多选时用
                 } else {
                   vm.$message({
                     showClose: true,
@@ -232,6 +244,7 @@ export default {
       let vm = this
       vm.depData=[];
       vm.depName = '';
+      vm.ruleForm.resourceId=[];
       vm.getDepData('root').then(
         function (result) {
           if (result.status == 200) {
@@ -278,15 +291,15 @@ export default {
       const nodeArry = this.$refs.tree.getCheckedNodes();
       vm.depName = [];
       vm.ruleForm.depId = [];
-      _.forEach(nodeArry, function (item) {
+      forEach(nodeArry, function (item) {
         vm.depName.push(item.name)
         vm.ruleForm.depId.push(item.id);
       })
-      if (vm.depName.length < 1) {
-        $("#dep_inp").height(33);
-      } else {
-        $("#dep_inp").height(33 * vm.depName.length);
-      }
+      // if (vm.depName.length < 1) {//部门多选时用
+      //   $("#dep_inp").height(33);
+      // } else {
+      //   $("#dep_inp").height(33 * vm.depName.length);
+      // }
     },
 
     /**部门单选 */

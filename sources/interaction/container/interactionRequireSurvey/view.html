@@ -5,7 +5,7 @@
       <el-row>
         <el-col :span="16" :offset="1">
           <el-form-item label="需求名称" prop="title" label-suffix="sfdfsd">
-            <el-input v-model="ruleForm.title"></el-input>
+            <el-input v-model="ruleForm.title" :maxlength=500></el-input>
           </el-form-item>
         </el-col>
       </el-row>
@@ -75,7 +75,7 @@
   <el-row v-if="!resourceSwitch">
     <el-col :span="23" :offset="1">
       <el-form-item label="资源名称" prop="resourceName" label-suffix="sfdfsd">
-        <el-input type="textarea" v-model="ruleForm.resourceName"></el-input>
+        <el-input type="textarea" v-model="ruleForm.resourceName" :maxlength=500 ></el-input>
       </el-form-item>
     </el-col>
   </el-row>
@@ -85,7 +85,7 @@
    <el-row>
     <el-col :span="16" :offset="1">
       <el-form-item label="需求描述" prop="content">
-        <el-input type="textarea" v-model="ruleForm.content"></el-input>
+        <el-input type="textarea" v-model="ruleForm.content" :maxlength=500></el-input>
       </el-form-item>
     </el-col>
   </el-row> 
