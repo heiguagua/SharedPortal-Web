@@ -228,9 +228,11 @@
         display: center;
         justify-content: center;
         .spanuser {
-          display: inline-block;
-          background: #4197F4;
-          vertical-align: middle;
+         display: inline-block;
+         background: #4197F4;
+         vertical-align:top;
+         border: 1px solid #4197F4;
+         height: 38px;
           img {
             padding: 8px 13px;
           }
