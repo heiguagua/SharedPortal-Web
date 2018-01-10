@@ -1,7 +1,6 @@
 import Http from "../../../common/http.js";
 import Encrypt from "../../../common/encrypt.js";
 import elLogin from "../../../common/login-dialog/index.vue";
-import forEach from 'lodash/foreach'
 const master = Http.url.master;
 export default {
   components: {
@@ -291,7 +290,7 @@ export default {
       const nodeArry = this.$refs.tree.getCheckedNodes();
       vm.depName = [];
       vm.ruleForm.depId = [];
-      forEach(nodeArry, function (item) {
+      _.forEach(nodeArry, function (item) {
         vm.depName.push(item.name)
         vm.ruleForm.depId.push(item.id);
       })
