@@ -56,7 +56,12 @@ export default {
               vm.showLinkDom = true;
               vm.jumpRoute = false;
             } else {
-              vm.current_item = themeApplicationsdata[0].children[0].children[0];
+              for (var index in themeApplicationsdata[0].children) {
+                if (!!themeApplicationsdata[0].children[index].children) {
+                  vm.current_item = themeApplicationsdata[0].children[index].children[0];
+                  break;
+                }
+              }
               vm.showLinkDom = true;
             }
           }
@@ -94,7 +99,12 @@ export default {
       vm.activeChild = '';
       _.forEach(vm.devthemes, function (_item, index) {
         if (vm.activeName == _item.name) {
-          vm.current_item = _item.children[0].children[0];
+          for (var index in _item.children) {
+            if (!!_item.children[index]) {
+              vm.current_item = _item.children[index].children[0];
+              break;
+            }
+          }
         }
       })
       vm.showLinkDom = true;
