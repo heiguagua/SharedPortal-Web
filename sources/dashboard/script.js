@@ -1,8 +1,5 @@
 import Http from "../common/http.js";
 import Encrypt from "../common/encrypt.js";
-import {
-  formatDate
-} from "../common/date.js";
 const master = Http.url.master;
 export default {
   props: ['sysObj'],
@@ -39,10 +36,7 @@ export default {
     vm.getDirNodesByParent();
     vm.getCountDataShare(); //资源统计
     vm.Latestpolicies("G"); //最新政策
-    vm.latestDirectoryData(); //最新目录
-    vm.HottestDirectoryData(); //最热目录
-    vm.LatestDbResourceData(); //最新资源
-    vm.HottestResourceData(); //最热资源
+    vm.ResourcesForHomePage();
     vm.getCarouselPicNews(); //最新新闻
     vm.getPorjectPic();
     vm.getDevelopApis(1);
@@ -79,7 +73,7 @@ export default {
             if (item.type == "2-3") {//政务部门信息资源目录
               vm.parentName = item.name;
               vm.parentId = item.id;
-              _.forEach(item.children, function (_item) {
+               _.forEach(item.children, function (_item) {
                 if (_item.type == '3') {
                   vm.getAllDirMenuInfo(_item);
                 }
@@ -135,7 +129,7 @@ export default {
       const vm = this;
       Http.fetch({
         method: "get",
-        url: master + "/home/listLatestpolicies",
+        url: master + "/home/listLatestpoliciesForHomePage",
         params: {
           policyType: policyType,
           pageSize: 5
@@ -156,28 +150,11 @@ export default {
           }
         });
     },
-    latestDirectoryData: function () {
+      ResourcesForHomePage: function () {
       const vm = this;
       Http.fetch({
         method: "get",
-        url: master + "/home/listLatestDirectory",
-        params: {
-          resourceType: "directory",
-          pageSize: 4
-        }
-      }).then(
-        function (result) {
-          if (result.status == 200) {
-            let data = result.data;
-            vm.latestDirectory = data.body;
-          }
-        });
-    },
-    HottestDirectoryData: function () {
-      const vm = this;
-      Http.fetch({
-        method: "get",
-        url: master + "/home/getHottestDirectoryList",
+        url: master + "/home/getResourcesForHomePage",
         params: {
           pageSize: 4
         }
@@ -185,43 +162,14 @@ export default {
         function (result) {
           if (result.status == 200) {
             let data = result.data;
-            vm.listHottestDirectory = data.body;
+            vm.listHottestDirectory=data.hotestCatalogues;
+            vm.listHottestResource=data.hotestResources;
+            vm.latestDirectory=data.newestCatalogues;
+            vm.listLatestDbResource=data.newestResources;
           }
         });
     },
-    LatestDbResourceData: function () {
-      const vm = this;
-      Http.fetch({
-        method: "get",
-        url: master + "/home/listLatestDbResource",
-        params: {
-          pageSize: 4
-        }
-      }).then(
-        function (result) {
-          if (result.status == 200) {
-            let data = result.data;
-            vm.listLatestDbResource = data.body;
-          }
-        });
-    },
-    HottestResourceData: function () {
-      const vm = this;
-      Http.fetch({
-        method: "get",
-        url: master + "/home/getHottestDirResourceList",
-        params: {
-          pageSize: 4,
-          resourceType: "service"
-        }
-      }).then(
-        function (result) {
-          if (result.status == 200) {
-            let data = result.data;
-            vm.listHottestResource = data.body;
-          }
-        });
-    },
+
     getCarouselPicNews: function () {
       const vm = this;
       Http.fetch({
@@ -307,11 +255,17 @@ export default {
     /** 最新动态跳转到数据目录详情页面*/
     jumpDetailResource(item) { //资源的跳转---系统实时动态数据资源
       const vm = this;
+      var table_name;
+      if(item.cn_name){
+        table_name = item.cn_name;
+      }else{
+        table_name = item.en_name;
+      }
       vm.$router.push({
         path: '/layout/catalog/system-dynamic-details',
         query: {
-          enName: item.TABLE_NAME,
-          tableId: item.ID
+          enName: table_name,
+          tableId: item.resource_map_id
         }
       })
     },
@@ -320,16 +274,10 @@ export default {
       vm.$router.push({
         path: '/layout/catalog/details',
         query: {
-          dirName: item.dataset_name,
+          dirName: item.resource_name,
           ddcm_id: item.resource_map_id
         }
       })
     },
-  },
-  filters: {
-    formatDate(time) {
-      let date = new Date(time);
-      return formatDate(date, 'yyyy-MM-dd');
-    }
   }
 };
