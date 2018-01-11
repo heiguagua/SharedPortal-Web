@@ -30,7 +30,7 @@ export default {
         vm.phisical_location_options = res.data;
       }
     });
-    vm.getSysDictByCategory("systemLevel").then(function (res) {
+    vm.getSysDictByCategory("systemConstructionProperty").then(function (res) {
       if (res.status == 200) {
         vm.system_level_options = res.data;
       }
