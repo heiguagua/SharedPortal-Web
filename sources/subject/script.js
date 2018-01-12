@@ -56,13 +56,14 @@ export default {
               vm.showLinkDom = true;
               vm.jumpRoute = false;
             } else {
+              vm.showLinkDom = false;
               for (var index in themeApplicationsdata[0].children) {
                 if (!!themeApplicationsdata[0].children[index].children) {
                   vm.current_item = themeApplicationsdata[0].children[index].children[0];
+                  vm.showLinkDom = true;
                   break;
                 }
               }
-              vm.showLinkDom = true;
             }
           }
         });
@@ -99,15 +100,16 @@ export default {
       vm.activeChild = '';
       _.forEach(vm.devthemes, function (_item, index) {
         if (vm.activeName == _item.name) {
+          vm.showLinkDom = false;
           for (var index in _item.children) {
             if (!!_item.children[index].children) {
               vm.current_item = _item.children[index].children[0];
+              vm.showLinkDom = true;
               break;
             }
           }
         }
       })
-      vm.showLinkDom = true;
       vm.jumpRoute = true;
     },
 
