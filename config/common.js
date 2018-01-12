@@ -8,8 +8,22 @@ module.exports = {
   entry: {
     app: "./app.js",
     vendor: [
-      "vue", "vuex", "vue-router", "element-ui", "axios",
-      "jquery", "lodash", "moment",
+      "vue"
+    ],
+    vendor1: [
+      "vue-router"
+    ],
+    vendor2: [
+      "element-ui"
+    ],
+    vendor3:[
+      "axios"
+    ],
+    vendor4:[
+      "crypto"
+    ],
+    vendor5:[
+      "lodash"
     ]
   },
   resolve: {
@@ -25,7 +39,7 @@ module.exports = {
       filename: "index.html"
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      names: ["vendor", "manifest"]
+      names: ["vendor5", "vendor4","vendor3","vendor2","vendor1","vendor","manifest"]
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.ProvidePlugin({
