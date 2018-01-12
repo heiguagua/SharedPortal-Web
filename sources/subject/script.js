@@ -100,7 +100,7 @@ export default {
       _.forEach(vm.devthemes, function (_item, index) {
         if (vm.activeName == _item.name) {
           for (var index in _item.children) {
-            if (!!_item.children[index]) {
+            if (!!_item.children[index].children) {
               vm.current_item = _item.children[index].children[0];
               break;
             }
