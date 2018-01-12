@@ -138,9 +138,6 @@ export default {
         vm.current_type = item.name;
         vm.current_type_path = item.path;
       }
-      if(!!item.tree_code){
-      vm.current_pingiying = '';
-      }
       vm.$router.push({
         path: `/layout/catalog/depCardingCatalog/${vm.current_type_path}`,
         query: {
