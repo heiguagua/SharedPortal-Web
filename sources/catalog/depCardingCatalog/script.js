@@ -6,7 +6,7 @@ export default {
     return {
       depData: [],
       depFidData: [],
-      current_dep: '全部',
+      current_dep: this.$route.query.dirCode,
       current_type: this.$route.query.dirName,
       current_depFid: '全部',
       current_pingYingName:'全部',
@@ -58,7 +58,8 @@ export default {
         data.unshift({
           dept_Id: "",
           hasLeaf: 1,
-          name: "全部"
+          name: "全部",
+          tree_code:""
         });
         vm.depData = data;
       }
@@ -100,7 +101,7 @@ export default {
     },
     getDeptByFid: function (item) {
       const vm = this;
-      vm.current_dep = item.name;
+      vm.current_dep = item.tree_code;
       if (vm.current_type_path == '') { //当页面刷新时获取路由
         let current_path = vm.$route.path;
         vm.current_type_path = current_path.split('/')[4];
@@ -131,9 +132,9 @@ export default {
     },
     getDepType: function (item) {
       const vm = this;
-       vm.current_dep =item.name;
+       vm.current_dep =item.tree_code;
       if (item.name == '系统目录' || item.name == '业务目录' || item.name == '需求目录') {
-        vm.current_dep = '全部';
+        vm.current_dep = '';
         vm.showDepFid = false
         vm.current_type = item.name;
         vm.current_type_path = item.path;

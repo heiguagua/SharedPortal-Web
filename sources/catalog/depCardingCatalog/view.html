@@ -17,7 +17,7 @@
             <td class="title">部门：</td>
             <td>
               <ul class="data-ul" v-bind:class="{'max_height':isActive,'auto_height':!isActive}">
-                <li v-for="depItem in depData" :class="{ active: (current_dep === depItem.name) }" @click="getDeptByFid(depItem)">{{depItem.name}}</li>
+                <li v-for="depItem in depData" :class="{ active: (current_dep === depItem.tree_code) }" @click="getDeptByFid(depItem)">{{depItem.name}}</li>
               </ul>
             </td>
             <td @click="openDep"><span v-show="isActive">展开</span><span v-show="!isActive">收起</span><i :class="{'el-icon-arrow-right':isActive,'el-icon-arrow-down':!isActive}"></i></td>
