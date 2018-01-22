@@ -7,9 +7,19 @@ export default {
     elLogin
   },
   data() {
+      var checkContent1 = (rule, value, callback) => {
+      if (value.length >250) {
+        return callback('最多只能输入250个字,你已经不能再输入了！');
+      }else if (!value) {
+          return callback(new Error('不能为空'));
+        }
+       else {
+          callback();
+        }
+    };
       var checkContent = (rule, value, callback) => {
-      if (value.length >400) {
-        return callback('最多只能输入400个字,你已经不能再输入了！');
+      if (value.length >500) {
+        return callback('最多只能输入500个字,你已经不能再输入了！');
       }else if (!value) {
           return callback(new Error('不能为空'));
         }
@@ -67,7 +77,7 @@ export default {
         }],
          resourceName: [{
           required: true,
-          validator: checkContent,
+          validator: checkContent1,
           trigger: 'blur,change'
         }],
 
@@ -290,7 +300,7 @@ export default {
       const nodeArry = this.$refs.tree.getCheckedNodes();
       vm.depName = [];
       vm.ruleForm.depId = [];
-      _.forEach(nodeArry, function (item) {
+       _.forEach(nodeArry, function (item) {
         vm.depName.push(item.name)
         vm.ruleForm.depId.push(item.id);
       })
