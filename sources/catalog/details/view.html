@@ -12,6 +12,16 @@
         <span><img src="../../assets/catalog/error.png"  width="18" height="18" /></span> 纠错
       </li>
       <li class="op-item" @click="getStars()">
+      <div class="average-score">
+        <el-rate
+        v-model="average_score"
+        disabled-void-color="#ffffff"
+        disabled
+        show-text
+        text-color="#ff9900"
+        text-template="{value}">
+        </el-rate>
+      </div>
         <span><img src="../../assets/catalog/group.png"  width="16" height="16" /></span> 评分
       </li>
     </ul>
@@ -188,11 +198,13 @@
   </el-dialog>
   <!--评分对话框-->
   <el-dialog title="评分" :visible.sync="dialogRateVisible" size="tiny">
+    <div class="score">
     <el-form :model="rateForm">
       <el-form-item label="">
         <el-rate v-model="rateForm.stars"></el-rate>
       </el-form-item>
     </el-form>
+    </div>
     <div slot="footer" class="dialog-footer">
       <el-button type="primary" :disabled="disable" @click="handleRating()">提 交</el-button>
     </div>

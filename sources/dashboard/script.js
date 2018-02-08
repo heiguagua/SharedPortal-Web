@@ -176,7 +176,8 @@ export default {
         method: "get",
         url: master + "/home/getCarouselPicNews",
         params: {
-          pageSize: 3
+          pageSize: 3,
+          sort:'time_order'
         }
       }).then(
         function (result) {

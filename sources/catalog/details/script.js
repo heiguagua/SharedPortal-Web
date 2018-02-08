@@ -43,6 +43,7 @@ export default {
         userName: null,
         loading: true,
         head_title: '',
+        average_score:'',
         detail_pro: {},
         systemInfo:{},
         activeTab: 'itemlist',
@@ -212,6 +213,7 @@ export default {
         vm.getResDetails(vm.ddcm_id).then(function(res) {
           if (res.status == 200) {
             vm.detail_pro = res.data;
+            vm.average_score = res.data.rate_score;
             if(vm.detail_pro.system_info !== null && vm.detail_pro.system_info != undefined && vm.detail_pro.system_info != ''){
                 vm.systemInfo =JSON.parse(vm.detail_pro.system_info);
             }
