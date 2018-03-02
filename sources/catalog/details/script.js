@@ -43,13 +43,15 @@ export default {
         userName: null,
         loading: true,
         head_title: '',
-        average_score:'',
+        average_score:0,
         detail_pro: {},
         systemInfo:{},
         activeTab: 'itemlist',
         tableDataItem: [],
         tableInterfaces: [],
         multipleSelection:[],
+        resourceSelection:[],//关联资源ID
+        resourceDataItem:[],
         timeRange: null,
         operateble: false,
         editable: false,         // 数据申请时间空间是否可编辑
@@ -57,6 +59,8 @@ export default {
         dialogFormVisible: false, // 纠错对话框可见性
         dialogRateVisible: false, // 评分对话框可见性
         dialogApplyVisible: false, // 申请数据对话框可见性
+        dialogResourceVisible:false,//关联资源列表可见性
+        dialogRourceApplyVisible:false,//关联资源数据申请对话框可见性
         correctionForm: {
           content: ''
         },
@@ -122,12 +126,31 @@ export default {
           }
         })
       },
-      getDataItem: function(dataset_id) { // 获取数据项信息
+      getDataItem: function(dataset_id,dcm_id) { // 获取数据项信息
         return Http.fetch({
           method: "post",
           url: master + "/dataitem/getDatItemByDateSetId",
           data: {
-            dataset_id: dataset_id
+            dataset_id:dataset_id,
+            dcm_id: dcm_id
+          }
+        })
+      },
+       getResourceData: function(ddcm_id) { // 获取是否存在关联资源
+        return Http.fetch({
+          method: "post",
+          url: master + "/dataItemapply/selectIfExistRelatedCatalog",
+          data: {
+            dcmId: ddcm_id
+          }
+        })
+      },
+      getRelatedCatalog: function(ddcm_id) { // 获取关联资源信息
+        return Http.fetch({
+          method: "post",
+          url: master + "/dataItemapply/getRelatedCatalog",
+          data: {
+            dcmId: ddcm_id
           }
         })
       },
@@ -194,10 +217,22 @@ export default {
           }
         })
       },
+       insertApplyResourceInfo: function(dcm_ids, date_period, description) {//关联资源的所有数据申请
+        return Http.fetch({
+          method: "post",
+          url: master + "/dataItemapply/createRelatedDataApply",
+          data: {
+            dcmIds: dcm_ids, // 关联资源id
+            //  limit_visit_cnt: count,
+             limit_visit_date_period: date_period,
+            apply_info: description
+          }
+        })
+      },
       getDataItemList: function() { // 获取数据项列表
         const vm = this;
         console.log(vm.detail_pro);
-        vm.getDataItem(vm.detail_pro.dataset_id).then(function(res) {
+        vm.getDataItem(vm.detail_pro.dataset_id,vm.detail_pro.dcm_id).then(function(res) {
           vm.loading = false;
           if (res.status == 200) {
             vm.tableDataItem = res.data;
@@ -242,7 +277,21 @@ export default {
         vm.multipleSelection = val;
         console.log(vm.multipleSelection);
       },
-      handleItemDetail(itemName, itemObj) { //点击数据项名称
+      handleResourceSeletChange(val) {
+        const vm = this;
+        vm.resourceSelection = val;
+        console.log(vm.resourceSelection);
+      },
+      handleRelatedCatalog(relatedCatalogName, ddcmId) { //点击关联资源名称
+        this.$router.push({
+          path: '/layout/catalog/details',
+          query: {
+            dirName: relatedCatalogName,
+            ddcm_id: ddcmId
+          }
+        });
+      },
+      handle(itemName, itemObj) { //点击数据项名称
         this.$router.push({
           path: '/layout/catalog/itemDetails',
           query: {
@@ -387,9 +436,38 @@ export default {
         }
 
       },
+      applyResourceData(){ // 点击申请关联资源数据
+        const vm = this;
+        if (!vm.resourceSelection || vm.resourceSelection.length == 0) {
+          vm.$message({
+            showClose: true,
+            message: '请勾选您要申请的关联资源！',
+            type: 'warning'
+          });
+        } else if (!Encrypt.token.get("userName")) { // 未登录
+          vm.$message({
+            showClose: true,
+            message: '登录后才能执行申请操作，请登录！',
+            type: 'warning'
+          });
+          // 弹出登录框
+          setTimeout(function() {
+            vm.$parent.$parent.openLoginDialog();
+          }, 1000);
+        } else {
+          vm.dialogRourceApplyVisible = true;
+        }
+
+      },
       checkboxInit(row, index) {
         console.log(row.share_dict_code);
-        if (row.r_status == "需申请")
+        if (row.r_status == "需申请" || row.r_status == "拒绝")
+          return 1; //可勾选
+        else
+          return 0; //不可勾选
+      },
+      checkboxRelatedCatalogInit(row, index) {
+        if (row.usableApplyCount > 0)
           return 1; //可勾选
         else
           return 0; //不可勾选
@@ -412,10 +490,38 @@ export default {
                   message: '申请成功！',
                   type: 'success'
                 });
+                 setTimeout(function() {
+                  vm.getResourceData(vm.detail_pro.dcm_id).then(function(res){
+                    if(res.status == 200){
+                      if(res.data.relatedCataCount > 0){
+                         vm.$confirm('该资源存在关联资源，是否继续申请?', '提示', {
+                              confirmButtonText: '确定',
+                              cancelButtonText: '取消',
+                              type: 'warning'
+                            }).then(() => {
+                              
+                         vm.dialogResourceVisible = true;//关联资源列表弹出框
+                          vm.getRelatedCatalog(vm.detail_pro.dcm_id).then(function(res){
+                            if(res.status == 200){
+                              vm.resourceDataItem = res.data;
+                              }
+                            })
+                            }).catch(() => {
+                              vm.$message({
+                                type: 'info',
+                                message: '已取消'
+                              });          
+                            });
+                      }
+                    }
+                  })  }, 1000);
+           
                 vm.getDataItemList(); // 刷新数据项列表
                 vm.applyForm.timeRange = [];
                 // vm.applyForm.count = '';
                 vm.applyForm.description = '';
+        
+               
               }
               vm.dialogApplyVisible = false;
               vm.disable=false;
@@ -426,6 +532,43 @@ export default {
         })
 
       },
+         handleRsourceApply(applyForm) { // 提交关联资源申请数据
+        const vm = this;
+        vm.$refs[applyForm].validate((valid) => {
+          if (valid) {
+            var dcm_ids = _.map(vm.resourceSelection, "dcmId");
+            var date_range = null;
+            if(vm.applyForm.timeRange) {
+              date_range = formatDate(vm.applyForm.timeRange[0],'yyyy-MM-dd hh:mm:ss') + "-" + formatDate(vm.applyForm.timeRange[1],'yyyy-MM-dd hh:mm:ss');
+            }
+            vm.disable=true;
+            vm.insertApplyResourceInfo(dcm_ids, date_range, vm.applyForm.description).then(function(res) {
+              
+              if (res.status == 200) {
+                vm.$message({
+                  showClose: true,
+                  message: '申请成功！',
+                  type: 'success'
+                });
+                vm.applyForm.timeRange = [];
+                // vm.applyForm.count = '';
+                vm.applyForm.description = '';
+                 vm.getRelatedCatalog(vm.detail_pro.dcm_id).then(function(res){
+                  if(res.status == 200){
+                    vm.resourceDataItem = res.data;
+                    }
+                  })
+              }
+              vm.dialogRourceApplyVisible = false;
+              vm.disable=false;
+            })
+          } else {
+            return false;
+          }
+        })
+
+      },
+
        jumpToSystem(val) { // 点击表格行
       const vm = this;
       console.log(val)

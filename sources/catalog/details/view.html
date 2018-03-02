@@ -233,4 +233,49 @@
       <el-button type="primary" :disabled="disable" @click="handleApply('applyForm')">完 成</el-button>
     </div>
   </el-dialog>
+  <!--申请关联资源数据-->
+  <el-dialog title="申请数据" :visible.sync="dialogRourceApplyVisible" size="small" class="apply-dialog">
+    <el-form :model="applyForm" :rules="formRules" ref="applyForm" label-width="100px" class="demo-ruleForm">
+      <el-form-item label="访问时间段" prop="timeRange" label-suffix="sfdfsd">
+        <el-col :span="11">
+          <el-date-picker v-model="applyForm.timeRange" type="datetimerange" :editable="editable" placeholder="选择时间范围">
+          </el-date-picker>
+        </el-col>
+      </el-form-item>
+      <el-form-item label="申请理由" prop="description" label-suffix="sfdfsd">
+        <el-input type="textarea" :rows="6" :maxlength=500 placeholder="请详细填写申请理由" v-model="applyForm.description"></el-input>
+      </el-form-item>
+    </el-form>
+    <div slot="footer" class="dialog-footer">
+      <div class="pull-left" style="color:#5F98FB;">文件格式：XLS、XML、JSON、CSV</div>
+      <el-button @click="dialogRourceApplyVisible = false">取 消</el-button>
+      <el-button type="primary" :disabled="disable" @click="handleRsourceApply('applyForm')">完 成</el-button>
+    </div>
+  </el-dialog>
+  <!--关联资源列表  -->
+  <el-dialog title="关联资源" :visible.sync="dialogResourceVisible" size="small">
+     <el-table v-loading="loading" ref="multipleTable" :data="resourceDataItem" height="250" border tooltip-effect="dark" style="width: 100%"
+            @selection-change="handleResourceSeletChange">
+            <el-table-column type="selection" prop='dcmId' label="全选" :selectable="checkboxRelatedCatalogInit" width="55">
+            </el-table-column>
+            <el-table-column label="资源名称">
+              <template scope="scope">
+                <div class="over_space">
+                 <a @click="handleRelatedCatalog(scope.row.datasetName,scope.row.dcmId)"> <span v-bind:title="scope.row.item_name">{{scope.row.datasetName}}</span></a>
+                </div>
+              </template>
+            </el-table-column>
+            <el-table-column prop="classifyStructureName" label="所属目录">
+            </el-table-column>
+            <el-table-column prop="dataitemCount" label="数据项个数">
+            </el-table-column>
+            <el-table-column prop="usableApplyCount" label="可选数据项个数">
+
+            </el-table-column>
+          </el-table>
+          <div slot="footer" class="dialog-footer">
+      <el-button @click="dialogResourceVisible = false">取 消</el-button>
+      <el-button type="primary" :disabled="disable" @click="applyResourceData()">申 请</el-button>
+    </div>
+  </el-dialog>
 </main>
