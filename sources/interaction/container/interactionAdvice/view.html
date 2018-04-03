@@ -8,17 +8,17 @@
         </el-form-item>
       </el-col>
       <el-col :span="6" :offset="1">
-        <label class=" help-block">简要说明你的问题</label>
+        <label class=" help-block">简要说明您的问题</label>
       </el-col>
     </el-row>
     <el-row>
       <el-col :span="14" :offset="1">
         <el-form-item label="问题详细" :rules="[{ required: true, message: '问题详细不能为空', trigger: 'blur' }]" prop="content">
-          <el-input type="textarea" v-model="ruleForm.content"></el-input>
+          <el-input type="textarea" maxlength=1000 v-model="ruleForm.content"></el-input>
         </el-form-item>
       </el-col>
       <el-col :span="6" :offset="1">
-        <label class=" help-block">详细说明你的问题</label>
+        <label class=" help-block">详细说明您的问题，输入内容不超过1000个字符</label>
       </el-col>
     </el-row>
     <el-row>
@@ -49,7 +49,7 @@
         </el-form-item>
       </el-col>
       <el-col :span="6" :offset="1">
-        <label class=" help-block">请填写固定电话或手机号码，以便与你联系沟通问题或电话回复
+        <label class=" help-block">请填写固定电话或手机号码，以便与您联系沟通问题或电话回复
 提交</label>
       </el-col>
     </el-row>

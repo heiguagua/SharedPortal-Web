@@ -34,19 +34,26 @@ export default {
     /**退出登录 */
     loginOut: function () {
       const vm = this;
-      Http.fetch({
-        method: "get",
-        url: master + "/loginOut",
-      }).then(
-        function (result) {
-          if (result.status == 200) {
-            Encrypt.token.empty("userName");
-            Encrypt.token.empty("orgName");
-            vm.islogin = false;
-            vm.$router.push("/login");
-
-          }
-        });
+      vm.$confirm('是否退出系统？', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        Http.fetch({
+          method: "get",
+          url: master + "/loginOut",
+        }).then(
+          function (result) {
+            if (result.status == 200) {
+              Encrypt.token.empty("userName");
+              Encrypt.token.empty("orgName");
+              vm.islogin = false;
+              vm.$router.push("/login");
+  
+            }
+          });
+      })
+      
     },
     getSysName: function () { //系统名称
       const vm = this;
