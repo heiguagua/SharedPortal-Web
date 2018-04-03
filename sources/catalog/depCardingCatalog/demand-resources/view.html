@@ -36,6 +36,13 @@
         </div>
       </template>
     </el-table-column>
+    <el-table-column label="信息资源(个数)">
+      <template scope="scope">
+        <div class="over_space">
+          <span v-bind:title="scope.row.datasetCount">{{ scope.row.datasetCount | number }}</span>
+        </div>
+      </template>
+    </el-table-column>
     <!-- <el-table-column prop="is_get" label="是否已获取" ></el-table-column>
     <el-table-column prop="expect_update_frequence" label="数据使用频率" ></el-table-column> -->
     <el-table-column label="详情" width="80">
