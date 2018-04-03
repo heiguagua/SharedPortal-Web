@@ -277,6 +277,15 @@ export default {
         vm.multipleSelection = val;
         console.log(vm.multipleSelection);
       },
+      handleItemDetail(itemName, itemObj) { //点击数据项名称
+        this.$router.push({
+          path: '/layout/catalog/itemDetails',
+          query: {
+            itemName: itemName,
+            itemObj: itemObj
+          }
+        });
+      },
       handleResourceSeletChange(val) {
         const vm = this;
         vm.resourceSelection = val;
