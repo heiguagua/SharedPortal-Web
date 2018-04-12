@@ -90,8 +90,11 @@ export default {
     },
     filters:{
         formatDate(time){
+          if(time) {
             let date = new Date(time);
             return formatDate(date,'yyyy-MM-dd');
+          }
+            return '无';
         }
     }
 };

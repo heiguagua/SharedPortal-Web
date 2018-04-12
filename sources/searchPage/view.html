@@ -22,7 +22,7 @@
                   <li>
                     <span>更新时间：{{item.update_time}}</span>
                     <span>查看：{{item.visit_count}}</span>
-                    <span>下载： 次</span>
+                    <!-- <span>下载： 次</span> -->
                     <span>接口：{{item.interface_count}}个</span>
                   </li>
                   <li>
@@ -116,7 +116,7 @@
           </div>
           <ul>
             <li v-for="item in listHottestDirectory">
-              <a @click="jumpDetailHotestCatalog(item)"><span v-bind:title="item.classify_name">{{item.classify_name}}</span></a><span>{{item.count}}</span>
+              <a @click="jumpDetailHotestCatalog(item)"><span v-bind:title="item.classify_name">{{item.classify_name}}: {{item.dataset_name}}</span></a><span>{{item.count}}</span>
             </li>
           </ul>
         </div>
