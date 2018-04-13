@@ -4,11 +4,11 @@
     <el-row>
       <el-col :span="14" :offset="1">
         <el-form-item label="标题" :rules="[{ required: true, message: '标题不能为空', trigger: 'blur' }]" prop="title" label-suffix="sfdfsd">
-          <el-input v-model="ruleForm.title" maxlength=1000></el-input>
+          <el-input v-model="ruleForm.title" maxlength=200></el-input>
         </el-form-item>
       </el-col>
       <el-col :span="6" :offset="1">
-        <label class=" help-block">简要说明您的问题，输入内容不超过1000个字符</label>
+        <label class=" help-block">简要说明您的问题，输入内容不超过200个字符</label>
       </el-col>
     </el-row>
     <el-row>
