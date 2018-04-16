@@ -55,7 +55,7 @@ export default {
           method: "post",
           url: master + "/dataset/getDataSetByClassfyTreeCode",
           data: {
-            tree_code: dirCode,
+            ddcm_id: dirCode,
             pageNum:currentPage,
             size:psize,
             keywords:keyword,

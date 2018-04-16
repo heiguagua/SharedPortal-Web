@@ -213,11 +213,12 @@ export default {
     },
     jumpDetailHotestCatalog(item) { //最热目录的跳转---政务基础信息资源目录、  政务主题信息资源目录列表页面
       const vm = this;
+      console.log('dirCode',item.resource_map_id);
       vm.$router.push({
         path: '/layout/catalog/resources',
         query: {
           dirName: item.classify_name,
-          dirCode: item.tree_code
+          dirCode: item.resource_map_id
         }
       })
     }
