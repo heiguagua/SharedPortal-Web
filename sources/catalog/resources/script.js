@@ -36,7 +36,12 @@ export default {
         const vm = this;
         vm.head_title = vm.$route.query.dirName;
         var dirCode = vm.$route.query.dirCode;
-        vm.getResources(dirCode,vm.currentPage,20,vm.keyword,vm.open_status,vm.share_type).then(function(res){
+        var hotestTag = vm.$route.query.hotestTag;
+        vm.resourcePromise = vm.getResources(dirCode,vm.currentPage,20,vm.keyword,vm.open_status,vm.share_type);
+        if(hotestTag) {
+          vm.resourcePromise = vm.getResourcesFromHotest(dirCode,vm.currentPage,20,vm.keyword,vm.open_status,vm.share_type);
+        }
+        vm.resourcePromise.then(function(res){
           vm.loading = false;
           if(res.status == 200) {
             var r_data = res.data;
@@ -54,6 +59,21 @@ export default {
         return Http.fetch({
           method: "post",
           url: master + "/dataset/getDataSetByClassfyTreeCode",
+          data: {
+            tree_code: dirCode,
+            pageNum:currentPage,
+            size:psize,
+            keywords:keyword,
+            is_open:open_status,
+            share_type:share_type
+          }
+        })
+      },
+      getResourcesFromHotest:function(dirCode,currentPage,psize,keyword,open_status,share_type) {
+        const vm = this;
+        return Http.fetch({
+          method: "post",
+          url: master + "/dataset/getDataSetByClassfyMapId",
           data: {
             ddcm_id: dirCode,
             pageNum:currentPage,

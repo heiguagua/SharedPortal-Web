@@ -218,7 +218,8 @@ export default {
         path: '/layout/catalog/resources',
         query: {
           dirName: item.classify_name,
-          dirCode: item.resource_map_id
+          dirCode: item.resource_map_id,
+          hotestTag: true // 跳转后因后台调用接口不同，加上此标志，标志是从最热目录跳转过来
         }
       })
     }
