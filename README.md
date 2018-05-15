@@ -1,4 +1,4 @@
-# Aves
+# 共享门户
 
 ![](sources/assets/favicon.ico)
 
@@ -9,11 +9,11 @@
   * demo`demo`
 
 ## Installation and deployment
-1. git clone https://github.com/uinika/aves.git
+1. git clone https://github.com/heiguagua/aves.git
 2. cd flamingo
 3. npm i
 4. gulp
-5. Open browser http://localhost:8000/wiserv/index.html
+5. Open browser http://localhost:5001/index.html
 
 ## Thirdparty Library
 * [Vue 2.3.x](https://vuejs.org/)
